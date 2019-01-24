@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/estilo.css">
     <title>Membros</title>
 </head>
 
@@ -14,7 +15,7 @@
            <!--     <p>
                     <a href="create.php" class="btn btn-success">Adicionar</a>
                 </p>-->
-                <table class="table table-striped-sm table-hover">
+                <table class="table table-striped" id="tabela_membros">
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
@@ -63,8 +64,29 @@
                 </table>
            
         </div>
-    <script src="js/jquery.js" ></script>
 
+       <script> /*var tr = $('table tr:not(:first-child)');
+                tr.on('click', function(){
+                    tr.not(this).removeClass('colorir');
+                    $(this).toggleClass('colorir');
+                });
+                var tr = $('table tr:not(tr)');
+                tr.on('click', function () {
+                var self = this;
+                
+                tr.each(function(){
+                if(this == self) $(this).toggleClass('colorir');
+                    else $(this).removeClass('colorir');
+                    })
+                });*/
+
+            $('#tabela_membros').on('click', 'tr', function () {
+                $(this).siblings().removeClass('colorir');
+                $(this).toggleClass('colorir');
+            });
+       </script> 
+
+    <script src="js/jquery.js" ></script>
     <script src="js/bootstrap.min.js"></script>
 </body>
 

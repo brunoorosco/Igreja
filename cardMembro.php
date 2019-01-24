@@ -42,7 +42,7 @@
                 <div class="container">
                 <div class="form-horizontal">
                     <div class="control-group">
-                        <label class="control-label">Nome</label>
+                        <label class="control-label">Nome:</label>
                         <div class="controls">
                             <label class="carousel-inner">
                                 <?php echo $data['nome'];?>
@@ -51,7 +51,7 @@
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label">Endereço</label>
+                        <label class="control-label">Endereço:</label>
                         <div class="controls">
                             <label class="carousel-inner">
                                 <?php echo $data['endereco'];?>
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label">Telefone</label>
+                        <label class="control-label">Telefone:</label>
                         <div class="controls">
                             <label class="carousel-inner">
                                 <?php echo $data['telefone'];?>
@@ -69,7 +69,7 @@
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label">Email</label>
+                        <label class="control-label">Email:</label>
                         <div class="controls">
                             <label class="carousel-inner">
                                 <?php echo $data['email'];?>
@@ -78,7 +78,15 @@
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label">Supervisão</label>
+                        <label class="control-label">Posição Herarquica:</label>
+                        <div class="controls">
+                            <label class="carousel-inner">
+                                <?php echo $data['cargo'];?>
+                            </label>
+                        </div>
+                    </div>
+                      <div class="control-group">
+                        <label class="control-label">Supervisão:</label>
                         <div class="controls">
                             <label class="carousel-inner">
                                 <?php echo $data['supervisao'];?>

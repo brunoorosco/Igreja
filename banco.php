@@ -5,7 +5,7 @@ class Banco
     private static $dbNome = 'DB_Igreja';
     private static $dbHost = 'localhost';
     private static $dbUsuario = 'root';
-    private static $dbSenha = '1234';
+    private static $dbSenha = '';
     
     private static $cont = null;
     
@@ -20,7 +20,7 @@ class Banco
         {
             try
             {
-                self::$cont =  new PDO( "mysql:host=".self::$dbHost.";"."dbname=".self::$dbNome, self::$dbUsuario, self::$dbSenha); 
+                self::$cont =  new PDO( "mysql:host=".self::$dbHost.";"."dbname=".self::$dbNome, self::$dbUsuario, self::$dbSenha,array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'')); 
             }
             catch(PDOException $exception)
             {
@@ -39,7 +39,7 @@ class Banco
 class db{
         private $dbhost = '127.0.0.1';
         private $dbuser = 'root';
-        private $dbpass = "1234";
+        private $dbpass = "";
         private $dbname = 'DB_Igreja';
 
         public function connect (){
