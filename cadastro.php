@@ -100,32 +100,32 @@
 			<form  id="" action="cadDB.php" method="post" >
 				<h1>Cadastro</h1><br>
 				 <div class="form-group ">
-				 	<input type="text" name="nomeCompleto" class="form-control" placeholder="Nome Completo" required="">
+				 	<input type="text" name="nome" class="form-control" placeholder="Nome Completo" required="">
 				 </div>
 				 
 				<div class="form-group">
-				  	<input type="text" name="endereca" class="form-control" placeholder="Endereço" required="">
+				  	<input type="text" name="endereco" class="form-control" placeholder="Endereço" required="">
 				</div>	 
 				
 				 <div class="form-group">
-				 	<input type="text" name="celular" class="form-control" placeholder="Celular com DDD" required="">
+				 	<input type="text" name="telefone" class="form-control" placeholder="Celular com DDD" required="">
 				 </div>
 
 				
 				<div class="form-group input-group">
 				 	 
 					    <input type="text" class="form-control" name="cpf" placeholder="CPF">
-					    <input type="text" class="form-control" name="nasc" placeholder="Data de Nascimento">
+					    <input type="text" class="form-control" name="nascimento" placeholder="Data de Nascimento">
 					 					  
 				</div>
 
  				<div class="form-group">
-				 	<input type="text" name="supervisao" class="form-control" placeholder="Supervisão" required="">
+				 	<input type="email" name="email" class="form-control" placeholder="seu_email@email" required="">
 				</div>
 				
-				<div class="form-group">
+				<div class="form-group input-group">
 					
-							<select class="form-control" id="sel1">
+							<select class="form-control" id="cargo" name="cargo">
 								<option hidden>Cargo</option>
 								<option>Líder</option>
 								<option>Auxiliar</option>
@@ -133,6 +133,8 @@
 								<option>Membro</option>
 
 						</select>
+
+						<input type="text" name="supervisao" class="form-control" placeholder="Supervisão" required="">
 						
 				</div>
 				

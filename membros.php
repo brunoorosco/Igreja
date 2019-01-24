@@ -14,7 +14,7 @@
            <!--     <p>
                     <a href="create.php" class="btn btn-success">Adicionar</a>
                 </p>-->
-                <table class="table table-striped table-hover">
+                <table class="table table-striped-sm table-hover">
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
@@ -46,11 +46,13 @@
                             echo '<td>'. $row['supervisao'] . '</td>';
                             echo '<td width=50>';
                             echo '<div class="btn-group" role="group" >';
+                            /*
                             echo '<a class="btn btn-primary btn-sm" href="cardMembro.php?id='.$row['idmembros'].'">Info</a>';
                             echo '';
+
                             echo '<a class="btn btn-warning btn-sm" href="update.php?id='.$row['idmembros'].'">Editar</a>';
                             echo '';
-                            echo '<a class="btn btn-danger btn-sm" href="delete.php?id='.$row['idmembros'].'">Excluir</a>';
+                            echo '<a class="btn btn-danger btn-sm" href="delete.php?id='.$row['idmembros'].'">Excluir</a>';*/
                             echo '</div></td>';
                             echo '</tr>';
                             echo '<div class="row"></div>';
