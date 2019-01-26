@@ -16,6 +16,9 @@
 
 		<title>Cadastro de Membros</title>
 
+		<script type="text/javascript" src="js/jquery.mask.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		
     <style type="text/css">
@@ -90,6 +93,16 @@
 			}
     </style>
 
+		<script type="text/javascript">
+
+		 	  $(document).ready(function(){
+				  $('#data').mask('00/00/0000');
+				  $('#cep').mask('00000-000');
+				  $('#tel').mask('(00) 00000-0000');
+				  $('#cpf').mask('000.000.000-00');
+				 });
+		 </script>
+
 	</head>
 <body>
 	 
@@ -108,14 +121,15 @@
 				</div>	 
 				
 				 <div class="form-group">
-				 	<input type="text" name="telefone" class="form-control" placeholder="Celular com DDD" required="">
+				 	<input type="text" name="telefone" class="form-control" placeholder="Celular com DDD" id="tel" required="">
 				 </div>
 
 				
 				<div class="form-group input-group">
 				 	 
-					    <input type="text" class="form-control" name="cpf" placeholder="CPF">
-					    <input type="text" class="form-control" name="nascimento" placeholder="Data de Nascimento">
+					    <input type="text" class="form-control" name="cpf" placeholder="CPF" id="cpf" maxlength="14">
+
+					    <input type="text" class="form-control" name="nascimento" id="data" placeholder="Data de Nascimento" maxlength="10">
 					 					  
 				</div>
 
@@ -134,7 +148,7 @@
 
 						</select>
 
-						<input type="text" name="supervisao" class="form-control" placeholder="Supervisão" required="">
+						<input type="text" name="supervisao" class="form-control" placeholder="CEM" required="">
 						
 				</div>
 				
@@ -148,8 +162,6 @@
 		     </div>
 		  </div>
 		</div>
-
-		<script type="text/javascript" src="js/bootstrap.js"></script>
-		<script type="text/javascript" src="js/jquery.js"></script>
+		 
 	</body>
 </html>

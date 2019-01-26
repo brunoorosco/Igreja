@@ -42,56 +42,45 @@
                 <div class="container">
                 <div class="form-horizontal">
                     <div class="control-group">
-                        <label class="control-label">Nome:</label>
-                        <div class="controls">
-                            <label class="carousel-inner">
+                        <label class="control-label carousel-inner">Nome: 
                                 <?php echo $data['nome'];?>
-                            </label>
-                        </div>
+                            </label>                        
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label">Endereço:</label>
-                        <div class="controls">
-                            <label class="carousel-inner">
+                     <label class="control-label carousel-inner">Aniversário: 
+                                <?php echo date("d/m",strtotime(str_replace('/','-',$data['nasc'])));?>
+                            </label>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label carousel-inner">Endereço: 
                                 <?php echo $data['endereco'];?>
                             </label>
-                        </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label">Telefone:</label>
-                        <div class="controls">
-                            <label class="carousel-inner">
-                                <?php echo $data['telefone'];?>
+                        <label class="control-label carousel-inner">Telefone:  <?php echo $data['telefone'];?>
+                            </label>
+                        
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label carousel-inner">Email:  <?php echo $data['email'];?>
                             </label>
                         </div>
-                    </div>
+                    
 
                     <div class="control-group">
-                        <label class="control-label">Email:</label>
-                        <div class="controls">
-                            <label class="carousel-inner">
-                                <?php echo $data['email'];?>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label">Posição Herarquica:</label>
-                        <div class="controls">
-                            <label class="carousel-inner">
+                        <label class="control-label carousel-inner">Posição Herarquica: 
                                 <?php echo $data['cargo'];?>
                             </label>
-                        </div>
-                    </div>
+                     </div>
                       <div class="control-group">
-                        <label class="control-label">Supervisão:</label>
-                        <div class="controls">
-                            <label class="carousel-inner">
+                        <label class="control-label carousel-inner">CEM:  
                                 <?php echo $data['supervisao'];?>
                             </label>
-                        </div>
+                    
                     </div>
                     <br/>
                     <div class="form-actions">
@@ -102,7 +91,7 @@
                 </div>
             </div>
         </div>
-        <script src="js/jquery.js" ></script>
+        <script src="js/jquery-3.3.1.js" ></script>
         <script src="js/bootstrap.min.js"></script>
     </body>
 

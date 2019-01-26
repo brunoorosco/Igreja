@@ -22,10 +22,10 @@
                             <th scope="col-sm-2">Nome</th>
                             <th scope="col">Endereço</th>
                             <th scope="col">Telefone</th>
-                            <th scope="col">Email</th>
+                            <!--<th scope="col">Email</th-->
                             <th scope="col">Aniversário</th>
                             <th scope="col">Função</th>
-                            <th scope="col">Supervisão</th>
+                            <th scope="col">CEM</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,16 +41,16 @@
                             echo '<td>'. $row['nome'] . '</td>';
                             echo '<td>'. $row['endereco'] . '</td>';
                             echo '<td>'. $row['telefone'] . '</td>';
-                            echo '<td>'. $row['email'] . '</td>';
+                         //   echo '<td>'. $row['email'] . '</td>';
                             echo '<td>'. $row['nasc'] . '</td>';
                             echo '<td>'. $row['cargo'] . '</td>';
                             echo '<td>'. $row['supervisao'] . '</td>';
                             echo '<td width=50>';
                             echo '<div class="btn-group" role="group" >';
-                            /*
+                            
                             echo '<a class="btn btn-primary btn-sm" href="cardMembro.php?id='.$row['idmembros'].'">Info</a>';
                             echo '';
-
+                                        /*
                             echo '<a class="btn btn-warning btn-sm" href="update.php?id='.$row['idmembros'].'">Editar</a>';
                             echo '';
                             echo '<a class="btn btn-danger btn-sm" href="delete.php?id='.$row['idmembros'].'">Excluir</a>';*/
@@ -86,7 +86,7 @@
             });
        </script> 
 
-    <script src="js/jquery.js" ></script>
+    <script src="js/jquery-3.3.1.js" ></script>
     <script src="js/bootstrap.min.js"></script>
 </body>
 

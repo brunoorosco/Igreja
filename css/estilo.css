@@ -81,3 +81,49 @@
     background-color: #fcc;
  }
 
+  /* Coded with love by Mutiullah Samim */
+     
+    .login_btn {
+      width: 0%;
+      background: #c0392b !important;
+      color: white !important;
+    }
+    .login_btn:focus {
+      box-shadow: none !important;
+      outline: 0px !important;
+    }
+    .login_container {
+      padding: 0 2rem;
+    }
+    .input-group-text {
+      background: #c0392b !important;
+      color: white !important;
+      border: 0 !important;
+      border-radius: 0.25rem 0 0 0.25rem !important;
+    }
+    .input_user,
+    .input_pass:focus {
+      box-shadow: none !important;
+      outline: 0px !important;
+    }
+    .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+      background-color: #c0392b !important;
+    }
+
+ .btn-color {
+  color: #fff;
+  background-color: #c0392b;
+  border-color: #c0392b;
+  border-radius: 6px;
+}
+
+.btn-color:hover {
+  color: #fff;
+  background-color: #c0392b;
+  opacity: 0.8;
+  border-color: #c0392b;
+}
+
+.text-black{
+  color: #000;
+}

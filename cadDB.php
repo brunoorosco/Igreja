@@ -11,6 +11,10 @@
     $cpf = $_POST['cpf'];
     $nasc = $_POST['nascimento'];
     $supervisao = $_POST['supervisao'];
+    $nasc = date("Y-m-d",strtotime(str_replace('/','-',$nasc)));  
+    
+
+
 
     $sql = "INSERT INTO membros (nome, telefone, email, nasc, cargo, endereco, cpf, supervisao) values (:nome, :telefone, :email, :nasc, :cargo, :endereco, :cpf , :supervisao)";
 
@@ -31,7 +35,7 @@
         $db = null;
     //  echo ' <script type="text/JavaScript">alert("Cadastro com sucesso !");   </script>';
     //   echo = "<meta http-equiv='Refresh' content='0;URL='cadastro.php'>";
-    echo "<script>window.location='cadastro.php';alert('$nome, o cadastro foi realizado com sucesso! Obrigado!!!');</script>";
+    echo "<script>window.location='menu.html';alert('$nome, o cadastro foi realizado com sucesso! Obrigado!!!');</script>";
     }catch(PDOException $e){
         //echo '{"erro": {"texto": '.$e->getMessage().'}';
         echo '{"erro": {"texto": '.$e->getMessage().'}';
