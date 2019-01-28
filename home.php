@@ -12,7 +12,7 @@
     <link href="_fonts/css/simple-sidebar.css" rel="stylesheet">
     
     
-    <script type="text/javascript" src="_fonts/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_fonts/js/bootstrap.js"></script>
     <script type="text/javascript" src="_fonts/js/jquery-3.3.1.js"></script>
 <style>
 

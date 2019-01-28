@@ -12,7 +12,8 @@
 <body>
         <div class="container-fluid">
            
-           <!--     <p>
+          <div class="row">
+                <div class="col-md-12"> <!--     <p>
                     <a href="create.php" class="btn btn-success">Adicionar</a>
                 </p>-->
                 <table class="table table-striped" id="tabela_membros">
@@ -42,18 +43,18 @@
                             echo '<td>'. $row['endereco'] . '</td>';
                             echo '<td>'. $row['telefone'] . '</td>';
                          //   echo '<td>'. $row['email'] . '</td>';
-                            echo '<td>'. $row['nasc'] . '</td>';
+                            echo '<td>'.date("d/m",strtotime(str_replace('/','-',$row['nasc']))).'</td>';
                             echo '<td>'. $row['cargo'] . '</td>';
                             echo '<td>'. $row['supervisao'] . '</td>';
                             ?>
                             <td>
-                          
-                           <button type="button" class="btn  btn-sm btn-primary" data-toggle="modal" data-target="#myModal<?php echo $row['idmembros']; ?>">Visualizar</button>
+                           <div class="btn-group btn-sm">
+                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<?php echo $row['idmembros']; ?>"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Visualizar</button>
                             
-                            <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idCursos']; ?>" data-whatevernome="<?php echo $row['nome']; ?>"data-whateverdetalhes="<?php echo $row['detalhes']; ?>">Editar</button>
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idmembros']; ?>" data-whatevernome="<?php echo $row['nome']; ?>"data-whateverdetalhes="<?php echo $row['cpf']; ?>">Editar</button>
                            
-                            <button type="button" class="btn btn-sm btn-danger">Apagar</button>
-                          
+                            <button type="button" class="btn btn-danger">Apagar</button>
+                          </div>
                             <?php
                             /*
                             echo '<a class="btn btn-warning btn-sm" href="update.php?id='.$row['idmembros'].'">Editar</a>';
@@ -69,12 +70,41 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title text-rigth" id="myModalLabel"><?php echo $row['nome']; ?></h4>
+                        <h4 class="modal-title " id="myModalLabel"><?php echo $row['nome']; ?></h4>
                       </div>
                       <div class="modal-body">
-                        <p><?php echo $row['idmembros']; ?></p>
-                        <p><?php echo $row['nome']; ?></p>
-                  
+                       <div class="container-fluid">
+                        <div class="form-group row">
+                          <div class="col">Aniversário: 
+                                        <?php echo date("d/m",strtotime(str_replace('/','-',$row['nasc'])));?>
+                                    </div>
+                          <div class="col-7">Email: <?php echo $row['email'];?></div>
+                        </div>
+                            
+
+                            <div class="form-group row">
+                                <div class="col">Endereço: 
+                                        <?php echo $row['endereco'];?>
+                            </div></div>
+
+                             <div class="form-group row">
+                                <div class="col">Telefone:  <?php echo $row['telefone'];?>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col">Cargo:
+                                        <?php echo $row['cargo'];?></div>
+                                <div class="col-7">        
+                                        CEM: <?php echo $row['supervisao'];?>
+                                </div>
+                             </div>
+                          
+                            <div class="form-group row">
+                                <div class="col">Cadastrado:  
+                                  <?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['cadastrado'])));?>
+                            </div>
+                          </div></div>
                       </div>
                     </div>
                   </div>
@@ -85,36 +115,34 @@
                     </tbody>
                 </table>
            
-        </div>
+        </div></div></div>
 
           <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-      <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">Curso</h4>
-        </div>
-        <div class="modal-body">
-        <form method="POST" action="http://localhost/Aula/aula_anterior/26-Modal-editar-curso/processa.php" enctype="multipart/form-data">
-          <div class="form-group">
-          <label for="recipient-name" class="control-label">Nome:</label>
-          <input name="nome" type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-          <label for="message-text" class="control-label">Detalhes:</label>
-          <textarea name="detalhes" class="form-control" id="detalhes"></textarea>
-          </div>
-        <input name="id" type="hidden" class="form-control" id="id-curso" value="">
-        
-        <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-        <button type="submit" class="btn btn-danger">Alterar</button>
-       
-        </form>
-        </div>
-        
-      </div>
-      </div>
-    </div>
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Curso</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" action="" enctype="multipart/form-data">
+                                  <div class="form-group">
+                                      <label for="recipient-name" class="control-label">Nome:</label>
+                                      <input name="nome" type="text" class="form-control" id="recipient-name">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="message-text" class="control-label">Detalhes:</label>
+                                    <textarea name="detalhes" class="form-control" id="detalhes"></textarea>
+                                  </div>
+                                <input name="id" type="hidden" class="form-control" id="idrso" value="">
+                                <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-danger">Alterar</button>
+                           
+                            </form>
+                    </div>
+                 </div>
+              </div>
+            </div>
 
        <script type="text/javascript"> 
         $('#exampleModal').on('show.bs.modal', function (event) {
@@ -125,7 +153,7 @@
           // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
           // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
           var modal = $(this)
-          modal.find('.modal-title').text('ID ' + recipient)
+          modal.find('.modal-title').text('ID'+recipient)
           modal.find('#id-curso').val(recipient)
           modal.find('#recipient-name').val(recipientnome)
           modal.find('#detalhes').val(recipientdetalhes)

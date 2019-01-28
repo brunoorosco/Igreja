@@ -58,7 +58,7 @@
       @media(min-width:700px) {
       	 form{
              width: 400px;
-             margin-top: 100px;
+             margin-top: 75px;
              margin-left: 10%;
 
       }
