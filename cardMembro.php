@@ -1,5 +1,5 @@
 <?php
-    require 'banco.php';
+    require '_fonts/config/banco.php';
     $id = null;
     if(!empty($_GET['id']))
     {
@@ -28,7 +28,7 @@
     <head>
         <meta charset="utf-8">
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="_fonts/css/bootstrap.min.css">
         <title>Informações do Membro</title>
     </head>
 
@@ -91,8 +91,8 @@
                 </div>
             </div>
         </div>
-        <script src="js/jquery-3.3.1.js" ></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="_fonts/js/jquery-3.3.1.js" ></script>
+        <script src="_fonts/js/bootstrap.min.js"></script>
     </body>
 
     </html>
