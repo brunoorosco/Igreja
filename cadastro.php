@@ -111,7 +111,7 @@
        	<div>
        		<div class="row"></div>
        		<div class="col-md-6 offset-md-3">       		   		
-			<form  id="" action="cadDB.php" method="post" >
+			<form  id="ajax_form" action="" method="post" >
 				<h1>Cadastro</h1><br>
 				 <div class="form-group ">
 				 	<input type="text" name="nome" class="form-control" placeholder="Nome Completo" required="">
@@ -163,6 +163,26 @@
 		     </div>
 		  </div>
 		</div>
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				jQuery('#ajax_form').submit(function(){
+					var dados = jQuery(this).serialize();
+
+					jQuery.ajax({
+						type:'POST',
+						url: "cadDB.php",
+						data: dados,
+						sucess: function(data)
+						{
+							
+									alert(data);
+							}
+
+					});
+					return false;
+			   	});
+			});
+		</script>
 		 
 	</body>
 </html>
