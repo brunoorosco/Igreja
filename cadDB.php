@@ -36,7 +36,8 @@
     //  echo ' <script type="text/JavaScript">alert("Cadastro com sucesso !");   </script>';
     //   echo = "<meta http-equiv='Refresh' content='0;URL='cadastro.php'>";
    // echo "<script>alert('$nome, o cadastro foi realizado com sucesso! Obrigado!!!');";//window.location='menu.html';</script>";
-        print_r('ok');
+      return;
+
     }catch(PDOException $e){
         //echo '{"erro": {"texto": '.$e->getMessage().'}';
         echo '{"erro": {"texto": '.$e->getMessage().'}';
