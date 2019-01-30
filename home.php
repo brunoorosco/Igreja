@@ -65,7 +65,8 @@
 
 
 <section id="header">
-      <nav class="navbar navbar-justified navbar-light" style="background-color: #ff8c00;">
+      
+      <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #ff8c00;">
           <span class="navbar-brand mb-0 h1 ">Secretária</span>
           <div class="dropdown">
             <button class="dropbtn">Sede</button>
@@ -80,47 +81,21 @@
               </div>
            </div>
            <div class="dropdown">
-            <button class="dropbtn">Sapopemba</button>
+            <button class="dropbtn">Igrejas</button>
               <div class="dropdown-content">
-              
+                <a href="#">Sapopemba</a>
+                <a href="#">Guarulhos</a>
+                <a href="#">Itaqua</a>
+                <a href="#">Jd. Danfer</a>
+                <a href="#">Curuça</a>
+                <a href="#">Suzano</a>
+                <a href="#">Curitiba</a>
               </div>
            </div>
-           <div class="dropdown">
-            <button class="dropbtn">Guarulhos</button>
-              <div class="dropdown-content">
-              
-              </div>
-           </div>
-           <div class="dropdown">
-            <button class="dropbtn">Itaqua</button>
-              <div class="dropdown-content">
-              
-              </div>
-           </div>
-            <div class="dropdown">
-            <button class="dropbtn">Jd. Danfer</button>
-              <div class="dropdown-content">
-             
-              </div>
-           </div>
-            <div class="dropdown">
-            <button class="dropbtn">Curuça</button>
-              <div class="dropdown-content">
-             
-              </div>
-           </div>
-           <div class="dropdown">
-            <button class="dropbtn">Suzano</button>
-              <div class="dropdown-content">
-             
-              </div>
-           </div>
-           <div class="dropdown">
-            <button class="dropbtn">Curitiba</button>
-              <div class="dropdown-content">
-             
-              </div>
-           </div>
+        <div class="search-container">
+         <input type="text" placeholder="Search.." name="search">
+         <button type="submit">Submit</button>
+
       </nav>
     
   </section>
