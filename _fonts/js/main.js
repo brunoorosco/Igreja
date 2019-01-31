@@ -16,27 +16,30 @@
 
 					$.ajax({
 						type:'POST',
-						url: urlbase,
+						url: "cadDB.php",
 						dataType: 'html',
-						data: dados,
-						complete: function()
+						data: dados,})
+						.done(function()
 						{
 							Swal.fire({
-								  	title: 'Cadastro realizado com sucesso',
-									type: 'success!!!',
+								  	title: 'Cadastro realizado com sucesso!!!',
+									type: 'success',
 									timer: 5000});
 									document.getElementById('ajax_form').reset();
 							
-						},
-						error: function() {
+						})
+						.fail(function() {
 						    Swal.fire({
 										  	title: 'Erro ao cadastrar, tente novamente!!!',
 											type: 'error',
 											timer: 5000});
 						    
-						}
+						})
+						.always(function(){
 
-					});
+						})
+
+					
 
 					
 					return false;

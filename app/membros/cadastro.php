@@ -16,11 +16,13 @@
 
 		<title>Cadastro de Membros</title>
 
+
+		<link rel="stylesheet" type="text/css" href="../../_fonts/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../../_fonts/css/sweetalert2.min.css">
 		
-		<script type="text/javascript" src="_fonts/js/bootstrap.js"></script>
-		<script type="text/javascript" src="_fonts/js/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="_fonts/js/jquery.mask.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="_fonts/css/bootstrap.min.css">
+	
+
+		
 		
     <style type="text/css">
 	  * {
@@ -94,16 +96,7 @@
 			}
     </style>
 
-		<script type="text/javascript">
-
-		 	  $(document).ready(function(){
-				  $('#data').mask('00/00/0000');
-				  $('#cep').mask('00000-000');
-				  $('#tel').mask('(00) 00000-0000');
-				  $('#cpf').mask('000.000.000-00');
-				 });
-		 </script>
-
+	
 	</head>
 <body>
 	 
@@ -111,7 +104,7 @@
        	<div>
        		<div class="row"></div>
        		<div class="col-md-6 offset-md-3">       		   		
-			<form  id="ajax_form" action="" method="post" >
+			<form  id="ajax_form" action="" method="post"  >
 				<h1>Cadastro</h1><br>
 				 <div class="form-group ">
 				 	<input type="text" name="nome" class="form-control" placeholder="Nome Completo" required="">
@@ -122,7 +115,7 @@
 				</div>	 
 				
 				 <div class="form-group">
-				 	<input type="text" name="telefone" class="form-control" placeholder="Celular com DDD" id="tel" required="">
+				 	<input type="text" name="telefone" class="form-control tel" placeholder="Celular com DDD" id="tel" required="">
 				 </div>
 
 				
@@ -163,26 +156,13 @@
 		     </div>
 		  </div>
 		</div>
-		<script type="text/javascript">
-			jQuery(document).ready(function(){
-				jQuery('#ajax_form').submit(function(){
-					var dados = jQuery(this).serialize();
+	
+		<script type="text/javascript" src="_fonts/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="_fonts/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="_fonts/js/jquery.mask.min.js"></script>
+		<script type="text/javascript" src="_fonts/js/sweetalert2.all.min.js"></script>
+		<script type="text/javascript" src="_fonts/js/main.js"></script>
 
-					jQuery.ajax({
-						type:'POST',
-						url: "cadDB.php",
-						data: dados,
-						sucess: function(data)
-						{
-							
-									alert(data);
-							}
 
-					});
-					return false;
-			   	});
-			});
-		</script>
-		 
 	</body>
 </html>

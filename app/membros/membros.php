@@ -19,6 +19,7 @@
                 <table class="table table-striped" id="tabela_membros">
                     <thead>
                         <tr>
+                            <th scope="col">#</th>
                             <th scope="col-sm-2">Nome</th>
                             <th scope="col">Endereço</th>
                             <th scope="col">Telefone</th>
@@ -30,14 +31,15 @@
                     </thead>
                     <tbody>
                         <?php
-                        include '_fonts/config/banco.php';
+                        include '../../_fonts/config/banco.php';
                         $pdo = Banco::conectar();
-                        $sql = 'SELECT * FROM membros ORDER BY nome asc';
+                        $sql = 'SELECT * FROM membros ORDER BY idmembros DESC';
 
                         foreach($pdo->query($sql)as $row)
                         {
                             echo '<tr>';
-			                      echo '<td>'. $row['nome'] . '</td>';
+			                      echo '<th scope="row">'. $row['idmembros'] . '</th>';
+                            echo '<td>'. $row['nome'] . '</td>';
                             echo '<td>'. $row['endereco'] . '</td>';
                             echo '<td>'. $row['telefone'] . '</td>';
                          //   echo '<td>'. $row['email'] . '</td>';

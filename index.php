@@ -71,8 +71,8 @@
           <div class="dropdown">
             <button class="dropbtn">Sede</button>
               <div class="dropdown-content">
-              <a onclick="carregar('cadastro.php')" href="#">Cadastro</a>
-              <a onclick="carregar('membros.php')" href="#">Membros</a> 
+              <a onclick="carregar('app/membros/cadastro.php')" href="#">Cadastro</a>
+              <a onclick="carregar('app/membros/membros.php')" href="#">Membros</a> 
               <a onclick="carregar('app/encontro/cad_Encontrista.php')" href="#">Encontro/Reencontro</a> 
               <a href="#">Homens em Ação</a>
               <a href="#">Ministério Kids</a>
@@ -92,9 +92,12 @@
                 <a href="#">Curitiba</a>
               </div>
            </div>
-        <div class="search-container">
-         <input type="text" placeholder="Search.." name="search">
-         <button type="submit">Submit</button>
+        
+         <form class="form-inline col" style="margin-left : 55%;">
+          <input class="form-control col-5" type="search" placeholder="Search" aria-label="Search" >
+          <button class="btn btn-outline-dark col-2 btn-sm" type="submit" >Search</button>
+        </form>
+
 
       </nav>
     
