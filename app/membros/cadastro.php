@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -17,8 +13,8 @@
 		<title>Cadastro de Membros</title>
 
 
-		<link rel="stylesheet" type="text/css" href="../../_fonts/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="../../_fonts/css/sweetalert2.min.css">
+		<link rel="stylesheet" type="text/css" href="_fonts/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="_fonts/css/sweetalert2.min.css">
 		
 	
 

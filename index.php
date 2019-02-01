@@ -9,7 +9,7 @@
 
     <link href="_fonts/css/estilo.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="_fonts/css/bootstrap.min.css">
-    <link href="_fonts/css/simple-sidebar.css" rel="stylesheet">
+   
     
     
     <script type="text/javascript" src="_fonts/js/bootstrap.min.js"></script>
@@ -93,10 +93,7 @@
               </div>
            </div>
         
-         <form class="form-inline col" style="margin-left : 55%;">
-          <input class="form-control col-5" type="search" placeholder="Search" aria-label="Search" >
-          <button class="btn btn-outline-dark col-2 btn-sm" type="submit" >Search</button>
-        </form>
+        
 
 
       </nav>

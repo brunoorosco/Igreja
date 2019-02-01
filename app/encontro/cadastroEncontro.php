@@ -1,6 +1,3 @@
-<?php
-
-?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -13,9 +10,11 @@
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link rel="stylesheet" type="text/css" href="_fonts/css/bootstrap.min.css">
-
+		
 		<title>Inscrição de Encontristas</title>
+
+		<link rel="stylesheet" type="text/css" href="_fonts/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="_fonts/css/sweetalert2.min.css">
 
 
 		<script type="text/javascript" src="_fonts/js/bootstrap.js"></script>
@@ -124,28 +123,7 @@
 				
 				 <div class="form-group">
 				 	<input type="text" name="telefone" class="form-control tel" placeholder="Celular com DDD" id="" required="">
-				 </div>
-
-				
-				<div class="form-group input-group">
-				 	 
-					    <input type="text" class="form-control cpf" name="cpf" placeholder="CPF" id="cpf" maxlength="14">
-
-					    <input type="text" class="form-control data" name="nascimento" id="data" placeholder="Data de Nascimento" maxlength="10">
-					 					  
-				</div>
-
- 				<div class="form-group">
-				 	<input type="email" name="email" class="form-control" placeholder="seu_email@email" required="">
-				</div>
-
-				<div class="form-group">
-				 	<input type="text" name="telefone1" class="form-control tel" placeholder="Telefone ...." id="" required="">
-				 </div>
-				 <div class="form-group">
-				 	<input type="text" name="telefone2" class="form-control tel" placeholder="Telefone ...." id="" required="">
-				 </div>
-				
+				 </div>	
 				
 				<div class="form-group">
 				 	<button type="submit"  id="Confirmar" class="btn btn-dark" style="z-index=1">Confirmar</button>	

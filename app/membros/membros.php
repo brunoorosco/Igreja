@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="_fonts/css/bootstrap.css">
+    <link rel="stylesheet" href="_fonts/css/bootstrap.min.css">
     <link rel="stylesheet" href="_fonts/css/estilo.css">
     <title>Membros</title>
 </head>
