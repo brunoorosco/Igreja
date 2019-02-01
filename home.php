@@ -1,4 +1,12 @@
 <?php
+
+  require_once '_fonts/config/funcoes.php';
+
+  //session_destroy();
+
+  validarUsuario();
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -71,9 +79,9 @@
           <div class="dropdown">
             <button class="dropbtn">Sede</button>
               <div class="dropdown-content">
-              <a onclick="carregar('cadastro.php')" href="#">Cadastro</a>
-              <a onclick="carregar('membros.php')" href="#">Membros</a> 
-              <a onclick="carregar('cadastroEncontro.php')" href="#">Encontro/Reencontro</a> 
+              <a onclick="carregar('app/membros/cadastro.php')" href="#">Cadastro</a>
+              <a onclick="carregar('app/membros/membros.php')" href="#">Membros</a> 
+              <a onclick="carregar('app/encontro/cadastroEncontro.php')" href="#">Encontro/Reencontro</a> 
               <a href="#">Homens em Ação</a>
               <a href="#">Ministério Kids</a>
               <a href="#">Min. de Obreiros</a>

@@ -6,6 +6,8 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="_fonts/css/bootstrap.min.css">
     <link rel="stylesheet" href="_fonts/css/estilo.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
     <title>Membros</title>
 </head>
 
@@ -17,7 +19,7 @@
                     <a href="create.php" class="btn btn-success">Adicionar</a>
                 </p>-->
                 <table class="table table-striped" id="tabela_membros">
-                    <thead>
+                    <thead >
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col-sm-2">Nome</th>
@@ -49,11 +51,11 @@
                             ?>
                             <td>
                            <div class="btn-group btn-sm">
-                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<?php echo $row['idmembros']; ?>"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Visualizar</button>
+                           <button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idmembros']; ?>"></button>
                             
-                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idmembros']; ?>" data-whatevernome="<?php echo $row['nome']; ?>"data-whateverdetalhes="<?php echo $row['cpf']; ?>">Editar</button>
+                            <button type="button" class="btn btn-warning fas fa-edit disabled" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idmembros']; ?>" data-whatevernome="<?php echo $row['nome']; ?>"data-whateverdetalhes="<?php echo $row['cpf']; ?>"></button>
                            
-                            <button type="button" class="btn btn-danger">Apagar</button>
+                            <button type="button" class="btn btn-danger fas fa-trash disabled"></button>
                           </div>
                             <?php
                             /*
@@ -102,7 +104,7 @@
                           
                             <div class="form-group row">
                                 <div class="col">Cadastrado:  
-                                  <?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['Cadastro'])));?>
+                                  <?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['cadastro'])));?>
                             </div>
                           </div></div>
                       </div>
@@ -116,8 +118,8 @@
                 </table>
            
         </div></div></div>
-
-          <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <!--mudar editeModal-->
+          <div class="modal fade" id="__editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">

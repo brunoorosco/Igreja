@@ -1,18 +1,24 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
     
 <head>
     <title>Acesso - Secretaria</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/estilo.css">
-    <script src="js/jquery-3.3.1.min.js"></script>
+
+    <link rel="stylesheet" href="_fonts/css/bootstrap.min.css">
+    <link rel="stylesheet" href="_fonts/css/estilo.css">
+    <link rel="stylesheet" type="text/css" href="_fonts/css/sweetalert2.min.css">
+   
+    <script type="text/javascript" src="_fonts/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="_fonts/js/sweetalert2.all.min.js"></script>
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
 <style type="text/css">
     body{
-        background-image: url(img/logo_comun.png);
+        background-image: url(img/logo_comun_desf_pret.png);
         background-size: cover;
-        color: white;
+        color: black;
         background-repeat: no-repeat;
         background-position: center; 
         background-attachment: fixed;
@@ -52,32 +58,78 @@
   border-radius: 8px;
   padding-bottom: 0;
   height: 50px;
-  background: #c0392b;
-  color: white;
+  background: #ff5c33;
+  color: black;
   cursor: pointer;
   transition: all 600ms ease-in-out;
   width: 300px;
 }
 input[type="submit"]:hover{
-  background: #C0392B;
+  background: #ff5c33;
 }
   </style>
+<script type="text/javascript">
+
+  /*$(document).ready(function(){
+        
+        $('#login_form').submit(function(){
+          var dados = $(this).serialize();
+         
+          $.ajax({
+            type:'POST',
+            url: "app/login/validaLogin.php",
+            dataType: 'html',
+            data: dados,})
+            .done(function()
+            {
+
+            })
+            .fail(function() {
+                Swal.fire({
+                      title: 'Erro ao cadastrar, tente novamente!!!',
+                      type: 'error',
+                      timer: 5000});
+                
+            })
+            .always(function(){
+                      
+            })
+
+          
+
+          
+          return false;
+          });
+      });
+      */
+  </script>
+</head>
 <!--Coded with love by Mutiullah Samim-->
 <body>
     <div id="container">
         <div class="col-md-10 offset-md-1">       
-                <form action="">
+                <form  id="login_form" action="app/login/validaLogin.php" method="POST">
+                  <?php 
+
+                      require_once '_fonts/config/funcoes.php';
+                     
+
+                      if (isset($_GET['getErro'])) {
+
+                        echo($_GET['getErro']);
+                      }  
+                  ?>
                         <div class="input-group mb-3">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" name="" class="form-control input_user" value="" placeholder="username">
+                            <input type="text" name="username" class="form-control input_user" value="" placeholder="username">
                         </div>
                         <div class="input-group mb-2">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" name="" class="form-control input_pass" value="" placeholder="password">
+                            <input type="password" name="password" class="form-control input_pass" value="" placeholder="password">
                         </div>
                         <div class="form-group">
                             <div class="custom-control custom-checkbox text-center">
@@ -86,10 +138,11 @@ input[type="submit"]:hover{
                             </div>
                         </div>
                             <div class="form-group">
-                    <button type="submit"  id="Confirmar" class="btn btn-color" style="z-index=1">Entrar</button> 
+                    <input type="submit"  name="entrar" id="entrar" value="entrar" class="btn btn-color" style="z-index=1" value="Entrar" />
+
                 </div>
                     <p class="text-center">
-                        <a class=" text-white" href="#">Esqueceu sua senha?</a>
+                        <a class=" text-dark" href="#">Esqueceu sua senha?</a>
                     </p>
                  </form>
                 </div> 
@@ -97,3 +150,5 @@ input[type="submit"]:hover{
         </div>
 </body>
 </html>
+
+
