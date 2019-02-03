@@ -12,11 +12,10 @@
  jQuery(document).ready(function(){
 				jQuery('#ajax_form').submit(function(){
 					var dados = $(this).serialize();
-					var urlbase = $("#cad_Encontrista").value;
-
+				
 					$.ajax({
 						type:'POST',
-						url: "cadDB.php",
+						url: "app/encontro/cad_DB_Encontrista.php",
 						dataType: 'html',
 						data: dados,})
 						.done(function()

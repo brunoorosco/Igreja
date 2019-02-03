@@ -7,7 +7,7 @@
   function autenticar($login, $senha) {
 
         $pdo = Banco::conectar();
-        $sql = "SELECT idLogin, username, password FROM acesso where username = '$login'";
+        $sql = "SELECT idLogin, username, password FROM acesso where username = '$login' AND password = '$senha'";
 
         //echo $sql;
 

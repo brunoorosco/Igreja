@@ -89,6 +89,10 @@
 		padding: 15px;
 		margin:auto;	
 			}
+select {
+  color: gray !important;
+  font: 400 13.3333px Arial;
+  }
     </style>
     <script type="text/javascript">
     	
@@ -98,9 +102,43 @@
 			  $('.tel').mask('(00) 00000-0000');
 			  $('#cpf').mask('000.000.000-00');
 			  				 });
-    </script>
-    <script type="text/javascript" src="_fonts/js/main.js"></script>
+    
+     jQuery(document).ready(function(){
+				jQuery('#ajax_form').submit(function(){
+					var dados = $(this).serialize();
+				
+					$.ajax({
+						type:'POST',
+						url: "app/encontro/cad_DB_Encontrista.php",
+						dataType: 'html',
+						data: dados,})
+						.done(function()
+						{
+							Swal.fire({
+								  	title: 'Cadastro realizado com sucesso!!!',
+									type: 'success',
+									timer: 5000});
+									document.getElementById('ajax_form').reset();
+							
+						})
+						.fail(function() {
+						    Swal.fire({
+										  	title: 'Erro ao cadastrar, tente novamente!!!',
+											type: 'error',
+											timer: 5000});
+						    
+						})
+						.always(function(){
 
+						})
+
+					
+
+					
+					return false;
+			   	});
+			});
+		</script>
 	</head>
 <body>
 	 
@@ -125,7 +163,11 @@
 				
 				<div class="form-group input-group">
 				 	 
-					    <input type="text" class="form-control cpf" name="cpf" placeholder="CPF" id="cpf" maxlength="14">
+					    <select class="form-control" id="sexo" name="sexo" style="text: #fff;">
+								<option hidden>Sexo</option>
+								<option>Feminino</option>
+								<option>Masculino</option>
+						</select>
 
 					    <input type="text" class="form-control data" name="nascimento" id="data" placeholder="Data de Nascimento" maxlength="10">
 					 					  

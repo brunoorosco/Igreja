@@ -69,7 +69,7 @@
       }
      }
 
-      h1{
+      h1 select{
         text-align: center;
       }
       .btn{
@@ -90,10 +90,15 @@
 		padding: 15px;
 		margin:auto;	
 			}
-    </style>
 
+select {
+  color: gray !important;
+  font: 400 13.3333px Arial;
+  }
+    </style>
+   
+<script type="text/javascript" src="_fonts/js/main.js"></script>
 	
-	</head>
 <body>
 	 
        <div class="container">
@@ -131,6 +136,8 @@
 					
 							<select class="form-control" id="cargo" name="cargo">
 								<option hidden>Cargo</option>
+								<option>Pastor</option>
+								<option>Supervisor</option>
 								<option>Líder</option>
 								<option>Auxiliar</option>
 								<option>Anfitrião</option>

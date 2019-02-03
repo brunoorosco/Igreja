@@ -1,4 +1,12 @@
 <?php
+
+  require_once '_fonts/config/funcoes.php';
+
+  //session_destroy();
+
+ // validarUsuario();
+
+
 ?>
 <!DOCTYPE html>
 <html>

@@ -1,4 +1,15 @@
 ﻿
+<?php
+
+  require_once '_fonts/config/funcoes.php';
+
+  //session_destroy();
+
+  validarUsuario();
+
+
+?>
+
 <!DOCTYPE html>
 <html>
     
@@ -138,7 +149,7 @@ input[type="submit"]:hover{
                             </div>
                         </div>
                             <div class="form-group">
-                    <input type="submit"  name="entrar" id="entrar" value="entrar" class="btn btn-color" style="z-index=1" value="Entrar" />
+                    <input type="submit"  name="entrar" id="entrar" class="btn btn-color" style="z-index=1" value="Entrar" />
 
                 </div>
                     <p class="text-center">
