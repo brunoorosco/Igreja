@@ -13,28 +13,29 @@
 				jQuery('#ajax_form').submit(function(){
 					var dados = $(this).serialize();
 				
-					$.ajax({
+				 request = $.ajax({
 						type:'POST',
-						url: "app/encontro/cad_DB_Encontrista.php",
+						url: "app/membros/cadDB.php",
 						dataType: 'html',
 						data: dados,})
-						.done(function()
-						{
-							Swal.fire({
+				 	request.done(function(response, textStatus, jqXHR){
+				 		Swal.fire({
 								  	title: 'Cadastro realizado com sucesso!!!',
 									type: 'success',
 									timer: 5000});
 									document.getElementById('ajax_form').reset();
 							
-						})
-						.fail(function() {
+				 	})
+
+					
+						request.fail(function() {
 						    Swal.fire({
 										  	title: 'Erro ao cadastrar, tente novamente!!!',
 											type: 'error',
 											timer: 5000});
 						    
 						})
-						.always(function(){
+						request.always(function(){
 
 						})
 
@@ -45,3 +46,7 @@
 			   	});
 			});
 
+window.addEventListener('unload',function(event){
+		
+	console.log("fechou");
+})

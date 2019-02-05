@@ -7,9 +7,10 @@ require_once '../../_fonts/config/funcoes.php';
 
   $login = $_POST['username'];
   $senha = $_POST['password'];
+  $_SESSION['username'] = $login;
+  $_SESSION['loggedin_time'] = time();
 
-
-  $codigoUsuario = autenticar($login, $senha);
+  $codigoUsuario = autenticar($login, sha1($senha));
     
   echo $codigoUsuario;
 
@@ -20,7 +21,7 @@ require_once '../../_fonts/config/funcoes.php';
   }
   else {
 
-    header("location:../../login.php?getErro='Usuário ou senha errados'");
+    header("location:login.php?getErro='Usuário ou senha errados'");
 
   }
 

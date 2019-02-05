@@ -97,8 +97,7 @@ select {
   }
     </style>
    
-<script type="text/javascript" src="_fonts/js/main.js"></script>
-	
+
 <body>
 	 
        <div class="container">

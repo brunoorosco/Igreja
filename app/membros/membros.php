@@ -15,9 +15,10 @@
         <div class="container-fluid">
            
           <div class="row">
-                <div class="col-md-12"> <!--     <p>
+                <div class="col-md-12 table-responsive"> <!--     <p>
                     <a href="create.php" class="btn btn-success">Adicionar</a>
                 </p>-->
+
                 <table class="table table-striped" id="tabela_membros">
                     <thead >
                         <tr>

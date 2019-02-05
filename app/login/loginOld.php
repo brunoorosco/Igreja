@@ -1,14 +1,58 @@
-﻿
+<?php
+
+require_once '../../_fonts/config/banco.php';
+$senha =$_POST['password'];
+$login =$_POST['username'];
+
+
+//require_once '_fonts/config/funcoes.php';
+if(isset($_POST['username']) && strlen($_POST['username']) > 0){
+  if(!isset($_SESSION))
+    //  session_start();
+
+      $sql = "SELECT idLogin, username, password FROM acesso where username = '$login' AND  password = '$senha'";
+   
+    try{
+        $db = new db();
+        $db = $db->connect();
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':username',$login);
+        $stmt->bindParam(':password',$senha);
+        $stmt->execute();
+         
+        if ($stmt->rowCount()==0 ) {
+            header('location:');
+   }else{
+    session_start();
+    $rst=$stmt->fetch();
+    $_SESSION['usuario'] = $rst['idLogin'];
+    
+   }
+    
+   
+
+    }catch(PDOException $e){
+      
+        echo '{"erro": {"texto": '.$e->getMessage().'}';
+    }
+
+      
+
+}
+else 
+  //session_destroy();
+
+  //validarUsuario();
+?>
+
 <!DOCTYPE html>
 <html>
     
 <head>
     <title>Acesso - Secretaria</title>
 
-    
     <link rel="stylesheet" href="../../_fonts/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../_fonts/css/estilo.css">
-
     <link rel="stylesheet" type="text/css" href="../../_fonts/css/sweetalert2.min.css">
    
     <script type="text/javascript" src="../../_fonts/js/jquery-3.3.1.min.js"></script>
@@ -18,7 +62,7 @@
 
 <style type="text/css">
     body{
-        background-image: url(../../img/logo_comun_desf_pret.png);
+        background-image: url(img/logo_comun_desf_pret.png);
         background-size: cover;
         color: black;
         background-repeat: no-repeat;
@@ -72,40 +116,60 @@ input[type="submit"]:hover{
   </style>
 <script type="text/javascript">
 
+  /*$(document).ready(function(){
+        
+        $('#login_form').submit(function(){
+          var dados = $(this).serialize();
+         
+          $.ajax({
+            type:'POST',
+            url: "app/login/validaLogin.php",
+            dataType: 'html',
+            data: dados,})
+            .done(function()
+            {
+
+            })
+            .fail(function() {
+                Swal.fire({
+                      title: 'Erro ao cadastrar, tente novamente!!!',
+                      type: 'error',
+                      timer: 5000});
+                
+            })
+            .always(function(){
+                      
+            })
+
+          
+
+          
+          return false;
+          });
+      });
+      */
   </script>
 </head>
 <!--Coded with love by Mutiullah Samim-->
 <body>
     <div id="container">
         <div class="col-md-10 offset-md-1">       
-                <form  id="login_form" action="validaLogin.php" method="POST">
+                <form  id="login_form" action="" method="POST">
                   <?php 
 
                       require_once '../../_fonts/config/funcoes.php';
-                     /* define o limitador de cache para 'private' */
-
-                      session_cache_limiter('private');
-                      $cache_limiter = session_cache_limiter();
-
-                      /* define o prazo do cache em 30 minutos */
-                      session_cache_expire(1);
-                      $cache_expire = session_cache_expire();
-
-                      /* inicia a sessão */
+                     
 
                       if (isset($_GET['getErro'])) {
 
-                        echo "<script language = javascript>
-                                swal({ title:'Senha ou/e Usuário não conferem!!!',
-                                type:'error',
-                                timer:4000});
-                                </script>";}
-                     ?>
+                        echo($_GET['getErro']);
+                      }  
+                  ?>
                         <div class="input-group mb-3">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" name="username" class="form-control input_user" value="<?php echo $_SESSION['username'];?>" placeholder="username">
+                            <input type="text" name="username" class="form-control input_user" value="" placeholder="username">
                         </div>
                         <div class="input-group mb-2">
                             <div class="input-group-append">

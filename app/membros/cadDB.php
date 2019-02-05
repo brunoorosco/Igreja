@@ -2,6 +2,9 @@
 <?php
  require_once '../../_fonts/config/banco.php';
 
+ require_once '../../_fonts/config/funcoes.php';
+
+
 
     $nome = $_POST['nome'];
     $telefone = $_POST['telefone'];
@@ -13,11 +16,9 @@
     $nasc = date("Y-m-d",strtotime(str_replace('/','-',$nasc)));  
     
 
-
-
     $sql = "INSERT INTO membros (nome, telefone, email, nasc, cargo, endereco, supervisao) values (:nome, :telefone, :email, :nasc, :cargo, :endereco,:supervisao)";
 
-
+    $sql_ = "INSERT INTO acesso (username, password) values (:email, :senha)";
     try{
         $db = new db();
         $db = $db->connect();
@@ -30,10 +31,21 @@
         $stmt->bindParam(':endereco',$endereco);
         $stmt->bindParam(':supervisao',$supervisao);
         $stmt->execute();
+        
+        // $db = null;
+        
+        $senha = (geraSenha(6, false, true));
+    
+        $stmt = $db->prepare($sql_);
+        $stmt->bindParam(':email',$email);
+        $stmt->bindParam(':senha',sha1($senha));
+        $stmt->execute();
         $db = null;
-    //  echo ' <script type="text/JavaScript">alert("Cadastro com sucesso !");   </script>';
-    //   echo = "<meta http-equiv='Refresh' content='0;URL='cadastro.php'>";
-   // echo "<script>alert('$nome, o cadastro foi realizado com sucesso! Obrigado!!!');";//window.location='menu.html';</script>";
+    
+        enviarEmail($email,$senha);
+
+        
+
       return;
 
     }catch(PDOException $e){

@@ -10,7 +10,7 @@ class Banco
  ////// banco host      ////// 
     /*private static $dbNome = 'id8520277_secretariacac';
     private static $dbHost = 'localhost';
-    private static $dbUsuario = 'id6581120_brunoorosco';
+    private static $dbUsuario = 'id8520277_secretariacac';
     private static $dbSenha = 'orosco0329';
     */
     private static $cont = null;
@@ -47,6 +47,11 @@ class db{
         private $dbuser = 'root';
         private $dbpass = "";
         private $dbname = 'DB_Igreja';
+///////// hospedagem////////////////////////
+     /*   private $dbhost = 'localhost';
+        private $dbuser = 'id8520277_secretariacac';
+        private $dbpass = "orosco0329";
+        private $dbname = 'id8520277_secretariacac';*/
 
         public function connect (){
             $mysqli_connect_str = "mysql:host=$this->dbhost;dbname=$this->dbname";

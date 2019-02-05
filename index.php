@@ -3,7 +3,7 @@
   require_once '_fonts/config/funcoes.php';
 
 //  session_destroy();
-unset($_COOKIE); //irá limpar o cookie
+  //unset($_COOKIE); //irá limpar o cookie
   validarUsuario();
 
 
@@ -71,7 +71,6 @@ unset($_COOKIE); //irá limpar o cookie
 </head>
 <body>
 
-
 <section id="header">
       
       <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #ff8c00;">
@@ -113,6 +112,9 @@ unset($_COOKIE); //irá limpar o cookie
    </div>
 
 <script>
+  $(window).on("beforeunload", function() { 
+    return inFormOrLink ? "Do you really want to close?" : null; 
+});
     function carregar(pagina){
         $("#conteudo").load(pagina);
     }
