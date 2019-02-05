@@ -8,13 +8,13 @@
     $telEncamigo1 = $_POST['tel1'];
     $telEncamigo2 = $_POST['tel2'];
     $endEnc = $_POST['endereco']; 
-    $cpfEnc = $_POST['cpf'];
+    $sexoEnc = $_POST['sexo'];
     $nascEnc = $_POST['nascimento'];
    // $CEM = $_POST['CEM'];
     $nascEnc = date("Y-m-d",strtotime(str_replace('/','-',$nascEnc)));  
     
 
-    $sql = "INSERT INTO encontrista (nomeEnc, telEnc , telEncamigo1, telEncamigo2 , endEnc, emailEnc , nascEnc,cpfEnc) values (:nomeEnc , :telEnc , :telEncamigo1, :telEncamigo2 , :endEnc, :emailEnc , :nascEnc , :cpfEnc )";
+    $sql = "INSERT INTO encontrista (nomeEnc, telEnc , telEncamigo1, telEncamigo2 , endEnc, emailEnc , nascEnc,sexoEnc) values (:nomeEnc , :telEnc , :telEncamigo1, :telEncamigo2 , :endEnc, :emailEnc , :nascEnc , :sexoEnc )";
 
     
     try{
@@ -28,8 +28,7 @@
         $stmt->bindParam(':endEnc',$endEnc);
         $stmt->bindParam(':emailEnc',$emailEnc);
         $stmt->bindParam(':nascEnc',$nascEnc);
-        $stmt->bindParam(':cpfEnc',$cpfEnc);
-        //$stmt->bindParam(':CEM',$CEM);
+        $stmt->bindParam(':sexoEnc',$sexoEnc);
         $stmt->execute();
         $db = null;
     

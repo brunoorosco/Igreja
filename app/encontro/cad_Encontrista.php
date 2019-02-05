@@ -146,7 +146,7 @@ select {
        	<div>
        		<div class="row"></div>
        		<div class="col-md-6 offset-md-3">       		   		
-			<form  id="ajax_form" action="" method="post"  value="app/encontro/cad_DB_Encontrista.php">
+			<form  id="ajax_form" action="" method="post" >
 				<h3>Inscrição de Encontristas</h3><br>
 				 <div class="form-group ">
 				 	<input type="text" name="nome" class="form-control" placeholder="Nome Completo" required="">

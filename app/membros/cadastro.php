@@ -115,14 +115,10 @@ select {
 				  	<input type="text" name="endereco" class="form-control" placeholder="Endereço" required="">
 				</div>	 
 				
-				 <div class="form-group">
-				 	<input type="text" name="telefone" class="form-control tel" placeholder="Celular com DDD" id="tel" required="">
-				 </div>
-
-				
 				<div class="form-group input-group">
 				 	 
-					    <input type="text" class="form-control" name="cpf" placeholder="CPF" id="cpf" maxlength="14">
+				 	 <input type="text" name="telefone" class="form-control tel" placeholder="Celular com DDD" id="tel" required="">
+					 
 
 					    <input type="text" class="form-control" name="nascimento" id="data" placeholder="Data de Nascimento" maxlength="10">
 					 					  

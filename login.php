@@ -1,14 +1,4 @@
 ﻿
-<?php
-
-  require_once '_fonts/config/funcoes.php';
-
-  //session_destroy();
-
-  validarUsuario();
-
-
-?>
 
 <!DOCTYPE html>
 <html>
@@ -16,8 +6,10 @@
 <head>
     <title>Acesso - Secretaria</title>
 
+    
     <link rel="stylesheet" href="_fonts/css/bootstrap.min.css">
     <link rel="stylesheet" href="_fonts/css/estilo.css">
+
     <link rel="stylesheet" type="text/css" href="_fonts/css/sweetalert2.min.css">
    
     <script type="text/javascript" src="_fonts/js/jquery-3.3.1.min.js"></script>
@@ -127,7 +119,10 @@ input[type="submit"]:hover{
 
                       if (isset($_GET['getErro'])) {
 
-                        echo($_GET['getErro']);
+                        echo "<script> Swal.fire({ title: 'Usuario ou Senha errado, tente novamente!!!',
+                              type: 'error',
+                              timer: 5000});
+                            });</script>";
                       }  
                   ?>
                         <div class="input-group mb-3">

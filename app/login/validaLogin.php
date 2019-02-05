@@ -15,7 +15,7 @@ require_once '../../_fonts/config/funcoes.php';
 
   if ($codigoUsuario != 0) {
 
-    header("location:../../home.php");
+    header("location:../../index.php");
 
   }
   else {

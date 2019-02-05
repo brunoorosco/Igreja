@@ -8,7 +8,6 @@
     $email = $_POST['email'];
     $cargo = $_POST['cargo'];
     $endereco = $_POST['endereco']; 
-    $cpf = $_POST['cpf'];
     $nasc = $_POST['nascimento'];
     $supervisao = $_POST['supervisao'];
     $nasc = date("Y-m-d",strtotime(str_replace('/','-',$nasc)));  
@@ -16,7 +15,7 @@
 
 
 
-    $sql = "INSERT INTO membros (nome, telefone, email, nasc, cargo, endereco, cpf, supervisao) values (:nome, :telefone, :email, :nasc, :cargo, :endereco, :cpf , :supervisao)";
+    $sql = "INSERT INTO membros (nome, telefone, email, nasc, cargo, endereco, supervisao) values (:nome, :telefone, :email, :nasc, :cargo, :endereco,:supervisao)";
 
 
     try{
@@ -29,7 +28,6 @@
         $stmt->bindParam(':nasc',$nasc);
         $stmt->bindParam(':cargo',$cargo); 
         $stmt->bindParam(':endereco',$endereco);
-        $stmt->bindParam(':cpf',$cpf);
         $stmt->bindParam(':supervisao',$supervisao);
         $stmt->execute();
         $db = null;

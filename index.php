@@ -2,9 +2,9 @@
 
   require_once '_fonts/config/funcoes.php';
 
-  //session_destroy();
-
- // validarUsuario();
+//  session_destroy();
+unset($_COOKIE); //irá limpar o cookie
+  validarUsuario();
 
 
 ?>
@@ -85,7 +85,7 @@
               <a href="#">Homens em Ação</a>
               <a href="#">Ministério Kids</a>
               <a href="#">Min. de Obreiros</a>
-              <a href="#">Mulheres em Ação</a>
+              <a href="#">Mulheres em Ação</a> 
               </div>
            </div>
            <div class="dropdown">
