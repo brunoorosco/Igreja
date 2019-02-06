@@ -20,7 +20,7 @@
 						data: dados,})
 				 	request.done(function(response, textStatus, jqXHR){
 				 		Swal.fire({
-								  	title: 'Cadastro realizado com sucesso!!!',
+								  	title: 'Cadastro realizado com sucesso! Sua senha de acesso foi enviada para seu email!',
 									type: 'success',
 									timer: 5000});
 									document.getElementById('ajax_form').reset();

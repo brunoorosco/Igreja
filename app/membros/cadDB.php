@@ -14,6 +14,8 @@
     $nasc = $_POST['nascimento'];
     $supervisao = $_POST['supervisao'];
     $nasc = date("Y-m-d",strtotime(str_replace('/','-',$nasc)));  
+      $senha = (geraSenha(6, false, true));
+    $senhaCrip = sha1($senha);
     
 
     $sql = "INSERT INTO membros (nome, telefone, email, nasc, cargo, endereco, supervisao) values (:nome, :telefone, :email, :nasc, :cargo, :endereco,:supervisao)";
@@ -31,14 +33,13 @@
         $stmt->bindParam(':endereco',$endereco);
         $stmt->bindParam(':supervisao',$supervisao);
         $stmt->execute();
+        $db = null;
         
-        // $db = null;
-        
-        $senha = (geraSenha(6, false, true));
-    
+        $db = new db();
+        $db = $db->connect();
         $stmt = $db->prepare($sql_);
         $stmt->bindParam(':email',$email);
-        $stmt->bindParam(':senha',sha1($senha));
+        $stmt->bindParam(':senha',$senhaCrip);
         $stmt->execute();
         $db = null;
     

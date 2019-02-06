@@ -50,7 +50,7 @@
     }
     else {
 
-      header("location:app/login/login.php?getErro='Por favor, faça a autenticação'");
+      header("location:app/login/login.php");
 
     }
 
@@ -79,3 +79,16 @@ function geraSenha($tamanho = 6, $maiusculas = true, $numeros = true, $simbolos 
     return $retorno;
 }
 
+
+function enviarEmail($destino,$senha)
+{
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+    $from = "SecretariaCAC";
+    $to = $destino;
+    $subject = "Senha de acesso a secretariacac";
+    $message = "Usuário: ".$destino;
+    $headers = "De:". $from;
+    mail($to, $subject, $message, $headers);
+    echo "A mensagem de e-mail foi enviada.";
+  }

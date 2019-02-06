@@ -82,17 +82,9 @@ input[type="submit"]:hover{
                   <?php 
 
                       require_once '../../_fonts/config/funcoes.php';
-                     /* define o limitador de cache para 'private' */
-
-                      session_cache_limiter('private');
-                      $cache_limiter = session_cache_limiter();
-
-                      /* define o prazo do cache em 30 minutos */
-                      session_cache_expire(1);
-                      $cache_expire = session_cache_expire();
+                     
 
                       /* inicia a sessão */
-
                       if (isset($_GET['getErro'])) {
 
                         echo "<script language = javascript>
@@ -105,7 +97,7 @@ input[type="submit"]:hover{
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" name="username" class="form-control input_user" value="<?php echo $_SESSION['username'];?>" placeholder="username">
+                            <input type="text" name="username" class="form-control input_user" value="" placeholder="username">
                         </div>
                         <div class="input-group mb-2">
                             <div class="input-group-append">
