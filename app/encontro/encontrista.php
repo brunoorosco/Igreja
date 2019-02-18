@@ -38,18 +38,18 @@
                         include '../../_fonts/config/banco.php';
                         $pdo = Banco::conectar();
                         $sql = 'SELECT * FROM encontrista ORDER BY sexoEnc ASC';
-                        $i = "0";
+                        $i = 1;
                         foreach($pdo->query($sql)as $row)
                         {
                             echo '<tr>';
-                            echo '<th '.$i.'</th>';
+                            echo '<th>'.$i++.'</th>';
 			                      echo '<th scope="row">'. $row['nomeEnc'] . '</th>';
                          //   echo '<td>'. $row['endereco'] . '</td>';
                             echo '<td>'. $row['telEnc'] . '</td>';
                          //   echo '<td>'. $row['email'] . '</td>';
                          //   echo '<td>'.date("d/m",strtotime(str_replace('/','-',$row['nasc']))).'</td>';
                          //   echo '<td>'. $row['cargo'] . '</td>';
-                            echo '<td>'. $row['responsavel'] . '</td>';
+                            echo '<td>'. $row['CEM'] . '</td>';
                             ?>
                             <td>
                            <div class="btn-group btn-sm">

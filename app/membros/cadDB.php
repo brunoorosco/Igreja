@@ -31,7 +31,7 @@
       else{
 
       $senha = (geraSenha(6, false, true));
-    $senhaCrip = sha1($senha);
+      $senhaCrip = sha1($senha);
     
 
 
@@ -54,19 +54,20 @@
         $db = null;
         
 
-        $senha = (geraSenha(6, false, true));
-        $senha1 = sha1($senha);
+        if($cargo == "Bispo" || "Pastor" || "Supervisor"){
+       // $senha = (geraSenha(6, false, true));
+       // $senha1 = sha1($senha);
         
         $db = new db();
         $db = $db->connect();
         $stmt = $db->prepare($sql_);
         $stmt->bindParam(':email',$email);
-        $stmt->bindParam(':senha',$senha1);
+     //   $stmt->bindParam(':senha',$senha1);
        // $stmt->execute();
         $stmt->bindParam(':senha',$senhaCrip);
         $stmt->execute();
         $db = null;
-    
+                            }
       //  enviarEmail($email,$senha);
   echo json_encode(array('mens1' => "Cadastrado realizado com sucesso!","mens2"=>"success","mens3"=>"1" ));
         
