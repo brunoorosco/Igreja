@@ -4,7 +4,7 @@
 
 //  session_destroy();
   //unset($_COOKIE); //irá limpar o cookie
-  validarUsuario();
+  //validarUsuario();
 
 
 ?>
@@ -71,7 +71,6 @@
 </head>
 <body>
 
-<section id="header">
       
       <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #ff8c00;">
           <span class="navbar-brand mb-0 h1 ">Secretária</span>
@@ -81,6 +80,7 @@
               <a onclick="carregar('app/membros/cadastro.php')" href="#">Cadastro</a>
               <a onclick="carregar('app/membros/membros.php')" href="#">Membros</a> 
               <a onclick="carregar('app/encontro/cad_Encontrista.php')" href="#">Encontro/Reencontro</a> 
+              <a onclick="carregar('app/encontro/encontrista.php')" href="#">Relação de Encontrista</a> 
               <a href="#">Homens em Ação</a>
               <a href="#">Ministério Kids</a>
               <a href="#">Min. de Obreiros</a>
@@ -99,14 +99,9 @@
                 <a href="#">Curitiba</a>
               </div>
            </div>
-        
-        
-
-
-      </nav>
+        </nav>
     
-  </section>
-   
+
    <div class="container" id="conteudo">
      
    </div>

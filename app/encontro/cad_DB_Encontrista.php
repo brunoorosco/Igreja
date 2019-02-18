@@ -32,6 +32,7 @@
         $stmt->execute();
         $db = null;
     
+         echo json_encode(array('mens1' => "Cadastrado realizado com sucesso!","mens2"=>"success","mens3"=>"1" ));
     //   echo = "<meta http-equiv='Refresh' content='0;URL='cadastro.php'>";
    // echo "<script>alert('$nome, o cadastro foi realizado com sucesso! Obrigado!!!');";//window.location='menu.html';</script>";
       

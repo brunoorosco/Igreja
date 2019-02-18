@@ -14,7 +14,6 @@
     $nasc = $_POST['nascimento'];
     $supervisao = $_POST['supervisao'];
     $nasc = date("Y-m-d",strtotime(str_replace('/','-',$nasc)));  
-<<<<<<< HEAD
    
    ///////  VERIFICA SE USUARIO EMAIL JÁ ESTA CADASTRADO ///////////
        $sql = "SELECT * FROM membros where email = '$email'";
@@ -30,11 +29,11 @@
             echo json_encode(array('mens1' => "Este membro já esta cadastrado!","mens2"=>"warning","mens3"=>"0" ));
                 }
       else{
-=======
+
       $senha = (geraSenha(6, false, true));
     $senhaCrip = sha1($senha);
     
->>>>>>> 5f134011f0305e7ceb45fc915da7110bea832507
+
 
     $sql = "INSERT INTO membros (nome, telefone, email, nasc, cargo, endereco, supervisao) values (:nome, :telefone, :email, :nasc, :cargo, :endereco,:supervisao)";
 
@@ -54,23 +53,18 @@
         $stmt->execute();
         $db = null;
         
-<<<<<<< HEAD
+
         $senha = (geraSenha(6, false, true));
         $senha1 = sha1($senha);
         
-=======
->>>>>>> 5f134011f0305e7ceb45fc915da7110bea832507
         $db = new db();
         $db = $db->connect();
         $stmt = $db->prepare($sql_);
         $stmt->bindParam(':email',$email);
-<<<<<<< HEAD
         $stmt->bindParam(':senha',$senha1);
        // $stmt->execute();
-=======
         $stmt->bindParam(':senha',$senhaCrip);
         $stmt->execute();
->>>>>>> 5f134011f0305e7ceb45fc915da7110bea832507
         $db = null;
     
       //  enviarEmail($email,$senha);

@@ -1,6 +1,6 @@
 <?php
-	include_once("../_fonts/config/banco.php");
-	
+	include_once("../../_fonts/config/banco.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -9,10 +9,13 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Cursos TMAC</title>
-		<link href="../_fonts/css/bootstrap.min.css" rel="stylesheet">
-		
+
+		<link href="../../_fonts/css/bootstrap.min.css" rel="stylesheet">
+
 	</head>
 	<body>
+		<!--<header>--><?php include_once'../../teste.php' ?><!--</header>-->
+
 		<div class="container theme-showcase" role="main">
 			<div class="page-header">
 				<h2>Listar Cursos</h2>
@@ -40,13 +43,13 @@
 									<td><?php echo $row['nomeCursos']; ?></td>
 									<td>
 										<button type="button" class="btn  btn-sm btn-primary" data-toggle="modal" data-target="#myModal<?php echo $row['idCursos']; ?>">Visualizar</button>
-										
+
 										<button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idCursos']; ?>" data-whatevernome="<?php echo $row['nomeCursos']; ?>"data-whateverdetalhes="<?php echo $row['detalhes']; ?>">Editar</button>
-										
+
 										<button type="button" class="btn btn-sm btn-danger">Apagar</button>
 									</td>
 								</tr>
-								
+
 
 
 								<!-- Inicio Modal -->
@@ -60,7 +63,7 @@
 											<div class="modal-body">
 												<p><?php echo $row['idCursos']; ?></p>
 												<p><?php echo $row['nomeCursos']; ?></p>
-									
+
 											</div>
 										</div>
 									</div>
@@ -70,9 +73,9 @@
 						</tbody>
 					 </table>
 				</div>
-			</div>		
+			</div>
 		</div>
-		
+
 			<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 		  <div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -91,21 +94,22 @@
 					<textarea name="detalhes" class="form-control" id="detalhes"></textarea>
 				  </div>
 				<input name="id" type="hidden" class="form-control" id="id-curso" value="">
-				
+
 				<button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
 				<button type="submit" class="btn btn-danger">Alterar</button>
-			 
+
 				</form>
 			  </div>
-			  
+
 			</div>
 		  </div>
 		</div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="../_fonts/js/jquery-3.3.1.js" ></script>
-    <script src="../_fonts/js/bootstrap.js"></script>
-   
+    <script src="../../_fonts/js/jquery-3.3.1.js" ></script>
+    <script src="../../_fonts/js/bootstrap.js"></script>
+    <script src="../../_fonts/js/popper.min.js"></script>
+
 	<script type="text/javascript">
 		$('#exampleModal').on('show.bs.modal', function (event) {
 		  var button = $(event.relatedTarget) // Button that triggered the modal
@@ -119,7 +123,7 @@
 		  modal.find('#id-curso').val(recipient)
 		  modal.find('#recipient-name').val(recipientnome)
 		  modal.find('#detalhes').val(recipientdetalhes)
-		  
+
 		})
 	</script>
   </body>

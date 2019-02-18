@@ -7,8 +7,6 @@
 			  				 });
 		
 
-
-
 /* jQuery(document).ready(function(){
 				jQuery('#ajax_form').submit(function(){
 					var dados = $(this).serialize();

@@ -102,42 +102,6 @@ select {
 			  $('.tel').mask('(00) 00000-0000');
 			  $('#cpf').mask('000.000.000-00');
 			  				 });
-    
-     jQuery(document).ready(function(){
-				jQuery('#ajax_form').submit(function(){
-					var dados = $(this).serialize();
-				
-					$.ajax({
-						type:'POST',
-						url: "app/encontro/cad_DB_Encontrista.php",
-						dataType: 'html',
-						data: dados,})
-						.done(function()
-						{
-							Swal.fire({
-								  	title: 'Cadastro realizado com sucesso!!!',
-									type: 'success',
-									timer: 5000});
-									document.getElementById('ajax_form').reset();
-							
-						})
-						.fail(function() {
-						    Swal.fire({
-										  	title: 'Erro ao cadastrar, tente novamente!!!',
-											type: 'error',
-											timer: 5000});
-						    
-						})
-						.always(function(){
-
-						})
-
-					
-
-					
-					return false;
-			   	});
-			});
 		</script>
 	</head>
 <body>
