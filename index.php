@@ -17,9 +17,9 @@
 
     <link href="_fonts/css/estilo.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="_fonts/css/bootstrap.min.css">
-   
-    
-    
+
+
+
     <script type="text/javascript" src="_fonts/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_fonts/js/jquery-3.3.1.min.js"></script>
 <style>
@@ -71,20 +71,21 @@
 </head>
 <body>
 
-      
+
       <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #ff8c00;">
           <span class="navbar-brand mb-0 h1 ">Secretária</span>
           <div class="dropdown">
             <button class="dropbtn">Sede</button>
               <div class="dropdown-content">
               <a onclick="carregar('app/membros/cadastro.php')" href="#">Cadastro</a>
-              <a onclick="carregar('app/membros/membros.php')" href="#">Membros</a> 
-              <a onclick="carregar('app/encontro/cad_Encontrista.php')" href="#">Encontro/Reencontro</a> 
-              <a onclick="carregar('app/encontro/encontrista.php')" href="#">Relação de Encontrista</a> 
+              <a onclick="carregar('app/membros/membros.php')" href="#">Membros</a>
+              <a onclick="carregar('home.php')" href="#">Membros</a>
+              <a onclick="carregar('app/encontro/cad_Encontrista.php')" href="#">Encontro/Reencontro</a>
+              <a onclick="carregar('app/encontro/encontrista.php')" href="#">Relação de Encontrista</a>
               <a href="#">Homens em Ação</a>
               <a href="#">Ministério Kids</a>
               <a href="#">Min. de Obreiros</a>
-              <a href="#">Mulheres em Ação</a> 
+              <a href="#">Mulheres em Ação</a>
               </div>
            </div>
            <div class="dropdown">
@@ -100,15 +101,15 @@
               </div>
            </div>
         </nav>
-    
+
 
    <div class="container" id="conteudo">
-     
+
    </div>
 
 <script>
-  $(window).on("beforeunload", function() { 
-    return inFormOrLink ? "Do you really want to close?" : null; 
+  $(window).on("beforeunload", function() {
+    return inFormOrLink ? "Do you really want to close?" : null;
 });
     function carregar(pagina){
         $("#conteudo").load(pagina);

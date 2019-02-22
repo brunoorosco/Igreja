@@ -4,7 +4,7 @@
    <meta charset='utf-8'>
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="styles.css"> 
+   <link rel="stylesheet" href="styles.css">
    <link rel="stylesheet" href="../_fonts/css/bootstrap.css">
    <script src="../_fonts/js/jquery.min.js" type="text/javascript"></script>
    <script src="../_fonts/js/bootstrap.min.js" type="text/javascript"></script>
@@ -46,13 +46,6 @@
    </li>
    <li><a href='#'>Contato</a></li>
 
-<form class="navbar-form navbar-right" role="search" action="">
-          <div class="form-group">
-            <input type="text" class="form-control" name="" placeholder="Buscar">
-            <button class="btn btn-outline-success" type="submit">Search</button>   
-          </div>
-          
-        </form>
         </ul>
 </div>
 

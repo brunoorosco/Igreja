@@ -7,22 +7,35 @@
     <link rel="stylesheet" href="_fonts/css/bootstrap.min.css">
     <link rel="stylesheet" href="_fonts/css/estilo.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
     <title>Membros</title>
 </head>
 
 <body>
-        <div class="container-fluid">
-           
-          <div class="row">
-                <div class="col-md-12 table-responsive"> <!--     <p>
-                    <a href="create.php" class="btn btn-success">Adicionar</a>
-                </p>-->
+    <div class="card">
+    <div class="card-body">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Procurar</span>
+          </div>
+          <input type="text" class="form-control" placeholder="Membros" aria-label="Username" aria-describedby="basic-addon1">
 
+          <input type="text" class="form-control" placeholder="CEM" aria-label="Username" aria-describedby="basic-addon1">
+
+          <input type="text" class="form-control" placeholder="Aniversário" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="panel panel-primary">
+            <div class="col-lg-12 table-responsive"> <!--     <p>
+                <a href="create.php" class="btn btn-success">Adicionar</a>
+                </p>-->
                 <table class="table table-striped" id="tabela_membros">
                     <thead >
                         <tr>
-                            <th scope="col-sm-2">Nome</th>
+                            <th scope="col-lg-6">Nome</th>
                             <th scope="col">Endereço</th>
                             <th scope="col">Telefone</th>
                             <!--<th scope="col">Email</th-->
@@ -51,11 +64,10 @@
                             <td>
                            <div class="btn-group btn-sm">
                            <button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idmembros']; ?>"></button>
-                            
+
                             <button type="button" class="btn btn-warning fas fa-edit disabled" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idmembros']; ?>" data-whatevernome="<?php echo $row['nome']; ?>"data-whateverdetalhes="<?php echo $row['cpf']; ?>"></button>
-                           
-                            <button type="button" class="btn btn-danger fas fa-trash disabled"></button>
-                          </div>
+
+                            <button type="button" class="btn btn-danger fas fa-trash disabled"></button></div>
                             <?php
                             /*
                             echo '<a class="btn btn-warning btn-sm" href="update.php?id='.$row['idmembros'].'">Editar</a>';
@@ -76,15 +88,15 @@
                       <div class="modal-body">
                        <div class="container-fluid">
                         <div class="form-group row">
-                          <div class="col">Aniversário: 
+                          <div class="col">Aniversário:
                                         <?php echo date("d/m",strtotime(str_replace('/','-',$row['nasc'])));?>
                                     </div>
                           <div class="col-7">Email: <?php echo $row['email'];?></div>
                         </div>
-                            
+
 
                             <div class="form-group row">
-                                <div class="col">Endereço: 
+                                <div class="col">Endereço:
                                         <?php echo $row['endereco'];?>
                             </div></div>
 
@@ -96,13 +108,13 @@
                             <div class="form-group row">
                                 <div class="col">Cargo:
                                         <?php echo $row['cargo'];?></div>
-                                <div class="col-7">        
+                                <div class="col-7">
                                         CEM: <?php echo $row['supervisao'];?>
                                 </div>
                              </div>
-                          
+
                             <div class="form-group row">
-                                <div class="col">Cadastrado:  
+                                <div class="col">Cadastrado:
                                   <?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['cadastro'])));?>
                             </div>
                           </div></div>
@@ -110,42 +122,15 @@
                     </div>
                   </div>
                 </div>
-                <?php  }
+              <?php  }
                      //   Banco::desconectar();
                         ?>
                     </tbody>
                 </table>
-           
-        </div></div></div>
-      <!--mudar editeModal-->
-          <div class="modal fade" id="__editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="exampleModalLabel">Curso</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form method="POST" action="" enctype="multipart/form-data">
-                                  <div class="form-group">
-                                      <label for="recipient-name" class="control-label">Nome:</label>
-                                      <input name="nome" type="text" class="form-control" id="recipient-name">
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="message-text" class="control-label">Detalhes:</label>
-                                    <textarea name="detalhes" class="form-control" id="detalhes"></textarea>
-                                  </div>
-                                <input name="id" type="hidden" class="form-control" id="idrso" value="">
-                                <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn btn-danger">Alterar</button>
-                           
-                            </form>
-                    </div>
-                 </div>
-              </div>
-            </div>
 
-       <script type="text/javascript"> 
+      </div></div></div>
+
+       <script type="text/javascript">
         $('#exampleModal').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget) // Button that triggered the modal
           var recipient = button.data('whatever') // Extract info from data-* attributes
@@ -158,10 +143,29 @@
           modal.find('#id-curso').val(recipient)
           modal.find('#recipient-name').val(recipientnome)
           modal.find('#detalhes').val(recipientdetalhes)
-          
-        })
-  
-       </script> 
+
+        });
+        $(function(){
+    $("#tabela_membros").keyup(function(){
+        var index = $(this).parent().index();
+        var nth = "#tabela td:nth-child("+(index+1).toString()+")";
+        var valor = $(this).val().toUpperCase();
+        $("#tabela tbody tr").show();
+        $(nth).each(function(){
+            if($(this).text().toUpperCase().indexOf(valor) < 0){
+                $(this).parent().hide();
+            }
+        });
+    });
+
+    $("#tabela input").blur(function(){
+        $(this).val("");
+    });
+});
+
+
+
+       </script>
 
     <script src="_fonts/js/jquery-3.3.1.js" ></script>
     <script src="_fonts/js/bootstrap.js"></script>
