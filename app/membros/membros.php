@@ -1,3 +1,8 @@
+<?php
+
+//	include_once("../../index.php");
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -7,7 +12,7 @@
     <link rel="stylesheet" href="_fonts/css/bootstrap.min.css">
     <link rel="stylesheet" href="_fonts/css/estilo.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
+
     <title>Membros</title>
 </head>
 
@@ -42,6 +47,7 @@
                             <th scope="col">Aniversário</th>
                             <th scope="col">Função</th>
                             <th scope="col">CEM</th>
+                            <th scope="col">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,9 +70,7 @@
                             <td>
                            <div class="btn-group btn-sm">
                            <button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idmembros']; ?>"></button>
-
                             <button type="button" class="btn btn-warning fas fa-edit disabled" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idmembros']; ?>" data-whatevernome="<?php echo $row['nome']; ?>"data-whateverdetalhes="<?php echo $row['cpf']; ?>"></button>
-
                             <button type="button" class="btn btn-danger fas fa-trash disabled"></button></div>
                             <?php
                             /*
@@ -145,30 +149,12 @@
           modal.find('#detalhes').val(recipientdetalhes)
 
         });
-        $(function(){
-    $("#tabela_membros").keyup(function(){
-        var index = $(this).parent().index();
-        var nth = "#tabela td:nth-child("+(index+1).toString()+")";
-        var valor = $(this).val().toUpperCase();
-        $("#tabela tbody tr").show();
-        $(nth).each(function(){
-            if($(this).text().toUpperCase().indexOf(valor) < 0){
-                $(this).parent().hide();
-            }
-        });
-    });
-
-    $("#tabela input").blur(function(){
-        $(this).val("");
-    });
-});
-
-
 
        </script>
 
     <script src="_fonts/js/jquery-3.3.1.js" ></script>
     <script src="_fonts/js/bootstrap.js"></script>
+
 </body>
 
 </html>

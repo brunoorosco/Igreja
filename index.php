@@ -79,7 +79,7 @@
               <div class="dropdown-content">
               <a onclick="carregar('app/membros/cadastro.php')" href="#">Cadastro</a>
               <a onclick="carregar('app/membros/membros.php')" href="#">Membros</a>
-              <a onclick="carregar('home.php')" href="#">Membros</a>
+              <a onclick="carregar('app/curso/Cursos.php')" href="#">Cursos</a>
               <a onclick="carregar('app/encontro/cad_Encontrista.php')" href="#">Encontro/Reencontro</a>
               <a onclick="carregar('app/encontro/encontrista.php')" href="#">Relação de Encontrista</a>
               <a href="#">Homens em Ação</a>
@@ -103,7 +103,7 @@
         </nav>
 
 
-   <div class="container" id="conteudo">
+   <div class="container-fluid" id="conteudo">
 
    </div>
 

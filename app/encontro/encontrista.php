@@ -31,6 +31,7 @@
                             <!--<th scope="col">Aniversário</th>-->
                              <!--<th scope="col">Função</th>-->
                             <th scope="col">CEM</th>
+                            <th scope="col-sm-2">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -96,7 +97,7 @@
                                 <div class="col">Telefone:  <?php echo $row['telEnc'];?>
                                 </div>
                                 <div class="col-6">
-                                        CEM: <?php echo $row['responsavel'];?>
+                                        CEM: <?php echo $row['CEM'];?>
                                 </div>
                             </div>
 
@@ -109,16 +110,13 @@
                              </div>
                              <div class="form-group row">
                                  <div class="col">
-                                   Amigo 1: <?php echo $row ['amigo2'];
+                                   Amigo 2: <?php echo $row ['amigo2'];
                                    echo " => ";
                                    echo $row['telEncamigo2'];?>
                                  </div>
                             </div>
 
-                            <div class="form-group row">
-                                <div class="col">Cadastrado:
-                                  <?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['cadastrado'])));?>
-                            </div>
+
                           </div></div>
                       </div>
                     </div>

@@ -1,15 +1,16 @@
 <!doctype html>
-<html lang=''>
+<html lang='pt-br'>
 <head>
    <meta charset='utf-8'>
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="styles.css">
-   <link rel="stylesheet" href="../_fonts/css/bootstrap.css">
-   <script src="../_fonts/js/jquery.min.js" type="text/javascript"></script>
-   <script src="../_fonts/js/bootstrap.min.js" type="text/javascript"></script>
+   <link rel="stylesheet" href="_fonts/ccs/styles.css">
+   <link rel="stylesheet" href="_fonts/css/bootstrap.min.css">
+
+   <script src="_fonts/js/jquery.min.js" type="text/javascript"></script>
+   <script src="_fonts/js/bootstrap.min.js" type="text/javascript"></script>
    <!--<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>-->
-   <script src="script.js"></script>
+   <script src="_fonts/js/script.js"></script>
    <title>Secretária Virtual</title>
 </head>
 <body>
@@ -48,6 +49,5 @@
 
         </ul>
 </div>
-
 </body>
-<html>
+</html>
