@@ -1,15 +1,10 @@
+
 <!doctype html>
 <html lang=''>
 <head>
    <meta charset='utf-8'>
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="styles.css">
-   <link rel="stylesheet" href="../_fonts/css/bootstrap.css">
-   <script src="../_fonts/js/jquery.min.js" type="text/javascript"></script>
-   <script src="../_fonts/js/bootstrap.min.js" type="text/javascript"></script>
-   <!--<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>-->
-   <script src="script.js"></script>
    <title>Secretária Virtual</title>
 </head>
 <body>
@@ -20,13 +15,21 @@
       <ul>
          <li><a href='#'>Cadastro</a>
             <ul>
-               <li><a href='#'>Membros</a></li>
-               <li><a href='#'>Encontrista</a></li>
-               <li><a href='#'>Equipe</a></li>
-
+               <li><a href='http://localhost/www/igreja/app/membros/cad1.php'>Membros</a></li>
+               <li><a href='http://localhost/www/igreja/app/encontro/cad_Encontrista.php'>Encontristas</a></li>
+               <li><a href='http://localhost/www/igreja/app/equipe/'>Equipe</a></li>
+               <li><a href='http://localhost/www/igreja/app/curso/Cursos.php'>Cursos</a></li>
             </ul>
-
          </li>
+         <li><a href='#'>Consulta</a>
+            <ul>
+               <li><a href='http://localhost/www/igreja/app/membros/membros.php'>Membros</a></li>
+               <li><a href='http://localhost/www/igreja/app/encontro/encontrista.php'>Encontristas</a></li>
+               <li><a href='http://localhost/www/igreja/app/equipe/'>Equipe</a></li>
+               <li><a href='http://localhost/www/igreja/app/curso/Cursos.php'>Cursos</a></li>
+            </ul>
+         </li>
+
          <li><a href='#'>Ministérios</a>
             <ul>
                <li><a href='#'>Quatro Seres</a></li>

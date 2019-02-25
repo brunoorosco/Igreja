@@ -1,7 +1,6 @@
 <?php
 
-//	include_once("../../index.php");
-
+include_once "../../menu/menu.php";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -9,8 +8,9 @@
 <head>
     <meta charset="utf-8">
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="_fonts/css/bootstrap.min.css">
-    <link rel="stylesheet" href="_fonts/css/estilo.css">
+    <link rel="stylesheet" href="../../_fonts/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../_fonts/css/estilo.css">
+    <link rel="stylesheet" href="../../_fonts/css/styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
     <title>Membros</title>
@@ -127,7 +127,7 @@
                   </div>
                 </div>
               <?php  }
-                     //   Banco::desconectar();
+                        Banco::desconectar();
                         ?>
                     </tbody>
                 </table>
@@ -135,7 +135,7 @@
       </div></div></div>
 
        <script type="text/javascript">
-        $('#exampleModal').on('show.bs.modal', function (event) {
+        $('#editModal').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget) // Button that triggered the modal
           var recipient = button.data('whatever') // Extract info from data-* attributes
           var recipientnome = button.data('whatevernome')
@@ -152,8 +152,9 @@
 
        </script>
 
-    <script src="_fonts/js/jquery-3.3.1.js" ></script>
-    <script src="_fonts/js/bootstrap.js"></script>
+    <script src="../../_fonts/js/jquery-3.3.1.js" ></script>
+    <script src="../../_fonts/js/bootstrap.js"></script>
+    <script src="../../_fonts/js/script.js"></script>
 
 </body>
 

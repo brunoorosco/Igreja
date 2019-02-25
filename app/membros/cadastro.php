@@ -15,11 +15,11 @@
 
 		<link rel="stylesheet" type="text/css" href="_fonts/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="_fonts/css/sweetalert2.min.css">
-		
-	
 
-		
-		
+
+
+
+
     <style type="text/css">
 	  * {
 	  box-sizing: border-box;
@@ -34,9 +34,9 @@
         background-size: cover;
         color: white;
         background-repeat: no-repeat;
-        background-position: center; 
+        background-position: center;
         background-attachment: fixed;
-       
+
 
       }
       form{
@@ -46,8 +46,8 @@
         margin-top: 150px;
         padding-bottom: 60px;
         box-shadow: 10px 10px 5px rgba(6, 1, 1, 0.50);
-       
-       
+
+
 
       }
 
@@ -75,7 +75,7 @@
       .btn{
         width: 100%;
         border-radius: 0px;
-        
+
       }
       .form-control{
         border-radius: 0px;
@@ -88,7 +88,7 @@
 		width: 100%;
 		max-width: 600px;
 		padding: 15px;
-		margin:auto;	
+		margin:auto;
 			}
 
 select {
@@ -96,65 +96,52 @@ select {
   font: 400 13.3333px Arial;
   }
     </style>
-   
 
-<body>
-	 
+
+	<body>
        <div class="container">
-       	<div>
-       		<div class="row"></div>
-       		<div class="col-md-6 offset-md-3">       		   		
-			<form  id="ajax_form" action="" method="post"  >
-				<h1>Cadastro</h1><br>
-				 <div class="form-group ">
-				 	<input type="text" name="nome" class="form-control" placeholder="Nome Completo" required="">
-				 </div>
-				 
-				<div class="form-group">
-				  	<input type="text" name="endereco" class="form-control" placeholder="Endereço" required="">
-				</div>	 
-				
-				<div class="form-group input-group">
-				 	 
-				 	 <input type="text" name="telefone" class="form-control tel" placeholder="Celular com DDD" id="tel" required="">
-					 
+       		<div>
+       			<div class="row"></div>
+       				<div class="col-md-6 offset-md-3">
+									<form  id="ajax_form" action="" method="post"  >
+										<h1>Cadastro</h1><br>
+				 						<div class="form-group ">
+				 								<input type="text" name="nome" class="form-control" placeholder="Nome Completo" required="">
+				 						</div>
 
-					    <input type="text" class="form-control" name="nascimento" id="data" placeholder="Data de Nascimento" maxlength="10">
-					 					  
+										<div class="form-group">
+										  	<input type="text" name="endereco" class="form-control" placeholder="Endereço" required="">
+										</div>
+
+										<div class="form-group input-group">
+										 	 <input type="text" name="telefone" class="form-control tel" placeholder="Celular com DDD" id="tel" required="">
+											 <input type="text" class="form-control" name="nascimento" id="data" placeholder="Data de Nascimento" maxlength="10">
+										</div>
+
+						 				<div class="form-group">
+										 	<input type="email" name="email" class="form-control" placeholder="seu_email@email" required="">
+										</div>
+
+										<div class="form-group input-group">
+													<select class="form-control" id="cargo" name="cargo">
+														<option hidden>Cargo</option>
+														<option>Pastor</option>
+														<option>Supervisor</option>
+														<option>Líder</option>
+														<option>Auxiliar</option>
+														<option>Anfitrião</option>
+														<option>Membro</option>
+													</select>
+													<input type="text" name="supervisao" class="form-control" placeholder="CEM" required="">
+										</div>
+										<div class="form-group">
+				 									<button type="submit"  id="Confirmar" class="btn btn-dark" style="z-index=1">Confirmar</button>
+										</div>
+								</form>
+		     			</div>
+		  			</div>
 				</div>
 
- 				<div class="form-group">
-				 	<input type="email" name="email" class="form-control" placeholder="seu_email@email" required="">
-				</div>
-				
-				<div class="form-group input-group">
-					
-							<select class="form-control" id="cargo" name="cargo">
-								<option hidden>Cargo</option>
-								<option>Pastor</option>
-								<option>Supervisor</option>
-								<option>Líder</option>
-								<option>Auxiliar</option>
-								<option>Anfitrião</option>
-								<option>Membro</option>
-
-						</select>
-
-						<input type="text" name="supervisao" class="form-control" placeholder="CEM" required="">
-						
-				</div>
-				
-				<div class="form-group">
-				 	<button type="submit"  id="Confirmar" class="btn btn-dark" style="z-index=1">Confirmar</button>	
-				</div>
-
-					
-
-			</form>
-		     </div>
-		  </div>
-		</div>
-	
 		<script type="text/javascript" src="_fonts/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="_fonts/js/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="_fonts/js/jquery.mask.min.js"></script>

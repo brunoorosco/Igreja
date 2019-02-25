@@ -29,6 +29,16 @@
 
          </li>
          <li><a href='#'>Ministérios</a>
+         <li><a href='#'>Consulta</a>
+            <ul>
+               <li><a href='#'>Membros</a></li>
+               <li><a href='#'>Encontristas</a></li>
+               <li><a href='#'>Equipe</a></li>
+
+            </ul>
+
+         </li>
+         <li><a href='#'>Ministérios</a>
             <ul>
                <li><a href='#'>Quatro Seres</a></li>
                <li><a href='#'>Obreiros</a></li>

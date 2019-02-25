@@ -1,3 +1,8 @@
+<?php
+  include_once "teste.php"
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,112 +16,57 @@
     <title>Portal Comunidade</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-        
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/estilo.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link rel="stylesheet" href="_fonts/css/bootstrap.min.css">
 
-</head>
+
+
+     <style type="text/css">
+
+     #conteudo { width: 400px; height: 300px;}
+
+       .dropdown-submenu {
+       position: relative;
+       }
+
+     .dropdown-submenu a::after {
+       transform: rotate(-90deg);
+       position: absolute;
+       right: 6px;
+       top: .8em;
+       }
+
+     .dropdown-submenu .dropdown-menu {
+       top: 0;
+       left: 100%;
+       margin-left: .1rem;
+       margin-right: .1rem;
+       }
+ </style>
+<!-- Bootstrap core CSS -->
+    </head>
+
 
 <body>
-     <div id="wrapper">
+  <script src="_fonts/js/jquery-3.3.1.js"></script>
+  <script src="_fonts/js/popper.min.js"></script>
+  <script src="_fonts/js/bootstrap.min.js"></script>
+  <script src="_fonts/js/main.js"></script>
+ <script type="text/javascript">
+  $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+  if (!$(this).next().hasClass('show')) {
+    $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+  }
+  var $subMenu = $(this).next(".dropdown-menu");
+  $subMenu.toggleClass('show');
 
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
 
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <p class="text-white">
-                        Nossas Igrejas
-                    </p>
-                </li>
-                <li>
-                    <a href="cadastro.php">Sede</a>
-                </li>
-                <li>
-                    <a href="#">Sapopemba</a>
-                </li>
-                <li>
-                    <a href="#">Guarulhos</a>
-                </li>
-                <li>
-                    <a href="#">Itaqua</a>
-                </li>
-                <li>
-                    <a href="#">Jd. Danfer</a>
-                </li>
-                <li>
-                    <a href="#">Vila Curuça</a>
-                </li>
-                <li>
-                    <a href="#">Suzano</a>
-                </li> 
-                <li>
-                    <a href="#">Curitiba</a>
-                </li>
-                <li>
-                    
-                </li>
-            </ul>
-            
-
-         </div>
-        </div>
-        <!-- /#sidebar-wrapper -->
-
-           <div class="container h7" style="margin-left: 22%;">
-           	<div class="row">
-				                <?php
-				              include ('intro.php');
-				                    ?><br><br><br>
-		                   <div class="list-group col-md-4 offset-md-4">
-								  <a href="cadastro.php" class="list-group-item list-group-item-action">Cadastro de Membros</a>
-								  <a href="#" class="list-group-item list-group-item-action">Ministério Kids</a>
-								  <a href="#" class="list-group-item list-group-item-action">Ministério de Casais</a>
-								  <a href="#" class="list-group-item list-group-item-action">Quatro Seres</a>
-								  <a href="#" class="list-group-item list-group-item-action">Encontro/Reencontro</a>
-								  <a href="#" class="list-group-item list-group-item-action">Ministério de Obreiros</a>
-								  <a href="#" class="list-group-item list-group-item-action">Supervisores</a>
-								  
-
-							</div>    	
-		</div></div>
-       <!-- /#page-content-wrapper -->
-
-    
-    <!-- /#wrapper -->
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="js/jquery-3.3.1.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Menu Toggle Script -->
-    <script>
-   $(document).ready(function() {
-    $(".dropdown").dropdown();
-});
-        $("#wrapper").toggleClass("toggled");
-   
-
-   $(document).ready(function(){
-  $('.dropdown').on('show.bs.dropdown', function(){
-    alert('The dropdown is about to be shown.');
+  $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+    $('.dropdown-submenu .show').removeClass("show");
   });
-  $('.dropdown').on('shown.bs.dropdown', function(){
-    alert('The dropdown is now fully shown.');
-  });
-  $('.dropdown').on('hide.bs.dropdown', function(e){
-    alert('The dropdown is about to be hidden.');
-  });
-  $('.dropdown').on('hidden.bs.dropdown', function(){
-    alert('The dropdown is now fully hidden.');
-  });
-});
-    </script>
+  return false;
+});</script>
 
 </body>
 
