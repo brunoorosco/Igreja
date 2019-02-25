@@ -1,6 +1,6 @@
 <?php
 
-include_once "../../menu/menu.php";
+include_once "../../menu.php";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -8,11 +8,7 @@ include_once "../../menu/menu.php";
 <head>
     <meta charset="utf-8">
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="../../_fonts/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../_fonts/css/estilo.css">
-    <link rel="stylesheet" href="../../_fonts/css/styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-
     <title>Membros</title>
 </head>
 
@@ -133,6 +129,7 @@ include_once "../../menu/menu.php";
                 </table>
 
       </div></div></div>
+      <script src="../../_fonts/js/main.js"></script>
 
        <script type="text/javascript">
         $('#editModal').on('show.bs.modal', function (event) {
@@ -149,13 +146,7 @@ include_once "../../menu/menu.php";
           modal.find('#detalhes').val(recipientdetalhes)
 
         });
-
        </script>
-
-    <script src="../../_fonts/js/jquery-3.3.1.js" ></script>
-    <script src="../../_fonts/js/bootstrap.js"></script>
-    <script src="../../_fonts/js/script.js"></script>
-
 </body>
 
 </html>

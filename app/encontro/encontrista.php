@@ -1,6 +1,6 @@
 <?php
 
-  include_once "../../menu/menu.php";
+  include_once "../../menu.php";
 
 ?>
 <!DOCTYPE html>
@@ -9,10 +9,6 @@
 <head>
     <meta charset="utf-8">
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="../../_fonts/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../_fonts/css/estilo.css">
-    <link rel="stylesheet" href="../../_fonts/css/styles.css">
-
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
     <title>Encontrista</title>
@@ -163,7 +159,7 @@
                  </div>
               </div>
             </div>
-
+        <script src="../../_fonts/js/main.js"></script>
        <script type="text/javascript">
         $('#exampleModal').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget) // Button that triggered the modal
@@ -182,9 +178,7 @@
 
        </script>
 
-    <script src="../../_fonts/js/jquery-3.3.1.js" ></script>
-    <script src="../../_fonts/js/bootstrap.js"></script>
-    <script src="../../_fonts/js/script.js"></script>
+
 </body>
 
 </html>

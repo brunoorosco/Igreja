@@ -1,119 +1,137 @@
 <?php
+  include_once "menu.php";
+  include_once '_fonts/config/banco.php';
+  include_once "_fonts/config/funcoes.php";
+  calendario();
+ ?>
 
-  require_once '_fonts/config/funcoes.php';
-
-//  session_destroy();
-  //unset($_COOKIE); //irá limpar o cookie
-  //validarUsuario();
-
-
-?>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
+
 <head>
+
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Secretária Virtual da Comunidade Avivamento em Cristo">
+    <meta name="author" content="Comunidade Avivamento em Cristo">
+
+    <title>Portal Comunidade</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-    <link href="_fonts/css/estilo.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="_fonts/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="_fonts/css/bootstrap.min.css">
+    <link href='_fonts/css/fullcalendar.min.css' rel='stylesheet' />
+    <link href='_fonts/css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
 
 
 
-    <script type="text/javascript" src="_fonts/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_fonts/js/jquery-3.3.1.min.js"></script>
-<style>
+    <script src='_fonts/js/moment.min.js'></script>
+		<script src='_fonts/js/jquery-3.3.1.min.js'></script>
+		<script src='_fonts/js/fullcalendar.min.js'></script>
+		<script src='_fonts/js/pt-br.js'></script>
 
-.dropbtn {
-  background-color: #ff8c00;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-    font:normal 100%/1.6 sans-serif;
-  font-weight: 600;
-}
+     <style type="text/css">
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-   font:normal 100%/1.4 sans-serif;
-  font-weight: 600;
-}
+     #conteudo { width: 400px; height: 300px;}
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 200px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
+       .dropdown-submenu {
+       position: relative;
+       }
 
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
+     .dropdown-submenu a::after {
+       transform: rotate(-90deg);
+       position: absolute;
+       right: 6px;
+       top: .8em;
+       }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
+     .dropdown-submenu .dropdown-menu {
+       top: 0;
+       left: 100%;
+       margin-left: .1rem;
+       margin-right: .1rem;
+       }
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+       #calendario{
+          position: relative;
+          width: 70%;
+          margin: 0px auto;
+      }
+ </style>
 
-.dropdown:hover .dropbtn {
-  background-color: #2e9afe;
-}
-</style>
-</head>
+ <script>
+$(document).ready(function() {
+      $('#calendar').fullCalendar({
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,agendaWeek,agendaDay'
+        },
+        defaultDate: Date(),
+        navLinks: true, // can click day/week names to navigate views
+        editable: true,
+        eventLimit: true, // allow "more" link when too many events
+        events: [ <?php
+            while($row_events = mysqli_fetch_array($resultado_events)){
+              ?>
+              {
+              id:     '<?php echo $row_events['idEvento']; ?>',
+              title:  '<?php echo $row_events['evento']; ?>',
+              start:  '<?php echo $row_events['datainicio']; ?>',
+              end:    '<?php echo $row_events['datatermino']; ?>',
+              color:  '<?php echo $row_events['color']; ?>',
+              },<?php
+            }
+          ?>
+        ]
+      });
+    });
+  </script>
+  </head>
 <body>
-
-
-      <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #ff8c00;">
-          <span class="navbar-brand mb-0 h1 ">Secretária</span>
-          <div class="dropdown">
-            <button class="dropbtn">Sede</button>
-              <div class="dropdown-content">
-              <a onclick="carregar('app/membros/cadastro.php')" href="#">Cadastro</a>
-              <a onclick="carregar('app/membros/membros.php')" href="#">Membros</a>
-              <a onclick="carregar('app/curso/Cursos.php')" href="#">Cursos</a>
-              <a onclick="carregar('app/encontro/cad_Encontrista.php')" href="#">Encontro/Reencontro</a>
-              <a onclick="carregar('app/encontro/encontrista.php')" href="#">Relação de Encontrista</a>
-              <a href="#">Homens em Ação</a>
-              <a href="#">Ministério Kids</a>
-              <a href="#">Min. de Obreiros</a>
-              <a href="#">Mulheres em Ação</a>
-              </div>
+</br>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-4">
+        <div id='calendario'>
+               <form id="novo_evento" action="" method="get">
+                    <div class="form-group  mb-2">
+                      <label for="nome">Evento</label>
+                      <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome para Evento">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Data de Início do Evento</label>
+                      <input type="date" class="form-control" id="datainicio" name="datainicio">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Data de Término do Evento</label>
+                      <input type="date" class="form-control" id="datatermino" name="datatermino">
+                    </div>
+                   <button type="submit" class="btn btn-primary">Cadastrar Novo Evento</button>
+               </form>
            </div>
-           <div class="dropdown">
-            <button class="dropbtn">Igrejas</button>
-              <div class="dropdown-content">
-                <a href="#">Sapopemba</a>
-                <a href="#">Guarulhos</a>
-                <a href="#">Itaqua</a>
-                <a href="#">Jd. Danfer</a>
-                <a href="#">Curuça</a>
-                <a href="#">Suzano</a>
-                <a href="#">Curitiba</a>
-              </div>
-           </div>
-        </nav>
+      </div>
+      <div class="col-8">
+        <div id='calendar'></div>
+      </div>
+    </div>
+  </div>
 
 
-   <div class="container-fluid" id="conteudo">
+<script type="text/javascript">
+  $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+  if (!$(this).next().hasClass('show')) {
+    $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+  }
+  var $subMenu = $(this).next(".dropdown-menu");
+  $subMenu.toggleClass('show');
+  $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+    $('.dropdown-submenu .show').removeClass("show");
+  });
+  return false;
+});</script>
 
-   </div>
-
-<script>
-  $(window).on("beforeunload", function() {
-    return inFormOrLink ? "Do you really want to close?" : null;
-});
-    function carregar(pagina){
-        $("#conteudo").load(pagina);
-    }
-</script>
 </body>
+
 </html>

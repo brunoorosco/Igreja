@@ -1,7 +1,7 @@
 <?php
 
 	include_once("../../_fonts/config/banco.php");
-  include_once "../../teste.php";
+  include_once "../../menu.php";
 
 ?>
 <!DOCTYPE html>
@@ -11,19 +11,13 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Cursos TMAC</title>
-
-		<link rel="stylesheet" href="../../_fonts/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../../_fonts/css/estilo.css">
-		<link rel="stylesheet" href="../../_fonts/css/styles.css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-
-
 
 	</head>
 	<body>
 
 	</br>	<!--<header>--><?php //include_once'../../teste.php' ?><!--</header>-->
-	<button type="button" class="btn btn-success float-sm-right" style="width: 15%; height: 15%;" data-toggle="modal" data-target="#cad_Modal">Adicionar Curso</button>
+	<button type="button" class="btn btn-success float-sm-right" data-toggle="modal" data-target="#cad_Modal">Adicionar Curso</button>
 		<div class="container theme-showcase" role="main">
 			<div class="page-header">
 				<h2>Lista de Cursos</h2>
@@ -148,15 +142,7 @@
 				</div>
 			</div>
 		</div>
-
-
-		<script src="../../_fonts/js/jquery-3.3.1.js" ></script>
-		<script src="../../_fonts/js/popper.min.js"></script>
-		<script src="../../_fonts/js/bootstrap.js"></script>
-		<script src="../../_fonts/js/script.js"></script>
-
-
-
+<script src="../../_fonts/js/main.js"></script>
 	<script type="text/javascript">
 		$('#editModal').on('show.bs.modal', function (event) {
 		  var button = $(event.relatedTarget) // Button that triggered the modal
@@ -173,10 +159,6 @@
 
 		});
 
-		$(document).ready(function(){
-				  $('#datainicio').mask('00/00/0000');
-				  $('.datainicio').mask('00/00/0000');
-				  				 });
-	</script>
+		</script>
 	</body>
 </html>
