@@ -1,38 +1,26 @@
  <?php
-
   session_start();
-  
-  function autenticar($login, $senha) {
 
+  function autenticar($login, $senha) {
         $pdo = Banco::conectar();
         $sql = "SELECT idLogin, username, password FROM acesso where username = '$login' AND password = '$senha'";
-
         //echo $sql;
-
         $exec =  $pdo->query($sql);
         $rows = $exec->fetchAll(PDO::FETCH_ASSOC);
         $total = count($rows);
 
         if ($total > 0){
-
             $codigoUsuario = $rows[0]['idLogin'];
-
             $_SESSION['COD_USUARIO'] = $codigoUsuario;
-
             return $codigoUsuario;
         }
         else{
-
           $codigoUsuario = 0;
-
           return $codigoUsuario;
-
         }
   }
 
   function validarUsuario() {
-
-
     if (($_SESSION['COD_USUARIO'] != '')) {
        return $_SESSION['COD_USUARIO'];
     }
@@ -80,9 +68,13 @@ function enviarEmail($destino,$senha)
 function calendario()
 {
 
-  $result_events = "SELECT id, title, color, start, end FROM events";
-
+  $sql = "SELECT id, titulo, color, inicioevento, terminoevento FROM eventos";
+  $pdo = Banco::conectar();
   $exec =  $pdo->query($sql);
-  $rows = $exec->fetchAll(PDO::FETCH_ASSOC);
-  $total = count($rows);
+  $rows = $exec->fetch(PDO::FETCH_ASSOC);
+  $result_array[] = $rows;
+  //  echo  json_encode($result_array);
+  $exec->execute();
+  $result = $exec->fetchAll();
+
 }
