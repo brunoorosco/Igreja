@@ -67,7 +67,7 @@ function enviarEmail($destino,$senha)
 
 function calendario()
 {
-
+/*
   $sql = "SELECT id, titulo, color, inicioevento, terminoevento FROM eventos";
   $pdo = Banco::conectar();
   $exec =  $pdo->query($sql);
@@ -76,8 +76,9 @@ function calendario()
   //  echo  json_encode($result_array);
   $exec->execute();
   $result = $exec->fetchAll();
-
+  return;*/
 }
+
 function conv_dataHora($start){
 $data = explode(" ", $start);
 list($date, $hora) = $data;

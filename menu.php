@@ -50,14 +50,14 @@
           <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Cadastro</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="http://localhost/www/igreja/app/encontro/cad_Encontrista.php">Encontristas</a></li>
-              <li><a class="dropdown-item" href="http://localhost/www/igreja/app/membros/php">Equipe</a></li>
-              <li><a class="dropdown-item" href="http://localhost/www/igreja/app/membros/membros.php">Membros</a></li>
+              <li><a class="dropdown-item disabled" href="">Equipe</a></li>
+              <li><a class="dropdown-item" href="http://localhost/www/igreja/app/membros/cadastro.php">Membros</a></li>
             </ul>
           </li>
             <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Consulta</a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="http://localhost/www/igreja/app/encontro/encontrista.php">Encontristas</a></li>
-                  <li><a class="dropdown-item" href="#">Equipe</a></li>
+                  <li><a class="dropdown-item" href="">Equipe</a></li>
                   <li><a class="dropdown-item" href="http://localhost/www/igreja/app/membros/membros.php">Membros</a></li>
                 </ul>
             </li>

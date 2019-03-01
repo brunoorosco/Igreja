@@ -2,7 +2,7 @@
   include_once "menu.php";
   include_once '_fonts/config/banco.php';
   include_once "_fonts/config/funcoes.php";
-  calendario();
+//  calendario();
  ?>
 
 <!DOCTYPE html>
@@ -193,7 +193,7 @@ $(document).ready(function() {
         </div>
         <div class="modal-body">
           <dl class="dl-horizontal">
-            <dt>ID do Evento</dt>
+            <dt>Código do Evento</dt>
             <dd id="id"></dd>
             <dt>Titulo do Evento</dt>
             <dd id="title"></dd>

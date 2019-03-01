@@ -75,68 +75,68 @@
       }
   	     </style>
 	</head>
-<body>
+  <body>
        <div class="container">
        	<div class="row"></div>
        		<div class="col-md-6 offset-md-3">
-			<form class="formulario"  id="ajax_form" action="" method="post" >
-				<h3>Inscrição de Encontristas</h3><br>
-				 <div class="form-group ">
-				 	<input type="text" name="nome" class="form-control" placeholder="Nome Completo" required="" style="border-radius: 0px!important;
-          background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
-				 </div>
+          	<form class="formulario"  id="ajax_form" action="" method="post" >
+          				<h3>Inscrição de Encontristas</h3><br>
+          				<div class="form-group ">
+          				<input type="text" name="nome" class="form-control" placeholder="Nome Completo" required="" style="border-radius: 0px!important;
+                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+          				</div>
 
-				<div class="form-group">
-				  	<input type="text" name="endereco" class="form-control" placeholder="Endereço" required=""style="border-radius: 0px!important;
-            background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
-				</div>
+          				<div class="form-group">
+          				  	<input type="text" name="endereco" class="form-control" placeholder="Endereço" required=""style="border-radius: 0px!important;
+                      background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+          				</div>
 
-				 <div class="form-group">
-				 	<input type="text" name="telefone" class="form-control tel" placeholder="Celular com DDD" id="" required=""style="border-radius: 0px!important;
-          background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
-				 </div>
-
-
-				<div class="form-group input-group">
-
-					    <select class="form-control" id="sexo" name="sexo" style="text: #fff !important;color: gray !important;border-radius: 0px!important;
-              background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;">
-								<option hidden>Sexo</option>
-								<option>Feminino</option>
-								<option>Masculino</option>
-						</select>
-
-					    <input type="text" class="form-control data" name="nascimento" id="data" placeholder="Data de Nascimento" maxlength="10"style="border-radius: 0px!important;
-              background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
-
-				</div>
-
- 				<div class="form-group">
-				 	<input type="email" name="email" class="form-control" placeholder="seu_email@email" required=""style="border-radius: 0px!important;
-          background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
-				</div>
-
-				<div class="form-group">
-				 	<input type="text" name="tel1" class="form-control tel" placeholder="Telefone ...." id="" required=""style="border-radius: 0px!important;
-          background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
-				 </div>
-				 <div class="form-group">
-				 	<input type="text" name="tel2" class="form-control tel" placeholder="Telefone ...." id="" required=""style="border-radius: 0px!important;
-          background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
-				 </div>
+          				 <div class="form-group">
+          				 	<input type="text" name="telefone" class="form-control tel" placeholder="Celular com DDD" id="" required=""style="border-radius: 0px!important;
+                    background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+          				 </div>
 
 
-				<div class="form-group">
-				 	<button type="submit"  id="Confirmar" class="btn btn-dark" style="z-index=1;width: 100%;
-              border-radius: 0px;">Confirmar</button>
-				</div>
+          				<div class="form-group input-group">
+
+          					    <select class="form-control" id="sexo" name="sexo" style="text: #fff !important;color: gray !important;border-radius: 0px!important;
+                        background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;">
+          								<option hidden>Sexo</option>
+          								<option>Feminino</option>
+          								<option>Masculino</option>
+          						</select>
+
+          					    <input type="text" class="form-control data" name="nascimento" id="data" placeholder="Data de Nascimento" maxlength="10"style="border-radius: 0px!important;
+                        background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+
+          				</div>
+
+           				<div class="form-group">
+          				 	<input type="email" name="email" class="form-control" placeholder="seu_email@email" required=""style="border-radius: 0px!important;
+                    background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+          				</div>
+
+          				<div class="form-group">
+          				 	<input type="text" name="tel1" class="form-control tel" placeholder="Telefone ...." id="" required=""style="border-radius: 0px!important;
+                    background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+          				 </div>
+          				 <div class="form-group">
+          				 	<input type="text" name="tel2" class="form-control tel" placeholder="Telefone ...." id="" required=""style="border-radius: 0px!important;
+                    background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+          				 </div>
+
+
+          				<div class="form-group">
+          				 	<button type="submit"  id="Confirmar" class="btn btn-dark" style="z-index=1;width: 100%;
+                        border-radius: 0px;">Confirmar</button>
+          				</div>
 
 
 
-			</form>
-		     </div>
-		  </div>
-		</div>
+          			</form>
+          		     </div>
+          		  </div>
+          		</div>
 
 		<script type="text/javascript" src="../../_fonts/js/jquery.mask.min.js"></script>
 		<script type="text/javascript" src="../../_fonts/js/sweetalert2.all.min.js"></script>

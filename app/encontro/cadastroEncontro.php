@@ -1,3 +1,8 @@
+<?php
+
+	include_once("../../_fonts/config/banco.php");
+  include_once "../../menu.php";
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -10,7 +15,7 @@
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		
+
 		<title>Inscrição de Encontristas</title>
 
 		<link rel="stylesheet" type="text/css" href="_fonts/css/bootstrap.min.css">
@@ -22,7 +27,7 @@
 		<script type="text/javascript" src="_fonts/js/jquery.mask.js"></script>
 
 
-		
+
     <style type="text/css">
 	  * {
 	  box-sizing: border-box;
@@ -37,9 +42,9 @@
         background-size: cover;
         color: white;
         background-repeat: no-repeat;
-        background-position: center; 
+        background-position: center;
         background-attachment: fixed;
-       
+
 
       }
       form{
@@ -49,8 +54,8 @@
         margin-top: 150px;
         padding-bottom: 60px;
         box-shadow: 10px 10px 5px rgba(6, 1, 1, 0.50);
-       
-       
+
+
 
       }
 
@@ -78,7 +83,7 @@
       .btn{
         width: 100%;
         border-radius: 0px;
-        
+
       }
       .form-control{
         border-radius: 0px;
@@ -91,7 +96,7 @@
 		width: 100%;
 		max-width: 600px;
 		padding: 15px;
-		margin:auto;	
+		margin:auto;
 			}
     </style>
     <script type="text/javascript">
@@ -106,35 +111,35 @@
 
 	</head>
 <body>
-	 
+
        <div class="container">
        	<div>
        		<div class="row"></div>
-       		<div class="col-md-6 offset-md-3">       		   		
+       		<div class="col-md-6 offset-md-3">
 			<form  id="" action="cadDB.php" method="post" >
 				<h3>Inscrição de Encontristas</h3><br>
 				 <div class="form-group ">
 				 	<input type="text" name="nome" class="form-control" placeholder="Nome Completo" required="">
 				 </div>
-				 
+
 				<div class="form-group">
 				  	<input type="text" name="endereco" class="form-control" placeholder="Endereço" required="">
-				</div>	 
-				
-				 <div class="form-group">
-				 	<input type="text" name="telefone" class="form-control tel" placeholder="Celular com DDD" id="" required="">
-				 </div>	
-				
-				<div class="form-group">
-				 	<button type="submit"  id="Confirmar" class="btn btn-dark" style="z-index=1">Confirmar</button>	
 				</div>
 
-					
+				 <div class="form-group">
+				 	<input type="text" name="telefone" class="form-control tel" placeholder="Celular com DDD" id="" required="">
+				 </div>
+
+				<div class="form-group">
+				 	<button type="submit"  id="Confirmar" class="btn btn-dark" style="z-index=1">Confirmar</button>
+				</div>
+
+
 
 			</form>
 		     </div>
 		  </div>
 		</div>
-		 
+
 	</body>
 </html>
