@@ -78,3 +78,11 @@ function calendario()
   $result = $exec->fetchAll();
 
 }
+function conv_dataHora($start){
+$data = explode(" ", $start);
+list($date, $hora) = $data;
+$data_sem_barra = array_reverse(explode("/", $date));
+$data_sem_barra = implode("-", $data_sem_barra);
+$start_sem_barra = $data_sem_barra . " " . $hora;
+
+ return $start_sem_barra;}
