@@ -52,7 +52,7 @@
       @media(min-width:700px) {
       	 .formulario{
              width: 400px;
-             margin-top: 40px;
+             margin-top: 30px;
              margin-left: auto;
              margin-right: auto;
 
@@ -66,8 +66,7 @@
              margin-left: auto;
              margin-right: auto;
 
-
-      }
+             }
      }
 
       h1{

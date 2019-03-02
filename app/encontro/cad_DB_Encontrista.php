@@ -12,6 +12,21 @@
     $nascEnc = $_POST['nascimento'];
    // $CEM = $_POST['CEM'];
     $nascEnc = date("Y-m-d",strtotime(str_replace('/','-',$nascEnc)));  
+
+
+   ///////  VERIFICA SE USUARIO EMAIL JÁ ESTA CADASTRADO ///////////
+       $sql = "SELECT * FROM encontrista where emailEnc = '$emailEnc' OR telEnc = '$telEnc'";
+       $pdo = Banco::conectar();
+       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+       $exec =  $pdo->query($sql);
+       $rows = $exec->fetchAll(PDO::FETCH_ASSOC);
+       $total = count($rows);
+       Banco::desconectar();
+
+        if ($total > 0){
+             echo json_encode(array('mens1' => "Este Encontrista já esta cadastrado!","mens2"=>"warning","mens3"=>"0" ));
+                }
+      else{
     
 
     $sql = "INSERT INTO encontrista (nomeEnc, telEnc , telEncamigo1, telEncamigo2 , endEnc, emailEnc , nascEnc,sexoEnc) values (:nomeEnc , :telEnc , :telEncamigo1, :telEncamigo2 , :endEnc, :emailEnc , :nascEnc , :sexoEnc )";
@@ -40,6 +55,6 @@
     }catch(PDOException $e){
         //echo '{"erro": {"texto": '.$e->getMessage().'}';
         echo '{"erro": {"texto": '.$e->getMessage().'}';
-    }
+    }}
 
 ?>

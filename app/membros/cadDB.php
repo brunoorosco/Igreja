@@ -1,5 +1,6 @@
 
 <?php
+ header("Content-type: text/html; charset=utf-8"); 
  require_once '../../_fonts/config/banco.php';
  require_once '../../_fonts/config/funcoes.php';
 
@@ -16,10 +17,10 @@
        $sql = "SELECT * FROM membros where email = '$email'";
        $pdo = Banco::conectar();
        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $exec =  $pdo->query($sql);
-        $rows = $exec->fetchAll(PDO::FETCH_ASSOC);
-        $total = count($rows);
-        Banco::desconectar();
+       $exec =  $pdo->query($sql);
+       $rows = $exec->fetchAll(PDO::FETCH_ASSOC);
+       $total = count($rows);
+       Banco::desconectar();
 
         if ($total > 0){
          //   echo "Este membro já esta Cadastrado!!!";
@@ -45,28 +46,25 @@
         $stmt->bindParam(':cargo',$cargo);
         $stmt->bindParam(':endereco',$endereco);
         $stmt->bindParam(':supervisao',$supervisao);
-        $stmt->execute();
-        $db = null;
-
-
-        if($cargo == "Bispo" || "Pastor" || "Supervisor"){
-       // $senha = (geraSenha(6, false, true));
-       // $senha1 = sha1($senha);
-
-        $db = new db();
-        $db = $db->connect();
-        $stmt = $db->prepare($sql_);
-        $stmt->bindParam(':email',$email);
-     //   $stmt->bindParam(':senha',$senha1);
-       // $stmt->execute();
-        $stmt->bindParam(':senha',$senhaCrip);
-        $stmt->execute();
-        $db = null;
-                            }
-      //  enviarEmail($email,$senha);
-  echo json_encode(array('mens1' => "Cadastrado realizado com sucesso!","mens2"=>"success","mens3"=>"1" ));
-
-
+        if( $stmt->execute()){     //  $db = null;
+            if($cargo === ('Bispo' || 'Pastor' || 'Supervisor'))
+            {
+               // $senha = (geraSenha(6, false, true));
+                // $senha1 = sha1($senha);
+                //$db = new db();
+                //$db = $db->connect();
+                $stmt = $db->prepare($sql_);
+                $stmt->bindParam(':email',$email);
+                // $stmt->bindParam(':senha',$senha1);
+                // $stmt->execute();
+                $stmt->bindParam(':senha',$senhaCrip);
+                // $stmt->execute();
+               
+                echo json_encode(array('mens1' => $cargo,"mens2"=>$email,"mens3"=>strcmp($cargo, "Auxiliar")));
+            }
+        $db = null;        // enviarEmail($email,$senha);
+        echo json_encode(array('mens1' => "Cadastrado realizado com sucesso!","mens2"=>"success","mens3"=>"1" ));
+        }
     }catch(PDOException $e){
         //echo '{"erro": {"texto": '.$e->getMessage().'}';
         echo '{"erro": {"texto": '.$e->getMessage().'}';
