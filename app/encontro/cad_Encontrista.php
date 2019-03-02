@@ -79,7 +79,7 @@
        <div class="container">
        	<div class="row"></div>
        		<div class="col-md-6 offset-md-3">
-          	<form class="formulario"  id="ajax_form" action="" method="post" >
+          	<form class="formulario"  id="formulario_encontrista" action="" method="post" >
           				<h3>Inscrição de Encontristas</h3><br>
           				<div class="form-group ">
           				<input type="text" name="nome" class="form-control" placeholder="Nome Completo" required="" style="border-radius: 0px!important;
@@ -130,9 +130,6 @@
           				 	<button type="submit"  id="Confirmar" class="btn btn-dark" style="z-index=1;width: 100%;
                         border-radius: 0px;">Confirmar</button>
           				</div>
-
-
-
           			</form>
           		     </div>
           		  </div>
@@ -142,6 +139,7 @@
 		<script type="text/javascript" src="../../_fonts/js/sweetalert2.all.min.js"></script>
 		<script type="text/javascript" src="../../_fonts/js/main.js"></script>
 
+
 		<script type="text/javascript">
 
   $(document).ready(function(){
@@ -150,7 +148,35 @@
 			  $('.tel').mask('(00) 00000-0000');
 			  $('#cpf').mask('000.000.000-00');
 			  				 });
-		</script>
+    jQuery(document).ready(function(){
+            
+    				jQuery('#formulario_encontrista').submit(function(){
+    					var dados = $(this).serialize();
+    				 		$.ajax({
+    						type:'POST',
+    						url: "../../app/encontro/cad_DB_Encontrista.php",
+    						dataType: 'html',
+    						data: dados,
+    						success:function(response){ //retorna o echo do php
+    							//alert(response);
+    				 			Swal.fire({
+    							title: response.mens1,
+    							type:  response.mens2,
+    							timer: 5000});
+    							document.getElementById('ajax_form').reset();
 
+    				 		},
+    						erro: function() {
+    						    Swal.fire({
+    						    title: 'Erro ao cadastrar, tente novamente!!!',
+    							type: 'error',
+    							timer: 5000});
+    						}
+    					});
+
+    					return false;
+    			   	});
+    			});
+		</script>
 	</body>
 </html>

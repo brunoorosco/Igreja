@@ -58,13 +58,12 @@
 */
 
 jQuery(document).ready(function(){
-				jQuery('#ajax_form').submit(function(){
+				jQuery('#formulario_encontrista').submit(function(){
 					var dados = $(this).serialize();
-
 				 		$.ajax({
 						type:'POST',
-						url: "app/membros/cadDB.php",
-						dataType: 'json',
+						url: "../../app/membros/cad_Encontrista.php",
+						dataType: 'html',
 						data: dados,
 						success:function(response){ //retorna o echo do php
 							//alert(response);
@@ -88,13 +87,14 @@ jQuery(document).ready(function(){
 			});
 
       jQuery(document).ready(function(){
-      				jQuery('#form_Ajax').submit(function(){
-      					var dados = $(this).serialize();
 
+      				jQuery('#ajax_form').submit(function(){
+      					var dados = $(this).serialize();
+  console.log("teste");
       				 		$.ajax({
       						type:'POST',
-      						url: "app/curso/processa.php",
-      						dataType: 'json',
+      						url: "../../app/membros/cadDB.php",
+      						dataType: 'html',
       						data: dados,
       						success:function(response){ //retorna o echo do php
       							//alert(response);
@@ -102,7 +102,7 @@ jQuery(document).ready(function(){
       							title: response.mens1,
       							type:  response.mens2,
       							timer: 5000});
-      							document.getElementById('ajax_form').close();
+      							document.getElementById('#ajax_form').close();
 
       				 		},
       						erro: function() {

@@ -1,10 +1,7 @@
 
 <?php
  require_once '../../_fonts/config/banco.php';
-
  require_once '../../_fonts/config/funcoes.php';
-
-
 
     $nome = $_POST['nome'];
     $telefone = $_POST['telefone'];

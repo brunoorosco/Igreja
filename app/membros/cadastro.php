@@ -82,7 +82,7 @@ color: white;
        			<div class="row"></div>
        				<div class="col-md-6 offset-md-3">
 									<form  class="formulario" id="ajax_form" action="" method="post"  >
-										<h1>Cadastro</h1><br>
+										<h1>Cadastro</h1><br><!--
 				 						<div class="form-group ">
 				 								<input type="text" name="nome" class="form-control" placeholder="Nome Completo" required=""style="border-radius: 0px!important;
 			                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
@@ -109,6 +109,7 @@ color: white;
 													<select class="form-control" id="cargo" name="cargo" style="text: #fff !important;color: gray;border-radius: 0px!important;
 	                        background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;">
 														<option disable hidden value="" >Cargo</option>
+														<option>Bispo</option>
 														<option>Pastor</option>
 														<option>Supervisor</option>
 														<option>Líder</option>
@@ -118,7 +119,7 @@ color: white;
 													</select>
 													<input type="text" name="supervisao" class="form-control" placeholder="CEM" required=""style="border-radius: 0px!important;
 				                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
-										</div>
+										</div>-->
 										<div class="form-group">
 				 									<button type="submit"  id="Confirmar" class="btn btn-dark" style="z-index=1;width: 100%;
 			                        border-radius: 0px;">Confirmar</button>
@@ -130,26 +131,11 @@ color: white;
 
 		<script type="text/javascript" src="../../_fonts/js/jquery.mask.min.js"></script>
 		<script type="text/javascript" src="../../_fonts/js/sweetalert2.all.min.js"></script>
+		<script type="text/javascript" src="../../_fonts/js/main.js"></script>
 
 
 	<script type="text/javascript">
-		$('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
-    if (!$(this).next().hasClass('show')) {
-      $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
-    }
-    var $subMenu = $(this).next(".dropdown-menu");
-    $subMenu.toggleClass('show');
-    $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
-      $('.dropdown-submenu .show').removeClass("show");
-    });
-    return false;
-  });
-
-  $('#calendar_').fullCalendar({
-    defaultView: 'listmonth'
-  });
-
-	  $('#cargo').change(function(){
+		  $('#cargo').change(function(){
 	    $(this).css('color', 'white');
 	  });
 
