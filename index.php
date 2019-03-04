@@ -264,6 +264,7 @@ $(document).ready(function() {
     </div>
   </div>
 
+  
 <script type="text/javascript">
   $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
   if (!$(this).next().hasClass('show')) {

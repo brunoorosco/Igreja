@@ -90,11 +90,11 @@ jQuery(document).ready(function(){
 
       				jQuery('#ajax_form').submit(function(){
       					var dados = $(this).serialize();
-  console.log("teste");
+                console.log("teste");
       				 		$.ajax({
       						type:'POST',
       						url: "../../app/membros/cadDB.php",
-      						dataType: 'html',
+      						dataType: 'json',
       						data: dados,
       						success:function(response){ //retorna o echo do php
       							//alert(response);
@@ -102,7 +102,7 @@ jQuery(document).ready(function(){
       							title: response.mens1,
       							type:  response.mens2,
       							timer: 5000});
-      							document.getElementById('#ajax_form').close();
+                    if(response.mens3 == "1")document.getElementById('#ajax_form').reset();
 
       				 		},
       						erro: function() {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 01-Mar-2019 às 02:44
+-- Generation Time: 04-Mar-2019 às 20:20
 -- Versão do servidor: 10.1.37-MariaDB
 -- versão do PHP: 7.3.0
 
@@ -114,7 +114,8 @@ INSERT INTO `eventos` (`id`, `titulo`, `inicioevento`, `terminoevento`, `color`)
 (10, 'bruno', '2019-02-28 00:00:00', '0000-00-00 00:00:00', '#8000ff'),
 (11, 'Escola de Profetas', '2019-03-20 00:00:00', '2019-03-26 00:00:00', '#00ffff'),
 (21, 'Discipulado', '2019-02-20 00:00:00', '2019-02-21 00:00:00', '#0071c5'),
-(22, 'Escola de Profetas', '2019-03-08 19:30:00', '2019-03-09 22:00:00', '#40E0D0');
+(22, 'Escola de Profetas', '2019-03-08 19:30:00', '2019-03-09 22:00:00', '#40E0D0'),
+(23, 'Escola de Profetas', '2019-02-25 00:00:00', '2019-02-28 00:00:00', '#0071c5');
 
 -- --------------------------------------------------------
 
@@ -125,16 +126,19 @@ INSERT INTO `eventos` (`id`, `titulo`, `inicioevento`, `terminoevento`, `color`)
 CREATE TABLE `infocursos` (
   `idCursos` int(10) NOT NULL,
   `nomeCursos` varchar(50) NOT NULL,
-  `tema` varchar(40) NOT NULL
+  `tema` varchar(40) NOT NULL,
+  `data` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `infocursos`
 --
 
-INSERT INTO `infocursos` (`idCursos`, `nomeCursos`, `tema`) VALUES
-(1, 'Escola de Profetas', 'Escatologia------'),
-(2, 'Discipulado', 'teste');
+INSERT INTO `infocursos` (`idCursos`, `nomeCursos`, `tema`, `data`) VALUES
+(1, 'Escola de Profetas', 'Escatologia------', '0000-00-00'),
+(2, 'Discipulado', 'teste', '0000-00-00'),
+(3, 'Escola de Profeta', 'Geografia Biblica', '2019-03-12'),
+(4, 'Discipulado', 'Visao', '2019-05-15');
 
 -- --------------------------------------------------------
 
@@ -167,7 +171,20 @@ INSERT INTO `membros` (`idmembros`, `nome`, `nasc`, `endereco`, `telefone`, `sup
 (5, 'FUlano', '1970-01-01', 'ciclano', '(11) 11111-1111', 'Seper', 'Auxiliar', 'brubbdf@teste.com', '161.511.615-61', '2019-01-27 15:11:25'),
 (6, 'Orosco', '1987-03-29', 'Rua Gupeva,56, São Miguel Paulista', '(11) 94071-4391', 'Ajaxcity', 'Pastor', 'brunoorosco@gmail.com', '351.176.528-51', '2019-02-03 14:57:16'),
 (7, 'Bruno Orosco', '1970-01-01', 'Rua Gupeva,56, São Miguel Paulista', '(11) 94071-4391', 'Lica', 'Líder', 'brunoorosco@gmail.com', '', '2019-02-05 21:43:52'),
-(8, 'teste', '2019-02-11', 'teste', '11998355651', '', 'Membro', 'brurru@gmail.com', '', '2019-02-22 21:12:42');
+(8, 'teste', '2019-02-11', 'teste', '11998355651', '', 'Membro', 'brurru@gmail.com', '', '2019-02-22 21:12:42'),
+(9, 'Escola de Profetas', '1970-01-01', 'av. ipes', '(11) 94071-4391', 'lica', 'Membro', 'fifehadaga@directmail24.net', '', '2019-03-01 21:29:31'),
+(10, 'Escola de Profetas', '1987-03-29', 'rua Gupeva, 56 Vila Curuça', '(11) 94071-4391', 'Lica', 'Líder', 'brunoorosco123@gmail.com', '', '2019-03-03 20:25:42'),
+(11, 'Escola de Profetas', '1987-03-29', 'rua Gupeva, 56 Vila Curuça', '(11) 94071-4391', 'Lica', 'Líder', 'brunoorosco12.@gmail.com', '', '2019-03-03 20:25:54'),
+(12, 'Bruno Orosco', '1987-03-29', 'rua Gupeva, 56 Vila Curuça', '(11) 94071-4391', 'Lica', 'Líder', 'brunoorosco@gmail.com12', '', '2019-03-03 20:33:29'),
+(13, 'Bruno Orosco', '1987-03-29', 'rua Gupeva, 56 Vila Curuça', '(11) 94071-4391', 'Lica', 'Líder', 'brunoorosco@gmail.com123', '', '2019-03-04 02:57:34'),
+(14, 'Escola de Profetas', '1987-03-29', 'rua Gupeva, 56 Vila Curuça', '(11) 94071-4391', 'Todas', 'Supervisor', 'muvicej@freehotmail.net1', '', '2019-03-04 02:59:55'),
+(15, 'Escola de Profetas', '1987-03-29', 'rua Gupeva, 56 Vila Curuça', '(11) 94071-4391', 'Todas', 'Supervisor', 'muvicej@freehotmail.net12', '', '2019-03-04 03:02:05'),
+(16, 'Escola de Profetas', '1987-03-29', 'rua Gupeva, 56 Vila Curuça', '(11) 94071-4391', 'Todas', 'Líder', 'fifehadaga@directmail24.net1', '', '2019-03-04 03:02:35'),
+(17, 'Escola de Profetas', '1987-03-29', 'rua Gupeva, 56 Vila Curuça', '(11) 94071-4391', 'Todas', 'Líder', 'fifehadaga@directmail24.net12', '', '2019-03-04 03:03:21'),
+(18, 'Escola de Profetas', '1987-03-29', 'rua Gupeva, 56 Vila Curuça', '(11) 94071-4391', 'Todas', 'Líder', 'fifehadaga@directmail24.net123', '', '2019-03-04 03:04:54'),
+(19, 'Escola de Profetas', '1987-03-29', 'rua Gupeva, 56 Vila Curuça', '(11) 94071-4391', 'Todas', 'Líder', 'fifehadaga@directmail24.net1234', '', '2019-03-04 03:05:13'),
+(20, 'Escola de Profetas', '1987-03-29', 'rua Gupeva, 56 Vila Curuça', '(11) 94071-4391', 'Todas', 'Líder', 'fifehadaga@directmail24.net12345', '', '2019-03-04 03:05:31'),
+(21, 'Escola de Profetas', '1987-03-29', 'rua Gupeva, 56 Vila Curuça', '(11) 94071-4391', 'Todas', 'Líder', 'fifehadaga@directmail24.net123456', '', '2019-03-04 03:07:27');
 
 -- --------------------------------------------------------
 
@@ -250,19 +267,19 @@ ALTER TABLE `encontrista`
 -- AUTO_INCREMENT for table `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `infocursos`
 --
 ALTER TABLE `infocursos`
-  MODIFY `idCursos` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idCursos` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `membros`
 --
 ALTER TABLE `membros`
-  MODIFY `idmembros` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idmembros` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `testeapp`

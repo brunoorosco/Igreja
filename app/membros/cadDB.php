@@ -14,6 +14,7 @@
     $nasc = date("Y-m-d",strtotime(str_replace('/','-',$nasc)));
 
    ///////  VERIFICA SE USUARIO EMAIL JÁ ESTA CADASTRADO ///////////
+try{
        $sql = "SELECT * FROM membros where email = '$email'";
        $pdo = Banco::conectar();
        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -31,11 +32,10 @@
       $senha = (geraSenha(6, false, true));
       $senhaCrip = sha1($senha);
 
-    $sql = "INSERT INTO membros (nome, telefone, email, nasc, cargo, endereco, supervisao) values (:nome, :telefone, :email, :nasc, :cargo, :endereco,:supervisao)";
+      $sql = "INSERT INTO membros (nome, telefone, email, nasc, cargo, endereco, supervisao) values (:nome, :telefone, :email, :nasc, :cargo, :endereco,:supervisao)";
+      $sql_ = "INSERT INTO acesso (username, password) values (:email, :senha)";
 
-    $sql_ = "INSERT INTO acesso (username, password) values (:email, :senha)";
 
-    try{
         $db = new db();
         $db = $db->connect();
         $stmt = $db->prepare($sql);
@@ -46,6 +46,28 @@
         $stmt->bindParam(':cargo',$cargo);
         $stmt->bindParam(':endereco',$endereco);
         $stmt->bindParam(':supervisao',$supervisao);
+<<<<<<< HEAD
+        if( $stmt->execute()){
+
+       //    if($cargo == "Bispo" || "Pastor" || "Supervisor"){
+       // $senha = (geraSenha(6, false, true));
+       // $senha1 = sha1($senha);
+       $db = new db();
+       $db = $db->connect();
+       $stmt = $db->prepare($sql_);
+       $stmt->bindParam(':email',$email);
+       // $stmt->bindParam(':senha',$senha1);
+       // $stmt->execute();
+        $stmt->bindParam(':senha',$senhaCrip);
+        $stmt->execute();
+        $db = null;
+    //                        }
+      //  enviarEmail($email,$senha);
+        echo json_encode(array('mens1' => "Cadastrado realizado com sucesso!","mens2"=>"success","mens3"=>"1" ));
+
+
+    }}}catch(PDOException $e){
+=======
         if( $stmt->execute()){     //  $db = null;
             if($cargo === ('Bispo' || 'Pastor' || 'Supervisor'))
             {
@@ -66,11 +88,12 @@
         echo json_encode(array('mens1' => "Cadastrado realizado com sucesso!","mens2"=>"success","mens3"=>"1" ));
         }
     }catch(PDOException $e){
+>>>>>>> e23f200638ce7a74598e1fab2f1a916c2e598acb
         //echo '{"erro": {"texto": '.$e->getMessage().'}';
         echo '{"erro": {"texto": '.$e->getMessage().'}';
     }
 
-}
+
 /*
 $app->get('/cadastro/{id}',function(Request $request, Response $response){
     $id = $request->getAttribute('id');
