@@ -3,11 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
    <link rel="stylesheet" href="http://localhost/www/igreja/_fonts/css/bootstrap.min.css">
     <style type="text/css">
 
-    #conteudo { width: 400px; height: 300px;}
+
+    #conteudo { width: 500px; height: 300px;}
 
       .dropdown-submenu {
       position: relative;
@@ -32,15 +34,15 @@
 
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+  <nav class="navbar navbar-expand-lg navbar-light bg-warning" >
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="#">Secretária     -     </a>
+    <a class="navbar-brand" href="#"></a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="http://localhost/www/igreja/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="http://localhost/www/igreja/"><i class="fa fa-home"> HOME</i></span></a>
       </li>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -69,33 +71,40 @@
                 </ul>
             </li>
           </ul>
-      </li>
-      <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             Ministérios
-           </a>
-           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-             <li><a class="dropdown-item" href="http://localhost/www/igreja/app/membros/">Obreiros</a></li>
-             <li><a class="dropdown-item" href="#">Ministérios KIDS</a></li>
-             <li class="dropdown-item"   href="#">Quatros Seres</a></li>
-            <li class="dropdown-item" href="#">Consulta</a></li>
-             </ul>
-         </li>
+          </li>
+          <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Ministérios
+               </a>
+               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                 <li><a class="dropdown-item" href="http://localhost/www/igreja/app/membros/">Obreiros</a></li>
+                 <li><a class="dropdown-item" href="#">Ministérios KIDS</a></li>
+                 <li class="dropdown-item"   href="#">Quatros Seres</a></li>
+                <li class="dropdown-item" href="#">Consulta</a></li>
+                 </ul>
+             </li>
 
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Igrejas</a>
-      </li>
-      </ul>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Igrejas</a>
+          </li>
+          </ul>
+  </div>
       <li class="dropdown order-1">
-            <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Entrar <span class="caret"></span></button>
+        <?php
+            if(!isset($_SESSION['codigoUsuario'])){?>
+                <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Entrar <span class="caret"></span></button>
+                 <?php }
+            else
+              {?>   <a href="app/login/logout.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Sair</a>
+              <?php } ?>
                 <ul class="dropdown-menu dropdown-menu-right mt-2">
                    <li class="px-3 py-2">
-                       <form class="form" role="form">
+                       <form class="form" role="form" id="for_login" method="post" action="app/login/validaLogin.php">
                             <div class="form-group">
-                                <input id="emailInput" placeholder="Email" class="form-control form-control-sm" type="text" required="">
+                                <input id="emailInput" placeholder="Email" class="form-control form-control-sm" type="text" required="" name="username">
                             </div>
                             <div class="form-group">
-                                <input id="passwordInput" placeholder="Password" class="form-control form-control-sm" type="text" required="">
+                                <input id="passwordInput" placeholder="Password" class="form-control form-control-sm" type="password" required="" name="password">
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-block">Login</button>
@@ -107,8 +116,7 @@
                     </li>
                 </ul>
             </li>
-    </div>
-</nav>
+    </nav>
 
 <div id="modalPassword" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
