@@ -5,9 +5,7 @@
 //  calendario();
  ?>
 
-<!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,7 +24,7 @@
 		<script src='_fonts/js/fullcalendar.min.js'></script>
 		<script src='_fonts/js/pt-br.js'></script>
     <script src='_fonts/js/sweetalert2.all.min.js'></script>
-     <style type="text/css">
+    <style type="text/css">
 
      #conteudo { width: 400px; height: 300px;}
 
@@ -165,6 +163,13 @@ $(document).ready(function() {
 </br>
   <div class="container-fluid">
     <?php
+    if(isset($_SESSION['msg_login'])){
+      echo $_SESSION['msg_login'];
+      unset($_SESSION['msg_login']);
+    }
+    ?>
+
+    <?php
     if(isset($_SESSION['msg'])){
       echo $_SESSION['msg'];
       unset($_SESSION['msg']);
@@ -206,7 +211,6 @@ $(document).ready(function() {
       </div>
     </div>
   </div>
-
 
   <div class="modal fade" id="cadastrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
     <div class="modal-dialog" role="document">
@@ -263,27 +267,23 @@ $(document).ready(function() {
       </div>
     </div>
   </div>
+      <script type="text/javascript">
+        $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+        if (!$(this).next().hasClass('show')) {
+          $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+        }
+        var $subMenu = $(this).next(".dropdown-menu");
+        $subMenu.toggleClass('show');
+        $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+          $('.dropdown-submenu .show').removeClass("show");
+        });
+        return false;
+      });
 
-  
-<script type="text/javascript">
-  $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
-  if (!$(this).next().hasClass('show')) {
-    $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
-  }
-  var $subMenu = $(this).next(".dropdown-menu");
-  $subMenu.toggleClass('show');
-  $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
-    $('.dropdown-submenu .show').removeClass("show");
-  });
-  return false;
-});
+      $('#calendar_').fullCalendar({
+        defaultView: 'listmonth'
+      });
+    </script>
 
-$('#calendar_').fullCalendar({
-  defaultView: 'listmonth'
-});
-
-</script>
-
-</body>
-
+  </body>
 </html>

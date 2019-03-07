@@ -3,7 +3,7 @@
 
   function autenticar($login, $senha) {
         $pdo = Banco::conectar();
-        $sql = "SELECT idLogin, username, password FROM acesso where username = '$login' AND password = '$senha'";
+        $sql = "SELECT idLogin, username, password, idmembro FROM acesso where username = '$login' AND password = '$senha'";
         //echo $sql;
         $exec =  $pdo->query($sql);
         $rows = $exec->fetchAll(PDO::FETCH_ASSOC);
@@ -11,6 +11,8 @@
 
         if ($total > 0){
             $codigoUsuario = $rows[0]['idLogin'];
+            $_SESSION['usuario'] = $rows[0]['username'];
+            $_SESSION['user'] = $rows[0]['idmembro'];
             $_SESSION['COD_USUARIO'] = $codigoUsuario;
             return $codigoUsuario;
         }

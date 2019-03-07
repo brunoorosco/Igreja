@@ -12,17 +12,18 @@ require_once '../../_fonts/config/funcoes.php';
 
   $codigoUsuario = autenticar($login, sha1($senha));
 
-  echo $codigoUsuario;
+  $_SESSION['codigoUsuario'] = $codigoUsuario;
 
   if ($codigoUsuario != 0) {
 
-	   $_SESSION['msg_login'] = "<div class='alert alert-success' role='alert'>Curso alterado com sucesso!!!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
-    header("location:../../index.php");
+
+	   $_SESSION['msg_login'] = "<div class='alert alert-success' role='alert'>Logado com sucesso!!!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
+     header("location:../../index.php?id=".$_SESSION['user']."");
 
   }
   else {
-    $_SESSION['msg_login'] = "<div class='alert alert-danger' role='alert'>usuario não registradoo!!!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
-   header("location:../../index.php");
+    $_SESSION['msg_login'] = "<div class='alert alert-danger' role='alert'>Usuario não registradoo!!!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
+  // header("location:../../index.php");
 
 //    header("location:login.php?getErro='Usuário ou senha errados'");
 
