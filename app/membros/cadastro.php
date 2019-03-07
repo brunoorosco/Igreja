@@ -1,6 +1,7 @@
 <?php
 	include_once("../../_fonts/config/banco.php");
   include_once "../../menu.php";
+	if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

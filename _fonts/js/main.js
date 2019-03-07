@@ -90,11 +90,11 @@ jQuery(document).ready(function(){
 
       				jQuery('#ajax_form').submit(function(){
       					var dados = $(this).serialize();
-                console.log("teste");
+                console.log(dados);
       				 		$.ajax({
       						type:'POST',
       						url: "../../app/membros/cadDB.php",
-      						dataType: 'json',
+      						dataType: 'html',
       						data: dados,
       						success:function(response){ //retorna o echo do php
       							//alert(response);
@@ -105,9 +105,9 @@ jQuery(document).ready(function(){
                     if(response.mens3 == "1")document.getElementById('#ajax_form').reset();
 
       				 		},
-      						erro: function() {
-      						    Swal.fire({
-      						    title: 'Erro ao cadastrar, tente novamente!!!',
+      						erro: function(response) {
+      						  Swal.fire({
+      						  title: 'Erro ao cadastrar, tente novamente!!!',
       							type: 'error',
       							timer: 5000});
       						}

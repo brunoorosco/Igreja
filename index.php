@@ -20,6 +20,7 @@
     <link href='_fonts/css/fullcalendar.min.css' rel='stylesheet' />
     <link href='_fonts/css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
 
+
     <script src='_fonts/js/moment.min.js'></script>
 		<script src='_fonts/js/fullcalendar.min.js'></script>
 		<script src='_fonts/js/pt-br.js'></script>
@@ -51,12 +52,81 @@
           width: 100%;  /*respnsavel pelo formulario de eventos*/
           margin: 0px auto;
       }
+
+      .fc-right,.fc-left, .fc-button button{
+        text-transform: uppercase;  /*respnsavel pelas letras Maisculas*/
+        border-radius: 2px;
+        font-size: 12px;
+        font-weight: 13px;
+        transition: box-shadow linear 0.4s;
+        border-color: #2196f3;
+        margin-top: 10px;
+      }
+      .fc-right button{
+      background-color: #2196f3;
+      }
+      .fc-left, .fc-button button{
+       background-color: #fff;
+      }
+
+      .fc-header-toolbar {
+          text-transform: uppercase;  /*respnsavel pelas letras Maisculas*/
+
+      }
  </style>
 
  <script>
-$(document).ready(function() {
-      $('#calendar').fullCalendar({
-        header: {
+ $(document).ready(function() {
+   var date = new Date();
+   var m = date.getMonth();
+   $('#lista_calendario').fullCalendar({
+
+         header:{
+           left: 'none',
+           center: 'title',
+           right: 'none'
+                   },
+         defaultView: 'listMonth',
+         events: [ <?php
+               $pdo = Banco::conectar();
+               $sql = 'SELECT * FROM eventos';
+               foreach($pdo->query($sql)as $row_events) { ?>
+               {
+               id:     '<?php echo $row_events['id']; ?>',
+               title:  '<?php echo $row_events['titulo']; ?>',
+               start:  '<?php echo $row_events['inicioevento']; ?>',
+               end:    '<?php echo $row_events['terminoevento']; ?>',
+               color:  '<?php echo $row_events['color']; ?>',
+               },<?php
+ 							}
+ 						?>
+         ]
+       });
+       $('#lista_calendario1').fullCalendar({
+             header:{
+               left: 'none',
+               center: 'title',
+               right: 'none'
+                       },
+             defaultDate: moment().add(1,'month'),
+             defaultView: 'listMonth',
+             events: [ <?php
+                   $pdo = Banco::conectar();
+                   $sql = 'SELECT * FROM eventos';
+                   foreach($pdo->query($sql)as $row_events) { ?>
+                   {
+                   id:     '<?php echo $row_events['id']; ?>',
+                   title:  '<?php echo $row_events['titulo']; ?>',
+                   start:  '<?php echo $row_events['inicioevento']; ?>',
+                   end:    '<?php echo $row_events['terminoevento']; ?>',
+                   color:  '<?php echo $row_events['color']; ?>',
+                   },<?php
+                   }
+                 ?>
+             ]
+           });
+  $('#calendar').fullCalendar({
+      header: {
           left: 'prev,next today',
           center: 'title',
           right: 'month,agendaWeek,agendaDay'
@@ -74,8 +144,8 @@ $(document).ready(function() {
           $('#visualizar').modal('show');
           return false;
         },
-        selectable: true,
-        selectHelper: true,
+        // selectable: true,
+        // selectHelper: true,
         select: function(start, end){
           $('#cadastrar #start').val(moment(start).format('DD/MM/YYYY HH:mm:ss'));
           $('#cadastrar #end').val(moment(end).format('DD/MM/YYYY HH:mm:ss'));
@@ -96,7 +166,9 @@ $(document).ready(function() {
 						?>
         ]
       });
+      var mes = 'title';
     });
+
     //Mascara para o campo data e hora
     function DataHora(evento, objeto){
       var keypress=(window.event)?event.keyCode:evento.which;
@@ -163,9 +235,9 @@ $(document).ready(function() {
 </br>
   <div class="container-fluid">
     <?php
-    if(isset($_SESSION['msg_login'])){
-      echo $_SESSION['msg_login'];
-      unset($_SESSION['msg_login']);
+    if(isset($_SESSION['msg_log'])){
+      echo $_SESSION['msg_log'];
+      unset($_SESSION['msg_log']);
     }
     ?>
 
@@ -183,7 +255,8 @@ $(document).ready(function() {
         <div id='calendar'></div>
       </div>
       <div class="col-3">
-        <div id='calendar_'></div>
+        <div id='lista_calendario'></div>
+        <div id='lista_calendario1'></div>
       </div>
 
     </div>
@@ -236,7 +309,7 @@ $(document).ready(function() {
                   <option style="color:#0071c5;" value="#0071c5">Azul Turquesa</option>
                   <option style="color:#FF4500;" value="#FF4500">Laranja</option>
                   <option style="color:#8B4513;" value="#8B4513">Marrom</option>
-                  <option style="color:#1C1C1C;" value="#1C1C1C">Preto</option>
+                  <option style="color:#FF1493;" value="#FF1493">Pink</option>
                   <option style="color:#436EEE;" value="#436EEE">Royal Blue</option>
                   <option style="color:#A020F0;" value="#A020F0">Roxo</option>
                   <option style="color:#40E0D0;" value="#40E0D0">Turquesa</option>

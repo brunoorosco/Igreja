@@ -1,5 +1,6 @@
  <?php
-  //session_start();
+
+  if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
 
   function autenticar($login, $senha) {
         $pdo = Banco::conectar();

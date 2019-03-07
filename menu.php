@@ -1,5 +1,6 @@
 <?php
-session_start();
+if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
+
  ?>
 <html>
 <head>
@@ -90,16 +91,21 @@ session_start();
               </ul>
       </div>
           <li class="dropdown order-1">
-        <label> <?php //   if(!isset($_SESSION['user']))
+            <?php
 
-                          echo( $_SESSION['usuario']); ?></label>
-        <?php
-            if(!isset($_SESSION['$codigoUsuario'])){?>
-                <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Entrar <span class="caret"></span></button>
-                 <?php }
-            else
-              { ?>   <a href="app/login/logout.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Sair</a>
-              <?php } ?>
+                if(isset($_SESSION['usuario'])){
+                    echo( $_SESSION['usuario']);?>
+
+                    <input type="button" class="btn btn-outline-secondary " onclick="location.href='http://localhost/www/igreja/app/login/logout.php';"value="Sair"/>
+                <?php
+                         }
+                      else {?>
+
+                      <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Entrar <span class="caret"></span></button>
+                  <?php     if(isset($_SESSION['msg_log']))
+                        echo( $_SESSION['msg_log']);} ?>
+
+
                 <ul class="dropdown-menu dropdown-menu-right mt-2">
                    <li class="px-3 py-2">
                        <form class="form" role="form" id="for_login" method="post" action="app/login/validaLogin.php">

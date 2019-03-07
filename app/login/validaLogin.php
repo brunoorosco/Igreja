@@ -18,12 +18,21 @@ require_once '../../_fonts/config/funcoes.php';
 
 
 	   $_SESSION['msg_login'] = "<div class='alert alert-success' role='alert'>Logado com sucesso!!!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
+	   $_SESSION['msg_log'] = "<script>	Swal.fire({
+                title: 'Login efetuado com sucesso!',
+                        type: 'success',
+                        timer: 5000});</script>";
      header("location:../../index.php?id=".$_SESSION['user']."");
 
   }
   else {
-    $_SESSION['msg_login'] = "<div class='alert alert-danger' role='alert'>Usuario não registradoo!!!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
-  // header("location:../../index.php");
+    session_unset();
+    $_SESSION['msg_login'] = "<div class='alert alert-danger' role='alert'>Usuario não registrado!!!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
+    $_SESSION['msg_log'] = "<script>	Swal.fire({
+               title: 'Acesso Negado!',
+                       type: 'error',
+                       timer: 5000});</script>";
+   header("location:../../index.php");
 
 //    header("location:login.php?getErro='Usuário ou senha errados'");
 
