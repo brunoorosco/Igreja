@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once '../../_fonts/config/banco.php';
 require_once '../../_fonts/config/funcoes.php';
 

@@ -1,5 +1,5 @@
  <?php
-  session_start();
+  //session_start();
 
   function autenticar($login, $senha) {
         $pdo = Banco::conectar();

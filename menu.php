@@ -1,4 +1,5 @@
 <?php
+session_start();
  ?>
 <html>
 <head>
@@ -89,15 +90,16 @@
               </ul>
       </div>
           <li class="dropdown order-1">
-        <label> <?php    if(isset($_SESSION['user']))
-                          echo $_SESSION['user']; ?></label>
+        <label> <?php //   if(!isset($_SESSION['user']))
+
+                          echo( $_SESSION['usuario']); ?></label>
         <?php
-            //if(!isset($_SESSION['$codigoUsuario'])){?>
+            if(!isset($_SESSION['$codigoUsuario'])){?>
                 <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Entrar <span class="caret"></span></button>
-                 <?php //}
-            //else
-            //  { ?>   <a href="app/login/logout.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Sair</a>
-              <?php //} ?>
+                 <?php }
+            else
+              { ?>   <a href="app/login/logout.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Sair</a>
+              <?php } ?>
                 <ul class="dropdown-menu dropdown-menu-right mt-2">
                    <li class="px-3 py-2">
                        <form class="form" role="form" id="for_login" method="post" action="app/login/validaLogin.php">
