@@ -28,26 +28,7 @@
     <style type="text/css">
 
      #conteudo { width: 400px; height: 300px;}
-
-       .dropdown-submenu {
-       position: relative;
-       }
-
-     .dropdown-submenu a::after {
-       transform: rotate(-90deg);
-       position: absolute;
-       right: 6px;
-       top: .8em;
-       }
-
-     .dropdown-submenu .dropdown-menu {
-       top: 0;
-       left: 100%;
-       margin-left: .1rem;
-       margin-right: .1rem;
-       }
-
-       #calendario{
+     #calendario{
           position: relative;
           width: 100%;  /*respnsavel pelo formulario de eventos*/
           margin: 0px auto;
@@ -341,18 +322,7 @@
     </div>
   </div>
       <script type="text/javascript">
-        $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
-        if (!$(this).next().hasClass('show')) {
-          $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
-        }
-        var $subMenu = $(this).next(".dropdown-menu");
-        $subMenu.toggleClass('show');
-        $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
-          $('.dropdown-submenu .show').removeClass("show");
-        });
-        return false;
-      });
-
+  
       $('#calendar_').fullCalendar({
         defaultView: 'listmonth'
       });

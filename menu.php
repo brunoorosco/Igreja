@@ -6,13 +6,12 @@ if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-
     <link rel="stylesheet" href="http://localhost/www/igreja/_fonts/css/bootstrap.min.css">
     <style type="text/css">
 
     #conteudo { width: 500px; height: 300px;}
 
-      .dropdown-submenu {
+  /*    .dropdown-submenu {
       position: relative;
       }
 
@@ -30,40 +29,85 @@ if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
       margin-right: .1rem;
       }
       .marginBottom-0 {margin-bottom:0;}
+*/
+.dropdown-submenu {
+position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+top: 0;
+left: 100%;
+margin-top: -6px;
+margin-left: -1px;
+-webkit-border-radius: 0 6px 6px 6px;
+-moz-border-radius: 0 6px 6px;
+border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+
+}
+
+.dropdown-submenu>a:after {
+display: block;
+content: " ";
+float: right;
+width: 0;
+height: 0;
+border-color: transparent;
+border-style: solid;
+border-width: 5px 0 5px 5px;
+border-left-color: #ccc;
+margin-top: 5px;
+margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+border-left-color: #000;
+}
+
+.dropdown-submenu.pull-left {
+float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+left: -100%;
+margin-left: 10px;
+-webkit-border-radius: 6px 0 6px 6px;
+-moz-border-radius: 6px 0 6px 6px;
+border-radius: 6px 0 6px 6px;
+}
 
 </style>
-
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="#"></a>
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" href="http://localhost/www/igreja/"><i class="fa fa-home"> HOME</i></span></a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                SEDE
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Cadastro</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="http://localhost/www/igreja/app/encontro/cad_Encontrista.php">Encontristas</a></li>
-                  <li><a class="dropdown-item disabled" href="">Equipe</a></li>
-                  <li><a class="dropdown-item" href="http://localhost/www/igreja/app/membros/cadastro.php">Membros</a></li>
-                </ul>
-              </li>
-                <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Consulta</a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="http://localhost/www/igreja/app/encontro/encontrista.php">Encontristas</a></li>
-                      <li><a class="dropdown-item" href="">Equipe</a></li>
-                      <li><a class="dropdown-item" href="http://localhost/www/igreja/app/membros/membros.php">Membros</a></li>
-                    </ul>
+  <nav class="navbar navbar-expand-lg navbar-light bg-warning"  role="navigation">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" >
+            <ul class="nav navbar-nav">
+                <li class="nav-item active">
+                    <a class="dropdown-item" href="http://localhost/www/igreja/"><i class="fa fa-home"> HOME</i></a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i class="fa fa-synagogue"> SEDE</i><b class="caret"></b></a>
+                      <ul class="dropdown-menu multi-level" aria-labelledby="navbarDropdownMenuLink">
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Cadastro</a>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="http://localhost/www/igreja/app/encontro/cad_Encontrista.php">Encontristas</a></li>
+                            <li><a class="dropdown-item disabled" href="">Equipe</a></li>
+                            <li><a class="dropdown-item" href="http://localhost/www/igreja/app/membros/cadastro.php">Membros</a></li>
+                          </ul>
+                        </li>
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Consulta</a>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="http://localhost/www/igreja/app/encontro/encontrista.php">Encontristas</a></li>
+                            <li><a class="dropdown-item" href="">Equipe</a></li>
+                            <li><a class="dropdown-item" href="http://localhost/www/igreja/app/membros/membros.php">Membros</a></li>
+                          </ul>
+                        </li>
                 <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Curso</a>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="http://localhost/www/igreja/app/curso/Cursos.php">Novo Curso</a></li>
@@ -71,25 +115,33 @@ if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
                       <li><a class="dropdown-item" href="http://localhost/www/igreja/app/membros/membros.php">Informações de Curso</a></li>
                     </ul>
                 </li>
+                <li class="divider"></li>
+                <li class="dropdown-submenu">
+                    <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Ministérios</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Obreiros</a></li>
+                        <li><a class="dropdown-item" href="#">Ministério KIDS</a></li>
+                        <li><a class="dropdown-item" href="#">Casais de Paz</a></li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Quatro Seres</a>
+                            <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Dança</a></li>
+                                        <li><a  class="dropdown-item" href="#">Levitas</a></li>
+                                        <li><a class="dropdown-item" href="#">Teatro</a></li>
+                                        <li><a class="dropdown-item" href="#">Aviva Produções</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item" href="#">Consultas</a></li>
+                    </ul>
+                </li>
               </ul>
-              </li>
-              <li class="nav-item dropdown">
-                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     Ministérios
-                   </a>
-                   <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                     <li><a class="dropdown-item" href="http://localhost/www/igreja/app/membros/">Obreiros</a></li>
-                     <li><a class="dropdown-item" href="#">Ministérios KIDS</a></li>
-                     <li class="dropdown-item"   href="#">Quatros Seres</a></li>
-                    <li class="dropdown-item" href="#">Consulta</a></li>
-                     </ul>
-                 </li>
-
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Igrejas</a>
-              </li>
+            </li>
+            <li class="nav-item active">
+                <a class="dropdown-item" href="#"><i class="fa fa-bible"> IGREJAS</i></span></a>
+            </li>
               </ul>
       </div>
+      <ul class="nav navbar-nav navbar-right">
           <li class="dropdown order-1">
             <?php
 
@@ -125,7 +177,9 @@ if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
                     </li>
                 </ul>
             </li>
-        </nav>
+          </ul>
+        </div>
+      </nav>
 
 <div id="modalPassword" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -145,9 +199,12 @@ if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
     </div>
 </div>
 
+
+
 <script src="http://localhost/www/igreja/_fonts/js/jquery-3.3.1.min.js"></script>
 <script src="http://localhost/www/igreja/_fonts/js/popper.min.js"></script>
 <script src="http://localhost/www/igreja/_fonts/js/bootstrap.min.js"></script>
+<script src="http://localhost/www/igreja/_fonts/js/main.js"></script>
 
 </body>
 </html>

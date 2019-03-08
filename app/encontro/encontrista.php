@@ -159,7 +159,7 @@
                  </div>
               </div>
             </div>
-        <script src="../../_fonts/js/main.js"></script>
+      
        <script type="text/javascript">
         $('#exampleModal').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget) // Button that triggered the modal
@@ -174,9 +174,9 @@
           modal.find('#recipient-name').val(recipientnome)
           modal.find('#detalhes').val(recipientdetalhes)
 
-        })
+        });
 
-       </script>
+     </script>
 
 
 </body>

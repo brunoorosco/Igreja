@@ -44,6 +44,7 @@
         margin-top: 150px;
         padding-bottom: 60px;
         box-shadow: 10px 10px 5px rgba(6, 1, 1, 0.50);
+				border-radius: 10px;
       }
 
       @media(min-width:700px) {
@@ -65,42 +66,56 @@
       h1 select{
         text-align: center;
 				color: white!important;
-      }
+				     }
 
 option:not(first-child){
 color: white;
   }
+
+	.btn-group-justified {
+	  display: table;
+	  width: 100%;
+		table-layout: fixed;
+	  border-collapse: separate; }
+	  .btn-group-justified .btn,
+	  .btn-group-justified .btn-group {
+	  float: none;
+	  display: table-cell;
+	  width: 1%; }
+	  .btn-group-justified .btn .btn,
+	  .btn-group-justified .btn-group .btn {
+	   width: 100%; }
 </style>
 	<body>
        <div class="container">
        		<div class="row"></div>
        				<div class="col-md-6 offset-md-3">
 									<form  class="formulario" id="ajax_form" action="" method="post"  >
-										<h3>Cadastro de Membros</h3><br>
+										<h3  class="h3"style="text-align: center;">Cadastro de Membros</h3><br>
 				 						<div class="form-group ">
-				 								<input type="text" name="nome" class="form-control" placeholder="Nome Completo" required=""style="border-radius: 0px!important;
+				 								<input type="text" name="nome" class="form-control" placeholder="Nome Completo" required=""style="border-radius: 8px!important;
 			                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
 				 						</div>
 
 										<div class="form-group">
-										  	<input type="text" name="endereco" class="form-control" placeholder="Endereço" required=""style="border-radius: 0px!important;
+										  	<input type="text" name="endereco" class="form-control" placeholder="Endereço" required=""style="border-radius: 8px!important;
 			                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
 										</div>
 
 										<div class="form-group input-group">
-										 	 <input type="text" name="telefone" class="form-control tel" placeholder="Celular com DDD" id="tel" required=""style="border-radius: 0px!important;
+										 	 <input type="text" name="telefone" class="form-control tel" placeholder="Celular com DDD" id="tel" required=""style="border-radius: 8px!important;
 		                   background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
-											 <input type="text" class="form-control" name="nascimento" id="data" placeholder="Data de Nascimento" maxlength="10"style="border-radius: 0px!important;
+											 <input type="text" class="form-control" name="nascimento" id="data" placeholder="Data de Nascimento" maxlength="10"style="border-radius: 8px!important;
 		                   background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
 										</div>
 
 						 				<div class="form-group">
-										 	<input type="email" name="email" class="form-control" placeholder="seu_email@email" required=""style="border-radius: 0px!important;
+										 	<input type="email" name="email" class="form-control" placeholder="seu_email@email" required=""style="border-radius: 8px!important;
 		                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
 										</div>
 
 										<div class="form-group input-group">
-													<select class="form-control" id="cargo" name="cargo" style="text: #fff !important;color: gray;border-radius: 0px!important;
+													<select class="form-control" id="cargo" name="cargo" style="text: #fff !important;color: gray;border-radius: 8px!important;
 	                        background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;">
 														<option disable hidden value="" >Cargo</option>
 														<option>Bispo</option>
@@ -111,22 +126,26 @@ color: white;
 														<option>Anfitrião</option>
 														<option>Membro</option>
 													</select>
-													<input type="text" name="supervisao" class="form-control" placeholder="CEM" required=""style="border-radius: 0px!important;
+													<input type="text" name="supervisao" class="form-control" placeholder="CEM" required=""style="border-radius: 8px!important;
 				                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
 										</div>
-										<div class="form-group">
-				 									<button type="submit"  id="Confirmar" class="btn btn-dark" style="z-index=1;width: 100%;
-			                        border-radius: 0px;">Confirmar</button>
-										</div>
+										<div class="btn-group btn-group-justified" role="group">
+											 <div class="btn-group" role="group">
+													<button type="reset"  id="reset" class="btn btn-dark btn-block" style="z-index=1;width:100%;
+															border-radius: 8px;border-color: #707070 !important;focus-color:#fff;">Limpar</button>
+											 </div>
+											 <div class="btn-group " role="group">
+												 <button type="submit"  id="Confirmar" class="btn btn-dark btn-block" style="z-index=1;width: 100%;
+														border-radius: 8px;border-color: #707070 !important;">Confirmar</button>
+											</div>
+				 						</div>
 								</form>
 		     			</div>
 		  			</div>
 				</div>
 		<script type="text/javascript" src="../../_fonts/js/jquery.mask.min.js"></script>
 		<script type="text/javascript" src="../../_fonts/js/sweetalert2.all.min.js"></script>
-		<script type="text/javascript" src="../../_fonts/js/main.js"></script>
-
-
+	
 	<script type="text/javascript">
 		  $('#cargo').change(function(){
 	    $(this).css('color', 'white');

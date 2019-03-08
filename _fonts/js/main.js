@@ -6,17 +6,17 @@
 			  $('#cpf').mask('000.000.000-00');
 			  				 });
 
-       $('.dropdown-submenu > a').on("click", function(e) {
-                     var submenu = $(this);
-                     $('.dropdown-submenu .dropdown-menu').removeClass('show');
-                     submenu.next('.dropdown-menu').addClass('show');
-                     e.stopPropagation();
+         $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+                 if (!$(this).next().hasClass('show')) {
+                   $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+                 }
+                 var $subMenu = $(this).next(".dropdown-menu");
+                 $subMenu.toggleClass('show');
+                 $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+                   $('.dropdown-submenu .show').removeClass("show");
                  });
-
-                 $('.dropdown').on("hidden.bs.dropdown", function() {
-                     // hide any open menus when parent closes
-                     $('.dropdown-menu.show').removeClass('show');
-                 });
+                 return false;
+               });
 
 /* jQuery(document).ready(function(){
 				jQuery('#ajax_form').submit(function(){
@@ -62,8 +62,8 @@ jQuery(document).ready(function(){
 					var dados = $(this).serialize();
 				 		$.ajax({
 						type:'POST',
-						url: "../../app/membros/cad_Encontrista.php",
-						dataType: 'html',
+						url: "../../app/encontro/cad_DB_Encontrista.php",
+						dataType: 'json',
 						data: dados,
 						success:function(response){ //retorna o echo do php
 							//alert(response);
@@ -71,7 +71,8 @@ jQuery(document).ready(function(){
 							title: response.mens1,
 							type:  response.mens2,
 							timer: 5000});
-							document.getElementById('ajax_form').reset();
+              if(response.mens3 == '1')resetform();
+							//document.getElementById('#formulario_encontrista').reset();
 
 				 		},
 						erro: function() {
@@ -86,23 +87,32 @@ jQuery(document).ready(function(){
 			   	});
 			});
 
-      jQuery(document).ready(function(){
+      function resetform(){
+        	$(':input')
+          .not('.button,:submit,:reset,:hidden')
+          .val('')
+          .removeAttr('checked')
+          .removeAttr('selected');
+      }
 
-      				jQuery('#ajax_form').submit(function(){
+      $(document).ready(function(){
+      				$('#ajax_form').submit(function(){
       					var dados = $(this).serialize();
-                console.log(dados);
+                event.preventDefault();
       				 		$.ajax({
       						type:'POST',
       						url: "../../app/membros/cadDB.php",
-      						dataType: 'html',
+      						dataType: 'json',     // para obter a resposta no formato json e rodar no sweetalert2
       						data: dados,
       						success:function(response){ //retorna o echo do php
-      							//alert(response);
+
+                  //  console.log("sucesso ->");
+                  //  console.log(dados);
       				 			Swal.fire({
       							title: response.mens1,
       							type:  response.mens2,
       							timer: 5000});
-                    if(response.mens3 == "1")document.getElementById('#ajax_form').reset();
+                    if(response.mens3 == '4')resetform();
 
       				 		},
       						erro: function(response) {
