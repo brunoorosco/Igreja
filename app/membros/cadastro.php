@@ -2,6 +2,23 @@
 	include_once("../../_fonts/config/banco.php");
   include_once "../../menu.php";
 	if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
+
+	function carrega_dados(){
+		if(isset($_SESSION['usuario'])){
+				$email = $_SESSION['usuario'] ;
+				$sql = "SELECT supervisao FROM membros where email = '$email'";
+				$pdo = Banco::conectar();
+				$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+				$exec =  $pdo->query($sql);
+				$rows = $exec->fetchAll(PDO::FETCH_ASSOC);
+				$total = count($rows);
+				Banco::desconectar();
+
+		if($total > 0 ){
+
+				echo $rows[0]['supervisao'];
+
+	}}}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -118,15 +135,15 @@ color: white;
 													<select class="form-control" id="cargo" name="cargo" style="text: #fff !important;color: gray;border-radius: 8px!important;
 	                        background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;">
 														<option disable hidden value="" >Cargo</option>
-														<option>Bispo</option>
-														<option>Pastor</option>
-														<option>Supervisor</option>
-														<option>Líder</option>
-														<option>Auxiliar</option>
-														<option>Anfitrião</option>
-														<option>Membro</option>
+														<option value="1">Bispo</option>
+														<option value="1">Pastor</option>
+														<option value="1">Supervisor</option>
+														<option value="2">Líder</option>
+														<option value="2">Auxiliar</option>
+														<option value="2">Anfitrião</option>
+														<option value="2">Membro</option>
 													</select>
-													<input type="text" name="supervisao" class="form-control" placeholder="CEM" required=""style="border-radius: 8px!important;
+													<input type="text" name="supervisao" id= "cem" class="form-control" placeholder="CEM" value="<?php echo carrega_dados(); ?>" style="border-radius: 8px!important;
 				                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
 										</div>
 										<div class="btn-group btn-group-justified" role="group">
@@ -145,11 +162,15 @@ color: white;
 				</div>
 		<script type="text/javascript" src="../../_fonts/js/jquery.mask.min.js"></script>
 		<script type="text/javascript" src="../../_fonts/js/sweetalert2.all.min.js"></script>
-	
+
 	<script type="text/javascript">
 		  $('#cargo').change(function(){
 	    $(this).css('color', 'white');
 	  });
+
+		$('#cem').css('color','#cccccc');
+		$('#cem').attr('disabled', true);
+
 
   </script>
 

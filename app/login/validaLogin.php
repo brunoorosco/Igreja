@@ -1,5 +1,5 @@
 <?php
-session_start();
+if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
 require_once '../../_fonts/config/banco.php';
 require_once '../../_fonts/config/funcoes.php';
 

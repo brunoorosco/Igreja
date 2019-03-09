@@ -146,9 +146,9 @@ border-radius: 6px 0 6px 6px;
             <?php
 
                 if(isset($_SESSION['usuario'])){
-                    echo( $_SESSION['usuario']);?>
+                    echo "<i class='fa fa-user'> ".($_SESSION['usuario'])."</i>";?>
 
-                    <input type="button" class="btn btn-outline-secondary " onclick="location.href='http://localhost/www/igreja/app/login/logout.php';"value="Sair"/>
+                    <input type="button" class="btn btn-outline-secondary " onclick="location.href='http://localhost/www/igreja/app/login/logout.php';" value="Sair"/>
                 <?php
                          }
                       else {?>
@@ -160,7 +160,7 @@ border-radius: 6px 0 6px 6px;
 
                 <ul class="dropdown-menu dropdown-menu-right mt-2">
                    <li class="px-3 py-2">
-                       <form class="form" role="form" id="for_login" method="post" action="app/login/validaLogin.php">
+                       <form class="form" role="form" id="for_login" method="post" action="http://localhost/www/igreja/app/login/validaLogin.php">
                             <div class="form-group">
                                 <input id="emailInput" placeholder="Email" class="form-control form-control-sm" type="text" required="" name="username">
                             </div>

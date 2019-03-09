@@ -33,7 +33,7 @@ try{
       $senhaCrip = sha1($senha);
 
       $sql = "INSERT INTO membros (nome, telefone, email, nasc, cargo, endereco, supervisao) values (:nome, :telefone, :email, :nasc, :cargo, :endereco,:supervisao)";
-      $sql_ = "INSERT INTO acesso (username, password) values (:email, :senha)";
+      $sql_ = "INSERT INTO acesso (username, password, idmembro) values (:email, :senha, :idmembro)";
 
 
         $db = new db();
@@ -49,21 +49,23 @@ try{
 
         if( $stmt->execute()){
 
-       //    if($cargo == "Bispo" || "Pastor" || "Supervisor"){
-       // $senha = (geraSenha(6, false, true));
-       // $senha1 = sha1($senha);
-       $db = new db();
-       $db = $db->connect();
-       $stmt = $db->prepare($sql_);
-       $stmt->bindParam(':email',$email);
-       // $stmt->bindParam(':senha',$senha1);
-       // $stmt->execute();
-        $stmt->bindParam(':senha',$senhaCrip);
-        $stmt->execute();
-        $db = null;
-    //                        }
-      //  enviarEmail($email,$senha);
-        echo json_encode(array('mens1' => "Cadastrado realizado com sucesso!","mens2"=>"success","mens3"=>"4" ));
+            $id = $db->lastinsertId();
+           // if($cargo == "Bispo" || "Pastor" || "Supervisor"){
+           // $senha = (geraSenha(6, false, true));
+           // $senha1 = sha1($senha);
+           $db = new db();
+           $db = $db->connect();
+           $stmt = $db->prepare($sql_);
+           $stmt->bindParam(':email',$email);
+           // $stmt->bindParam(':senha',$senha1);
+           // $stmt->execute();
+            $stmt->bindParam(':senha',$senhaCrip);
+            $stmt->bindParam(':idmembro',$id);
+            $stmt->execute();
+            $db = null;
+        //                        }
+          //  enviarEmail($email,$senha);
+            echo json_encode(array('mens1' => "Cadastrado realizado com sucesso!","mens2"=>"success","mens3"=>"4" ));
 
 
     }}

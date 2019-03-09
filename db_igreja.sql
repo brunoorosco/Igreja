@@ -29,10 +29,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `acesso` (
-  `idLogin` int(10) NOT NULL,
+  `idLogin` int(10) NOT NULL prima KEY,
   `username` varchar(40) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `idmembro` int(10) NOT NULL
+  `idmembro` int(10) NOT NULL,
+  FOREIGN KEY(idmembro) REFERENCES membros(idmembros)ON DELETE CASCADE ON UPDATE NO action
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

@@ -66,7 +66,8 @@ jQuery(document).ready(function(){
 						dataType: 'json',
 						data: dados,
 						success:function(response){ //retorna o echo do php
-							//alert(response);
+
+              //alert(response);
 				 			Swal.fire({
 							title: response.mens1,
 							type:  response.mens2,
@@ -75,9 +76,9 @@ jQuery(document).ready(function(){
 							//document.getElementById('#formulario_encontrista').reset();
 
 				 		},
-						erro: function() {
-						    Swal.fire({
-						    title: 'Erro ao cadastrar, tente novamente!!!',
+						erro: function(response) {
+              Swal.fire({
+						  title: 'Erro ao cadastrar, tente novamente!!!',
 							type: 'error',
 							timer: 5000});
 						}
@@ -106,9 +107,7 @@ jQuery(document).ready(function(){
       						data: dados,
       						success:function(response){ //retorna o echo do php
 
-                  //  console.log("sucesso ->");
-                  //  console.log(dados);
-      				 			Swal.fire({
+                  	Swal.fire({
       							title: response.mens1,
       							type:  response.mens2,
       							timer: 5000});
@@ -116,6 +115,9 @@ jQuery(document).ready(function(){
 
       				 		},
       						erro: function(response) {
+                    //console.log(response);
+                    alert(response);
+
       						  Swal.fire({
       						  title: 'Erro ao cadastrar, tente novamente!!!',
       							type: 'error',
