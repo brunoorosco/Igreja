@@ -14,8 +14,6 @@
 		<meta name="keywords" content="Secretária Virtual">
 		<meta name="author" content="Comunidade Avivamento em Cristo">
 
-		<link rel="icon" href="favicon.ico" type="image/x-icon">
-    	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 		<title>Cadastro de Membros</title>

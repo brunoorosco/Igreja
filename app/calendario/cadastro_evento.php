@@ -1,11 +1,14 @@
 <?php
-        session_start();
+      if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
         require_once '../../_fonts/config/banco.php';
         require_once '../../_fonts/config/funcoes.php';
 
         $titulo = $_POST["nome"];
-        $inicioevento = conv_dataHora($_POST["datainicio"]);
-        $terminoevento = conv_dataHora($_POST["datatermino"]);
+        $inicio = implode(' ',array($_POST["datainicio"],$_POST["hora_inicio"]));
+        $termino = implode(' ',array($_POST["datatermino"],$_POST["hora_termino"]));
+
+        $inicioevento = conv_dataHora($inicio);
+        $terminoevento = conv_dataHora($termino);
       //  $datainicio = date("Y-m-d",strtotime(str_replace('/','-',$datainicio)));
       //  $datatermino = date("Y-m-d",strtotime(str_replace('/','-',$datatermino)));
 

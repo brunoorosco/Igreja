@@ -5,6 +5,10 @@ if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="icon" href="http://localhost/www/igreja/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link rel="stylesheet" href="http://localhost/www/igreja/_fonts/css/bootstrap.min.css">
     <style type="text/css">
@@ -91,14 +95,16 @@ border-radius: 6px 0 6px 6px;
                 <li class="nav-item active">
                     <a class="dropdown-item" href="http://localhost/www/igreja/"><i class="fa fa-home"> HOME</i></a>
                 </li>
+                <?php   if(isset($_SESSION['usuario'])){    ?>
                 <li class="nav-item dropdown">
                     <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i class="fa fa-synagogue"> SEDE</i><b class="caret"></b></a>
                       <ul class="dropdown-menu multi-level" aria-labelledby="navbarDropdownMenuLink">
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Cadastro</a>
                           <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="http://localhost/www/igreja/app/encontro/cad_Encontrista.php">Encontristas</a></li>
-                            <li><a class="dropdown-item disabled" href="">Equipe</a></li>
-                            <li><a class="dropdown-item" href="http://localhost/www/igreja/app/membros/cadastro.php">Membros</a></li>
+                            <li><a class="dropdown-item" href="http://localhost/www/igreja/app/encontro/cad_Encontrista.php">Novo Encontrista</a></li>
+                            <li><a class="dropdown-item disabled" href="">Nova Equipe</a></li>
+                            <li><a class="dropdown-item" href="http://localhost/www/igreja/app/membros/cadastro.php">Novo Membro</a></li>
+                            <li><a class="dropdown-item" href="http://localhost/www/igreja/app/calendario/cadastroEvento.php">Novo Evento</a></li>
                           </ul>
                         </li>
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Consulta</a>
@@ -136,6 +142,7 @@ border-radius: 6px 0 6px 6px;
                 </li>
               </ul>
             </li>
+          <?php } ?>
             <li class="nav-item active">
                 <a class="dropdown-item" href="#"><i class="fa fa-bible"> IGREJAS</i></span></a>
             </li>
@@ -149,13 +156,14 @@ border-radius: 6px 0 6px 6px;
                     echo "<i class='fa fa-user'> ".($_SESSION['usuario'])."</i>";?>
 
                     <input type="button" class="btn btn-outline-secondary " onclick="location.href='http://localhost/www/igreja/app/login/logout.php';" value="Sair"/>
+
                 <?php
                          }
                       else {?>
 
                       <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Entrar <span class="caret"></span></button>
                   <?php     if(isset($_SESSION['msg_log']))
-                        echo( $_SESSION['msg_log']);} ?>
+                                 echo( $_SESSION['msg_log']);} ?>
 
 
                 <ul class="dropdown-menu dropdown-menu-right mt-2">

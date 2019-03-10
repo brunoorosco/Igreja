@@ -13,8 +13,6 @@
     <meta name="author" content="Comunidade Avivamento em Cristo">
 
     <title>Portal Comunidade</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="_fonts/css/bootstrap.min.css">
     <link href='_fonts/css/fullcalendar.min.css' rel='stylesheet' />
