@@ -20,10 +20,6 @@ include_once "../../menu.php";
             <span class="input-group-text" id="basic-addon1">Procurar</span>
           </div>
           <input type="text" class="form-control" placeholder="Membros" aria-label="Username" aria-describedby="basic-addon1">
-
-          <input type="text" class="form-control" placeholder="CEM" aria-label="Username" aria-describedby="basic-addon1">
-
-          <input type="text" class="form-control" placeholder="Aniversário" aria-label="Username" aria-describedby="basic-addon1">
         </div>
       </div>
     </div>
@@ -129,7 +125,7 @@ include_once "../../menu.php";
                 </table>
 
       </div></div></div>
-      <script src="../../_fonts/js/main.js"></script>
+    
 
        <script type="text/javascript">
         $('#editModal').on('show.bs.modal', function (event) {

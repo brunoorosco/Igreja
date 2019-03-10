@@ -91,17 +91,17 @@
           	<form class="formulario"  id="formulario_encontrista" action="" method="post" >
           				<h3 class="h3">Inscrição de Encontristas</h3><br>
           				<div class="form-group ">
-          				<input type="text" name="nome" class="form-control" placeholder="Nome Completo" required="" style="border-radius: 8px!important;
+          				<input type="text" name="nome" id="nome" class="form-control" placeholder="Nome Completo" required="" style="border-radius: 8px!important;
                   background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
           				</div>
 
           				<div class="form-group">
-          				  	<input type="text" name="endereco" class="form-control" placeholder="Endereço" required=""style="border-radius: 8px!important;
+          				  	<input type="text" name="endereco" id="end" class="form-control" placeholder="Endereço" required=""style="border-radius: 8px!important;
                       background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
           				</div>
 
           				 <div class="form-group">
-          				 	<input type="text" name="telefone" class="form-control tel" placeholder="Celular com DDD" id="" required=""style="border-radius: 8px!important;
+          				 	<input type="text" name="telefone" class="form-control tel" placeholder="Celular com DDD" id="tel" required=""style="border-radius: 8px!important;
                     background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
           				 </div>
 
@@ -116,17 +116,23 @@
                         background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
           				</div>
 
-           				<div class="form-group">
-          				 	<input type="email" name="email" class="form-control" placeholder="seu_email@email" required=""style="border-radius: 8px!important;
+           				<div class="form-group ">
+          				 	<input type="email" name="email" id="email" class="form-control" placeholder="seu_email@email" required=""style="border-radius: 8px!important;
                     background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
           				</div>
 
-          				<div class="form-group">
-          				 	<input type="text" name="tel1" class="form-control tel" placeholder="Telefone ...." id="" required=""style="border-radius: 8px!important;
+          				<div class="form-group input-group">
+          				 	<input type="text" name="amigotel1" class="form-control" placeholder="Amigo 1" id="am1" style="border-radius: 8px!important;
+                    background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+          				 	<input type="text" name="tel1" class="form-control tel" placeholder="Telefone 1 ...." id="tel1" style="border-radius: 8px!important;
                     background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
           				 </div>
-          				 <div class="form-group">
-          				 	<input type="text" name="tel2" class="form-control tel" placeholder="Telefone ...." id="" required=""style="border-radius: 8px!important;
+
+          				 <div class="form-group input-group">
+          				 	<input type="text" name="amigotel2" class="form-control" placeholder="Amigo 2" id="am2" style="border-radius: 8px!important;
+                    background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+
+          				 	<input type="text" name="tel2" class="form-control tel" placeholder="Telefone 2...." id="tel2" style="border-radius: 8px!important;
                     background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
           				 </div>
 
@@ -148,7 +154,7 @@
 
 		<script type="text/javascript" src="../../_fonts/js/jquery.mask.min.js"></script>
 		<script type="text/javascript" src="../../_fonts/js/sweetalert2.all.min.js"></script>
-	
+
 		<script type="text/javascript">
         $('#sexo').change(function(){
           $(this).css('color', 'white');

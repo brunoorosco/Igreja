@@ -41,7 +41,7 @@
                         <?php
                         include '../../_fonts/config/banco.php';
                         $pdo = Banco::conectar();
-                        $sql = 'SELECT * FROM encontrista ORDER BY sexoEnc ASC';
+                        $sql = 'SELECT * FROM encontrista ORDER BY sexoEnc ASC, nomeEnc ASC';
                         $i = 1;
                         foreach($pdo->query($sql)as $row)
                         {
@@ -159,7 +159,7 @@
                  </div>
               </div>
             </div>
-      
+
        <script type="text/javascript">
         $('#exampleModal').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget) // Button that triggered the modal

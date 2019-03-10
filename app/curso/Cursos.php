@@ -56,6 +56,7 @@
 									<td class="col-xs-2 col-sm-2  col-md-2 col-lg-2"><?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['data']))); ?></td>
 									<td class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 										<div class="btn-group btn-sm">
+												<button type="button" class="btn btn-light fas fa-graduation-cap" data-toggle="modal" data-target="#ModalAlunos<?php echo $row['idCursos']; ?>"></button>
 												<button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idCursos']; ?>"></button>
 												<button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idCursos']; ?>" data-whatevernome="<?php echo $row['nomeCursos']; ?>"data-whateverdetalhes="<?php echo $row['tema']; ?>"></button>
 												<button type="button" class="btn btn-danger fas fa-trash disabled"></button>
@@ -200,17 +201,6 @@
 				event.returnValue = false;
 			}
 		}
-		$('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
-    if (!$(this).next().hasClass('show')) {
-      $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
-    }
-    var $subMenu = $(this).next(".dropdown-menu");
-    $subMenu.toggleClass('show');
-    $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
-      $('.dropdown-submenu .show').removeClass("show");
-    });
-    return false;
-  });
 
   $('#calendar_').fullCalendar({
     defaultView: 'listmonth'

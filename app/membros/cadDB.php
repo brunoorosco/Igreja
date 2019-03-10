@@ -10,7 +10,7 @@
     $cargo = $_POST['cargo'];
     $endereco = $_POST['endereco'];
     $nasc = $_POST['nascimento'];
-    $supervisao = $_POST['supervisao'];
+    $supervisao = carrega_dados();
     $nasc = date("Y-m-d",strtotime(str_replace('/','-',$nasc)));
 
    ///////  VERIFICA SE USUARIO EMAIL JÁ ESTA CADASTRADO ///////////

@@ -1,6 +1,7 @@
 <?php
 header("Content-type: text/html; charset=utf-8");
 require_once '../../_fonts/config/banco.php';
+require_once '../../_fonts/config/funcoes.php';
 
 
     $nomeEnc = $_POST['nome'];
@@ -8,10 +9,12 @@ require_once '../../_fonts/config/banco.php';
     $emailEnc = $_POST['email'];
     $telEncamigo1 = $_POST['tel1'];
     $telEncamigo2 = $_POST['tel2'];
+    $amigo1 = $_POST['amigotel1'];
+    $amigo2 = $_POST['amigotel2'];
     $endEnc = $_POST['endereco'];
     $sexoEnc = $_POST['sexo'];
     $nascEnc = $_POST['nascimento'];
-   // $CEM = $_POST['CEM'];
+    $CEM = carrega_dados();
     $nascEnc = date("Y-m-d",strtotime(str_replace('/','-',$nascEnc)));
 
 
@@ -30,7 +33,7 @@ require_once '../../_fonts/config/banco.php';
       else{
 
 
-    $sql = "INSERT INTO encontrista (nomeEnc, telEnc , telEncamigo1, telEncamigo2 , endEnc, emailEnc , nascEnc,sexoEnc) values (:nomeEnc , :telEnc , :telEncamigo1, :telEncamigo2 , :endEnc, :emailEnc , :nascEnc , :sexoEnc )";
+    $sql = "INSERT INTO encontrista (nomeEnc, telEnc , amigo1, amigo2, telEncamigo1, telEncamigo2 , endEnc, emailEnc , nascEnc,sexoEnc, CEM) values (:nomeEnc , :telEnc , :amigo1, :amigo2, :telEncamigo1, :telEncamigo2 , :endEnc, :emailEnc , :nascEnc , :sexoEnc, :CEM )";
 
     try{
         $db = new db();
@@ -38,12 +41,15 @@ require_once '../../_fonts/config/banco.php';
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':nomeEnc',$nomeEnc);
         $stmt->bindParam(':telEnc',$telEnc);
+        $stmt->bindParam(':amigo1',$amigo1);
+        $stmt->bindParam(':amigo2',$amigo2);
         $stmt->bindParam(':telEncamigo1',$telEncamigo1);
         $stmt->bindParam(':telEncamigo2',$telEncamigo2);
         $stmt->bindParam(':endEnc',$endEnc);
         $stmt->bindParam(':emailEnc',$emailEnc);
         $stmt->bindParam(':nascEnc',$nascEnc);
         $stmt->bindParam(':sexoEnc',$sexoEnc);
+        $stmt->bindParam(':CEM',$CEM);
         $stmt->execute();
         $db = null;
 

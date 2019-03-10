@@ -4,16 +4,15 @@
 
   function autenticar($login, $senha) {
         $pdo = Banco::conectar();
-        $sql = "SELECT idLogin, username, password, idmembro FROM acesso where username = '$login' AND password = '$senha'";
+        $sql = "SELECT username, password, idmembro FROM acesso where username = '$login' AND password = '$senha'";
         //echo $sql;
         $exec =  $pdo->query($sql);
         $rows = $exec->fetchAll(PDO::FETCH_ASSOC);
         $total = count($rows);
 
         if ($total > 0){
-            $codigoUsuario = $rows[0]['idLogin'];
+            $codigoUsuario = $rows[0]['idmembro'];
             $_SESSION['usuario'] = $rows[0]['username'];
-            $_SESSION['user'] = $rows[0]['idmembro'];
             $_SESSION['COD_USUARIO'] = $codigoUsuario;
             return $codigoUsuario;
         }
@@ -90,3 +89,20 @@ $data_sem_barra = implode("-", $data_sem_barra);
 $start_sem_barra = $data_sem_barra . " " . $hora;
 
  return $start_sem_barra;}
+
+ function carrega_dados(){
+   if(isset($_SESSION['usuario'])){
+       $email = $_SESSION['usuario'] ;
+       $sql = "SELECT supervisao FROM membros where email = '$email'";
+       $pdo = Banco::conectar();
+       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+       $exec =  $pdo->query($sql);
+       $rows = $exec->fetchAll(PDO::FETCH_ASSOC);
+       $total = count($rows);
+       Banco::desconectar();
+
+   if($total > 0 ){
+
+       return $rows[0]['supervisao'];
+
+ }}}

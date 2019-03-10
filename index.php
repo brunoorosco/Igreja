@@ -322,7 +322,7 @@
     </div>
   </div>
       <script type="text/javascript">
-  
+
       $('#calendar_').fullCalendar({
         defaultView: 'listmonth'
       });

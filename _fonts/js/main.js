@@ -4,7 +4,7 @@
 			  $('#cep').mask('00000-000');
 			  $('.tel').mask('(00) 00000-0000');
 			  $('#cpf').mask('000.000.000-00');
-			  				 });
+                 });
 
          $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
                  if (!$(this).next().hasClass('show')) {
@@ -17,45 +17,6 @@
                  });
                  return false;
                });
-
-/* jQuery(document).ready(function(){
-				jQuery('#ajax_form').submit(function(){
-					var dados = $(this).serialize();
-
-				 request = $.ajax({
-						type:'POST',
-						url: "app/membros/cadDB.php",
-						dataType: 'html',
-						data: dados,})
-				 		request.done(function(response){
-					 		Swal.fire({
-									title: response,
-				 	request.done(function(response, textStatus, jqXHR){
-				 		Swal.fire({
-								  	title: 'Cadastro realizado com sucesso! Sua senha de acesso foi enviada para seu email!',
-								type: 'success',
-									timer: 5000});
-									document.getElementById('ajax_form').reset();
-
-				 		})
-						request.fail(function() {
-						    Swal.fire({
-										  	title: 'Erro ao cadastrar, tente novamente!!!',
-											type: 'error',
-											timer: 5000});
-
-						})
-						request.always(function(){
-
-						})
-
-
-
-
-					return false;
-			   	});
-			});
-*/
 
 jQuery(document).ready(function(){
 				jQuery('#formulario_encontrista').submit(function(){
@@ -88,12 +49,22 @@ jQuery(document).ready(function(){
 			   	});
 			});
 
-      function resetform(){
-        	$(':input')
-          .not('.button,:submit,:reset,:hidden')
-          .val('')
-          .removeAttr('checked')
-          .removeAttr('selected');
+  function resetform(){
+        	$('#nome').val("");
+        	$('#am1').val("");
+        	$('#am2').val("");
+        	$('#cargo').val("");
+        	$('#tel').val("");
+        	$('#tel1').val("");
+        	$('#tel2').val("");
+        	$('#data').val("");
+        	$('#email').val("");
+        	$('#end').val("");
+        	$('#sexo').val("");
+          //.not('.button,:submit,:reset,:hidden')
+          //.val('')
+          //.removeAttr('checked')
+          //.removeAttr('selected');
       }
 
       $(document).ready(function(){
