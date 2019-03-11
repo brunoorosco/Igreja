@@ -8,7 +8,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
-		  <link rel="stylesheet" href="_fonts/css/bootstrap.min.css">
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -68,22 +67,24 @@
 									<div class="modal fade" id="myModal<?php echo $row['idCursos']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 									<div class="modal-dialog" role="document">
 										<div class="modal-content">
-											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-												<h4 class="modal-title text-center" id="myModalLabel"><?php echo $row['nomeCursos']; ?></h4>
-											</div>
-											<div class="modal-body">
-												<div class="container-fluid">
-													  <div class="form-group row">
-													 <div class="col"><b>Código do Curso:</b> <?php echo $row['idCursos']; ?> </div></div>
-													 <div class="form-group row">
-															<div class="col"><b>Tipo de Curso:</b> <?php echo $row['nomeCursos']; ?></div></div>
-													 <div class="form-group row">
-															<div class="col"><b>Tema de Curso:</b> <?php echo $row['tema']; ?></div></div>
-													 <div class="form-group row">
-															<div class="col"><b>Data de Início:</b> <?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['data']))); ?></div></div>
-														</div>
-										</div>
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+													<h4 class="modal-title text-center" id="myModalLabel"><?php echo $row['nomeCursos']; ?></h4>
+												</div>
+												<div class="modal-body">
+														<div class="container-fluid">
+															  <div class="form-group row">
+																 	<div class="col"><b>Código do Curso:</b> <?php echo $row['idCursos']; ?> </div>
+															  </div>
+																 <div class="form-group row">
+																		<div class="col"><b>Tipo de Curso:</b> <?php echo $row['nomeCursos']; ?></div></div>
+																 <div class="form-group row">
+																		<div class="col"><b>Tema de Curso:</b> <?php echo $row['tema']; ?></div></div>
+																 <div class="form-group row">
+																		<div class="col"><b>Data de Início:</b> <?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['data']))); ?></div>
+																 </div>
+														 </div>
+												 </div>
 										</div>
 									</div>
 								</div>
@@ -91,8 +92,8 @@
 
 
 		<!-- Inicio Modal -->
-			<div class="modal fade" id="ModalAlunos<?php echo $row['idCursos'];?>" tabindex="-1" role="dialog" aria-labelledby="ModalAlunosLabel">
-					<div class="modal-dialog" role="document">
+			<div class="modal fade" id="ModalAlunos<?php echo $idCursos=$row['idCursos'];?>" tabindex="-1" role="dialog" aria-labelledby="ModalAlunosLabel">
+						<div class="modal-dialog" role="document">
 							<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -102,11 +103,15 @@
 											<div class="container-fluid">
 												 	 <div class=""><h4>Participantes</h4>
 														 	<?php
-																	$sql = "SELECT turma.alunos, membros.nome	FROM turma INNER JOIN membros	ON turma.alunos = membros.nome";
-															//$sql = 'SELECT alunos FROM turma ORDER BY alunos ASC';
-														 	foreach($pdo->query($sql)as $row)
-														 	{
-																echo '- '. $row['alunos'] . '</br>';}
+															//	$sql = "SELECT turma.alunos, membros.nome	FROM turma INNER JOIN membros	ON turma.alunos = membros.nome";
+															//$sql = "SELECT membros.nome, turma.alunos FROM turma JOIN membros on membros.idmembros = turma.alunos where infocursos.idCursos = $idCursos";
+															//$sql = "SELECT infocursos.nomeCursos , membros.nome	FROM turma, membros, infocursos where membros.idmembros = turma.alunos AND infocursos.idCursos= turma.curso";
+															$sql = "SELECT infocursos.nomeCursos, membros.nome	FROM turma INNER JOIN membros ON turma.alunos = membros.idmembros INNER JOIN infocursos ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos like $idCursos";
+
+
+														foreach($pdo->query($sql)as $row)
+														 			//print_r ($row);
+																echo $row['nome'] . '</br>';
 																?>
 
 													 </div>
@@ -231,9 +236,6 @@
 			}
 		}
 
-  $('#calendar_').fullCalendar({
-    defaultView: 'listmonth'
-  });
-		</script>
+  	</script>
 	</body>
 </html>
