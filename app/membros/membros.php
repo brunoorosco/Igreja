@@ -46,8 +46,8 @@ include_once "../../menu.php";
                         <?php
                         include '../../_fonts/config/banco.php';
                         $pdo = Banco::conectar();
-                        $sql = 'SELECT * FROM membros ORDER BY nome ASC';
 
+                        $sql = 'SELECT * FROM membros ORDER BY nome ASC';
                         foreach($pdo->query($sql)as $row)
                         {
                             echo '<tr>';
@@ -125,7 +125,7 @@ include_once "../../menu.php";
                 </table>
 
       </div></div></div>
-    
+
 
        <script type="text/javascript">
         $('#editModal').on('show.bs.modal', function (event) {

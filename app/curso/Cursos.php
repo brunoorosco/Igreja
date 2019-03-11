@@ -45,9 +45,8 @@
 						<tbody>
 						<?php
 						    $pdo = Banco::conectar();
-	                        $sql = 'SELECT * FROM infoCursos ORDER BY idcursos asc';
-
-							foreach($pdo->query($sql)as $row)
+	               $sql = 'SELECT * FROM infoCursos ORDER BY idcursos asc';
+      							foreach($pdo->query($sql)as $row)
                         	{
                         		?>
 							    <tr class="row text-center">
@@ -75,7 +74,7 @@
 											</div>
 											<div class="modal-body">
 												<div class="container-fluid">
-												 <div class="form-group row">
+													  <div class="form-group row">
 													 <div class="col"><b>Código do Curso:</b> <?php echo $row['idCursos']; ?> </div></div>
 													 <div class="form-group row">
 															<div class="col"><b>Tipo de Curso:</b> <?php echo $row['nomeCursos']; ?></div></div>
@@ -89,11 +88,40 @@
 									</div>
 								</div>
 								<!-- Fim Modal -->
-							<?php } ?>
-						</tbody>
-					 </table>
-				</div>
-		</div>
+
+
+		<!-- Inicio Modal -->
+			<div class="modal fade" id="ModalAlunos<?php echo $row['idCursos'];?>" tabindex="-1" role="dialog" aria-labelledby="ModalAlunosLabel">
+					<div class="modal-dialog" role="document">
+							<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<h4 class="modal-title text-center" id="ModalAlunosLabel"><?php echo $row['nomeCursos']; ?></h4>
+									</div>
+									<div class="modal-body">
+											<div class="container-fluid">
+												 	 <div class=""><h4>Participantes</h4>
+														 	<?php
+																	$sql = "SELECT turma.alunos, membros.nome	FROM turma INNER JOIN membros	ON turma.alunos = membros.nome";
+															//$sql = 'SELECT alunos FROM turma ORDER BY alunos ASC';
+														 	foreach($pdo->query($sql)as $row)
+														 	{
+																echo '- '. $row['alunos'] . '</br>';}
+																?>
+
+													 </div>
+												 </div>
+											</div>
+									 </div>
+							</div>
+					</div>
+			</div>
+			<!-- Fim Modal -->
+<?php } ?>
+</tbody>
+</table>
+</div>
+</div>
 
 			<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel">
 		  	<div class="modal-dialog" role="document">
