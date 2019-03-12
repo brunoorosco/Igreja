@@ -55,10 +55,10 @@
 									<td class="col-xs-2 col-sm-2  col-md-2 col-lg-2"><?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['data']))); ?></td>
 									<td class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 										<div class="btn-group btn-sm">
-												<button type="button" class="btn btn-light fas fa-graduation-cap" data-toggle="modal" data-target="#ModalAlunos<?php echo $row['idCursos']; ?>"></button>
-												<button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idCursos']; ?>"></button>
-												<button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idCursos']; ?>" data-whatevernome="<?php echo $row['nomeCursos']; ?>"data-whateverdetalhes="<?php echo $row['tema']; ?>"></button>
-												<button type="button" class="btn btn-danger fas fa-trash disabled"></button>
+												<button type="button" class="btn btn-light fas fa-graduation-cap" data-toggle="modal" data-target="#ModalAlunos<?php echo $row['idCursos']; ?>" title="Cadastro de Alunos"></button>
+												<button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idCursos']; ?>" title="Informações Gerais sobre o curso"></button>
+												<button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idCursos']; ?>" data-whatevernome="<?php echo $row['nomeCursos']; ?>"data-whateverdetalhes="<?php echo $row['tema']; ?>" title="Editar Curso"></button>
+												<button type="button" class="btn btn-danger fas fa-trash disabled"title="Excluir Curso"></button>
 											</div>
 
 									</td>
@@ -103,16 +103,14 @@
 											<div class="container-fluid">
 												 	 <div class=""><h4>Participantes</h4>
 														 	<?php
-															//	$sql = "SELECT turma.alunos, membros.nome	FROM turma INNER JOIN membros	ON turma.alunos = membros.nome";
-															//$sql = "SELECT membros.nome, turma.alunos FROM turma JOIN membros on membros.idmembros = turma.alunos where infocursos.idCursos = $idCursos";
-															//$sql = "SELECT infocursos.nomeCursos , membros.nome	FROM turma, membros, infocursos where membros.idmembros = turma.alunos AND infocursos.idCursos= turma.curso";
+
 															$sql = "SELECT infocursos.nomeCursos, membros.nome	FROM turma INNER JOIN membros ON turma.alunos = membros.idmembros INNER JOIN infocursos ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos like $idCursos";
 
-
-														foreach($pdo->query($sql)as $row)
-														 			//print_r ($row);
-																echo $row['nome'] . '</br>';
-																?>
+														foreach($pdo->query($sql)as $row){
+														 		echo $row['nome'] . '</br>';
+																		}
+														//		if( $total = count($row) == 0) echo "Não há alunos cadastrados neste curso";
+															?>
 
 													 </div>
 												 </div>

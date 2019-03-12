@@ -97,7 +97,7 @@ border-radius: 6px 0 6px 6px;
                 </li>
                 <?php   if(isset($_SESSION['usuario'])){    ?>
                 <li class="nav-item dropdown">
-                    <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i class="fa fa-synagogue"> SEDE</i><b class="caret"></b></a>
+                    <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i class="fa fa-church"> SEDE</i><b class="caret"></b></a>
                       <ul class="dropdown-menu multi-level" aria-labelledby="navbarDropdownMenuLink">
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Cadastro</a>
                           <ul class="dropdown-menu">
