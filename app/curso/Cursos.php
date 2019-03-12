@@ -1,7 +1,7 @@
 <?php
 
 	include_once("../../_fonts/config/banco.php");
-  include_once "../../menu.php";
+  	include_once "../../menu.php";
 	if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
 ?>
 
@@ -104,7 +104,9 @@
 												 	 <div class=""><h4>Participantes</h4>
 														 	<?php
 
-															$sql = "SELECT infocursos.nomeCursos, membros.nome	FROM turma INNER JOIN membros ON turma.alunos = membros.idmembros INNER JOIN infocursos ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos like $idCursos";
+															$sql = "SELECT infocursos.nomeCursos, membros.nome	FROM turma INNER JOIN membros
+															ON turma.alunos = membros.idmembros INNER JOIN infocursos
+															ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos like $idCursos";
 
 														foreach($pdo->query($sql)as $row){
 														 		echo $row['nome'] . '</br>';
