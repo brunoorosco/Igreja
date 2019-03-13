@@ -17,7 +17,7 @@
 	</head>
 
 	<body>
-		<div class="container theme-showcase" role="main">
+		<div class="container">
 			</br>
 			<div class="page-header">
 				<?php
@@ -30,8 +30,8 @@
 				<h3>Lista de Cursos</h3>
 			</div>
 
-				<div class="col-lg-12">
-					<table class="table">
+				<div class="col-lg-12 table-responsive">
+					<table class="table table-hover table-sm">
 						<thead>
 							<tr class="row text-center">
 								<th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">#</th>
@@ -57,7 +57,9 @@
 										<div class="btn-group btn-sm">
 												<button type="button" class="btn btn-light fas fa-graduation-cap" data-toggle="modal" data-target="#ModalAlunos<?php echo $row['idCursos']; ?>" title="Cadastro de Alunos"></button>
 												<button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idCursos']; ?>" title="Informações Gerais sobre o curso"></button>
-												<button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idCursos']; ?>" data-whatevernome="<?php echo $row['nomeCursos']; ?>"data-whateverdetalhes="<?php echo $row['tema']; ?>" title="Editar Curso"></button>
+												<button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idCursos']; ?>"
+																data-whatevernome="<?php echo $row['nomeCursos'];?>" data-whateverdetalhes="<?php echo $row['tema'];?>" data-whateverData="<?php echo $row['data']; ?>" title="Editar Curso">
+												</button>
 												<button type="button" class="btn btn-danger fas fa-trash disabled"title="Excluir Curso"></button>
 											</div>
 
@@ -136,7 +138,7 @@
 								<h4 class="modal-title" id="editModalLabel">Curso</h4>
 			  			</div>
 			  			<div class="modal-body">
-							<form id="form_Ajax"value="inserir" method="POST" action="" enctype="multipart/form-data">
+							<form id="form_Ajax" value="inserir" method="POST" action="./processa.php" enctype="multipart/form-data">
 							  <div class="form-group">
 										<label for="recipient-name" class="control-label">Tipo:</label>
 										<input name="nome" type="text" class="form-control" id="recipient-name">
@@ -144,6 +146,11 @@
 									  <div class="form-group">
 										<label for="message-text" class="control-label">Tema:</label>
 										<input name="tema" class="form-control" id="detalhes"></input>
+							  </div>
+							  </div>
+									  <div class="form-group">
+										<label for="message-text" class="control-label">Data de Início:</label>
+										<input name="dataCurso" class="form-control" id="dataCurso"></input>
 							  </div>
 							<input name="idCursos" type="hidden" class="form-control" id="id-curso" value="">
 							<button type="button" class="btn btn-success" data-dismiss="modal" >Cancelar</button>
@@ -188,6 +195,11 @@
 
 
 	<script type="text/javascript">
+			setTimeout(function() {
+				  $(".alert").alert('close');
+
+						}, 3000);
+
 		$('#editModal').on('show.bs.modal', function (event) {
 		  var button = $(event.relatedTarget) // Button that triggered the modal
 		  var recipient = button.data('whatever') // Extract info from data-* attributes
@@ -200,6 +212,7 @@
 		  modal.find('#id-curso').val(recipient)
 		  modal.find('#recipient-name').val(recipientnome)
 		  modal.find('#detalhes').val(recipientdetalhes)
+		  modal.find('#datCurso').val(recipientData)
 
 		});
 

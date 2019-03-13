@@ -12,17 +12,27 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
     <title>Encontrista</title>
+
+    <style type="text/css">
+    .table tbody tr:hover td, .table tbody tr:hover th {
+        background-color: #9ACD32 !important;
+    }
+    </style>
 </head>
 
 <body>
-        <div class="container-fluid">
-
-          <div class="row">
+        <div class="container">
+        </br>
+          <div class="page-header">
+                <h3>Lista de Encontrista - Encontro n</h3>
+          </div>
+          </br>
+          <div class="row text-center">
                 <div class="col-md-12 table-responsive"> <!--     <p>
                     <a href="create.php" class="btn btn-success">Adicionar</a>
                 </p>-->
 
-                <table class="table table-striped" id="tabela_membros">
+                <table class="table table-striped table-sm table-hover text-center" id="tabela_membros">
                     <thead >
                         <tr>
 
@@ -47,7 +57,7 @@
                         {
                             echo '<tr>';
                             echo '<th>'.$i++.'</th>';
-			                      echo '<th scope="row">'. $row['nomeEnc'] . '</th>';
+			                      echo '<th class="text-left" scope="row">'. $row['nomeEnc'] . '</th>';
                          //   echo '<td>'. $row['endereco'] . '</td>';
                             echo '<td>'. $row['telEnc'] . '</td>';
                          //   echo '<td>'. $row['email'] . '</td>';

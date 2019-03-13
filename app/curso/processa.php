@@ -4,6 +4,8 @@
 	include_once("../../_fonts/config/funcoes.php");
 	$formulario = $_POST['formulario'];
 
+  echo $formulario;
+
 if($formulario == "inserir")
   {		inserir();
   }else{

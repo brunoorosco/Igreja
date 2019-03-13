@@ -10,6 +10,11 @@ include_once "../../menu.php";
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <title>Membros</title>
+    <style type="text/css">
+    .table tbody tr:hover td, .table tbody tr:hover th {
+        background-color: #9ACD32 !important;
+    }
+    </style>
 </head>
 
 <body>
@@ -29,7 +34,7 @@ include_once "../../menu.php";
             <div class="col-lg-12 table-responsive"> <!--     <p>
                 <a href="create.php" class="btn btn-success">Adicionar</a>
                 </p>-->
-                <table class="table table-striped" id="tabela_membros">
+                <table class="table table-striped table-sm text-center" id="tabela_membros">
                     <thead >
                         <tr>
                             <th scope="col-lg-6">Nome</th>
@@ -51,8 +56,8 @@ include_once "../../menu.php";
                         foreach($pdo->query($sql)as $row)
                         {
                             echo '<tr>';
-			                      echo '<th scope="row">'. $row['nome'] . '</th>';
-                            echo '<td>'. $row['endereco'] . '</td>';
+			                      echo '<th class="text-left" scope="row">'. $row['nome'] . '</th>';
+                            echo '<td class="text-left">'. $row['endereco'] . '</td>';
                             echo '<td>'. $row['telefone'] . '</td>';
                          //   echo '<td>'. $row['email'] . '</td>';
                             echo '<td>'.date("d/m",strtotime(str_replace('/','-',$row['nasc']))).'</td>';
