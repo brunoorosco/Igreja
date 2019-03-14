@@ -1,10 +1,9 @@
 <?php
   if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
-  include_once("../../_fonts/config/banco.php");
+    include_once("../../_fonts/config/banco.php");
 	include_once("../../_fonts/config/funcoes.php");
+	
 	$formulario = $_POST['formulario'];
-
-  echo $formulario;
 
 if($formulario == "inserir")
   {		inserir();
@@ -16,7 +15,9 @@ function edicao(){
 	$id = $_POST['idCursos'];
 	$nome = $_POST['nome'];
 	$tema = $_POST['tema'];
-	$result_cursos = "UPDATE infocursos SET nomeCursos='$nome', tema =  '$tema' WHERE idCursos = '$id'";
+	$data_ = date("Y-m-d",strtotime(str_replace('/','-',$_POST['dataCurso_'])));
+	
+	$result_cursos = "UPDATE infocursos SET nomeCursos='$nome', tema = '$tema', data_ ='$data_'  WHERE idCursos = '$id' ";
   try{
 			$db = new db();
 			$db = $db->connect();
@@ -24,7 +25,8 @@ function edicao(){
 			$stmt->execute(array(
 				':idCursos'   => $id,
 				':nomeCursos' => $nome,
-				':tema'       => $tema
+				':tema'       => $tema,
+				':data_'  		=> $data_
 			));
 			$db = null;
 	     //	echo $stmt->rowCount();
@@ -42,7 +44,7 @@ function edicao(){
   	 	$nome = $_POST['nome'];
   	 	$tema = $_POST['tema'];
   		$inicio = date("Y-m-d",strtotime(str_replace('/','-',$_POST['inicio'])));
-  	 	$cursos = "INSERT INTO infocursos(nomeCursos, tema, data,resp ) VALUES (:nome,:tema,:data,:resp)";
+  	 	$cursos = "INSERT INTO infocursos(nomeCursos, tema, data_,resp ) VALUES (:nome,:tema,:data_,:resp)";
 
   		try{
 					$db = new db();
@@ -51,7 +53,7 @@ function edicao(){
 					$stmt->execute(array(
 						':nome'  => $nome,
 						':tema'	 => $tema,
-						':data'  => $inicio,
+						':data_' => $inicio,
 						':resp'  => $resp
 					));
 					$db = null;

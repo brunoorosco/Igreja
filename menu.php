@@ -1,16 +1,17 @@
 <?php
 if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
-
+global $URLBASE;
+$URLBASE = "http://localhost/www/igreja/";
  ?>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <link rel="icon" href="http://localhost/www/igreja/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="<?= $URLBASE.'favicon.ico'?>" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-    <link rel="stylesheet" href="http://localhost/www/igreja/_fonts/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= $URLBASE.'_fonts/css/bootstrap.min.css'?>">
     <style type="text/css">
 
     #conteudo { width: 500px; height: 300px;}
@@ -93,7 +94,7 @@ border-radius: 6px 0 6px 6px;
         <div class="collapse navbar-collapse" >
             <ul class="nav navbar-nav">
                 <li class="nav-item active">
-                    <a class="dropdown-item" href="http://localhost/www/igreja/"><i class="fa fa-home"> HOME</i></a>
+                    <a class="dropdown-item" href="<?= $URLBASE;?>"><i class="fa fa-home"> HOME</i></a>
                 </li>
                 <?php   if(isset($_SESSION['usuario'])){    ?>
                 <li class="nav-item dropdown">
@@ -101,24 +102,24 @@ border-radius: 6px 0 6px 6px;
                       <ul class="dropdown-menu multi-level" aria-labelledby="navbarDropdownMenuLink">
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Cadastro</a>
                           <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="http://localhost/www/igreja/app/encontro/cad_Encontrista.php">Novo Encontrista</a></li>
+                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/encontro/cad_Encontrista.php'?>">Novo Encontrista</a></li>
                             <li><a class="dropdown-item disabled" href="">Nova Equipe</a></li>
-                            <li><a class="dropdown-item" href="http://localhost/www/igreja/app/membros/cadastro.php">Novo Membro</a></li>
-                            <li><a class="dropdown-item" href="http://localhost/www/igreja/app/calendario/cadastroEvento.php">Novo Evento</a></li>
+                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/membros/cadastro.php'?>">Novo Membro</a></li>
+                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/calendario/cadastroEvento.php'?>">Novo Evento</a></li>
                           </ul>
                         </li>
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Consulta</a>
                           <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="http://localhost/www/igreja/app/encontro/encontrista.php">Encontristas</a></li>
+                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/encontro/encontrista.php'?>">Encontristas</a></li>
                             <li><a class="dropdown-item" href="">Equipe</a></li>
-                            <li><a class="dropdown-item" href="http://localhost/www/igreja/app/membros/membros.php">Membros</a></li>
+                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/membros/membros.php'?>">Membros</a></li>
                           </ul>
                         </li>
                 <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Curso</a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="http://localhost/www/igreja/app/curso/Cursos.php">Novo Curso</a></li>
-                      <li><a class="dropdown-item" href="http://localhost/www/igreja/app/membros/php">Registrar Falta</a></li>
-                      <li><a class="dropdown-item" href="http://localhost/www/igreja/app/membros/membros.php">Informações de Curso</a></li>
+                      <li><a class="dropdown-item" href="<?= $URLBASE.'app/curso/Cursos.php'?>">Novo Curso</a></li>
+                      <li><a class="dropdown-item" href="<?= $URLBASE.'app/membros/php'?>">Registrar Falta</a></li>
+                      <li><a class="dropdown-item" href="<?= $URLBASE.'app/membros/membros.php'?>">Informações de Curso</a></li>
                     </ul>
                 </li>
                 <li class="divider"></li>
@@ -155,7 +156,7 @@ border-radius: 6px 0 6px 6px;
                 if(isset($_SESSION['usuario'])){
                     echo "<i class='fa fa-user'> ".($_SESSION['usuario'])."</i>";?>
 
-                    <input type="button" class="btn btn-outline-secondary " onclick="location.href='http://localhost/www/igreja/app/login/logout.php';" value="Sair"/>
+                    <input type="button" class="btn btn-outline-secondary " onclick="location.href='<?= $URLBASE.'app/login/logout.php'?>" value="Sair"/>
 
                 <?php
                          }
@@ -168,7 +169,7 @@ border-radius: 6px 0 6px 6px;
 
                 <ul class="dropdown-menu dropdown-menu-right mt-2">
                    <li class="px-3 py-2">
-                       <form class="form" role="form" id="for_login" method="post" action="http://localhost/www/igreja/app/login/validaLogin.php">
+                       <form class="form" role="form" id="for_login" method="post" action="<?= $URLBASE.'app/login/validaLogin.php'?>">
                             <div class="form-group">
                                 <input id="emailInput" placeholder="Email" class="form-control form-control-sm" type="text" required="" name="username">
                             </div>
@@ -209,10 +210,10 @@ border-radius: 6px 0 6px 6px;
 
 
 
-<script src="http://localhost/www/igreja/_fonts/js/jquery-3.3.1.min.js"></script>
-<script src="http://localhost/www/igreja/_fonts/js/popper.min.js"></script>
-<script src="http://localhost/www/igreja/_fonts/js/bootstrap.min.js"></script>
-<script src="http://localhost/www/igreja/_fonts/js/main.js"></script>
+<script src="<?= $URLBASE.'_fonts/js/jquery-3.3.1.min.js'?>"></script>
+<script src="<?= $URLBASE.'_fonts/js/popper.min.js'?>"></script>
+<script src="<?= $URLBASE.'_fonts/js/bootstrap.min.js'?>"></script>
+<script src="<?= $URLBASE.'_fonts/js/main.js'?>"></script>
 
 </body>
 </html>

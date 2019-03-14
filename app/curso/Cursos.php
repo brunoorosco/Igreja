@@ -52,13 +52,13 @@
 									<td class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><?php echo $row['idCursos']; ?></td>
 									<td class="col-xs-3 col-sm-3  col-md-3 col-lg-3"><?php echo $row['nomeCursos']; ?></td>
 									<td class="col-xs-3 col-sm-3  col-md-3 col-lg-3"><?php echo $row['tema']; ?></td>
-									<td class="col-xs-2 col-sm-2  col-md-2 col-lg-2"><?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['data']))); ?></td>
+									<td class="col-xs-2 col-sm-2  col-md-2 col-lg-2"><?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['data_']))); ?></td>
 									<td class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 										<div class="btn-group btn-sm">
 												<button type="button" class="btn btn-light fas fa-graduation-cap" data-toggle="modal" data-target="#ModalAlunos<?php echo $row['idCursos']; ?>" title="Cadastro de Alunos"></button>
 												<button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idCursos']; ?>" title="Informações Gerais sobre o curso"></button>
 												<button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idCursos']; ?>"
-																data-whatevernome="<?php echo $row['nomeCursos'];?>" data-whateverdetalhes="<?php echo $row['tema'];?>" data-whateverData="<?php echo $row['data']; ?>" title="Editar Curso">
+																data-whatevernome="<?php echo $row['nomeCursos'];?>" data-whateverdetalhes="<?php echo $row['tema'];?>" data-whateverData="<?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['data_']))); ?>" title="Editar Curso">
 												</button>
 												<button type="button" class="btn btn-danger fas fa-trash disabled"title="Excluir Curso"></button>
 											</div>
@@ -83,7 +83,7 @@
 																 <div class="form-group row">
 																		<div class="col"><b>Tema de Curso:</b> <?php echo $row['tema']; ?></div></div>
 																 <div class="form-group row">
-																		<div class="col"><b>Data de Início:</b> <?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['data']))); ?></div>
+																		<div class="col"><b>Data de Início:</b> <?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['data_']))); ?></div>
 																 </div>
 														 </div>
 												 </div>
@@ -129,36 +129,37 @@
 </table>
 </div>
 </div>
-
-			<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel">
+		<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel">
 		  	<div class="modal-dialog" role="document">
-						<div class="modal-content">
-			  			<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="editModalLabel">Curso</h4>
-			  			</div>
-			  			<div class="modal-body">
-							<form id="form_Ajax" value="inserir" method="POST" action="./processa.php" enctype="multipart/form-data">
-							  <div class="form-group">
-										<label for="recipient-name" class="control-label">Tipo:</label>
-										<input name="nome" type="text" class="form-control" id="recipient-name">
-							  </div>
-									  <div class="form-group">
-										<label for="message-text" class="control-label">Tema:</label>
-										<input name="tema" class="form-control" id="detalhes"></input>
-							  </div>
-							  </div>
-									  <div class="form-group">
-										<label for="message-text" class="control-label">Data de Início:</label>
-										<input name="dataCurso" class="form-control" id="dataCurso"></input>
-							  </div>
+				<div class="modal-content">
+			  		<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="editModalLabel">Curso</h4>
+			  		</div>
+			  		<div class="modal-body">
+                        <form method="POST" action="./processa.php" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label">Tipo:</label>
+                                <input name="nome" type="text" class="form-control" id="recipient-name">
+				            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="control-label">Tema:</label>
+                                <input name="tema" class="form-control" id="detalhes">
+                            </div>							 
+                            <div class="form-group">
+                                <label for="dataCurso" class="control-label">Data de Início:</label>
+                                <input name="dataCurso_" class="form-control" id="dataCurso" onkeypress="DataHora(event, this)">
+                            </div>
 							<input name="idCursos" type="hidden" class="form-control" id="id-curso" value="">
-							<button type="button" class="btn btn-success" data-dismiss="modal" >Cancelar</button>
-							<button type="submit" class="btn btn-danger">Alterar</button>
-							</form>
-			  </div>
-			</div>
-		  </div>
+                            <div class="modal-footer" >
+                                <button type="button" class="btn btn-success btn-block" data-dismiss="modal" >Cancelar</button>
+                                <button type="submit" class="btn btn-danger btn-block"  name="formulario" value="editar">Alterar</button>
+                            </div>
+                        </form>
+					</div>
+			        </div>
+			    </div>
+		    </div>
 		</div>
 
 	<div class="modal fade" id="cad_Modal" tabindex="-1" role="dialog" aria-labelledby="cad_ModalLabel">
@@ -169,7 +170,7 @@
 							<h4 class="modal-title" id="cad_ModalLabel">Cadastrar Curso</h4>
 						</div>
 					<div class="modal-body">
-						<form method="POST" action="./processa.php" enctype="multipart/form-data">
+						<form method="POST" name="formulario" action="./processa.php" enctype="multipart/form-data" VALUE="inserir">
 							<div class="form-group">
 								<select class="form-control selectpicker" name="nome">
 											<option value="" selected disabled>Tipo de Treinamento</option>
@@ -205,6 +206,7 @@
 		  var recipient = button.data('whatever') // Extract info from data-* attributes
 		  var recipientnome = button.data('whatevernome')
 		  var recipientdetalhes = button.data('whateverdetalhes')
+		  var recipientData = button.data('whateverData')
 		  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 		  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 		  var modal = $(this)
@@ -212,7 +214,7 @@
 		  modal.find('#id-curso').val(recipient)
 		  modal.find('#recipient-name').val(recipientnome)
 		  modal.find('#detalhes').val(recipientdetalhes)
-		  modal.find('#datCurso').val(recipientData)
+		  modal.find('#dataCurso').val(recipientData)
 
 		});
 
