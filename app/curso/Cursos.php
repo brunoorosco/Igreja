@@ -94,7 +94,7 @@
 
 
 		<!-- Inicio Modal -->
-			<div class="modal fade" id="ModalAlunos<?php echo $idCursos=$row['idCursos'];?>" tabindex="-1" role="dialog" aria-labelledby="ModalAlunosLabel">
+					<div class="modal fade" id="ModalAlunos<?php echo $idCursos=$row['idCursos'];?>" tabindex="-1" role="dialog" aria-labelledby="ModalAlunosLabel">
 						<div class="modal-dialog" role="document">
 							<div class="modal-content">
 									<div class="modal-header">
