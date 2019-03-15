@@ -89,7 +89,7 @@ include_once "../../menu.php";
                       <div class="modal-body">
                        <div class="container-fluid">
                         <div class="form-group row">
-                          <div class="col">Aniversário:
+                          <div class="col-5">Aniversário:
                                         <?php echo date("d/m",strtotime(str_replace('/','-',$row['nasc'])));?>
                                     </div>
                           <div class="col-7">Email: <?php echo $row['email'];?></div>

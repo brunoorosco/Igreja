@@ -24,6 +24,7 @@
         <div class="container">
         </br>
           <div class="page-header">
+            <a class="btn btn-Secondary float-right" href="pdf_encontrista.php" role="button" aria-pressed="true"  target="_blank">   Imprimir </a>
                 <h3>Lista de Encontrista - Encontro n</h3>
           </div>
           </br>
@@ -56,8 +57,8 @@
                         foreach($pdo->query($sql)as $row)
                         {
                             echo '<tr>';
-                            echo '<th>'.$i++.'</th>';
-			                      echo '<th class="text-left" scope="row">'. $row['nomeEnc'] . '</th>';
+                            echo '<td>'.$i++.'</td>';
+			                      echo '<td class="text-left" scope="row">'. $row['nomeEnc'] . '</td>';
                          //   echo '<td>'. $row['endereco'] . '</td>';
                             echo '<td>'. $row['telEnc'] . '</td>';
                          //   echo '<td>'. $row['email'] . '</td>';

@@ -58,7 +58,7 @@
 												<button type="button" class="btn btn-light fas fa-graduation-cap" data-toggle="modal" data-target="#ModalAlunos<?php echo $row['idCursos']; ?>" title="Cadastro de Alunos"></button>
 												<button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idCursos']; ?>" title="Informações Gerais sobre o curso"></button>
 												<button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idCursos']; ?>"
-																data-whatevernome="<?php echo $row['nomeCursos'];?>" data-whateverdetalhes="<?php echo $row['tema'];?>" data-whateverData="<?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['data_']))); ?>" title="Editar Curso">
+																data-whatevernome="<?php echo $row['nomeCursos'];?>" data-whateverdetalhes="<?php echo $row['tema'];?>" data-whateverdata="<?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['data_']))); ?>" title="Editar Curso">
 												</button>
 												<button type="button" class="btn btn-danger fas fa-trash disabled"title="Excluir Curso"></button>
 											</div>
@@ -129,7 +129,7 @@
 </table>
 </div>
 </div>
-		<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel">
+		<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
 		  	<div class="modal-dialog" role="document">
 				<div class="modal-content">
 			  		<div class="modal-header">
@@ -145,18 +145,18 @@
                             <div class="form-group">
                                 <label for="message-text" class="control-label">Tema:</label>
                                 <input name="tema" class="form-control" id="detalhes">
-                            </div>							 
+                            </div>
                             <div class="form-group">
                                 <label for="dataCurso" class="control-label">Data de Início:</label>
                                 <input name="dataCurso_" class="form-control" id="dataCurso" onkeypress="DataHora(event, this)">
                             </div>
-							<input name="idCursos" type="hidden" class="form-control" id="id-curso" value="">
+														<input name="idCursos" type="hidden" class="form-control" id="id-curso" value="">
                             <div class="modal-footer" >
                                 <button type="button" class="btn btn-success btn-block" data-dismiss="modal" >Cancelar</button>
                                 <button type="submit" class="btn btn-danger btn-block"  name="formulario" value="editar">Alterar</button>
                             </div>
                         </form>
-					</div>
+									</div>
 			        </div>
 			    </div>
 		    </div>
@@ -206,7 +206,7 @@
 		  var recipient = button.data('whatever') // Extract info from data-* attributes
 		  var recipientnome = button.data('whatevernome')
 		  var recipientdetalhes = button.data('whateverdetalhes')
-		  var recipientData = button.data('whateverData')
+		  var recipientdata = button.data('whateverdata')
 		  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 		  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 		  var modal = $(this)
@@ -214,7 +214,8 @@
 		  modal.find('#id-curso').val(recipient)
 		  modal.find('#recipient-name').val(recipientnome)
 		  modal.find('#detalhes').val(recipientdetalhes)
-		  modal.find('#dataCurso').val(recipientData)
+		  modal.find('#dataCurso').val(recipientdata)
+			//console.log(recipientdata);
 
 		});
 
