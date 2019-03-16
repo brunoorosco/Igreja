@@ -1,7 +1,7 @@
 <?php
 
 	include_once("../../_fonts/config/banco.php");
-  	include_once "../../menu.php";
+  include_once "../../menu.php";
 	if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
 ?>
 
@@ -12,21 +12,19 @@
   <meta name="viewport" content="width=device-width">
   <title>Alunos</title>
 
-  <style>
-.lista{
-	/*border: 1px solid black;*/
-}
+<style>
+	.lista{		/*border: 1px solid black;*/
+	}
 </style>
 
 <script>
 	var i = 1;
     function escreve(){
-
 		var txt_pre_definido = document.getElementById('x').value;
         var t= document.getElementById("texto").innerHTML += "<div class='lista' id='" +i+ "' onclick='apaga(" +i+ ")'>" + txt_pre_definido+"</div>";
         i++;
 	 }
-	 
+
     function escreve_2(valor){
 		console.log(valor);
 		enviar_dados(valor);
@@ -35,37 +33,33 @@
         var t= document.getElementById("texto").innerHTML += "<div class='lista' id='" +i+ "' onclick='apaga(" +i+ ")'>" + txt_pre+"</div>";
         i++;
      }
-                   
-  
+
+
 	 function apaga(v){
     var divElements = document.getElementsByClassName("lista");
     console.log(divElements);
-    
-	
+
+
 	for (var i = 0; i < divElements.length; i++) {
       var idElement = divElements[i].getAttribute('id');
       if (idElement == v) {
         divElements[i].parentNode.removeChild(divElements[i]);
         break;
       			}
-		} 
+		}
 	}
 
-function enviar_dados(valor){	
+function enviar_dados(valor){
 	$.post( "turma_db.php" , { nome: "1" , curso: "2" })
- 
- 
- 
- .done( function ( data ) {
+
+  .done( function ( data ) {
  	  alert( "Data Loaded: " + data )
 
   .fail(function(data) {
      alert( data );
   })
- 
- 
  });
- 
+
   /*$.ajax({
 	url : 'turma_db.php',
 	dataType : 'html',
@@ -112,23 +106,23 @@ function enviar_dados(valor){
 			</div>
 			<div class="col border border-1 rounded">
 				<div id="texto">
-				<?php 
+				<?php
 					$pdo = Banco::conectar();
 					$sql = "SELECT infocursos.nomeCursos, membros.nome	FROM turma INNER JOIN membros
 					ON turma.alunos = membros.idmembros INNER JOIN infocursos
-					ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos like %1";
+					ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos";
 
 					foreach($pdo->query($sql)as $row){
 						 echo $row['nome'] . '</br>';
-								}
+						}
 				//		if( $total = count($row) == 0) echo "Não há alunos cadastrados neste curso";
 					?></div>
 			</div>
 		</div>
 	</div>
-        
-        
 
-                   
+
+
+
 </body>
 </html>

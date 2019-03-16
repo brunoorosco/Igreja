@@ -22,7 +22,7 @@ require_once '../../_fonts/config/funcoes.php';
                 title: 'Login efetuado com sucesso!',
                         type: 'success',
                         timer: 5000});</script>";
-     header("location:../../index.php?id=".$_SESSION['user']."");
+     header("location:../../index.php?id=".$_SESSION['codigoUsuario']."");
 
   }
   else {

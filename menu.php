@@ -156,7 +156,7 @@ border-radius: 6px 0 6px 6px;
                 if(isset($_SESSION['usuario'])){
                     echo "<i class='fa fa-user'> ".($_SESSION['usuario'])."</i>";?>
 
-                    <input type="button" class="btn btn-outline-secondary " onclick="location.href='<?= $URLBASE.'app/login/logout.php'?>" value="Sair"/>
+                    <input type="button" class="btn btn-outline-secondary " onclick="location.href='http://localhost/www/igreja/app/login/logout.php'" value="Sair"/>
 
                 <?php
                          }
