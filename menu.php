@@ -16,11 +16,11 @@ $URLBASE = "http://localhost/www/igreja/";
 
     #conteudo { width: 500px; height: 300px;}
 
-  /*    .dropdown-submenu {
+  /*  .dropdown-submenu {
       position: relative;
       }
 
-    .dropdown-submenu a::after {
+      .dropdown-submenu a::after {
       transform: rotate(-90deg);
       position: absolute;
       right: 6px;

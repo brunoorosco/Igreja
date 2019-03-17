@@ -34,11 +34,9 @@
         i++;
      }
 
-
 	 function apaga(v){
     var divElements = document.getElementsByClassName("lista");
     console.log(divElements);
-
 
 	for (var i = 0; i < divElements.length; i++) {
       var idElement = divElements[i].getAttribute('id');
@@ -50,7 +48,7 @@
 	}
 
 function enviar_dados(valor){
-	$.post( "turma_db.php" , { nome: "1" , curso: "2" })
+	$.post( "turma_db.php" , { nome: valor , curso: "2" })
 
   .done( function ( data ) {
  	  alert( "Data Loaded: " + data )
@@ -60,22 +58,52 @@ function enviar_dados(valor){
   })
  });
 
-  /*$.ajax({
-	url : 'turma_db.php',
-	dataType : 'html',
-	type : 'POST',
-	data : nome = valor,
-	beforeSend : function () {
-			console.log('Carregando...');
-	},
-	success : function(retorno){
-		alert(retorno);
-	},
-	error : function(a,b,c){
-		alert('Erro: ' + a['status'] + ' ' + c);
-		}
-	  });*/
-	}
+ function remove_dados(valor){
+	$.post( "rem_aluno.php" , { nome: valor , curso: "2" })
+
+  .done( function ( data ) {
+ 	  alert( "Data Loaded: " + data )
+
+  .fail(function(data) {
+     alert( data );
+  })
+ });
+
+	function ler_dados(){
+	//alert("pressionou");
+	$(document).ready(function(){
+	$('#part').empty(); //Limpando a tabela
+	$.ajax({
+		type:'post',		//Definimos o método HTTP usado
+		dataType: 'json',	//Definimos o tipo de retorno
+		url: 'turmas.php',//Definindo o arquivo onde serão buscados os dados
+		success: function(dados){
+			for(var i=0;dados.length>i;i++){
+				//Adicionando registros retornados na tabela
+				$('#part').append('<tr><td>'+dados[i].id+'</td><td>'+dados[i].alunos+'</td><td>'+dados[i].curso+'</td></tr>');
+				//$('#participantes').append('<label>'+dados[i].id+' <td>'+dados[i].nome+'</td><td>'+dados[i].curso+'</td></label><br>');
+		//		$('#participantes').append('<a href="#" class="remove"><span class="valorSpan">'+dados[i].idmembros+' - '+dados[i].nome+'</span><br><a>');
+				}
+			}
+		});
+	});
+}
+window.onload = function() {
+	ler_dados();
+};
+
+$(document).ready(function () {
+    $('.insere span').click(function (e) {
+        e.preventDefault();
+        //pegarPreco = parseFloat(this.innerHTML);
+        pegarAluno = (this.innerHTML);
+        enviar_dados(pegarAluno);
+				ler_dados();
+			//	alert(pegarAluno);
+    });
+		
+});
+
 </script>
 </head>
 <body>
@@ -94,35 +122,46 @@ function enviar_dados(valor){
                         foreach($pdo->query($sql)as $row)
                         {
                             // echo '<li>'.$i++.' - </li>';
-			                //echo '<td class="text-left" scope="row" id="nome">'.  $row['nomeEnc'] .'</td>';
-			                echo '<label class="" id="nome">'.$row['nome'].'</label>';
-                        ?>
-                           <div class="btn-group btn-sm">
-                              <button type="button" class="btn btn-dark btn-sm" style="height: 15px !important;font-size:12px; line-height:5px;" value="<?php  echo $row['nome']; ?>" onclick="escreve_2(this.value)"> >> </button>
-                           </div><br>
-                            <?php
+											//echo '<td class="text-left" scope="row" id="nome">'.  $row['nomeEnc'] .'</td>';
+											echo ' 
+														<a href="#" class="insere">
+			                 					<span class="valorSpan">'.$row['idmembros'].' - '.$row['nome'].'</span><br>
+														</a>';
                         }
                       ?>
 			</div>
 			<div class="col border border-1 rounded">
+			<h3> Participantes </h3>
 				<div id="texto">
 				<?php
 					$pdo = Banco::conectar();
-					$sql = "SELECT infocursos.nomeCursos, membros.nome	FROM turma INNER JOIN membros
+					$sql = "SELECT infocursos.nomeCursos, membros.nome, membros.idmembros	FROM turma INNER JOIN membros
 					ON turma.alunos = membros.idmembros INNER JOIN infocursos
-					ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos";
-
+					ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos ORDER BY membros.nome ASC";
+					
 					foreach($pdo->query($sql)as $row){
-						 echo $row['nome'] . '</br>';
+						// echo '<span>'.$row['nome'] .'</span></br>';
+						echo '<div>
+									<a href="#" class="insere">
+												<span class="valorSpan">'.$row['idmembros'].' - '.$row['nome'].'</span>
+									</a>
+								</div>
+								';
 						}
+						
 				//		if( $total = count($row) == 0) echo "Não há alunos cadastrados neste curso";
 					?></div>
+					</div> <!--MOSTRA AQUELES QUE ESTÃO INSERIDOS NO EVENTO, CURSO OU/E MINISTÉRIO -->
+					<div class="col border border-1 rounded">
+						<h3> Participantes </h3>
+							<div id="part">
+							
+							</div>
+					
+					</div>
 			</div>
 		</div>
 	</div>
-
-
-
 
 </body>
 </html>
