@@ -15,11 +15,23 @@
 <style>
 	.lista{		/*border: 1px solid black;*/
 	}
-</style>
+
+  p {
+    color: blue;
+    margin: 5px;
+    cursor: pointer;
+  }
+  p:hover {
+    background: #d0d0d0;
+		width: auto;
+  }
+  </style>
 
 <script>
+
 	var i = 1;
     function escreve(){
+	
 		var txt_pre_definido = document.getElementById('x').value;
         var t= document.getElementById("texto").innerHTML += "<div class='lista' id='" +i+ "' onclick='apaga(" +i+ ")'>" + txt_pre_definido+"</div>";
         i++;
@@ -51,58 +63,92 @@ function enviar_dados(valor){
 	$.post( "turma_db.php" , { nome: valor , curso: "2" })
 
   .done( function ( data ) {
- 	  alert( "Data Loaded: " + data )
+ 	 // alert( "Mensagem: " + data )
+ 	  console.log( "Mensagem: " + data )
 
   .fail(function(data) {
      alert( data );
   })
  });
+}
 
  function remove_dados(valor){
 	$.post( "rem_aluno.php" , { nome: valor , curso: "2" })
 
   .done( function ( data ) {
- 	  alert( "Data Loaded: " + data )
+ 	 // alert( "Mensagem: " + data )
+ 	 console.log( "Mensagem: " + data )
 
   .fail(function(data) {
      alert( data );
-  })
- });
-
-	function ler_dados(){
-	//alert("pressionou");
-	$(document).ready(function(){
-	$('#part').empty(); //Limpando a tabela
-	$.ajax({
-		type:'post',		//Definimos o método HTTP usado
-		dataType: 'json',	//Definimos o tipo de retorno
-		url: 'turmas.php',//Definindo o arquivo onde serão buscados os dados
-		success: function(dados){
-			for(var i=0;dados.length>i;i++){
-				//Adicionando registros retornados na tabela
-				$('#part').append('<tr><td>'+dados[i].id+'</td><td>'+dados[i].alunos+'</td><td>'+dados[i].curso+'</td></tr>');
-				//$('#participantes').append('<label>'+dados[i].id+' <td>'+dados[i].nome+'</td><td>'+dados[i].curso+'</td></label><br>');
-		//		$('#participantes').append('<a href="#" class="remove"><span class="valorSpan">'+dados[i].idmembros+' - '+dados[i].nome+'</span><br><a>');
+ 		 })
+ 	});
+ }
+		function ler_dados(){
+		//alert("pressionou");
+		$(document).ready(function(){
+		$('#no_part').empty(); //Limpando a tabela
+		$.ajax({
+			type:'post',		//Definimos o método HTTP usado
+			dataType: 'json',	//Definimos o tipo de retorno
+			url: 'turmas.php',//Definindo o arquivo onde serão buscados os dados
+			success: function(dados){
+				for(var i=0;dados.length>i;i++){
+					//Adicionando registros retornados na tabela
+					//$('#part').append('<tr><td>'+dados[i].id+'</td><td>'+dados[i].alunos+'</td><td>'+dados[i].curso+'</td></tr>');
+					//$('#participantes').append('<label>'+dados[i].id+' <td>'+dados[i].nome+'</td><td>'+dados[i].curso+'</td></label><br>');
+					$('#no_part').append('<p id="adic_aluno">'+dados[i].idmembros+' - '+dados[i].nome+'</p>');
+					}
 				}
-			}
+			});
 		});
-	});
-}
+	}
+	
+	function ler_dados_add(){
+		//alert("pressionou");
+		$(document).ready(function(){
+		$('#texto').empty(); //Limpando a tabela
+		$.ajax({
+			type:'post',		//Definimos o método HTTP usado
+			dataType: 'json',	//Definimos o tipo de retorno
+			url: 'ler_turma.php',//Definindo o arquivo onde serão buscados os dados
+			success: function(dados){
+				for(var i=0;dados.length>i;i++){
+					//Adicionando registros retornados na tabela
+				//	$('#texto').append('<a href="#" class="remove"><span class="valorSpan">'+dados[i].idmembros+' - '+dados[i].nome+'</span><br><a>');
+					$('#texto').append('<p id="remove_aluno">'+dados[i].idmembros+' - '+dados[i].nome+'</p>');
+					}
+				}
+			});
+		});
+	}
+
 window.onload = function() {
-	ler_dados();
+	carrega_dados();
 };
 
-$(document).ready(function () {
-    $('.insere span').click(function (e) {
-        e.preventDefault();
+	function carrega_dados()
+	{
+		ler_dados();
+		ler_dados_add();
+
+	}
+	
+		$(document).on('click', '#remove_aluno', function(e) {		
+				e.preventDefault();
+        //pegarPreco = parseFloat(this.innerHTML);
+        pegarAluno = (this.innerHTML);
+        remove_dados(pegarAluno);
+				carrega_dados();
+				console.log(this.innerHTML); });
+
+		$(document).on('click', '#adic_aluno', function(e) {		
+				e.preventDefault();
         //pegarPreco = parseFloat(this.innerHTML);
         pegarAluno = (this.innerHTML);
         enviar_dados(pegarAluno);
-				ler_dados();
-			//	alert(pegarAluno);
-    });
-		
-});
+				carrega_dados();
+				console.log(this.innerHTML); });
 
 </script>
 </head>
@@ -123,17 +169,17 @@ $(document).ready(function () {
                         {
                             // echo '<li>'.$i++.' - </li>';
 											//echo '<td class="text-left" scope="row" id="nome">'.  $row['nomeEnc'] .'</td>';
-											echo ' 
+											/*echo ' 
 														<a href="#" class="insere">
 			                 					<span class="valorSpan">'.$row['idmembros'].' - '.$row['nome'].'</span><br>
-														</a>';
+														</a>';*/
                         }
                       ?>
 			</div>
-			<div class="col border border-1 rounded">
+			<div class="col">
 			<h3> Participantes </h3>
 				<div id="texto">
-				<?php
+				<?php/*
 					$pdo = Banco::conectar();
 					$sql = "SELECT infocursos.nomeCursos, membros.nome, membros.idmembros	FROM turma INNER JOIN membros
 					ON turma.alunos = membros.idmembros INNER JOIN infocursos
@@ -142,7 +188,7 @@ $(document).ready(function () {
 					foreach($pdo->query($sql)as $row){
 						// echo '<span>'.$row['nome'] .'</span></br>';
 						echo '<div>
-									<a href="#" class="insere">
+									<a href="#" class="remove">
 												<span class="valorSpan">'.$row['idmembros'].' - '.$row['nome'].'</span>
 									</a>
 								</div>
@@ -150,11 +196,12 @@ $(document).ready(function () {
 						}
 						
 				//		if( $total = count($row) == 0) echo "Não há alunos cadastrados neste curso";
+					*/
 					?></div>
 					</div> <!--MOSTRA AQUELES QUE ESTÃO INSERIDOS NO EVENTO, CURSO OU/E MINISTÉRIO -->
-					<div class="col border border-1 rounded">
-						<h3> Participantes </h3>
-							<div id="part">
+					<div class="col">
+						<h3> Não Participantes </h3>
+							<div id="no_part">
 							
 							</div>
 					
@@ -162,6 +209,10 @@ $(document).ready(function () {
 			</div>
 		</div>
 	</div>
+
+	<script>
+
+</script>
 
 </body>
 </html>

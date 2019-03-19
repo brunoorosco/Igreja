@@ -34,7 +34,7 @@
 						//':respCad'  => $resp
 					));
                     $db = null;
-                    echo "ok";
+                    echo "$aluno Inserido com sucesso";
 				//$_SESSION['msg_curso'] = "<div class='alert alert-success' role='alert'>Curso Cadastrado com Sucesso!!!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
 		   //header("Location: http://localhost/www/igreja/app/curso/cursos.php");
 		    }
