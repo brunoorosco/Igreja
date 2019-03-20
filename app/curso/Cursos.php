@@ -18,12 +18,23 @@
 	.lista{		/*border: 1px solid black;*/
 	}
 
-  p {
+  #adic_aluno{
     color: black;
     margin: 5px;
-    cursor: pointer;
+		cursor:pointer;
+    
   }
-  p:hover {
+  #adic_aluno:hover {
+    background: #e0e0e0;
+		width: auto;
+  }
+	#remove_aluno{
+    color: blue;
+    margin: 5px;
+		cursor:pointer;
+    
+  }
+  #remove_aluno:hover {
     background: #e0e0e0;
 		width: auto;
   }
@@ -118,7 +129,7 @@ function ler_dados_add(){
 			for(var i=0;dados.length>i;i++){
 				//Adicionando registros retornados na tabela
 			//	$('#texto').append('<a href="#" class="remove"><span class="valorSpan">'+dados[i].idmembros+' - '+dados[i].nome+'</span><br><a>');
-				$('#part').append('<p id="remove_aluno">'+dados[i].idmembros+' - '+dados[i].nome+'</p>');
+				$('#part').append('<p id="remove_aluno" style="cursor: none important!;">'+dados[i].idmembros+' - '+dados[i].nome+'</p>');
 				}
 			}
 		});
@@ -151,6 +162,12 @@ function carrega_dados()
 	enviar_dados(pegarAluno);
 			carrega_dados();
 			console.log(this.innerHTML); });
+
+
+			$(window).load(function(){        
+   $('#modalAlunos').modal('show');
+	 carrega_dados();
+    }); 
 
 </script>
 
