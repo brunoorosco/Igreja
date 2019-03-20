@@ -14,6 +14,147 @@
 		<title>Cursos TMAC</title>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
+<style>
+	.lista{		/*border: 1px solid black;*/
+	}
+
+  p {
+    color: black;
+    margin: 5px;
+    cursor: pointer;
+  }
+  p:hover {
+    background: #e0e0e0;
+		width: auto;
+  }
+  </style>
+	
+<script>
+
+var i = 1;
+function escreve(){
+
+	var txt_pre_definido = document.getElementById('x').value;
+	var t= document.getElementById("texto").innerHTML += "<div class='lista' id='" +i+ "' onclick='apaga(" +i+ ")'>" + txt_pre_definido+"</div>";
+	i++;
+ }
+
+function escreve_2(valor){
+	console.log(valor);
+	enviar_dados(valor);
+	//var txt_pre = document.getElementById('nome').textContent;
+	var txt_pre = valor;
+	var t= document.getElementById("texto").innerHTML += "<div class='lista' id='" +i+ "' onclick='apaga(" +i+ ")'>" + txt_pre+"</div>";
+	i++;
+ }
+
+ function apaga(v){
+var divElements = document.getElementsByClassName("lista");
+console.log(divElements);
+
+for (var i = 0; i < divElements.length; i++) {
+  var idElement = divElements[i].getAttribute('id');
+  if (idElement == v) {
+	divElements[i].parentNode.removeChild(divElements[i]);
+	break;
+			  }
+	}
+}
+
+function enviar_dados(valor){
+$.post( "turma_db.php" , { nome: valor , curso: "2" })
+
+.done( function ( data ) {
+  // alert( "Mensagem: " + data )
+   console.log( "Mensagem: " + data )
+
+.fail(function(data) {
+ alert( data );
+})
+});
+}
+
+function remove_dados(valor){
+$.post( "rem_aluno.php" , { nome: valor , curso: "2" })
+
+.done( function ( data ) {
+  // alert( "Mensagem: " + data )
+  console.log( "Mensagem: " + data )
+
+.fail(function(data) {
+ alert( data );
+	  })
+ });
+}
+	function ler_dados(){
+	//alert("pressionou");
+	$(document).ready(function(){
+	$('#no_part').empty(); //Limpando a tabela
+	$.ajax({
+		type:'post',		//Definimos o método HTTP usado
+		dataType: 'json',	//Definimos o tipo de retorno
+		url: 'turmas.php',//Definindo o arquivo onde serão buscados os dados
+		success: function(dados){
+			for(var i=0;dados.length>i;i++){
+				//Adicionando registros retornados na tabela
+				//$('#part').append('<tr><td>'+dados[i].id+'</td><td>'+dados[i].alunos+'</td><td>'+dados[i].curso+'</td></tr>');
+				//$('#participantes').append('<label>'+dados[i].id+' <td>'+dados[i].nome+'</td><td>'+dados[i].curso+'</td></label><br>');
+				$('#no_part').append('<p id="adic_aluno">'+dados[i].idmembros+' - '+dados[i].nome+'</p>');
+				}
+			}
+		});
+	});
+}
+
+function ler_dados_add(){
+	//alert("pressionou");
+	$(document).ready(function(){
+	$('#part').empty(); //Limpando a tabela
+	$.ajax({
+		type:'post',		//Definimos o método HTTP usado
+		dataType: 'json',	//Definimos o tipo de retorno
+		url: 'ler_turma.php',//Definindo o arquivo onde serão buscados os dados
+		success: function(dados){
+			for(var i=0;dados.length>i;i++){
+				//Adicionando registros retornados na tabela
+			//	$('#texto').append('<a href="#" class="remove"><span class="valorSpan">'+dados[i].idmembros+' - '+dados[i].nome+'</span><br><a>');
+				$('#part').append('<p id="remove_aluno">'+dados[i].idmembros+' - '+dados[i].nome+'</p>');
+				}
+			}
+		});
+	});
+}
+
+window.onload = function() {
+carrega_dados();
+};
+
+function carrega_dados()
+{
+	ler_dados();
+	ler_dados_add();
+
+}
+
+	$(document).on('click', '#remove_aluno', function(e) {		
+			e.preventDefault();
+	//pegarPreco = parseFloat(this.innerHTML);
+	pegarAluno = (this.innerHTML);
+	remove_dados(pegarAluno);
+			carrega_dados();
+			console.log(this.innerHTML); });
+
+	$(document).on('click', '#adic_aluno', function(e) {		
+			e.preventDefault();
+	//pegarPreco = parseFloat(this.innerHTML);
+	pegarAluno = (this.innerHTML);
+	enviar_dados(pegarAluno);
+			carrega_dados();
+			console.log(this.innerHTML); });
+
+</script>
+
+
 	</head>
 
 	<body>
@@ -94,28 +235,46 @@
 
 
 		<!-- Inicio Modal -->
-					<div class="modal fade" id="ModalAlunos<?php echo $idCursos=$row['idCursos'];?>" tabindex="-1" role="dialog" aria-labelledby="ModalAlunosLabel">
-						<div class="modal-dialog" role="document">
+					<div class="modal fade " id="ModalAlunos<?php echo $idCursos=$row['idCursos'];?>" tabindex="-1" role="dialog" aria-labelledby="ModalAlunosLabel">
+						<div class="modal-dialog modal-lg" role="document">
 							<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<h4 class="modal-title text-center" id="ModalAlunosLabel"><?php echo $row['nomeCursos']; ?></h4>
+										<h4 class="modal-title" id="ModalAlunosLabel"><p class="text-left"><?php echo $row['nomeCursos']; ?></p></h4>
+										
 									</div>
 									<div class="modal-body">
 											<div class="container-fluid">
-												 	 <div class=""><h4>Participantes</h4>
-														 	<?php
+												<div class="row">
+												<div class="col-5"><h4><p class="text-left">Participantes</p></h4>  
+													  		<div id="part">
+							
+															</div>
+																		<?php
+																		/*
 
-															$sql = "SELECT infocursos.nomeCursos, membros.nome	FROM turma INNER JOIN membros
-															ON turma.alunos = membros.idmembros INNER JOIN infocursos
-															ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos like $idCursos";
+																		$sql = "SELECT infocursos.nomeCursos, membros.nome	FROM turma INNER JOIN membros
+																		ON turma.alunos = membros.idmembros INNER JOIN infocursos
+																		ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos like $idCursos";
 
-														foreach($pdo->query($sql)as $row){
-														 		echo $row['nome'] . '</br>';
-																		}
-														//		if( $total = count($row) == 0) echo "Não há alunos cadastrados neste curso";
-															?>
+																	foreach($pdo->query($sql)as $row){
+																			echo $row['nome'] . '</br>';
+																					}
+																	//		if( $total = count($row) == 0) echo "Não há alunos cadastrados neste curso";
+																	*/	?>
 
+													 </div>
+													 <div class="col-2"><h5><< >></h5>
+													 </div>
+
+
+													 <div class="col-5"><h4><p class="text-right">Não Participantes</p></h4>    
+													 		<div id="no_part">
+							
+															</div>
+
+
+													 </div>
 													 </div>
 												 </div>
 											</div>
