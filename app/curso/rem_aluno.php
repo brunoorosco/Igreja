@@ -17,7 +17,7 @@
 					$stmt->execute();
                   
           if ($stmt->rowCount() > 0)echo "$aluno removido!!!";
-           else echo "Nenhum Aluno removido!!!";
+           else echo $aluno.' - '.$curso;//echo "Nenhum Aluno removido!!!";
           $db = null;
           
 				//$_SESSION['msg_curso'] = "<div class='alert alert-success' role='alert'>Curso Cadastrado com Sucesso!!!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";

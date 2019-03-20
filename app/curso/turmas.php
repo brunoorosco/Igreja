@@ -8,7 +8,8 @@
     $con = new mysqli("localhost", "root", "", "db_igreja");
     if (mysqli_connect_errno()) trigger_error(mysqli_connect_error());
 
-     //$idCursos = $_POST['idcurso'];
+     $idCursos = $_POST['idcurso'];
+     
    // $idCursos = 2;
 
   /*  $sql = "SELECT membros.nome	FROM turma INNER JOIN membros
@@ -17,7 +18,7 @@
 */
 $sql = "SELECT * from membros
 where idmembros not in (select alunos
-from turma where ) ORDER BY nome ASC" ;     
+from turma) ORDER BY nome ASC" ;     
     
     //Consultando banco de dados
     $qryLista = mysqli_query($con, $sql);    

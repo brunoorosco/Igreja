@@ -8,7 +8,7 @@
     $con = new mysqli("localhost", "root", "", "db_igreja");
     if (mysqli_connect_errno()) trigger_error(mysqli_connect_error());
 
-    $idCursos = 2;
+    $idCursos = 1;
 // query para quem participa do curso
     $sql = "SELECT infocursos.nomeCursos, membros.nome, membros.idmembros	FROM turma INNER JOIN membros
     ON turma.alunos = membros.idmembros INNER JOIN infocursos

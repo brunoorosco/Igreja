@@ -42,51 +42,21 @@
 	
 <script>
 
-var i = 1;
-function escreve(){
+function enviar_dados(valor, idcurso){
+$.post( "turma_db.php" , { nome: valor , curso: idcurso })
 
-	var txt_pre_definido = document.getElementById('x').value;
-	var t= document.getElementById("texto").innerHTML += "<div class='lista' id='" +i+ "' onclick='apaga(" +i+ ")'>" + txt_pre_definido+"</div>";
-	i++;
- }
+	.done( function ( data ) {
+		// alert( "Mensagem: " + data )
+		console.log( "Mensagem: " + data )
 
-function escreve_2(valor){
-	console.log(valor);
-	enviar_dados(valor);
-	//var txt_pre = document.getElementById('nome').textContent;
-	var txt_pre = valor;
-	var t= document.getElementById("texto").innerHTML += "<div class='lista' id='" +i+ "' onclick='apaga(" +i+ ")'>" + txt_pre+"</div>";
-	i++;
- }
-
- function apaga(v){
-var divElements = document.getElementsByClassName("lista");
-console.log(divElements);
-
-for (var i = 0; i < divElements.length; i++) {
-  var idElement = divElements[i].getAttribute('id');
-  if (idElement == v) {
-	divElements[i].parentNode.removeChild(divElements[i]);
-	break;
-			  }
+	.fail(function(data) {
+	alert( data );
+			})
+		});
 	}
-}
 
-function enviar_dados(valor){
-$.post( "turma_db.php" , { nome: valor , curso: "2" })
-
-.done( function ( data ) {
-  // alert( "Mensagem: " + data )
-   console.log( "Mensagem: " + data )
-
-.fail(function(data) {
- alert( data );
-})
-});
-}
-
-function remove_dados(valor){
-$.post( "rem_aluno.php" , { nome: valor , curso: "2" })
+function remove_dados(valor, idcurso){
+$.post( "rem_aluno.php" , { nome: valor , curso: idcurso })
 
 .done( function ( data ) {
   // alert( "Mensagem: " + data )
@@ -126,7 +96,7 @@ function ler_dados_add(turma){
 		type:'post',		//Definimos o método HTTP usado
 		dataType: 'json',	//Definimos o tipo de retorno
 		url: 'ler_turma.php',//Definindo o arquivo onde serão buscados os dados
-		data: turma(turma),
+		data: {idcurso : turma},
 		success: function(dados){
 			for(var i=0;dados.length>i;i++){
 				//Adicionando registros retornados na tabela
@@ -152,24 +122,25 @@ function carrega_dados(turma)
 	$(document).on('click', '#remove_aluno', function(e) {		
 			e.preventDefault();
 	//pegarPreco = parseFloat(this.innerHTML);
-	pegarAluno = (this.innerHTML);
-	  var curso = document.getElementById('curso').value;
-		console.log(curso);
-			remove_dados(pegarAluno);
-			carrega_dados();
-			console.log(this.innerHTML); });
+			pegarAluno = (this.innerHTML);
+			pegarAluno = pegarAluno.substr(10, 20).replace(/[^\d]+/g,''); 
+	  	var curso = document.getElementById('id_curso').value;
+			console.log(curso);
+		//	remove_dados(pegarAluno, curso);
+		//	carrega_dados();
+		});
 
 	$(document).on('click', '#adic_aluno', function(e) {		
 			e.preventDefault();
 	//pegarPreco = parseFloat(this.innerHTML);
-	var curso = document.getElementById('curso').value;
-	console.log(curso);
-	pegarAluno = (this.innerHTML);
-	enviar_dados(pegarAluno);
-	carrega_dados(curso);
-	console.log(this.innerHTML); });
-
- 
+			var curso = document.getElementById('id_curso').value;
+			console.log(curso);
+			pegarAluno = (this.innerHTML);
+			pegarAluno = pegarAluno.substr(10, 20).replace(/[^\d]+/g,''); 
+		//	enviar_dados(pegarAluno, curso);
+		//	carrega_dados(curso);
+	
+		});
 
 </script>
 
@@ -215,7 +186,7 @@ function carrega_dados(turma)
 									<td class="col-xs-2 col-sm-2  col-md-2 col-lg-2"><?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['data_']))); ?></td>
 									<td class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 										<div class="btn-group btn-sm">
-												<button type="button" class="btn btn-light fas fa-graduation-cap" data-toggle="modal" data-target="#ModalAlunos<?php echo $row['idCursos']; ?>" title="Cadastro de Alunos"></button>
+												<button type="button" class="btn btn-light fas fa-graduation-cap" data-toggle="modal" data-target="#ModalAlunos" data-whatever="<?php echo $row['idCursos']; ?>"></button>
 												<button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idCursos']; ?>" title="Informações Gerais sobre o curso"></button>
 												<button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idCursos']; ?>"
 																data-whatevernome="<?php echo $row['nomeCursos'];?>" data-whateverdetalhes="<?php echo $row['tema'];?>" data-whateverdata="<?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['data_']))); ?>" title="Editar Curso">
@@ -252,28 +223,29 @@ function carrega_dados(turma)
 								</div>
 								<!-- Fim Modal -->
 
+								<?php } ?>
 
 		<!-- Inicio Modal -->
-					<div class="modal fade " id="ModalAlunos<?php echo $idCursos=$row['idCursos'];?>" tabindex="-1" role="dialog" aria-labelledby="ModalAlunosLabel">
+					<div class="modal fade " id="ModalAlunos" tabindex="-1" role="dialog" aria-labelledby="ModalAlunosLabel">
 						<div class="modal-dialog modal-lg" role="document">
 							<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<h4 class="modal-title" id="ModalAlunosLabel"><p class="text-left"><?php echo $row['nomeCursos']; ?></p></h4>
-										<input id="curso" value="<?php echo $idCursos=$row['idCursos'];?>" >
-										
+										<h4 class="modal-title" id="ModalAlunosLabel"><p class="text-left"><?php echo $row['nomeCursos']; ?></p></h4>						
 									</div>
 									<div class="modal-body">
+									<input name="id_curso" type="hidden" class="form-control" id="id_curso" value="">
 											<div class="container-fluid">
 												<div class="row">
 												<div class="col-5"><h4><p class="text-left">Participantes</p></h4>  
 													  		<div id="part">
 							
 															</div>
-																		<?php
+															
+																		<?php/*
 																		$sql_ = "SELECT infocursos.nomeCursos, membros.nome, membros.idmembros	FROM turma INNER JOIN membros
-													ON turma.alunos = membros.idmembros INNER JOIN infocursos
-													ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos = $idCursos ORDER BY membros.nome ASC";
+																			ON turma.alunos = membros.idmembros INNER JOIN infocursos
+																			ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos = $idCursos ORDER BY membros.nome ASC";
 
 												
 																							
@@ -282,12 +254,13 @@ function carrega_dados(turma)
 																		$sql = "SELECT infocursos.nomeCursos, membros.nome, membros.idmembros	FROM turma INNER JOIN membros
 																		ON turma.alunos = membros.idmembros INNER JOIN infocursos
 																		ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos like $idCursos"; 
-
+																			
 																	foreach($pdo->query($sql)as $row){
+																		
 																			echo '<p id="remove_aluno" >'.$row['idmembros'].' - '. $row['nome'].'</p>';
 																					}
 																	//		if( $total = count($row) == 0) echo "Não há alunos cadastrados neste curso";
-																		?>
+																		*/?>
 
 													 </div>
 													 <div class="col-2"><h5><< >></h5>
@@ -297,22 +270,22 @@ function carrega_dados(turma)
 													 <div class="col-5"><h4><p class="text-center">Não Participantes</p></h4>    
 													 		<div id="no_part" style="margin-left: 50px;">
 															 <?php
-
+																	/*
 																				$sql = "SELECT * from membros
 																				where idmembros not in (select alunos
 																				from turma WHERE curso='$idCursos') ORDER BY nome ASC" ;     
-																						
+																					
 																				/*
 
 																				$sql = "SELECT infocursos.nomeCursos, membros.nome	FROM turma INNER JOIN membros
 																				ON turma.alunos = membros.idmembros INNER JOIN infocursos
-																				ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos like $idCursos"; */
+																				ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos like $idCursos"; 
 
 																				foreach($pdo->query($sql)as $row){
-																							echo '<p id="adic_aluno">'. $row['idmembros'].' - '. $row['nome'].'</p>'; 
+																							echo '<p id="adic_aluno"><span hidden>'.$row['idmembros'].'</span>'. $row['nome'].'</p>'; 
 																				}
 																				//		if( $total = count($row) == 0) echo "Não há alunos cadastrados neste curso";
-																				?>
+																		*/		?>
 
 															</div>
 																	
@@ -326,7 +299,7 @@ function carrega_dados(turma)
 					</div>
 			</div>
 			<!-- Fim Modal -->
-<?php } ?>
+
 </tbody>
 </table>
 </div>
@@ -402,6 +375,19 @@ function carrega_dados(turma)
 				  $(".alert").alert('close');
 
 						}, 3000);
+
+		$('#ModalAlunos').on('show.bs.modal', function (event) {
+		  var button = $(event.relatedTarget) // Button that triggered the modal
+		  var recipient = button.data('whatever') // Extract info from data-* attributes
+		  
+		  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+		  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+		  var modal = $(this)
+		  modal.find('.modal-title').text('Cadastro de Alunos - Curso: ' + recipient)
+			modal.find('#id_curso').val(recipient)
+			carrega_dados(recipient);
+			console.log(recipient);
+		});
 
 		$('#editModal').on('show.bs.modal', function (event) {
 		  var button = $(event.relatedTarget) // Button that triggered the modal
