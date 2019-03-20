@@ -71,8 +71,8 @@ jQuery(document).ready(function(){
 
       $(document).ready(function(){
       				$('#ajax_form').submit(function(){
-      					var dados = $(this).serialize();
-                event.preventDefault();
+								var dados = $(this).serialize();
+								  event.preventDefault();
       				 		$.ajax({
       						type:'POST',
       						url: "../../app/membros/cadDB.php",

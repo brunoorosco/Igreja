@@ -97,7 +97,7 @@ $.post( "rem_aluno.php" , { nome: valor , curso: "2" })
 	  })
  });
 }
-	function ler_dados(){
+	function ler_dados(turma){
 	//alert("pressionou");
 	$(document).ready(function(){
 	$('#no_part').empty(); //Limpando a tabela
@@ -105,6 +105,7 @@ $.post( "rem_aluno.php" , { nome: valor , curso: "2" })
 		type:'post',		//Definimos o método HTTP usado
 		dataType: 'json',	//Definimos o tipo de retorno
 		url: 'turmas.php',//Definindo o arquivo onde serão buscados os dados
+		data: turma,
 		success: function(dados){
 			for(var i=0;dados.length>i;i++){
 				//Adicionando registros retornados na tabela
@@ -117,7 +118,7 @@ $.post( "rem_aluno.php" , { nome: valor , curso: "2" })
 	});
 }
 
-function ler_dados_add(){
+function ler_dados_add(turma){
 	//alert("pressionou");
 	$(document).ready(function(){
 	$('#part').empty(); //Limpando a tabela
@@ -125,11 +126,12 @@ function ler_dados_add(){
 		type:'post',		//Definimos o método HTTP usado
 		dataType: 'json',	//Definimos o tipo de retorno
 		url: 'ler_turma.php',//Definindo o arquivo onde serão buscados os dados
+		data: turma(turma),
 		success: function(dados){
 			for(var i=0;dados.length>i;i++){
 				//Adicionando registros retornados na tabela
 			//	$('#texto').append('<a href="#" class="remove"><span class="valorSpan">'+dados[i].idmembros+' - '+dados[i].nome+'</span><br><a>');
-				$('#part').append('<p id="remove_aluno" style="cursor: none important!;">'+dados[i].idmembros+' - '+dados[i].nome+'</p>');
+				$('#part').append('<p id="remove_aluno" >'+dados[i].idmembros+' - '+dados[i].nome+'</p>');
 				}
 			}
 		});
@@ -140,10 +142,10 @@ window.onload = function() {
 carrega_dados();
 };
 
-function carrega_dados()
+function carrega_dados(turma)
 {
-	ler_dados();
-	ler_dados_add();
+	ler_dados(turma);
+	ler_dados_add(turma);
 
 }
 
@@ -151,23 +153,23 @@ function carrega_dados()
 			e.preventDefault();
 	//pegarPreco = parseFloat(this.innerHTML);
 	pegarAluno = (this.innerHTML);
-	remove_dados(pegarAluno);
+	  var curso = document.getElementById('curso').value;
+		console.log(curso);
+			remove_dados(pegarAluno);
 			carrega_dados();
 			console.log(this.innerHTML); });
 
 	$(document).on('click', '#adic_aluno', function(e) {		
 			e.preventDefault();
 	//pegarPreco = parseFloat(this.innerHTML);
+	var curso = document.getElementById('curso').value;
+	console.log(curso);
 	pegarAluno = (this.innerHTML);
 	enviar_dados(pegarAluno);
-			carrega_dados();
-			console.log(this.innerHTML); });
+	carrega_dados(curso);
+	console.log(this.innerHTML); });
 
-
-			$(window).load(function(){        
-   $('#modalAlunos').modal('show');
-	 carrega_dados();
-    }); 
+ 
 
 </script>
 
@@ -258,6 +260,7 @@ function carrega_dados()
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 										<h4 class="modal-title" id="ModalAlunosLabel"><p class="text-left"><?php echo $row['nomeCursos']; ?></p></h4>
+										<input id="curso" value="<?php echo $idCursos=$row['idCursos'];?>" >
 										
 									</div>
 									<div class="modal-body">
@@ -268,28 +271,51 @@ function carrega_dados()
 							
 															</div>
 																		<?php
-																		/*
+																		$sql_ = "SELECT infocursos.nomeCursos, membros.nome, membros.idmembros	FROM turma INNER JOIN membros
+													ON turma.alunos = membros.idmembros INNER JOIN infocursos
+													ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos = $idCursos ORDER BY membros.nome ASC";
 
-																		$sql = "SELECT infocursos.nomeCursos, membros.nome	FROM turma INNER JOIN membros
+												
+																							
+																		
+
+																		$sql = "SELECT infocursos.nomeCursos, membros.nome, membros.idmembros	FROM turma INNER JOIN membros
 																		ON turma.alunos = membros.idmembros INNER JOIN infocursos
-																		ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos like $idCursos";
+																		ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos like $idCursos"; 
 
 																	foreach($pdo->query($sql)as $row){
-																			echo $row['nome'] . '</br>';
+																			echo '<p id="remove_aluno" >'.$row['idmembros'].' - '. $row['nome'].'</p>';
 																					}
 																	//		if( $total = count($row) == 0) echo "Não há alunos cadastrados neste curso";
-																	*/	?>
+																		?>
 
 													 </div>
 													 <div class="col-2"><h5><< >></h5>
 													 </div>
 
 
-													 <div class="col-5"><h4><p class="text-right">Não Participantes</p></h4>    
-													 		<div id="no_part">
-							
-															</div>
+													 <div class="col-5"><h4><p class="text-center">Não Participantes</p></h4>    
+													 		<div id="no_part" style="margin-left: 50px;">
+															 <?php
 
+																				$sql = "SELECT * from membros
+																				where idmembros not in (select alunos
+																				from turma WHERE curso='$idCursos') ORDER BY nome ASC" ;     
+																						
+																				/*
+
+																				$sql = "SELECT infocursos.nomeCursos, membros.nome	FROM turma INNER JOIN membros
+																				ON turma.alunos = membros.idmembros INNER JOIN infocursos
+																				ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos like $idCursos"; */
+
+																				foreach($pdo->query($sql)as $row){
+																							echo '<p id="adic_aluno">'. $row['idmembros'].' - '. $row['nome'].'</p>'; 
+																				}
+																				//		if( $total = count($row) == 0) echo "Não há alunos cadastrados neste curso";
+																				?>
+
+															</div>
+																	
 
 													 </div>
 													 </div>

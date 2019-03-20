@@ -8,9 +8,11 @@
     $con = new mysqli("localhost", "root", "", "db_igreja");
     if (mysqli_connect_errno()) trigger_error(mysqli_connect_error());
 
+    $idCursos = 2;
+// query para quem participa do curso
     $sql = "SELECT infocursos.nomeCursos, membros.nome, membros.idmembros	FROM turma INNER JOIN membros
     ON turma.alunos = membros.idmembros INNER JOIN infocursos
-    ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos ORDER BY membros.nome ASC";
+    ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos = $idCursos ORDER BY membros.nome ASC";
     
     //Consultando banco de dados
     $qryLista = mysqli_query($con, $sql);    
