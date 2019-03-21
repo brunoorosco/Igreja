@@ -40,12 +40,10 @@
 		width: auto;
   }
   </style>
-	
 	</head>
-
 	<body>
 		<div class="container">
-			</br>
+			<br>
 			<div class="page-header">
 				<?php
 				if(isset($_SESSION['msg_curso'])){

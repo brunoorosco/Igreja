@@ -2,13 +2,13 @@
     function enviar_dados(valor, idcurso){
 				//verifica se valores estão chegando corretamente 
 				//console.log({ nome: valor , curso: idcurso });
-			$.post( "turma_db.php" , { nome: valor , curso: idcurso })
+			$.post( "turma_db.php" , { nome: valor , curso: idcurso })//acesso ao banco declarando as variaveis post e seus valores
 					.done( function ( data ) {
 						// alert( "Mensagem: " + data )
 						//console.log( "Mensagem: " + data );
 					})
 				.fail(function(data) {
-						alert("Erro: "+data );
+						alert("Erro: "+data );//se tiver alguma falha no acesso ao banco gerar um alert
 						});
                     }
  ////////////////////////////////////////////////////////////////////                   
@@ -17,12 +17,13 @@
 			function remove_dados(valor, idcurso){
 				//verifica se valores estão chegando corretamente 
 				//console.log({ nome: valor , curso: idcurso });
-			$.post( "rem_aluno.php" , { nome: valor , curso: idcurso })
+			$.post( "rem_aluno.php" , { nome: valor , curso: idcurso })//acesso ao banco declarando as variaveis post e seus valores
 					.done(function ( data ) {
 				//		console.log( "Mensagem: " + data );
 					})
 			.fail(function(data) {
-				alert("Erro: " +data );
+				alert("Erro: " +data );//se tiver alguma falha no acesso ao banco gerar um alert
+
 					});
 			}
  //////////////////////////////////////////////////////////////////// 
@@ -36,18 +37,16 @@
 				type:'post',		//Definimos o método HTTP usado
 				dataType: 'json',	//Definimos o tipo de retorno
 				url: 'turmas.php',//Definindo o arquivo onde serão buscados os dados
-				data:  {curso: turma},
+				data:  {curso: turma},//variaveis post e seus valores
 				success: function(dados){
 					for(var i=0;dados.length>i;i++){
 						//Adicionando registros retornados na tabela
-						//$('#part').append('<tr><td>'+dados[i].id+'</td><td>'+dados[i].alunos+'</td><td>'+dados[i].curso+'</td></tr>');
-						//$('#participantes').append('<label>'+dados[i].id+' <td>'+dados[i].nome+'</td><td>'+dados[i].curso+'</td></label><br>');
-						$('#no_part').append('<p id="adic_aluno"><span hidden>'+dados[i].idmembros+'</span> - '+dados[i].nome+'</p>');
+							$('#no_part').append('<p id="adic_aluno"><span hidden>'+dados[i].idmembros+'</span> - '+dados[i].nome+'</p>');
 						}
 					},
 					error: function(dados){
 
-						alert("Erro ao enviar dados"+dados.msg);
+						alert("Erro ao enviar dados"+dados.msg);//se tiver alguma falha no acesso ao banco gerar um alert
 
 				}
 				});
@@ -65,13 +64,11 @@ function ler_dados_add(turma){
 				type:'post',		//Definimos o método HTTP usado
 				dataType: 'json',	//Definimos o tipo de retorno
 				url: 'ler_turma.php',//Definindo o arquivo onde serão buscados os dados
-				data: {curso : turma},
-				traditional: true,
+				data: {curso : turma},//variaveis post e seus valores
 				success: function(dados){
 					for(var i=0;dados.length>i;i++){
 						//Adicionando registros retornados na tabela
-					//	$('#texto').append('<a href="#" class="remove"><span class="valorSpan">'+dados[i].idmembros+' - '+dados[i].nome+'</span><br><a>');
-						$('#part').append('<p id="remove_aluno" ><span hidden>'+dados[i].idmembros+'</span> - '+dados[i].nome+'</p>');
+								$('#part').append('<p id="remove_aluno" ><span hidden>'+dados[i].idmembros+'</span> - '+dados[i].nome+'</p>');
 						}
 					}
 				});
