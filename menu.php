@@ -102,10 +102,10 @@ border-radius: 6px 0 6px 6px;
                       <ul class="dropdown-menu multi-level" aria-labelledby="navbarDropdownMenuLink">
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Cadastro</a>
                           <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/encontro/cad_Encontrista.php'?>">Novo Encontrista</a></li>
-                            <li><a class="dropdown-item disabled" href="">Nova Equipe</a></li>
-                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/membros/cadastro.php'?>">Novo Membro</a></li>
-                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/calendario/cadastroEvento.php'?>">Novo Evento</a></li>
+                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/encontro/cad_Encontrista.php'?>">Encontrista</a></li>
+                            <li><a class="dropdown-item disabled" href="">Equipe</a></li>
+                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/membros/cadastro.php'?>">Membro</a></li>
+                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/calendario/cadastroEvento.php'?>">Evento</a></li>
                           </ul>
                         </li>
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Consulta</a>
@@ -141,6 +141,7 @@ border-radius: 6px 0 6px 6px;
                         <li><a class="dropdown-item" href="#">Consultas</a></li>
                     </ul>
                 </li>
+                <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/apoio/aceite.php'?>">Aceitar Jesus</a></li>
               </ul>
             </li>
           <?php } ?>
