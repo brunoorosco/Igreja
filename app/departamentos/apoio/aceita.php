@@ -130,6 +130,20 @@ color: white;
                                                     <select class="form-control" id="supervisao" name="supervisao" style="text: #fff !important;color: gray;border-radius: 8px!important;
 	                        background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;">
 														<option disable hidden value="" >CEM</option>
+														<?php
+																		//	require_once 'database.php';	
+																		$pdo = Banco::conectar();
+																		$sql = "SELECT DISTINCT supervisao FROM membros ";
+
+																		foreach($pdo->query($sql)as $row)
+																							{ echo "<option>";
+																								echo $row['supervisao'];
+																						  	echo "</option>";
+																						}
+																				Banco::desconectar();
+
+																							?>
+																							
 														
 													</select>
 										</div>
@@ -158,6 +172,9 @@ color: white;
 		$('#cem').css('color','#cccccc');
 		$('#cem').attr('disabled', true);
 
+		$(document).ready(function(){ 
+	$('body').find('img[src$="https://cdn.rawgit.com/000webhost/logo/e9bd13f7/footer-powered-by-000webhost-white2.png"]').remove();
+    }); 
 
   </script>
 
