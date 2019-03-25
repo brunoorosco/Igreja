@@ -1,6 +1,8 @@
 <?php
-
-include_once "../../menu.php";
+  
+  include_once("../../_fonts/config/funcoes.php");
+  include_once "../../menu.php";
+  validarUsuario();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

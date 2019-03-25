@@ -1,7 +1,7 @@
 <?php
-if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
-global $URLBASE;
-$URLBASE = "http://localhost/www/igreja/";
+    if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
+    global $URLBASE;
+    $URLBASE = "http://localhost/www/igreja/";
  ?>
 <html>
 <head>
@@ -141,7 +141,7 @@ border-radius: 6px 0 6px 6px;
                         <li><a class="dropdown-item" href="#">Consultas</a></li>
                     </ul>
                 </li>
-                <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/apoio/aceite.php'?>">Aceitar Jesus</a></li>
+                <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/apoio/aceita.php'?>">Aceitar Jesus</a></li>
               </ul>
             </li>
           <?php } ?>

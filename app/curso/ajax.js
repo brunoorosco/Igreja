@@ -41,7 +41,7 @@
 				success: function(dados){
 					for(var i=0;dados.length>i;i++){
 						//Adicionando registros retornados na tabela
-							$('#no_part').append('<p id="adic_aluno"><span hidden>'+dados[i].idmembros+'</span> - '+dados[i].nome+'</p>');
+							$('#no_part').append('<p id="adic_aluno"><span hidden>'+dados[i].idmembros+'</span>'+dados[i].nome+'</p>');
 						}
 					},
 					error: function(dados){
@@ -68,7 +68,7 @@ function ler_dados_add(turma){
 				success: function(dados){
 					for(var i=0;dados.length>i;i++){
 						//Adicionando registros retornados na tabela
-								$('#part').append('<p id="remove_aluno" ><span hidden>'+dados[i].idmembros+'</span> - '+dados[i].nome+'</p>');
+								$('#part').append('<p id="remove_aluno" ><span hidden>'+dados[i].idmembros+'</span>'+dados[i].nome+'</p>');
 						}
 					}
 				});

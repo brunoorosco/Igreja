@@ -213,18 +213,25 @@
 <body>
 </br>
   <div class="container-fluid">
+              
     <?php
     if(isset($_SESSION['msg_log'])){
       echo $_SESSION['msg_log'];
       unset($_SESSION['msg_log']);
     }
-    ?>
+   
 
-    <?php
     if(isset($_SESSION['msg'])){
       echo $_SESSION['msg'];
       unset($_SESSION['msg']);
     }
+
+    if(isset($_SESSION['msg_login'])){
+      echo $_SESSION['msg_login'];
+      unset($_SESSION['msg_login']);
+    }
+
+    
     ?>
     <div class="row">
       <div class="col-3">
@@ -324,6 +331,14 @@
       $('#calendar_').fullCalendar({
         defaultView: 'listmonth'
       });
+
+  window.onload= function() {
+      setTimeout(function() {
+    $("#message").alert('close');
+
+          }, 5000);
+        };
+
     </script>
 
   </body>
