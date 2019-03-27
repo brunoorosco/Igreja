@@ -2,11 +2,11 @@
     if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
     global $URLBASE;
     $URLBASE = "http://localhost/www/igreja/";
-     
+
     $url1 = $_SERVER['SERVER_ADDR'];
-    
+
     //$URLBASE = "http://$url1/www/igreja/";
-    
+
  ?>
 <html>
 <head>
@@ -145,7 +145,7 @@ border-radius: 6px 0 6px 6px;
                             </ul>
                         </li>
                         <li class="dropdown-submenu">
-                            <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Ministério de Apoio</a>
+                            <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Equipe de Apoio</a>
                             <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/apoio/aceita.php'?>">Aceitou Jesus</a></li>
                                         <li><a  class="dropdown-item" href="#">Levitas</a></li>
@@ -153,10 +153,11 @@ border-radius: 6px 0 6px 6px;
                                         <li><a class="dropdown-item" href="#">Aviva Produções</a></li>
                             </ul>
                         </li>
-                        <li><a class="dropdown-item" href="#">Consultas</a></li>
+
                     </ul>
                 </li>
-              
+                  <li><a class="dropdown-item" href="#">Relatórios</a></li>
+
               </ul>
             </li>
           <?php } ?>
@@ -196,7 +197,7 @@ border-radius: 6px 0 6px 6px;
                                 <button type="submit" class="btn btn-primary btn-block">Login</button>
                             </div>
                             <div class="form-group text-center">
-                                <small><a href="#" data-toggle="modal" data-target="#modalPassword">Forgot password?</a></small>
+                                <small><a href="#" data-toggle="modal" data-target="#modalPassword">Esqueceu a senha?</a></small>
                             </div>
                         </form>
                     </li>

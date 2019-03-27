@@ -73,6 +73,11 @@ option:not(first-child){
 color: white;
   }
 
+select option {
+	  background: rgba(255, 255,255);
+	}
+
+
 	.btn-group-justified {
 	  display: table;
 	  width: 100%;
@@ -130,7 +135,7 @@ color: white;
                         <option style="color:#228B22;" value="#228B22">Verde</option>
                         <option style="color:#8B0000;" value="#8B0000">Vermelho</option>
                       </select>
-													<input type="text" name="resp" id= "resp" class="form-control" placeholder="Responsavel pelo cadastro" value="<?php echo carrega_dados(); ?>" style="border-radius: 8px!important;
+													<input disabled type="text" name="resp" id= "resp" class="form-control" placeholder="Responsavel pelo cadastro" value="<?php echo $_SESSION['usuario']; ?>" style="border-radius: 8px!important;
 				                  background-color: rgba(23, 3, 3, 0.60)!important;color: white!important; border-radius:1px solid #291212 !important;">
 										</div>
 										<div class="btn-group btn-group-justified" role="group">
@@ -151,8 +156,10 @@ color: white;
 		<script type="text/javascript" src="../../_fonts/js/sweetalert2.all.min.js"></script>
 
 	<script type="text/javascript">
-		  $('#cargo').change(function(){
-	    $(this).css('color', 'white');
+
+		  $('#color').change(function(){
+				 var cor = $(this).children("option:selected").val();
+	    $(this).css('color', cor);
 	  });
 
 		$('#cem').css('color','#cccccc');
