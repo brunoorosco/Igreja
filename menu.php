@@ -1,11 +1,11 @@
 <?php
     if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
     global $URLBASE;
-    //$URLBASE = "http://localhost/www/igreja/";
+    $URLBASE = "http://localhost/www/igreja/";
      
     $url1 = $_SERVER['SERVER_ADDR'];
     
-    $URLBASE = "http://$url1/www/igreja/";
+    //$URLBASE = "http://$url1/www/igreja/";
     
  ?>
 <html>
