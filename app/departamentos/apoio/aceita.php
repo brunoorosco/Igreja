@@ -4,7 +4,6 @@
   include_once "../../../menu.php";
 	if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
 
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -127,7 +126,7 @@ color: white;
 														<option >Anfitrião</option>
 														<option >Membro</option>
 													</select>
-                                                    <select class="form-control" id="supervisao" name="supervisao" style="text: #fff !important;color: gray;border-radius: 8px!important;
+                          <select class="form-control" id="supervisao" name="supervisao" style="text: #fff !important;color: gray;border-radius: 8px!important;
 	                        background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;">
 														<option disable hidden value="" >CEM</option>
 														<?php
@@ -166,6 +165,9 @@ color: white;
 
 	<script type="text/javascript">
 		  $('#cargo').change(function(){
+	    $(this).css('color', 'white');
+	  });
+		  $('#supervisao').change(function(){
 	    $(this).css('color', 'white');
 	  });
 
