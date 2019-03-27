@@ -17,7 +17,7 @@ require_once '../../_fonts/config/funcoes.php';
   if ($codigoUsuario != 0) {
 
 
-	   $_SESSION['msg_login'] = "<div class='alert alert-success' role='alert'>Logado com sucesso!!!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
+	 //  $_SESSION['msg_login'] = "<div class='alert alert-success' role='alert'>Logado com sucesso!!!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
 	   $_SESSION['msg_log'] = "<script>	Swal.fire({
                 title: 'Login efetuado com sucesso!',
                         type: 'success',
@@ -27,7 +27,7 @@ require_once '../../_fonts/config/funcoes.php';
   }
   else {
     session_unset();
-    $_SESSION['msg_login'] = "<div class='alert alert-danger' role='alert'>Usuario não registrado!!!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
+  //  $_SESSION['msg_login'] = "<div class='alert alert-danger' role='alert'>Usuario não registrado!!!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
     $_SESSION['msg_log'] = "<script>	Swal.fire({
                title: 'Acesso Negado!',
                        type: 'error',

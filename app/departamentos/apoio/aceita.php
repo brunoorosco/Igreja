@@ -16,7 +16,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 		<title>Jesus lhe aceitou</title>
-		<link rel="stylesheet" type="text/css" href="../../_fonts/css/sweetalert2.min.css">
+		<link rel="stylesheet" type="text/css" href="../../../_fonts/css/sweetalert2.min.css">
 
     <style type="text/css">
 	  * {
@@ -90,7 +90,7 @@ color: white;
        <div class="container">
        		<div class="row"></div>
        				<div class="col-md-6 offset-md-3">
-									<form  class="formulario" id="ajax_form" action="" method="post"  >
+									<form  class="formulario" id="form_aceitaJesus" action="" method="post"  >
 										<h3  class="h3"style="text-align: center;">Jesus lhe aceitou</h3><br>
 				 						<div class="form-group ">
 				 								<input type="text" name="nome" id="nome"class="form-control" placeholder="Nome Completo" required=""style="border-radius: 8px!important;
@@ -118,7 +118,6 @@ color: white;
 													<select class="form-control" id="cargo" name="cargo" style="text: #fff !important;color: gray;border-radius: 8px!important;
 	                        background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;">
 														<option disable hidden value="" >Cargo</option>
-														<option >Bispo</option>
 														<option >Pastor</option>
 														<option >Supervisor</option>
 														<option >Líder</option>
@@ -176,7 +175,40 @@ color: white;
 
 		$(document).ready(function(){ 
 	$('body').find('img[src$="https://cdn.rawgit.com/000webhost/logo/e9bd13f7/footer-powered-by-000webhost-white2.png"]').remove();
-    }); 
+		}); 
+		
+		$(document).ready(function(){
+      				$('#form_aceitaJesus').submit(function(){
+								var dados = $(this).serialize();
+								  event.preventDefault();
+      				 		$.ajax({
+      						type:'POST',
+      						url: "aceita_DB.php",
+      						dataType: 'json',     // para obter a resposta no formato json e rodar no sweetalert2
+      						data: dados,
+      						success:function(response){ //retorna o echo do php
+
+                  	Swal.fire({
+      							title: response.mens1,
+      							type:  response.mens2,
+      							timer: 5000});
+                    if(response.mens3 == '4')resetform();
+
+      				 		},
+      						erro: function(response) {
+                    //console.log(response);
+                    alert(response);
+
+      						  Swal.fire({
+      						  title: 'Erro ao cadastrar, tente novamente!!!',
+      							type: 'error',
+      							timer: 5000});
+      						}
+      					});
+
+      					return false;
+      			   	});
+      			});
 
   </script>
 

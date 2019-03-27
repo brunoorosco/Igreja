@@ -144,10 +144,19 @@ border-radius: 6px 0 6px 6px;
                                         <li><a class="dropdown-item" href="#">Aviva Produções</a></li>
                             </ul>
                         </li>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Ministério de Apoio</a>
+                            <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/apoio/aceita.php'?>">Aceitou Jesus</a></li>
+                                        <li><a  class="dropdown-item" href="#">Levitas</a></li>
+                                        <li><a class="dropdown-item" href="#">Teatro</a></li>
+                                        <li><a class="dropdown-item" href="#">Aviva Produções</a></li>
+                            </ul>
+                        </li>
                         <li><a class="dropdown-item" href="#">Consultas</a></li>
                     </ul>
                 </li>
-                <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/apoio/aceita.php'?>">Aceitar Jesus</a></li>
+              
               </ul>
             </li>
           <?php } ?>

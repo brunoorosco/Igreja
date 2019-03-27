@@ -198,12 +198,28 @@ CREATE TABLE `testeapp` (
 -- Extraindo dados da tabela `testeapp`
 --
 
+
 INSERT INTO `testeapp` (`id`, `nome`, `email`) VALUES
 (1, 'Bruno', '');
 
 --
 -- Indexes for dumped tables
 --
+
+
+CREATE TABLE `aceitoujesus` (
+ `id` int(10) NOT NULL AUTO_INCREMENT,
+ `nome` varchar(50) NOT NULL,
+ `endereco` varchar(50) NOT NULL,
+ `email` varchar(50) DEFAULT NULL,
+ `niver` date NOT NULL,
+ `cem` varchar(15) DEFAULT NULL,
+ `cargo` varchar(15) DEFAULT NULL,
+ `cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ `cadastrado` int(10) DEFAULT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
 
 --
 -- Indexes for table `acesso`
