@@ -1,11 +1,11 @@
 <?php
     if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
     global $URLBASE;
-    //$URLBASE = "http://localhost/www/igreja/";
+    $URLBASE = "http://localhost/www/igreja/";
      
     $url1 = $_SERVER['SERVER_ADDR'];
     
-    $URLBASE = "http://$url1/www/igreja/";
+    //$URLBASE = "http://$url1/www/igreja/";
     
  ?>
 <html>
@@ -91,6 +91,7 @@ border-radius: 6px 0 6px 6px;
 </style>
 </head>
 <body>
+<?php echo $url1; ?>
   <nav class="navbar navbar-expand-lg navbar-light bg-warning"  role="navigation">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" >

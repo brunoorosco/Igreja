@@ -211,27 +211,24 @@
   </script>
   </head>
 <body>
-</br>
-  <div class="container-fluid">
-              
-    <?php
-    if(isset($_SESSION['msg_log'])){
-      echo $_SESSION['msg_log'];
-      unset($_SESSION['msg_log']);
-    }
-   
-
-    if(isset($_SESSION['msg'])){
-      echo $_SESSION['msg'];
-      unset($_SESSION['msg']);
-    }
-
-    if(isset($_SESSION['msg_login'])){
-      echo $_SESSION['msg_login'];
-      unset($_SESSION['msg_login']);
-    }
-
+<br>
+  <div class="container-fluid">              
+      <?php
+      if(isset($_SESSION['msg_log'])){
+        echo $_SESSION['msg_log'];
+        unset($_SESSION['msg_log']);
+      }
     
+
+      if(isset($_SESSION['msg'])){
+        echo $_SESSION['msg'];
+        unset($_SESSION['msg']);
+      }
+
+      if(isset($_SESSION['msg_login'])){
+        echo $_SESSION['msg_login'];
+        unset($_SESSION['msg_login']);
+      } 
     ?>
     <div class="row">
       <div class="col-3">
