@@ -63,6 +63,7 @@ jQuery(document).ready(function(){
         	$('#email').val("");
         	$('#end').val("");
         	$('#sexo').val("");
+        	$('#supervisao').val("");
           //.not('.button,:submit,:reset,:hidden')
           //.val('')
           //.removeAttr('checked')

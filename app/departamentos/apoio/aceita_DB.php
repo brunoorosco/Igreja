@@ -1,7 +1,7 @@
 <?php
  header("Content-type: text/html; charset=utf-8");
- require_once '../../_fonts/config/banco.php';
- require_once '../../_fonts/config/funcoes.php';
+ require_once '../../../_fonts/config/banco.php';
+ require_once '../../../_fonts/config/funcoes.php';
 
     $nome = $_POST['nome'];
     $telefone = $_POST['telefone'];
@@ -11,11 +11,12 @@
     $nasc = $_POST['nascimento'];
     $supervisao = $_POST['supervisao'];
     $niver = date("Y-m-d",strtotime(str_replace('/','-',$nasc)));
+    $id = carrega_id_usuario();
 
    ///////  VERIFICA SE USUARIO EMAIL JÁ ESTA CADASTRADO ///////////
 try{
        
-      $sql = "INSERT INTO aceitouJesus (nome, telefone, email, niver, cargo, endereco, cem, cadastrado) values (:nome, :telefone, :email, :nasc, :cargo, :endereco,:supervisa, :cadastrado)";
+      $sql = "INSERT INTO aceitouJesus (nome, telefone, email, niver, cargo, endereco, cem, cadastrado) values (:nome, :telefone, :email, :nasc, :cargo, :endereco,:supervisao, :cadastrado)";
      
         $db = new db();
         $db = $db->connect();
@@ -34,9 +35,11 @@ try{
 
 
         }
-    }
+    
     }catch(PDOException $e){
 
         //echo '{"erro": {"texto": '.$e->getMessage().'}';
         echo '{"erro": {"texto": '.$e->getMessage().'}';
     }
+    
+    ?>

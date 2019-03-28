@@ -108,3 +108,20 @@ $start_sem_barra = $data_sem_barra . " " . $hora;
        return $rows[0]['supervisao'];
 
  }}}
+
+ function carrega_id_usuario(){
+  if(isset($_SESSION['usuario'])){
+      $email = $_SESSION['usuario'] ;
+      $sql = "SELECT idmembros FROM membros where email = '$email'";
+      $pdo = Banco::conectar();
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $exec =  $pdo->query($sql);
+      $rows = $exec->fetchAll(PDO::FETCH_ASSOC);
+      $total = count($rows);
+      Banco::desconectar();
+
+  if($total > 0 ){
+
+      return $rows[0]['idmembros'];
+
+}}}
