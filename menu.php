@@ -142,22 +142,36 @@ border-radius: 6px 0 6px 6px;
                                         <li><a  class="dropdown-item" href="#">Levitas</a></li>
                                         <li><a class="dropdown-item" href="#">Teatro</a></li>
                                         <li><a class="dropdown-item" href="#">Aviva Produções</a></li>
-                            </ul>
+                                </ul>
+                            </li>
+                        </ul>
                         </li>
-                        <li class="dropdown-submenu">
-                            <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Equipe de Apoio</a>
-                            <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/apoio/aceita.php'?>">Aceitou Jesus</a></li>
-                                        <li><a  class="dropdown-item" href="#">Levitas</a></li>
-                                        <li><a class="dropdown-item" href="#">Teatro</a></li>
-                                        <li><a class="dropdown-item" href="#">Aviva Produções</a></li>
-                            </ul>
-                        </li>
-
-                    </ul>
-                </li>
-                  <li><a class="dropdown-item" href="#">Relatórios</a></li>
-
+                <li class="dropdown-submenu">
+                    <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Secretária</a>
+                    <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"></a></li>
+                            <li><a class="dropdown-item" href="#"></a></li>
+                            <li><a class="dropdown-item" href="#"></a></li>
+                            <li class="dropdown-submenu">
+                                <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Grupo de Apoio</a>
+                                <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/apoio/aceita.php'?>">Aceitação</a></li>
+                                        <li><a  class="dropdown-item" href="#">Reconciliação</a></li>
+                                 </ul>
+                            </li>
+                        </ul>
+                    </li>             
+                <li class="dropdown-submenu">
+                    <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Relatórios</a>
+                    <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/relatorio/aceitacao.php'?>">Pessoas aceitou Jesus</a></li>
+                            <li><a class="dropdown-item" href="#">Reconciliou</a></li>
+                            <li><a class="dropdown-item" href="#">Batismo</a></li>
+                            <li><a class="dropdown-item" href="#">Pessoas Encontro</a></li>
+                            <li><a class="dropdown-item" href="#">Equipe Encontro</a></li>
+                            <li><a class="dropdown-item" href="#">Alunos x Curso</a></li>
+                        </ul>
+                    </li>
               </ul>
             </li>
           <?php } ?>
