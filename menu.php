@@ -55,6 +55,7 @@ border-radius: 0 6px 6px 6px;
 }
 
 .dropdown-submenu:hover>.dropdown-menu {
+    
 
 }
 
@@ -132,17 +133,21 @@ border-radius: 6px 0 6px 6px;
                 <li class="dropdown-submenu">
                     <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Ministérios</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Obreiros</a></li>
-                        <li><a class="dropdown-item" href="#">Ministério KIDS</a></li>
+                        <li><a class="dropdown-item" href="#">Aviva Jovem</a></li>
+                        <li><a class="dropdown-item" href="#">Aviva Produções</a></li>
                         <li><a class="dropdown-item" href="#">Casais de Paz</a></li>
+                        <li><a class="dropdown-item" href="#">Obreiros</a></li>                 
+                        <li><a class="dropdown-item" href="#">Homens em Ação</a></li>
+                        <li><a class="dropdown-item" href="#">Kids</a></li>
+                        <li><a class="dropdown-item" href="#">Mulheres em Ação</a></li>
+
                         <li class="dropdown-submenu">
                             <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Quatro Seres</a>
                             <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="#">Dança</a></li>
                                         <li><a  class="dropdown-item" href="#">Levitas</a></li>
                                         <li><a class="dropdown-item" href="#">Teatro</a></li>
-                                        <li><a class="dropdown-item" href="#">Aviva Produções</a></li>
-                                </ul>
+                               </ul>
                             </li>
                         </ul>
                         </li>
@@ -164,8 +169,7 @@ border-radius: 6px 0 6px 6px;
                 <li class="dropdown-submenu">
                     <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Relatórios</a>
                     <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/relatorio/aceitacao.php'?>">Pessoas aceitou Jesus</a></li>
-                            <li><a class="dropdown-item" href="#">Reconciliou</a></li>
+                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/relatorio/aceitacao.php'?>">Aceitação/Reconciliação</a></li>
                             <li><a class="dropdown-item" href="#">Batismo</a></li>
                             <li><a class="dropdown-item" href="#">Pessoas Encontro</a></li>
                             <li><a class="dropdown-item" href="#">Equipe Encontro</a></li>

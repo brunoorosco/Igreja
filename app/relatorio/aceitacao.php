@@ -42,7 +42,7 @@
                 datasets: [{
                 label: 'Reconciliação',
                 data: [173448346, 175885229, 178276128, 180619108, 182911487, 185150806],
-                backgroundColor: "rgba(255, 34, 0, 0.3)",
+                backgroundColor: "rgba(0, 34,255, 0.3)",
                 borderColor: "#0000ff"
             },
             {
