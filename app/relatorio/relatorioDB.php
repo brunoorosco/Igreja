@@ -8,20 +8,20 @@ require_once '../../_fonts/config/funcoes.php';
 
 
 //é preciso contar a quantidade de registros dentro do mes para carregar o grafico
-$query = sprintf("SELECT playerid, score FROM score ORDER BY playerid");
+//$query = sprintf("SELECT playerid, score FROM score ORDER BY playerid");
 
-//execute query
-$result = $mysqli->query($query);
 
-//loop through the returned data
+$pdo = Banco::conectar();
+$sql = 'SELECT alunos, curso FROM turma ';
 $data = array();
-foreach ($result as $row) {
-  $data[] = $row;
-}
 
-
+foreach($pdo->query($sql)as $row)
+  	{       
+            $data[] = $row;
+          }
+$pdo = Banco::desconectar();
 
 //imprime em formato json para o js
-print json_encode($data);
+print_r ($data);
 
 ?>
