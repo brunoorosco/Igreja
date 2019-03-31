@@ -88,7 +88,9 @@ color: white;
 	   width: 100%; }
 </style>
 	<body>
-       <div class="container">
+	<a title='Remover linha' class='deletrow' onclick="confirmExcluir($id)" href='javascript:;'><i class='fa fa-remove resultsfa5'></i></a>
+       <div class="container">										
+
        		<div class="row"></div>
        				<div class="col-md-6 offset-md-3">
 									<form  class="formulario" id="ajax_form" action="" method="post"  >
@@ -117,7 +119,7 @@ color: white;
 
 										<div class="form-group input-group">
 													<select class="form-control" id="cargo" name="cargo" style="text: #fff !important;color: gray;border-radius: 8px!important;
-	                        background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;">
+	                        background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;" >
 														<option disable hidden value="" >Cargo</option>
 														<option >Bispo</option>
 														<option >Pastor</option>
@@ -129,7 +131,14 @@ color: white;
 													</select>
 													<input type="text" name="supervisao" id= "cem" class="form-control" placeholder="CEM" value="<?php echo carrega_dados(); ?>" style="border-radius: 8px!important;
 				                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
-										</div>
+										
+													</div>
+
+										<!--<div class="form-group">
+										 	<input type="password" name="senha" id="senha" class="form-control" placeholder="digite uma senha" required=""style="border-radius: 8px!important;
+		                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+										</div>-->
+
 										<div class="btn-group btn-group-justified" role="group">
 											 <div class="btn-group" role="group">
 													<button type="reset"  id="reset" class="btn btn-dark btn-block" style="z-index=1;width:100%;
@@ -138,8 +147,8 @@ color: white;
 											 <div class="btn-group " role="group">
 												 <button type="submit"  id="Confirmar" class="btn btn-dark btn-block" style="z-index=1;width: 100%;
 														border-radius: 8px;border-color: #707070 !important;">Confirmar</button>
+											  </div>
 											</div>
-				 						</div>
 								</form>
 		     			</div>
 		  			</div>
@@ -149,13 +158,31 @@ color: white;
 
 	<script type="text/javascript">
 		  $('#cargo').change(function(){
-	    $(this).css('color', 'white');
-	  });
+			$(this).css('color', 'white');
+		  });
 
+			
 		$('#cem').css('color','#cccccc');
 		$('#cem').attr('disabled', true);
 
-
+	//	$('#senha').attr('disabled', true);
+	//	$('#senha').hide();
+/*
+		function Ocultar(){
+				var ref_select = document.getElementById('cargo');
+				var ref_input = document.getElementById('senha');
+				var valor = ref_select.value;
+					if (ref_select.value != "Bispo"){
+						$('#senha').hide();						
+						ref_input.disabled = true;
+					}
+					else
+					{
+						$('#senha').show();
+						ref_input.disabled = false;
+					}
+		}*/
+		
   </script>
 
 	</body>

@@ -92,7 +92,7 @@ border-radius: 6px 0 6px 6px;
 </style>
 </head>
 <body>
-<?php echo $url1; ?>
+<?php echo ($_SESSION['email']); ?>
   <nav class="navbar navbar-expand-lg navbar-light bg-warning"  role="navigation">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" >
@@ -135,11 +135,11 @@ border-radius: 6px 0 6px 6px;
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Aviva Jovem</a></li>
                         <li><a class="dropdown-item" href="#">Aviva Produções</a></li>
-                        <li><a class="dropdown-item" href="#">Casais de Paz</a></li>
-                        <li><a class="dropdown-item" href="#">Obreiros</a></li>                 
+                        <li><a class="dropdown-item" href="#">Casais</a></li>      
                         <li><a class="dropdown-item" href="#">Homens em Ação</a></li>
                         <li><a class="dropdown-item" href="#">Kids</a></li>
                         <li><a class="dropdown-item" href="#">Mulheres em Ação</a></li>
+                        <li><a class="dropdown-item" href="#">Obreiros</a></li>  
 
                         <li class="dropdown-submenu">
                             <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Quatro Seres</a>
@@ -154,14 +154,12 @@ border-radius: 6px 0 6px 6px;
                 <li class="dropdown-submenu">
                     <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Secretária</a>
                     <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"></a></li>
-                            <li><a class="dropdown-item" href="#"></a></li>
-                            <li><a class="dropdown-item" href="#"></a></li>
+                            <li><a class="dropdown-item" href="#">Administrativa</a></li>
+                            <li><a class="dropdown-item" href="#">Encontro</a></li>
                             <li class="dropdown-submenu">
                                 <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Grupo de Apoio</a>
                                 <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/apoio/aceita.php'?>">Aceitação</a></li>
-                                        <li><a  class="dropdown-item" href="#">Reconciliação</a></li>
+                                        <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/apoio/aceita.php'?>">Aceitou/Reconciliou</a></li>
                                  </ul>
                             </li>
                         </ul>

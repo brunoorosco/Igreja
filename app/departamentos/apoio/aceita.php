@@ -109,13 +109,14 @@ color: white;
 		                   background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
 										</div>
 
-						 				<div class="form-group">
+
+										<div class="form-group">
 										 	<input type="email" name="email" id="email" class="form-control" placeholder="seu_email@email" required=""style="border-radius: 8px!important;
 		                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
 										</div>
 
 										<div class="form-group input-group">
-													<select class="form-control" id="cargo" name="cargo" style="text: #fff !important;color: gray;border-radius: 8px!important;
+											<select class="form-control" id="cargo" name="cargo" style="text: #fff !important;color: gray;border-radius: 8px!important;
 	                        background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;">
 														<option disable hidden value="" >Cargo</option>
 														<option >Pastor</option>
@@ -124,8 +125,8 @@ color: white;
 														<option >Auxiliar</option>
 														<option >Anfitrião</option>
 														<option >Membro</option>
-													</select>
-                          <select class="form-control" id="supervisao" name="supervisao" style="text: #fff !important;color: gray;border-radius: 8px!important;
+											 </select>
+                       <select class="form-control" id="supervisao" name="supervisao" style="text: #fff !important;color: gray;border-radius: 8px!important;
 	                        background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;">
 														<option disable hidden value="" >CEM</option>
 														<?php
@@ -140,11 +141,20 @@ color: white;
 																						}
 																				Banco::desconectar();
 
-																							?>
-																							
-														
-													</select>
+																							?>							
+														</select>
 										</div>
+										<div class="form-group input-group">
+										 	 <select class="form-control" id="aceitou" name="aceitou" style="text: #fff !important;color: gray;border-radius: 8px!important;
+	                        background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;">
+														<option disable hidden value="">Aceitou/Reconci</option>
+														<option >Aceitou</option>
+														<option >Reconciliou</option>
+												</select>
+											 <input type="text" class="form-control data" name="cadastro" id="data" placeholder="Data que aceitou" maxlength="10"style="border-radius: 8px!important;
+		                   background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+										</div>
+
 										<div class="btn-group btn-group-justified" role="group">
 											 <div class="btn-group" role="group">
 													<button type="reset"  id="reset" class="btn btn-dark btn-block" style="z-index=1;width:100%;
@@ -169,12 +179,19 @@ color: white;
 		  $('#supervisao').change(function(){
 	    $(this).css('color', 'white');
 	  });
+		  $('#aceitou').change(function(){
+	    $(this).css('color', 'white');
+	  });
 
 		$('#cem').css('color','#cccccc');
 		$('#cem').attr('disabled', true);
 
 		$(document).ready(function(){ 
+
 	$('body').find('img[src$="https://cdn.rawgit.com/000webhost/logo/e9bd13f7/footer-powered-by-000webhost-white2.png"]').remove();
+	$('#cargo').css('color', 'gray');
+	$('#cem').css('color', 'gray');
+	$('#aceitou').css('color', 'gray');
 		}); 
 		
 		$(document).ready(function(){
@@ -187,7 +204,7 @@ color: white;
       						dataType: 'json',     // para obter a resposta no formato json e rodar no sweetalert2
       						data: dados,
       						success:function(response){ //retorna o echo do php
-
+										console.log(response);
                   	Swal.fire({
       							title: response.mens1,
       							type:  response.mens2,
@@ -204,7 +221,10 @@ color: white;
       							type: 'error',
       							timer: 5000});
       						}
-      					});
+								});
+								$('#cargo').css('color', 'gray');
+								$('#supervisao').css('color', 'gray');
+								$('#aceitou').css('color', 'gray');
 
       					return false;
       			   	});

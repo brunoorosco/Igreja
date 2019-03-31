@@ -7,19 +7,21 @@
 			  $('#cpf').mask('000.000.000-00');
           });
     })(jQuery);
+////////////////////////////////////////////////////////////////////////////////////////////
 
-         $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
-                 if (!$(this).next().hasClass('show')) {
-                   $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
-                 }
-                 var $subMenu = $(this).next(".dropdown-menu");
-                 $subMenu.toggleClass('show');
-                 $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
-                   $('.dropdown-submenu .show').removeClass("show");
-                 });
-                 return false;
-               });
+  $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+       if (!$(this).next().hasClass('show')) {
+            $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+              }
+        var $subMenu = $(this).next(".dropdown-menu");
+        $subMenu.toggleClass('show');
+        $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+          $('.dropdown-submenu .show').removeClass("show");
+             });
+        return false;
+           });
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 jQuery(document).ready(function(){
 				jQuery('#formulario_encontrista').submit(function(){
 					var dados = $(this).serialize();
@@ -50,16 +52,19 @@ jQuery(document).ready(function(){
 					return false;
 			   	});
 			});
+///////////////////////////////////////////////////////////////////////////
 
   function resetform(){
         	$('#nome').val("");
         	$('#am1').val("");
         	$('#am2').val("");
         	$('#cargo').val("");
+        	$('#aceitou').val("");
         	$('#tel').val("");
         	$('#tel1').val("");
         	$('#tel2').val("");
         	$('#data').val("");
+        	$('.data').val("");
         	$('#email').val("");
         	$('#end').val("");
         	$('#sexo').val("");
@@ -69,23 +74,36 @@ jQuery(document).ready(function(){
           //.removeAttr('checked')
           //.removeAttr('selected');
       }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       $(document).ready(function(){
-      				$('#ajax_form').submit(function(){
-								var dados = $(this).serialize();
+				$('#ajax_form').submit(function(){
+									var cargo = $('#cargo').val();
+									var dados = $(this).serialize();
 								  event.preventDefault();
       				 		$.ajax({
       						type:'POST',
       						url: "../../app/membros/cadDB.php",
       						dataType: 'json',     // para obter a resposta no formato json e rodar no sweetalert2
       						data: dados,
-      						success:function(response){ //retorna o echo do php
-
+									success:function(response){ //retorna o echo do php
+									console.log(cargo);	
+									console.log(response);
+										if(response.mens1 == '1' && (cargo == 'Bispo') || (cargo == 'Pastor') || (cargo == 'Supervisor')  )senha();/*
                   	Swal.fire({
       							title: response.mens1,
       							type:  response.mens2,
-      							timer: 5000});
-                    if(response.mens3 == '4')resetform();
+										timer: 5000});*/
+										
+										// se mens3 igual a 2 - indica que este cadastro já existe, possibilitando a edição do mesmo
+											if(response.mens3 == '2'){
+												Swal.fire({
+													title: 'Este membro já esta cadastrado!!!',
+													type:  'warning'
+													});
+											}
+										// se mens3 igual a 4 - indica que este cadastro foi realizado, e reseta todos os campos do formulario
+											if(response.mens3 == '4')resetform();
 
       				 		},
       						erro: function(response) {
@@ -98,11 +116,12 @@ jQuery(document).ready(function(){
       							timer: 5000});
       						}
       					});
-
+								
       					return false;
       			   	});
       			});
-//Mascara para o campo data e hora
+/////////////////////////////////////////////////////////////////////////////////////
+	//Mascara para o campo data e hora
   function DataHora(evento, objeto){
               var keypress=(window.event)?event.keyCode:evento.which;
               campo = eval (objeto);
@@ -134,3 +153,29 @@ jQuery(document).ready(function(){
                 event.returnValue = false;
               }
             }
+
+
+
+
+		async	function senha(){
+				 const {value: password} = await Swal.fire({
+					title: 'Crie uma senha',
+					input: 'password',
+					inputPlaceholder: 'Digite sua senha aqui!!!',
+					showCloseButton: true,
+					inputAttributes: {
+						maxlength: 10,
+						autocapitalize: 'off',
+						autocorrect: 'off'
+					}
+				})
+
+				if (password) {
+					$.post( "../../app/membros/cad_DB1.php" , { senha: password })//acesso ao banco declarando as variaveis post e seus valores
+					Swal.fire({
+						title: 'Cadastro realizado com Sucesso',
+						type:  'success',
+						timer: 5000});
+					//Swal.fire('Entered password: ' + password)
+				}					
+		}

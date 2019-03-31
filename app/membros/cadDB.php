@@ -3,6 +3,7 @@
  header("Content-type: text/html; charset=utf-8");
  require_once '../../_fonts/config/banco.php';
  require_once '../../_fonts/config/funcoes.php';
+ if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
 
     $nome = $_POST['nome'];
     $telefone = $_POST['telefone'];
@@ -25,12 +26,13 @@ try{
 
         if ($total > 0){
          //   echo "Este membro já esta Cadastrado!!!";
-            echo json_encode(array('mens1' => "Este membro já esta cadastrado!","mens2"=>"warning","mens3"=>"2" ));
+            //echo json_encode(array('mens1' => "Este membro já esta cadastrado!","mens2"=>"warning","mens3"=>"2" ));//mens3 = representa que usuario já existe no banco
+            echo json_encode(array('mens1' => "2","mens2"=>"1","mens3"=>"2" ));//mens3 = representa que usuario já existe no banco
                 }
       else{
 
-      $senha = (geraSenha(6, false, true));
-      $senhaCrip = sha1($senha);
+      //$senha = (geraSenha(6, false, true));
+      // $senhaCrip = sha1($senha);
 
       $sql = "INSERT INTO membros (nome, telefone, email, nasc, cargo, endereco, supervisao) values (:nome, :telefone, :email, :nasc, :cargo, :endereco,:supervisao)";
       $sql_ = "INSERT INTO acesso (username, password, idmembro) values (:email, :senha, :idmembro)";
@@ -50,6 +52,8 @@ try{
         if( $stmt->execute()){
 
             $id = $db->lastinsertId();
+            $_SESSION['ultimo_id'] = $id;
+            $_SESSION['email'] = $email;
            // if($cargo == "Bispo" || "Pastor" || "Supervisor"){
            // $senha = (geraSenha(6, false, true));
            // $senha1 = sha1($senha);
@@ -61,14 +65,16 @@ try{
            // $stmt->execute();
             $stmt->bindParam(':senha',$senhaCrip);
             $stmt->bindParam(':idmembro',$id);
-            $stmt->execute();
+            //$stmt->execute();
             $db = null;
-        //                        }
-          //  enviarEmail($email,$senha);
-            echo json_encode(array('mens1' => "Cadastrado realizado com sucesso!","mens2"=>"success","mens3"=>"4" ));
+            //    
+            //  enviarEmail($email,$senha);
+            //echo json_encode(array('mens1' => "Cadastrado realizado com sucesso!","mens2"=>"success","mens3"=>"4" ));
+            echo json_encode(array('mens1' => "1",'mens2' =>'1','mens3' => "4")); //mens1 = representa cadastrado realizado com sucesso 
+                                                                    //mens4 = representa reset do formulario
 
-
-    }}
+            }
+        }
     }catch(PDOException $e){
 
         //echo '{"erro": {"texto": '.$e->getMessage().'}';
