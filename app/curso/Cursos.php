@@ -186,9 +186,13 @@
                                 <input name="dataCurso_" class="form-control" id="dataCurso" onkeypress="DataHora(event, this)">
                             </div>
 														<input name="idCursos" type="hidden" class="form-control" id="id-curso" value="">
-                            <div class="modal-footer" >
-                                <button type="button" class="btn btn-success btn-block" data-dismiss="modal" >Cancelar</button>
-                                <button type="submit" class="btn btn-danger btn-block"  name="formulario" value="editar">Alterar</button>
+														<div class="modal-footer btn-group " role="group">
+                              <div class="btn-group" role="group">
+                                  <button type="button" class="btn btn-success btn-block" data-dismiss="modal" >Cancelar</button>
+                              </div>                                
+                                <div class="btn-group" role="group">
+                                    <button type="submit" class="btn btn-danger btn-block"  name="formulario" value="editar">Alterar</button>
+                                </div>
                             </div>
                         </form>
 									</div>

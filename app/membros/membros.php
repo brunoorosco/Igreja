@@ -69,7 +69,7 @@
                             <td>
                            <div class="btn-group btn-sm">
                            <button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idmembros']; ?>"></button>
-                            <button type="button" class="btn btn-warning fas fa-edit disabled" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idmembros']; ?>" data-whatevernome="<?php echo $row['nome']; ?>"data-whateverdetalhes="<?php echo $row['cpf']; ?>"></button>
+                            <button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idmembros']; ?>" data-whatevernome="<?php echo $row['nome']; ?>"data-whateverdetalhes="<?php echo $row['ende']; ?>"></button>
                             <button type="button" class="btn btn-danger fas fa-trash disabled"></button></div>
                             <?php
                             /*
@@ -131,25 +131,60 @@
                     </tbody>
                 </table>
 
-      </div></div></div>
+           </div>
+          </div>
+        </div>
+
+      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+		  	<div class="modal-dialog" role="document">
+			  	<div class="modal-content">
+			  		<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="editModalLabel">Curso</h4>
+			  		</div>
+			  	        	<div class="modal-body">
+                        <form method="POST" action="./edit_membros.php" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label">Nome:</label>
+                                <input name="nome" type="text" class="form-control" id="recipient-name">
+				                    </div>
+                            <div class="form-group">
+                                <label for="message-text" class="control-label">Endereço:</label>
+                                <input name="tema" class="form-control" id="endereco">
+                            </div>
+                            <div class="form-group input-group">
+                                  <div>
+                                      <label for="niver" class="control-label">Aniversário:</label>
+                                      <input name="niver" class="form-control" id="niver" onkeypress="DataHora(event, this)">
+                                  </div>
+                                  <div>
+                                      <label for="telefone" class="control-label">Telefone:</label>
+                                      <input name="telefone" class="form-control" id="tel" onkeypress="DataHora(event, this)">
+                                  </div> 
+                            </div>
+                            <div class="form-group input-group">
+                                <input name="idCursos" type="hidden" class="form-control" id="id-curso" value="">
+                                <div class="modal-footer btn-group " role="group">
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-success btn-block" data-dismiss="modal" >Cancelar</button>
+                                    </div>                                
+                                    <div class="btn-group" role="group">
+                                        <button type="submit" class="btn btn-danger btn-block"  name="formulario" value="editar">Alterar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+      </div>
 
 
-       <script type="text/javascript">
-        $('#editModal').on('show.bs.modal', function (event) {
-          var button = $(event.relatedTarget) // Button that triggered the modal
-          var recipient = button.data('whatever') // Extract info from data-* attributes
-          var recipientnome = button.data('whatevernome')
-          var recipientdetalhes = button.data('whateverdetalhes')
-          // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-          // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-          var modal = $(this)
-          modal.find('.modal-title').text('ID'+recipient)
-          modal.find('#id-curso').val(recipient)
-          modal.find('#recipient-name').val(recipientnome)
-          modal.find('#detalhes').val(recipientdetalhes)
-
-        });
-       </script>
+      <script src="membros.js" type="text/javascript"></script>
 </body>
 
 </html>
