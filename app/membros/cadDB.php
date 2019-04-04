@@ -65,7 +65,7 @@ try{
            // $stmt->execute();
             $stmt->bindParam(':senha',$senhaCrip);
             $stmt->bindParam(':idmembro',$id);
-            //$stmt->execute();
+           // $stmt->execute();
             $db = null;
             //    
             //  enviarEmail($email,$senha);

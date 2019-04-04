@@ -158,11 +158,13 @@ jQuery(document).ready(function(){
 
 
 		async	function senha(){
-				 const {value: password} = await Swal.fire({
+				 const {value: password} = await swal({
+				
 					title: 'Crie uma senha',
 					input: 'password',
 					inputPlaceholder: 'Digite sua senha aqui!!!',
 					showCloseButton: true,
+					allowOutsideClick: false,
 					inputAttributes: {
 						maxlength: 10,
 						autocapitalize: 'off',
@@ -170,6 +172,7 @@ jQuery(document).ready(function(){
 					}
 				})
 
+			
 				if (password) {
 					$.post( "../../app/membros/cad_DB1.php" , { senha: password })//acesso ao banco declarando as variaveis post e seus valores
 					Swal.fire({

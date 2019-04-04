@@ -1,8 +1,10 @@
 <?php
 
-	include_once("../../_fonts/config/banco.php");
-  	include_once "../../menu.php";
-	if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
+		include_once("../../_fonts/config/banco.php");
+		include_once("../../_fonts/config/funcoes.php");
+		include_once "../../menu.php";
+		validarUsuario();
+		//if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
 ?>
 
 <!DOCTYPE html>
