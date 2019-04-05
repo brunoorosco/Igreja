@@ -97,12 +97,12 @@ color: white;
 										<h3  class="h3"style="text-align: center;">Cadastro de Membros</h3><br>
 				 						<div class="form-group ">
 				 								<input type="text" name="nome" id="nome"class="form-control" placeholder="Nome Completo" required=""style="border-radius: 8px!important;
-			                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+			                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;" onkeyup="maiuscula(this)">
 				 						</div>
 
 										<div class="form-group">
 										  	<input type="text" name="endereco" id="end" class="form-control" placeholder="Endereço" required=""style="border-radius: 8px!important;
-			                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+			                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;" onkeyup="maiuscula(this)">
 										</div>
 
 										<div class="form-group input-group">
@@ -155,7 +155,8 @@ color: white;
 				</div>
 		<script type="text/javascript" src="../../_fonts/js/jquery.mask.min.js"></script>
 		<script type="text/javascript" src="../../_fonts/js/sweetalert2.all.min.js"></script>
-
+		<script type="text/javascript" src="./membros.js"></script>
+	
 	<script type="text/javascript">
 		  $('#cargo').change(function(){
 			$(this).css('color', 'white');
@@ -182,7 +183,8 @@ color: white;
 						ref_input.disabled = false;
 					}
 		}*/
-		
+
+			
   </script>
 
 	</body>

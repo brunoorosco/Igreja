@@ -182,3 +182,4 @@ jQuery(document).ready(function(){
 					//Swal.fire('Entered password: ' + password)
 				}					
 		}
+
