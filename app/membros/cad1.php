@@ -70,15 +70,17 @@ if(($trg != 0)){
 	</div>
 
 	<?php
-		//Paginação - Somar a quantidade de usuários
-	$sql = "SELECT COUNT(id) AS num_result FROM usuarios";
+	
+	//Paginação - Somar a quantidade de usuários
+	$sql = "SELECT COUNT(idmembros) AS num_result FROM membros";
 	$resultado_pg = $pdo->query($sql);
-	$row_pg = mysqli_fetch_assoc($resultado_pg);
-
-
+	//$row_pg = mysqli_fetch_assoc($resultado_pg);
+	$row_pg = $resultado_pg->fetchAll(PDO::FETCH_ASSOC);
+	
+	//print_r ($results);
 	//Quantidade de pagina
-	$quantidade_pg = ceil($row_pg['num_result'] / $qnt_result_pg);
-
+	$quantidade_pg = ceil($row_pg['num_result'] / $qnt_result_pg); //função ceil arredonda valor para cima
+	
 	//Limitar os link antes depois
 	$max_links = 2;
 

@@ -29,7 +29,7 @@
    
       <script src="membros.js" type="text/javascript"></script>
       <script>
-			var qnt_result_pg = 10; //quantidade de registro por página
+			var qnt_result_pg = 5; //quantidade de registro por página
 			var pagina = 1; //página inicial
 			$(document).ready(function () {
 				listar_usuario(pagina, qnt_result_pg); //Chamar a função para listar os registros
