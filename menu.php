@@ -92,7 +92,7 @@ border-radius: 6px 0 6px 6px;
 </style>
 </head>
 <body>
-<?php echo ($_SESSION['email']); ?>
+<?php echo ($_SESSION['nivel']); ?>
   <nav class="navbar navbar-expand-lg navbar-light bg-warning"  role="navigation">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" >
@@ -151,19 +151,33 @@ border-radius: 6px 0 6px 6px;
                             </li>
                         </ul>
                         </li>
+
+            <?php  if((isset($_SESSION['nivel'])) && ($_SESSION['nivel'] == '1') || ($_SESSION['nivel'] == '5') || ($_SESSION['nivel'] == '4')){ ?>         
+
                 <li class="dropdown-submenu">
                     <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Secretária</a>
                     <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Administrativa</a></li>
-                            <li><a class="dropdown-item" href="#">Encontro</a></li>
+                    <?php  if($_SESSION['nivel'] == '1'){ ?> 
+                            <li><a class="dropdown-item" href="#">Administrativa</a></li>  <?php }?>
+                   
+                    <?php  if(($_SESSION['nivel'] == '1') || ($_SESSION['nivel'] == '4')){ ?>        
+                            <li><a class="dropdown-item" href="#">Encontro</a></li><?php }?>
+                    
+                    <?php  if(($_SESSION['nivel'] == '1') || ($_SESSION['nivel'] == '5')){ ?>        
                             <li class="dropdown-submenu">
                                 <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Grupo de Apoio</a>
                                 <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/apoio/aceita.php'?>">Aceitou/Reconciliou</a></li>
                                  </ul>
-                            </li>
+                            </li><?php }?>
                         </ul>
                     </li>             
+                     <?php  } //finaliza o bloco anterior
+                            $nivel = $_SESSION['nivel'];
+                            if((isset($_SESSION['nivel'])) && ($nivel == '1')){ 
+                           
+                                ?>    
+
                 <li class="dropdown-submenu">
                     <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Relatórios</a>
                     <ul class="dropdown-menu">
@@ -173,7 +187,7 @@ border-radius: 6px 0 6px 6px;
                             <li><a class="dropdown-item" href="#">Equipe Encontro</a></li>
                             <li><a class="dropdown-item" href="#">Alunos x Curso</a></li>
                         </ul>
-                    </li>
+                            </li>  <?php  }?>
               </ul>
             </li>
           <?php } ?>

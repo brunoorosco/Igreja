@@ -112,28 +112,18 @@
           								      <option>Feminino</option>
           								      <option>Masculino</option>
           						    </select>
-          					    <input type="text" class="form-control data" name="nascimento" id="data" placeholder="Data de Nascimento" maxlength="10"style="border-radius: 8px!important;
-                        background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+
+          					    <select class="form-control" id="cem" name="cem" style="text: #fff !important;color: gray;border-radius: 8px!important;
+                        background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;">
+          								      <option disable hidden value="">CEM</option>
+          								      <option>CEM1</option>
+          								      <option>CEM2</option>
+          						    </select>
           				</div>
 
-           				<div class="form-group ">
-          				 	<input type="email" name="email" id="email" class="form-control" placeholder="seu_email@email" required=""style="border-radius: 8px!important;
-                    background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
-          				</div>
-
-          				<div class="form-group input-group">
-          				 	<input type="text" name="amigotel1" class="form-control" placeholder="Amigo 1" id="am1" style="border-radius: 8px!important;
-                    background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
-          				 	<input type="text" name="tel1" class="form-control tel" placeholder="Telefone 1 ...." id="tel1" style="border-radius: 8px!important;
-                    background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
-          				 </div>
-
-          				 <div class="form-group input-group">
-          				 	<input type="text" name="amigotel2" class="form-control" placeholder="Amigo 2" id="am2" style="border-radius: 8px!important;
-                    background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
-
-          				 	<input type="text" name="tel2" class="form-control tel" placeholder="Telefone 2...." id="tel2" style="border-radius: 8px!important;
-                    background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+          			 <div class="form-group input-group">
+          				 	<textarea type="text" name="obser" class="form-control" placeholder="Observações" id="am2" style="border-radius: 8px!important;
+                    background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;"></textarea>   				 
           				 </div>
 
 
@@ -159,6 +149,12 @@
         $('#sexo').change(function(){
           $(this).css('color', 'white');
         });
+        $('#cem').change(function(){
+          $(this).css('color', 'white');
+        });
+
+    //    $('#cem').css('color','#707070');
+		    //$('#cem').attr('disabled', true);
 		</script>
 	</body>
 </html>

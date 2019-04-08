@@ -163,7 +163,7 @@ color: white;
 		  });
 
 			
-		$('#cem').css('color','#cccccc');
+		$('#cem').css('color','gray');
 		$('#cem').attr('disabled', true);
 
 	//	$('#senha').attr('disabled', true);
