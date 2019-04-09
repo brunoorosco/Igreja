@@ -31,7 +31,7 @@
 
              //echo json_encode(array('mens1' => "Evento cadastrado com sucesso!","mens2"=>"success","mens3"=>"1" ));
             //  echo "1";
-            $_SESSION['msg'] = "<div class='alert alert-success' role='alert'>O Evento Cadastrado com Sucesso<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
+            $_SESSION['msg'] = "<div class='alert alert-success' id='message' role='alert'>O Evento Cadastrado com Sucesso<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
             header("Location: http://localhost/www/igreja/index.php");
 
         }catch(PDOException $e){

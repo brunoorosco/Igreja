@@ -4,8 +4,9 @@ require_once '../../_fonts/config/banco.php';
 require_once '../../_fonts/config/funcoes.php';
 
 
-  $login = $_POST['username'];
-  $senha = $_POST['password'];
+///-----  Recebe dadods via POST do usuario e senha ---////////////////////////////
+  $login = addslashes($_POST['username']);// addslashes - garante maior segurança
+  $senha = addslashes($_POST['password']);// addslashes - garante maior segurança
 
   $_SESSION['username'] = $login;
   $_SESSION['loggedin_time'] = time();
@@ -22,7 +23,7 @@ require_once '../../_fonts/config/funcoes.php';
                 title: 'Login efetuado com sucesso!',
                         type: 'success',
                         timer: 5000});</script>";
-     header("location:../../index.php?id=".$_SESSION['codigoUsuario']."");
+     header("location:../../index.php?id=".$_SESSION['codigoUsuario']."");exit;
 
   }
   else {
@@ -32,7 +33,7 @@ require_once '../../_fonts/config/funcoes.php';
                title: 'Acesso Negado!',
                        type: 'error',
                        timer: 5000});</script>";
-   header("location:../../index.php");
+   header("location:../../index.php");exit;
 
 //    header("location:login.php?getErro='Usuário ou senha errados'");
 

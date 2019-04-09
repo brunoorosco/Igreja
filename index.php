@@ -66,6 +66,7 @@
            right: 'none'
                    },
          defaultView: 'listMonth',
+
          events: [ <?php
                $pdo = Banco::conectar();
                $sql = 'SELECT * FROM eventos';
@@ -104,6 +105,7 @@
                  ?>
              ]
            });
+
   $('#calendar').fullCalendar({
       header: {
           left: 'prev,next today',
@@ -123,9 +125,10 @@
           $('#visualizar').modal('show');
           return false;
         },
-        // selectable: true,
-        // selectHelper: true,
-        select: function(start, end){
+         selectable: '<?php if(isset($_SESSION['usuario']) && ($_SESSION['nivel'] == '1'))echo true; 
+                            else echo false; ?>',      //habilita adição de eventos direto no calendario
+         selectHelper: true,    //permite selecionar as datas
+         select: function(start, end){
           $('#cadastrar #start').val(moment(start).format('DD/MM/YYYY HH:mm:ss'));
           $('#cadastrar #end').val(moment(end).format('DD/MM/YYYY HH:mm:ss'));
           $('#cadastrar').modal('show');
@@ -331,7 +334,7 @@
 
   window.onload= function() {
       setTimeout(function() {
-    $("#message").alert('close');
+          $("#message").alert('close');
 
           }, 5000);
         };
