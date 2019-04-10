@@ -122,10 +122,10 @@ border-radius: 6px 0 6px 6px;
                             <li><a class="dropdown-item" href="<?= $URLBASE.'app/membros/membros.php'?>">Membros</a></li>
                           </ul>
                         </li>
-                <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Curso</a>
+                <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Cursos</a>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="<?= $URLBASE.'app/curso/Cursos.php'?>">Novo Curso</a></li>
-                      <li><a class="dropdown-item" href="<?= $URLBASE.'app/membros/php'?>">Registrar Falta</a></li>
+                      <li><a class="dropdown-item" href="<?= $URLBASE.'app/membros/'?>">Registrar Falta</a></li>
                       <li><a class="dropdown-item" href="<?= $URLBASE.'app/membros/membros.php'?>">Informações de Curso</a></li>
                     </ul>
                 </li>

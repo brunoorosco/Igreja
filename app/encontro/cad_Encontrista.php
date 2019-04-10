@@ -118,10 +118,24 @@
                       <?php  if(($_SESSION['nivel'] == '1') || ($_SESSION['nivel'] == '4')){ ?>    
           					    <select class="form-control" id="cem" name="cem" style="text: #fff !important;color: gray;border-radius: 8px!important;
                         background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;">
-          								      <option disable hidden value="">CEM</option>
-          								      <option>CEM1</option>
-          								      <option>CEM2</option>
-          						    </select>
+          										<option hidden>CEM</option>
+								              <option>Aldo</option>
+								              <option>Casais</option>
+                              <option>Carapicuiba</option>
+                              <option>Gledson/Vanessa</option>
+                              <option>Itaqua</option>
+                              <option>Itu</option>
+                              <option>Jaqueline</option>
+                              <option>Jd. kemel</option>
+                              <option>Pr. Joel</option>
+                              <option>Lika</option>
+                              <option>Martins/Shirley</option>
+                              <option>Mirtes</option>
+                              <option>Novo Tempo(Valdirene)</option>
+                              <option>Pr.Laercio/Pra.Vera</option>
+                              <option>WAGUERSON</option>
+                              <option>Zô</option>
+	        						    </select>
                           <?php } else{ ?> 
                           <input type="text" name="supervisao" id= "cem_input" class="form-control" placeholder="CEM" value="<?php echo carrega_dados(); ?>" style="border-radius: 8px!important;
 				                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;"> <?php } ?>
