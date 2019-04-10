@@ -1,5 +1,8 @@
 <?php
-      include_once"../../menu.php"
+     	include_once("../../_fonts/config/banco.php");
+       include_once("../../_fonts/config/funcoes.php");
+       include_once "../../menu.php";
+       if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
 ?>
 
 <!DOCTYPE html>
@@ -112,13 +115,17 @@
           								      <option>Feminino</option>
           								      <option>Masculino</option>
           						    </select>
-
+                      <?php  if(($_SESSION['nivel'] == '1') || ($_SESSION['nivel'] == '4')){ ?>    
           					    <select class="form-control" id="cem" name="cem" style="text: #fff !important;color: gray;border-radius: 8px!important;
                         background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;">
           								      <option disable hidden value="">CEM</option>
           								      <option>CEM1</option>
           								      <option>CEM2</option>
           						    </select>
+                          <?php } else{ ?> 
+                          <input type="text" name="supervisao" id= "cem_input" class="form-control" placeholder="CEM" value="<?php echo carrega_dados(); ?>" style="border-radius: 8px!important;
+				                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;"> <?php } ?>
+
           				</div>
 
           			 <div class="form-group input-group">
@@ -152,6 +159,9 @@
         $('#cem').change(function(){
           $(this).css('color', 'white');
         });
+        
+      $('#cem_input').css('color','a0a0a0');
+      $('#cem_input').attr('disabled', true);
 
     //    $('#cem').css('color','#707070');
 		    //$('#cem').attr('disabled', true);

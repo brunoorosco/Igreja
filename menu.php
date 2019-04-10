@@ -152,6 +152,8 @@ border-radius: 6px 0 6px 6px;
                         </ul>
                         </li>
 
+            <!--//  só vai acessar as pessoas que tiverem permissão de acesso a um dos grupos abaixo     -->
+
             <?php  if((isset($_SESSION['nivel'])) && ($_SESSION['nivel'] == '1') || ($_SESSION['nivel'] == '5') || ($_SESSION['nivel'] == '4')){ ?>         
 
                 <li class="dropdown-submenu">
@@ -191,7 +193,7 @@ border-radius: 6px 0 6px 6px;
               </ul>
             </li>
           <?php } ?>
-            <li class="nav-item active">
+            <li class="nav-item active" >
                 <a class="dropdown-item" href="#"><i class="fa fa-bible"> IGREJAS</i></span></a>
             </li>
               </ul>
@@ -201,9 +203,9 @@ border-radius: 6px 0 6px 6px;
             <?php
 
                 if(isset($_SESSION['usuario'])){
-                    echo "<i class='fa fa-user'> ".($_SESSION['usuario'])."</i>";?>
+                    echo "<i class='text-secondary fa fa-user'> ".($_SESSION['usuario'])."</i>";?>
 
-                    <input type="button" class="btn btn-outline-secondary " onclick="location.href='http://localhost/www/igreja/app/login/logout.php'" value="Sair"/>
+                    <input type="button" class="btn btn-outline-secondary"  onclick="location.href='http://localhost/www/igreja/app/login/logout.php'" value="Sair"/>
 
                 <?php
                          }

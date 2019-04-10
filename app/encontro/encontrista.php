@@ -92,46 +92,31 @@
                         <h4 class="modal-title " id="myModalLabel"><?php echo $row['nomeEnc']; ?></h4>
                       </div>
                       <div class="modal-body">
-                       <div class="container-fluid">
-                        <div class="form-group row">
-
-                          <div class="col">Aniversário:
-                                        <?php echo date("d/m",strtotime(str_replace('/','-',$row['nascEnc'])));?>
-                                    </div>
-                          <div class="col-7">Email: <?php echo $row['emailEnc'];?></div>
-                        </div>
-
-
-                            <div class="form-group row">
-                                <div class="col">Endereço:
-                                        <?php echo $row['endEnc'];?>
-                            </div></div>
-
-                             <div class="form-group row">
-                                <div class="col">Telefone:  <?php echo $row['telEnc'];?>
+                          <div class="container-fluid">
+                              <div class="form-group row">
+                                <div class="col text-left">Aniversário:
+                                              <?php echo date("d/m",strtotime(str_replace('/','-',$row['nascEnc'])));?>
                                 </div>
                                 <div class="col-6">
-                                        CEM: <?php echo $row['CEM'];?>
+                                              CEM: <?php echo $row['CEM'];?>
+                                </div>
+                              </div>
+                                <div class="form-group row">
+                                      <div class="col text-left">Endereço:
+                                              <?php echo $row['endEnc'];?>
+                                      </div>
+                                </div>
+                                <div class="form-group row">
+                                     <div class="col text-left">Telefone:  <?php echo $row['telEnc'];?>
+                                     </div>
+                                </div>
+                                <div class="form-group row">
+                                      <div class="col text-left">
+                                        Observações: <?php echo $row['observacao'];?>
+                                      </div>
                                 </div>
                             </div>
-
-                            <div class="form-group row">
-                                <div class="col">
-                                        Amigo 1: <?php echo $row ['amigo1'];
-                                        echo " => ";
-                                        echo $row['telEncamigo1'];?>
-                                </div>
-                             </div>
-                             <div class="form-group row">
-                                 <div class="col">
-                                   Amigo 2: <?php echo $row ['amigo2'];
-                                   echo " => ";
-                                   echo $row['telEncamigo2'];?>
-                                 </div>
-                            </div>
-
-
-                          </div></div>
+                          </div>
                       </div>
                     </div>
                   </div>
