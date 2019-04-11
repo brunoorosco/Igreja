@@ -17,12 +17,10 @@ $sql = "SELECT * FROM membros ORDER BY nome ASC LIMIT $inicio, $qnt_result_pg";
 $pdo = Banco::conectar();
 //foreach($pdo->query($sql)as $resultado_usuario)
 $resultado_usuario = $pdo->query($sql);
-//este e usado para executar a pesquisa a cima, no caso de voces estranhar esse codigo e por que esta em PDO rs, tem mais e pra voce escrever execute e nao executar.
-$resultado_usuario->execute();
-//Aqui voce é a mesma coisa que o num_rows vai voltar se tudo ok 1
-$trg = $resultado_usuario->rowCount();  
+$rows = $resultado_usuario->fetchAll(PDO::FETCH_COLUMN);
+
 //Verificar se encontrou resultado na tabela "usuarios"
-if(($trg != 0)){
+if(($rows != 0)){
 
 	?>
 <div class="container-fluid">
@@ -72,17 +70,15 @@ if(($trg != 0)){
 	<?php
 	
 	//Paginação - Somar a quantidade de usuários
-	$sql = "SELECT COUNT(idmembros) AS num_result FROM membros";
-	$resultado_pg = $pdo->query($sql);
-	//$row_pg = mysqli_fetch_assoc($resultado_pg);
-	$row_pg = $resultado_pg->fetchAll(PDO::FETCH_ASSOC);
-	
-	//print_r ($results);
+	$sql = "SELECT idmembros AS num_result FROM membros";
+	$result = $pdo->query( $sql );
+	$rows = $result->rowCount();
+	 
 	//Quantidade de pagina
-	$quantidade_pg = ceil($row_pg['num_result'] / $qnt_result_pg); //função ceil arredonda valor para cima
+	$quantidade_pg = ceil($rows / $qnt_result_pg); //função ceil arredonda valor para cima
 	
 	//Limitar os link antes depois
-	$max_links = 2;
+	$max_links = 10;
 
 	echo '<nav aria-label="paginacao">';
 	echo '<ul class="pagination">';

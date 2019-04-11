@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 08-Abr-2019 às 21:56
+-- Generation Time: 11-Abr-2019 às 22:01
 -- Versão do servidor: 10.1.37-MariaDB
 -- versão do PHP: 7.3.0
 
@@ -32,13 +32,91 @@ CREATE TABLE `aceitoujesus` (
   `id` int(10) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `endereco` varchar(50) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `niver` date DEFAULT NULL,
-  `cem` varchar(15) DEFAULT NULL,
-  `cargo` varchar(15) DEFAULT NULL,
-  `cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `cadastrado` int(10) DEFAULT NULL
+  `telefone` varchar(15) DEFAULT NULL,
+  `aceit_reconc` varchar(15) DEFAULT NULL,
+  `cadastro` date DEFAULT NULL,
+  `batizado` varchar(5) DEFAULT NULL,
+  `cem` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `aceitoujesus`
+--
+
+INSERT INTO `aceitoujesus` (`id`, `nome`, `endereco`, `telefone`, `aceit_reconc`, `cadastro`, `batizado`, `cem`) VALUES
+(2, 'Elieser Cezário da Silva Jr.', 'Rua Francicsco Martinho 182 - Suzano', '948947271', 'reconciliou', '0000-00-00', 'sim', 'Sup.Silvani'),
+(3, 'Cleison Melo', 'estrada dos Indios 285 - Itaqu?', '964044194', 'reconciliou', '0000-00-00', 'não', 'Sup.Geovana'),
+(4, 'Cintia Albuquerque Lorasque', 'Rua Apiranga 04 - jd.Ipe', '41725896', 'reconciliou', '0000-00-00', 'sim', 'Sup.Valdirene'),
+(5, 'Cleberson Alberto de Jesus', 'Rua Carana Branca 201 - J.Helena', '999662157', 'reconciliou', '0000-00-00', 'sim', ''),
+(6, 'André Aziago dos Santos', 'Rua Anajatuba 19A - Itaim Pta', '985762711', 'reconciliou', '0000-00-00', 'sim', 'Pr.Joel'),
+(7, 'Samuel Mendes', 'Rua Francisco Antonio Meira - Vl.Mara', '986559951', 'reconciliou', '0000-00-00', 'não', '-'),
+(8, 'Rogério Soares da Silva', 'Rua Castanheira do Brejo 295 - J.Ipe', '970690241', 'aceitou', '0000-00-00', 'não', 'Sup.Luizinho'),
+(9, 'Felipe Cesar Rodrigues', 'Rua Rosa Musgo 475 - J.Miragaia', '970211055', 'reconciliou', '0000-00-00', 'sim', 'Pra.Wanda'),
+(10, 'Rinaldo Lorasque Filho', 'Rua Apiranga 04 - J.Ipe', '27292218', 'reconciliou', '0000-00-00', 'sim', 'Sup.Valdirene'),
+(11, 'Edmar Gomes da Silva', 'Rua Sebasti?o Aves - camargo Novo', '964402320', 'aceitou', '0000-00-00', 'não', 'Sup.Geovana'),
+(12, 'Valeria Fernandes dos Santos ', 'Rua piranema - J.Campos', '940874019', 'reconciliou', '0000-00-00', 'sim', '-'),
+(13, 'Jair José Luis', 'Rua Erva do Fogo 110 - J.Ipe', '964383005', 'reconciliou', '0000-00-00', 'sim', 'Sup.Valdirene'),
+(14, 'Eunice Nunes  Magaldi ', 'Rua Gravata de Pedra 16 - J.Ipe', '973456393', 'aceitou', '0000-00-00', 'não', '-'),
+(15, 'Sivaldo Souza ', 'Rua Agua Vermelha 17 casa 3 - ', '959455437', 'reconciliou', '0000-00-00', 'sim', '-'),
+(16, 'João Vitor Lopes da Silva', 'Rua Gravata de Pedra 19 - J.Ipe', '951496802', 'reconciliou', '0000-00-00', 'sim', 'Sup.Lica'),
+(17, 'Ana Paula Rodrigues', 'Rua Cotia 114 - J.Campos', '-', 'reconciliou', '0000-00-00', 'sim', 'Sup.Sandra'),
+(18, 'Antonio Leite da Silva Filho', 'Rua Gesiaba 17 - J.Campos', '951496802', 'reconciliou', '0000-00-00', 'sim', 'Sup.Lica'),
+(19, 'Cristiane Viana de Jesus', 'Rua Jose Martins Lisboa 2204 - Pantanal', '987079288', 'aceitou', '0000-00-00', 'não', '-'),
+(20, 'Lucimar Alves da Silva', 'Baleeira Branca 366 - J.Ipe', '996839001', 'reconciliou', '0000-00-00', 'sim', 'Sup.Lica'),
+(21, 'Jussara Domingues Pimentel', 'Rua Obai 25 - J.Nazar?', '977535724', 'reconciliou', '0000-00-00', 'sim', 'Pra.Bete'),
+(22, 'Richard Marques Gomes', 'Rua Gherardt Holts 7B - J.Silva Teles', '984430359', 'aceitou', '0000-00-00', 'não', 'Sup.Mirtes'),
+(23, 'Beatriz Pimentel Nunes Gonsalves', 'Rua Melchiades Nunes de Campos 452 - pq.sta Rita', '-', 'reconciliou', '0000-00-00', 'não', 'Sup.Lica'),
+(24, 'Elza Bento Bezerra ', 'Rua Melchiades Nunes de Campos 452 - pq.sta Rita', '38082046', 'reconciliou', '0000-00-00', 'sim', 'Sup.Lica'),
+(25, 'Kau? Henrique Ramos Oliveira', 'Rua Ipe Roxo 1704 - Itaim Pta', '940761125', 'aceitou', '0000-00-00', 'não', 'Sup. Zô'),
+(26, 'Gabriela Queiroz da Silva ', 'Rua Virginia Ferne 88 - Cohab 2', '949235284', 'reconciliou', '0000-00-00', 'sim', '-'),
+(27, 'Vitor Grat?o ', 'Rua Palmeira das Bermudas 658 - Jd.Ipê', '996406714', 'reconciliou', '0000-00-00', 'sim', '-'),
+(28, 'Larissa Rodrigues Santos', 'Francisca Marrique Guerra 103 A - Jd.Ipê', '94944332', 'aceitou', '0000-00-00', 'n?o', 'Sup.Valdirene'),
+(29, 'Renan david', 'Rua Castanheiro do Brejo 55 - Jd.Ipê', '940097687', 'aceitou', '0000-00-00', 'n?o', '-'),
+(30, 'Andressa Mayumuihod Yamath', 'Rua Namesio Candido Gomes 151 - Vl.Zeferina', '979712378', 'aceitou', '0000-00-00', 'n?o', '-'),
+(31, 'Natalia Viana', 'Av.dos Ipes - Jd.Ipê', '957936180', 'reconciliou', '0000-00-00', 'n?o', '-'),
+(32, 'Jonathan da Silva', 'Rua Machiche 35 - Jd.Eloisa', '981754649', 'reconciliou', '0000-00-00', 'n?o', '-'),
+(33, 'Edson Bispo dos Santos', 'R.S.Pedro de Jequitinhonha 78 - J.S.Carlos', '977258045', 'reconciliou', '0000-00-00', 'sim', 'Sup.Martim'),
+(34, 'Jenifer Silva Demortoli', 'R.S.Pedro de Jequitinhonha 78 - J.S Carlos', '981538915', 'reconciliou', '0000-00-00', 'sim', 'Sup.Martim'),
+(35, 'Maria Celia Patricio', 'Av.dos Igarapes - Jd.Ipê', '993611632', 'reconciliou', '0000-00-00', 'sim', 'Sup.Valdirene'),
+(36, 'Alexsandro Alve de Araujo', 'Rua Adriano Seabra 60 - Pq.Paulistano', '42115281', 'aceitou', '0000-00-00', 'n?o', '-'),
+(37, 'Renata lima', 'Rua Mendanha 32 - Jd.Carolina', '29630294', 'aceitou', '0000-00-00', 'n?o', 'Sup.Martim'),
+(38, 'Jean Sales Santos', 'Rua lagoa Cajuba 101 - Jd.Campos', '962604750', 'reconciliou', '0000-00-00', 'n?o', 'Sup.Martim'),
+(39, 'Marisa Lopes Vicente', 'Rua |Gravata de Pedra 19 - Jd. Ipê', '951496802', 'reconciliou', '0000-00-00', 'sim', 'Pr.Joel/Regiane'),
+(40, 'Jos? Silva Nogueira', 'Glochonias 110 A - Cidade Nova S.Miguel', '-', 'aceitou', '0000-00-00', 'n?o', 'Pr.Joel/Regiane'),
+(41, 'Leonardo Bezerra Omena', 'Rua Betula Negra - Jd.Nelia', '982518015 recad', 'reconciliou', '0000-00-00', 'sim', 'Aldo/Silvani'),
+(42, 'Jean Michel dos Santos', 'Rua Massato Sakai 180 - Ferraz', '940326399', 'reconciliou', '0000-00-00', 'sim', 'Sup.Jaqueline'),
+(43, 'Amanda Laurentino dos Sabntos', 'Rua Louren?o Paganucci 593 - Ferraz', '9836838991', 'reconciliou', '0000-00-00', 'sim', 'Sup.Zo'),
+(44, 'Eliane Lourenço', 'Rua Porto do Bezerra 660 - Guaianases', '981805166', 'aceitou', '0000-00-00', 'sim', 'Clarice/Luiz'),
+(45, 'Tatiana Macedo Dunda', 'Rua Igarap?s 980 - Jd dos ip?s', '965826114', 'aceitou', '0000-00-00', 'n?o', 'PR. La?rcio e V'),
+(46, 'Juliana Silveiro dos Santos', 'Rio Itapicu Mirim N?95 - Camargo Novo', '983612420', 'aceitou', '0000-00-00', 'sim', '-'),
+(47, 'Gabriel Martins de Souza', 'Dr. Gil Martins 96 - Itaim', '96652702', 'reconciliou', '0000-00-00', 'n?o', 'Valdirene'),
+(48, 'Bruno Rodrigues', 'Rua: Jacarand? Rosa 307 - Jd. No?mia', '(11) 95107-6652', 'reconciliou', '0000-00-00', 'sim', 'Sup. Valdirene'),
+(49, 'Joselito Da Silva Oliveira', 'Av. Carrego Tijuco Preto 188 - Jd. Oliveira', '-', 'reconciliou', '0000-00-00', 'N?o', 'Sup. Giovanna'),
+(50, 'Carlos Alberto Ribeiro', 'Rua Macauba Mirim 231 - Jd dos ipê', '983874818', 'reconciliou', '0000-00-00', 'sim', 'Rita Obreira'),
+(51, 'Amanda Cristina Soares', 'Pedro Ferraz Lopes 370 - Jd Campos ', '22648683', 'reconciliou', '0000-00-00', 'sim', 'Sup. Valdirene'),
+(52, 'Matheus Ferreira Calado', 'Rua Alpercata 19 - -', '959775150', 'reconciliou', '0000-00-00', 'não', '-'),
+(53, 'Thayane de Souza Carvalho', 'Rua Dolores de Aquino 28 - Jundiapeba', '932304606', 'reconciliou', '0000-00-00', 'não', '-'),
+(54, 'Robson Viana de Jesus', 'Av.Jos? Martim Lisboa 2168 - jd.S.Martinho Helena', '-', 'aceitou', '0000-00-00', 'não', 'Sup.Lica'),
+(55, 'Rosangela de Oliveira Santos', 'R,Gal.Dalton Teixeira 133 - vl.Mara', '-', 'reconciliou', '0000-00-00', 'sim', '-'),
+(56, 'Leticia Vitoria Santos', 'R.Mateus Barbosa Resende 287 A - pq.sta Rita', '958792952', 'reconciliou', '0000-00-00', 'não', '-'),
+(57, 'Vitoria nascimeto Neves Concei??o', 'Av. dos Ipes 1060 - Jd,Ipe', '954404968', 'reconciliou', '0000-00-00', 'não', '-'),
+(58, 'Rayane Vitoria Alves dos Santos', 'R.Padre Eduardo Roberto 127 - S.miguel', '951461358', 'reconciliou', '0000-00-00', 'não', 'Sup.Valdirene'),
+(59, 'Leandro Jos? da Slva', 'R.Francisca Manrique Guerra 9C - Jd.Ipe', '952720453', 'reconciliou', '0000-00-00', 'sim', 'Sup.Valdirene'),
+(60, 'Roberto Borges Bonfim', 'Rua Gequirame de Goi?s 515 apto 2 - Vila Curu??', '987992995', 'reconciliou', '0000-00-00', 'sim', 'Sup.Lica'),
+(61, 'Patricia Gomes P. Guedes', 'Rua Gequirame de Goi?s 515 apto 2 - Vila Curu??', '987992885', 'reconciliou', '0000-00-00', 'sim', 'Sup.Lica'),
+(62, 'Marivan Ferreira Barros', 'Sabia?Laranjeira 113 - Vila Mara', '25857006', 'aceitou', '0000-00-00', 'não', 'Pr.Joel'),
+(63, 'Juliana de ALmeida S.', 'Av.dos Ipes 1294 - Jd. Ipe', '954119720', 'reconciliou', '0000-00-00', 'sim', 'Sup.Valdirene'),
+(64, ' Jo?o Carlos Ribeiro de Amorim', 'Rua Gravata de pedra 535 - Jd.Ipe', '975893150', 'reconciliou', '0000-00-00', 'não', 'Sup.Fabio/Sandr'),
+(65, 'Normalicia Ferreira ', 'Rua Sabiá Laranjeira 113 - Vl. Mara', '-', 'aceitou', '0000-00-00', 'não', 'Pr.Joel'),
+(66, 'Livia Michele dos Santos Matos', 'Rua Cip? do Reino 119 - Jd.ipe', '-', 'aceitou', '0000-00-00', 'sim', 'Sup.Valdirene'),
+(67, 'Ana Paula Novaes de Jesus', 'Rua Cio da Terra 11 - Itaim Pta', '-', 'reconciliou', '0000-00-00', 'sim', '-'),
+(68, 'Rafaela Cardoso Gonsalves', 'Av.João Batista Santiago 455 - Jd.Robrú', '-', 'aceitou', '0000-00-00', 'não', '-'),
+(69, 'Milena Gomes Fernandes', 'Rua Pedro Rodrigues 86 - pq.sta Rita', '991241930', 'reconciliou', '0000-00-00', 'sim', 'Pr.Claudio/Edi'),
+(70, 'Marcela Gomes Fernandes', 'Rua Pedro Rdrigues 86 - Pq.Sta Rita', '991692312', 'reconciliou', '0000-00-00', 'sim', 'Pr.Claudio/Edi'),
+(71, 'Romero Kopps Junior', 'Rua Aricanga 974 - Jd.Silva Teles', '954646486', 'aceitou', '0000-00-00', 'não', 'Sup.Lica'),
+(72, 'Fernanda Cristina de Farias', 'Rua Aricanga 974 - Jd.Silva Teles', '941472010', 'aceitou', '0000-00-00', 'não', 'Sup.Lica'),
+(73, 'Daniela Santos de Jesus ', 'Rua das Gaivotas 06 - Vale da Brisas', '950383374', 'aceitou', '0000-00-00', 'não', 'Pr.Wagner'),
+(74, 'Julia Matos', 'Rua Jangaba 03 - Itaim Pta', '986687952', 'aceitou', '0000-00-00', 'não', '-');
 
 -- --------------------------------------------------------
 
@@ -148,7 +226,10 @@ INSERT INTO `eventos` (`id`, `titulo`, `inicioevento`, `terminoevento`, `color`)
 (21, 'Discipulado', '2019-04-20 00:00:00', '2019-04-21 00:00:00', '#0071c5'),
 (22, 'Escola de Profetas', '2019-03-08 19:30:00', '2019-03-09 22:00:00', '#40E0D0'),
 (23, 'Escola de Profetas', '2019-02-25 00:00:00', '2019-02-28 00:00:00', '#0071c5'),
-(24, 'teste evento', '2019-03-11 20:00:00', '2019-03-11 22:00:00', '#FFD700');
+(24, 'teste evento', '2019-03-11 20:00:00', '2019-03-11 22:00:00', '#FFD700'),
+(25, 'Mulheres ', '2019-04-13 08:30:00', '2019-04-13 20:00:00', '#FF1493'),
+(26, 'Homens em Ação', '2019-04-20 08:00:00', '2019-04-20 20:00:00', '#436EEE'),
+(27, 'Aniversário de 20 Anos da Comunidade', '2019-05-04 18:00:00', '2019-05-04 22:00:00', '#FFD700');
 
 -- --------------------------------------------------------
 
@@ -386,7 +467,7 @@ ALTER TABLE `turma`
 -- AUTO_INCREMENT for table `aceitoujesus`
 --
 ALTER TABLE `aceitoujesus`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `encontrista`
@@ -398,7 +479,7 @@ ALTER TABLE `encontrista`
 -- AUTO_INCREMENT for table `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `infocursos`

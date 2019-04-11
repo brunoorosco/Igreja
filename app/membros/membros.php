@@ -1,7 +1,9 @@
 <?php
   
   include_once("../../_fonts/config/funcoes.php");
-  include_once "../../menu.php";
+  include_once('../../_fonts/config/banco.php');
+  include_once("../../menu.php");
+  
   validarUsuario();
 ?>
 <!DOCTYPE html>
@@ -16,7 +18,8 @@
     .table tbody tr:hover td, .table tbody tr:hover th {
         background-color: #9ACD32 !important;
     }
-    </style>
+
+     </style>
 </head>
 
 <body>
@@ -51,11 +54,13 @@
                     </thead>
                     <tbody>
                         <?php
-                        include '../../_fonts/config/banco.php';
                         $pdo = Banco::conectar();
 
-                        $sql = 'SELECT * FROM membros ORDER BY nome ASC';
-                        foreach($pdo->query($sql)as $row)
+                        include_once("./seleciona_usuario.php");
+                        
+                        while($row = $query->fetch(PDO::FETCH_ASSOC))
+                       // $sql = 'SELECT * FROM membros ORDER BY nome ASC LIMIT 10';
+                      // foreach($pdo->query($sql)as $row)
                         {
                             echo '<tr>';
 			                      echo '<th class="text-left" scope="row">'. $row['nome'] . '</th>';
@@ -126,11 +131,20 @@
                   </div>
                 </div>
               <?php  }
-                        Banco::desconectar();
+                       
                         ?>
                     </tbody>
                 </table>
-
+                <nav>
+                  <ul class="pagination">
+            <?php 
+                  while($i <= $quantidade_pg){
+                  echo "<li class='page-item'><a class='page-link' href='?page=$i'>$i</a></li>";
+                  $i++;                    
+            }
+            Banco::desconectar();?>
+              </ul>
+              </nav>
            </div>
           </div>
         </div>
