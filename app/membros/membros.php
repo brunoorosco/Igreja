@@ -74,10 +74,21 @@
                             <td>
                            <div class="btn-group btn-sm">
                            <button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idmembros']; ?>"></button>
-                            <button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idmembros']; ?>" data-whatevernome="<?php echo $row['nome']; ?>"data-whateverdetalhes="<?php echo $row['ende']; ?>"></button>
-                            <button type="button" class="btn btn-danger fas fa-trash disabled"></button></div>
-                            <?php
-                            /*
+                           <button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idmembros']; ?>" data-whatevernome="<?php echo $row['nome']; ?>"data-whateverdetalhes="<?php echo $row['ende']; ?>"></button>
+                        
+                            <?php   
+                            $codUser = $_SESSION['codigoUsuario'];
+                            $sql = "SELECT * FROM membros where  idmembros = $codUser";
+
+                                    $exec =  $pdo->query($sql);
+                                    $rows = $exec->fetchAll(PDO::FETCH_ASSOC);
+                                    $total = count($rows);
+                                    $_SESSION['supervisao'] = $rows[0]['supervisao']; 
+                                    echo  $row['supervisao'];                 
+                                    if(isset($_SESSION['supervisao']) && ($_SESSION['supervisao']== $row['supervisao'] )){
+                            echo '<button type="button" class="btn btn-danger fas fa-trash"></button></div>';}
+                            
+                                                        /*
                             echo '<a class="btn btn-warning btn-sm" href="update.php?id='.$row['idmembros'].'">Editar</a>';
                             echo '';
                             echo '<a class="btn btn-danger btn-sm" href="delete.php?id='.$row['idmembros'].'">Excluir</a>';*/

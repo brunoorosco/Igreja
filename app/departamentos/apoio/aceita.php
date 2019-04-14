@@ -91,7 +91,7 @@ color: white;
        		<div class="row"></div>
        				<div class="col-md-6 offset-md-3">
 									<form  class="formulario" id="form_aceitaJesus" action="" method="post"  >
-										<h3  class="h3"style="text-align: center;">Jesus lhe aceitou</h3><br>
+										<h3  class="h3"style="text-align: center;">Aceitou/Reconciliou</h3><br>
 				 						<div class="form-group ">
 				 								<input type="text" name="nome" id="nome"class="form-control" placeholder="Nome Completo" required=""style="border-radius: 8px!important;
 			                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
@@ -109,13 +109,7 @@ color: white;
 		                   background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
 										</div>
 
-
-										<div class="form-group">
-										 	<input type="email" name="email" id="email" class="form-control" placeholder="seu_email@email" required=""style="border-radius: 8px!important;
-		                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
-										</div>
-
-										<div class="form-group input-group">
+							  		<div class="form-group input-group">
 											<select class="form-control" id="cargo" name="cargo" style="text: #fff !important;color: gray;border-radius: 8px!important;
 	                        background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;">
 														<option disable hidden value="" >Cargo</option>

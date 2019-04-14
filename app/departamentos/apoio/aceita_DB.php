@@ -5,7 +5,6 @@
 
     $nome = $_POST['nome'];
     $telefone = $_POST['telefone'];
-    $email = $_POST['email'];
     $cargo = $_POST['cargo'];
     $endereco = $_POST['endereco'];
     $nasc = $_POST['nascimento'];
@@ -18,16 +17,14 @@
    ///////  VERIFICA SE USUARIO EMAIL JÁ ESTA CADASTRADO ///////////
 try{
        
-      $sql = "INSERT INTO aceitouJesus (nome, telefone, email, niver, cargo, endereco, cem, cadastrado, aceit_reconc, cadastro) 
-      values (:nome, :telefone, :email, :nasc, :cargo, :endereco,:supervisao, :cadastrado, :aceitou, :cadastro)";
+      $sql = "INSERT INTO aceitouJesus (nome, telefone, cargo, endereco, cem, cadastrado, aceit_reconc, cadastro) 
+      values (:nome, :telefone, :cargo, :endereco,:supervisao, :cadastrado, :aceitou, :cadastro)";
      
         $db = new db();
         $db = $db->connect();
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':nome',$nome);
         $stmt->bindParam(':telefone',$telefone);
-        $stmt->bindParam(':email',$email);
-        $stmt->bindParam(':nasc',$niver);
         $stmt->bindParam(':cargo',$cargo);
         $stmt->bindParam(':endereco',$endereco);
         $stmt->bindParam(':supervisao',$supervisao);

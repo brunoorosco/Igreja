@@ -15,6 +15,7 @@
             $_SESSION['usuario'] = $rows[0]['username'];
             $_SESSION['nivel'] = $rows[0]['nivel_acesso'];
             $_SESSION['COD_USUARIO'] = $codigoUsuario;
+            
             return $codigoUsuario;
         }
         else{
