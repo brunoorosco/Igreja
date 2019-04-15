@@ -7,6 +7,7 @@ $('#editModal').on('show.bs.modal', function (event) {
     var recipientemail = button.data('whateveremail')
     var recipientcargo = button.data('whatevercargo')
     var recipientcem = button.data('whatevercem')
+    var recipienttel = button.data('whatevertel')
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
     var modal = $(this)
@@ -18,7 +19,9 @@ $('#editModal').on('show.bs.modal', function (event) {
     modal.find('#niver').val(recipientdata)
     modal.find('#cargo').val(recipientcargo)
     modal.find('#cem').val(recipientcem)
+    modal.find('#tel').val(recipienttel)
     //console.log(recipientdata);
+    
     
     });
 
@@ -28,3 +31,4 @@ function maiuscula(z){
 	z.value = v;
 }
 //FIM DA FUNÇÃO MASCARA MAIUSCULA
+

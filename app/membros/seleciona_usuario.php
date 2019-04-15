@@ -1,5 +1,5 @@
 <?php
- 
+ ////////  ESTE SCRIPT TEM COMO FUNÇÃO AJUSTAR A QUANTIDADE DE ITENS QUE MOSTRARÁ NA TABELA CRIANDO PAGINAÇÃO ///////////
 
     $i = 1;
 //Paginação - Somar a quantidade de usuários
@@ -8,7 +8,7 @@
 	$result = $pdo->query( $sql );
     $rows = $result->rowCount();
     
-    $itens_pg = 15;
+    $itens_pg = 15; ////QUANTIDADE DE ITENS NA TELA
     
     //Quantidade de pagina
 	$quantidade_pg = ceil(($rows / $itens_pg)); //função ceil arredonda valor para cima

@@ -72,9 +72,9 @@
                             echo '<td>'. $row['supervisao'] . '</td>';
                             ?>
                             <td>
-                           <div class="btn-group btn-sm">
+                           <div class="btn-group btn-sm col">
                            <button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idmembros']; ?>"></button>
-                           <button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idmembros']; ?>" data-whatevernome="<?php echo $row['nome']; ?>"data-whateverdetalhes="<?php echo $row['ende']; ?>"></button>
+                           
                         
                             <?php   
                             $codUser = $_SESSION['codigoUsuario'];
@@ -84,17 +84,21 @@
                                     $rows = $exec->fetchAll(PDO::FETCH_ASSOC);
                                     $total = count($rows);
                                     $_SESSION['supervisao'] = $rows[0]['supervisao']; 
-                                    echo  $row['supervisao'];                 
-                                    if(isset($_SESSION['supervisao']) && ($_SESSION['supervisao']== $row['supervisao'] )){
-                            echo '<button type="button" class="btn btn-danger fas fa-trash"></button></div>';}
-                            
-                                                        /*
-                            echo '<a class="btn btn-warning btn-sm" href="update.php?id='.$row['idmembros'].'">Editar</a>';
-                            echo '';
-                            echo '<a class="btn btn-danger btn-sm" href="delete.php?id='.$row['idmembros'].'">Excluir</a>';*/
-                            echo '</td>';
-                            echo '</tr>';
-                            echo '<div class="row"></div>';
+                                //    echo  $row['supervisao'];                 
+                                    if(isset($_SESSION['supervisao']) && ($_SESSION['supervisao']== $row['supervisao'] ) || ($_SESSION['nivel'] == '1')){?>
+
+                                          <button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever='<?php echo $row["idmembros"];?>'
+                                                  data-whatevernome='<?php echo $row['nome'];?>' data-whateverendereco='<?php echo $row['endereco'];?>' data-whateverdata='<?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['nasc'])));?>'
+                                                  data-whatevercargo='<?php echo $row['cargo'];?>' data-whatevertel='<?php echo $row['telefone'];?>'  ></button>
+                                          <button type="button" class="btn btn-danger fas fa-trash"></button></div> <?php }
+                                          
+                                                                      /*
+                                          echo '<a class="btn btn-warning btn-sm" href="update.php?id='.$row['idmembros'].'">Editar</a>';
+                                          echo '';
+                                          echo '<a class="btn btn-danger btn-sm" href="delete.php?id='.$row['idmembros'].'">Excluir</a>';*/
+                                          echo '</td>';
+                                          echo '</tr>';
+                                          echo '<div class="row"></div>';
                       ?>
 
           <div class="modal fade" id="myModal<?php echo $row['idmembros']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -180,23 +184,19 @@
                             <div class="form-group input-group">
                                   <div>
                                       <label for="niver" class="control-label">Aniversário:</label>
-                                      <input name="niver" class="form-control" id="niver" onkeypress="DataHora(event, this)">
+                                      <input name="niver" class="form-control" id="niver" onkeypress="Data(event, this)">
                                   </div>
                                   <div>
                                       <label for="telefone" class="control-label">Telefone:</label>
-                                      <input name="telefone" class="form-control" id="tel" onkeypress="DataHora(event, this)">
+                                      <input name="telefone" class="form-control" id="tel" ">
                                   </div> 
                             </div>
-                            <div class="form-group input-group">
+                            
                                 <input name="idCursos" type="hidden" class="form-control" id="id-curso" value="">
-                                <div class="modal-footer btn-group " role="group">
-                                    <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-success btn-block" data-dismiss="modal" >Cancelar</button>
-                                    </div>                                
-                                    <div class="btn-group" role="group">
-                                        <button type="submit" class="btn btn-danger btn-block"  name="formulario" value="editar">Alterar</button>
-                                    </div>
-                                </div>
+                                                 
+                            <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                                    <button class="btn btn-success">Editar</button>
                             </div>
                         </form>
                       </div>
