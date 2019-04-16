@@ -13,6 +13,7 @@
     <meta charset="utf-8">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     <title>Membros</title>
     <style type="text/css">
     .table tbody tr:hover td, .table tbody tr:hover th {
@@ -23,18 +24,12 @@
 </head>
 
 <body>
-    <div class="card">
-    <div class="card-body">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Procurar</span>
-          </div>
-          <input type="text" class="form-control" placeholder="Membros" aria-label="Username" aria-describedby="basic-addon1">
+    <div class="container">
+          <div class="card">
+        <div class="card-header">
+        <h4 class="card-title"> Lista de Membros</h4>
         </div>
-      </div>
-    </div>
-
-    <div class="container-fluid">
+      </div><br>
       <div class="panel panel-primary">
             <div class="col-lg-12 table-responsive"> <!--     <p>
                 <a href="create.php" class="btn btn-success">Adicionar</a>
@@ -78,7 +73,7 @@
                         
                             <?php   
                             $codUser = $_SESSION['codigoUsuario'];
-                            $sql = "SELECT * FROM membros where  idmembros = $codUser";
+                            $sql = "SELECT * FROM membros where  idmembros = $codUser ";
 
                                     $exec =  $pdo->query($sql);
                                     $rows = $exec->fetchAll(PDO::FETCH_ASSOC);
@@ -153,10 +148,10 @@
                 <nav>
                   <ul class="pagination">
             <?php 
-                  while($i <= $quantidade_pg){
-                  echo "<li class='page-item'><a class='page-link' href='?page=$i'>$i</a></li>";
-                  $i++;                    
-            }
+                //  while($i <= $quantidade_pg){
+              //    echo "<li class='page-item'><a class='page-link' href='?page=$i'>$i</a></li>";
+              //    $i++;                    
+           // }
             Banco::desconectar();?>
               </ul>
               </nav>
@@ -208,9 +203,24 @@
         </div>
       </div>
 
-
+      <script >
+        $(document).ready(function() {
+            $('#tabela_membros').DataTable( {
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ itens por página",
+                "zeroRecords": "Nenhum Item Encontrado",
+                "info": " ",
+                "infoEmpty": " ",
+                "infoFiltered": " "
+            }
+    } );
+} );
+          
+      </script>
+    
       <script src="membros.js" type="text/javascript"></script>
-      
+      <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
+      <script src=" https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 </body>
 
 </html>
