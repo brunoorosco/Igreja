@@ -160,10 +160,15 @@ border-radius: 6px 0 6px 6px;
                     <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Secretária</a>
                     <ul class="dropdown-menu">
                     <?php  if($_SESSION['nivel'] == '1'){ ?> 
-                            <li><a class="dropdown-item" href="#">Administrativa</a></li>  <?php }?>
+                        <li class="dropdown-submenu">
+                                <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Administração Geral</a>
+                                <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/secretaria/painel_controle.php'?>">Painel de Controle</a></li>
+                                 </ul>
+                            </li>  <?php }?>
                    
                     <?php  if(($_SESSION['nivel'] == '1') || ($_SESSION['nivel'] == '4')){ ?>        
-                            <li><a class="dropdown-item" href="#">Encontro</a></li><?php }?>
+                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/secretaria/encontro.php'?>">Encontro</a></li><?php }?>
                     
                     <?php  if(($_SESSION['nivel'] == '1') || ($_SESSION['nivel'] == '5')){ ?>        
                             <li class="dropdown-submenu">

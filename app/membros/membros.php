@@ -26,10 +26,10 @@
 <body>
     <div class="container">
           <div class="card">
-        <div class="card-header">
-        <h4 class="card-title"> Lista de Membros</h4>
-        </div>
-      </div><br>
+               <div class="card-header">
+                    <h4 class="card-title text-center"> Lista de Membros</h4>
+              </div>
+           </div><br>
       <div class="panel panel-primary">
             <div class="col-lg-12 table-responsive"> <!--     <p>
                 <a href="create.php" class="btn btn-success">Adicionar</a>
@@ -38,7 +38,7 @@
                     <thead >
                         <tr>
                             <th scope="col-lg-6">Nome</th>
-                            <th scope="col">Endereço</th>
+                            <!--<th scope="col">Endereço</th>-->
                             <th scope="col">Telefone</th>
                             <!--<th scope="col">Email</th-->
                             <th scope="col">Aniversário</th>
@@ -59,7 +59,7 @@
                         {
                             echo '<tr>';
 			                      echo '<th class="text-left" scope="row">'. $row['nome'] . '</th>';
-                            echo '<td class="text-left">'. $row['endereco'] . '</td>';
+                          //  echo '<td class="text-left">'. $row['endereco'] . '</td>';
                             echo '<td>'. $row['telefone'] . '</td>';
                          //   echo '<td>'. $row['email'] . '</td>';
                             echo '<td>'.date("d/m",strtotime(str_replace('/','-',$row['nasc']))).'</td>';
@@ -67,8 +67,8 @@
                             echo '<td>'. $row['supervisao'] . '</td>';
                             ?>
                             <td>
-                           <div class="btn-group btn-sm col">
-                           <button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idmembros']; ?>"></button>
+                           <div class="btn-group btn-sm ">
+                          
                            
                         
                             <?php   
@@ -82,6 +82,7 @@
                                 //    echo  $row['supervisao'];                 
                                     if(isset($_SESSION['supervisao']) && ($_SESSION['supervisao']== $row['supervisao'] ) || ($_SESSION['nivel'] == '1')){?>
 
+                                          <button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idmembros']; ?>"></button>
                                           <button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever='<?php echo $row["idmembros"];?>'
                                                   data-whatevernome='<?php echo $row['nome'];?>' data-whateverendereco='<?php echo $row['endereco'];?>' data-whateverdata='<?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['nasc'])));?>'
                                                   data-whatevercargo='<?php echo $row['cargo'];?>' data-whatevertel='<?php echo $row['telefone'];?>'  ></button>
@@ -209,9 +210,10 @@
             "language": {
                 "lengthMenu": "Mostrar _MENU_ itens por página",
                 "zeroRecords": "Nenhum Item Encontrado",
-                "info": " ",
-                "infoEmpty": " ",
-                "infoFiltered": " "
+                "info": "",
+                "infoEmpty": "",
+                "infoFiltered": "",
+                "search": "Procurar:"
             }
     } );
 } );

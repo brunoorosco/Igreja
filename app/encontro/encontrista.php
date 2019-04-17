@@ -1,6 +1,10 @@
 <?php
-
-  include_once "../../menu.php";
+ 
+ include_once("../../_fonts/config/funcoes.php");
+ include_once('../../_fonts/config/banco.php');
+ include_once("../../menu.php");
+ 
+ validarUsuario();
 
 ?>
 <!DOCTYPE html>
@@ -10,7 +14,7 @@
     <meta charset="utf-8">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     <title>Encontrista</title>
 
     <style type="text/css">
@@ -22,18 +26,24 @@
 
 <body>
         <div class="container">
-        </br>
+        <br>
           <div class="page-header">
             <a class="btn btn-Secondary float-right" href="pdf_encontrista.php" role="button" aria-pressed="true"  target="_blank">   Imprimir </a>
                 <h3>Lista de Encontrista - Encontro n</h3>
           </div>
-          </br>
+          <div class="card">
+               <div class="card-header">
+                    <h4 class="card-title text-center"> Lista de Encontrista</h4>
+                    <a class="btn btn-Secondary float-right" href="pdf_encontrista.php" role="button" aria-pressed="true"  target="_blank">   Imprimir </a>
+              </div>
+           </div><br>
+          <br>
           <div class="row text-center">
                 <div class="col-md-12 table-responsive"> <!--     <p>
                     <a href="create.php" class="btn btn-success">Adicionar</a>
                 </p>-->
 
-                <table class="table table-striped table-sm table-hover text-center" id="tabela_membros">
+                <table class="table table-striped table-sm table-hover text-center" id="tabela_encontrista">
                     <thead >
                         <tr>
 
@@ -50,7 +60,6 @@
                     </thead>
                     <tbody>
                         <?php
-                        include '../../_fonts/config/banco.php';
                         $pdo = Banco::conectar();
                         $sql = 'SELECT * FROM encontrista ORDER BY sexoEnc ASC, nomeEnc ASC';
                         $i = 1;
@@ -173,8 +182,25 @@
         });
 
      </script>
+  <script >
+        $(document).ready(function() {
+            $('#tabela_encontrista').DataTable( {
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ itens por página",
+                "zeroRecords": "Nenhum Item Encontrado",
+                "info": "",
+                "infoEmpty": "",
+                "infoFiltered": "",
+                "search": "Procurar:"
+            }
+    } );
+} );
+          
+      </script>
 
 
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
+      <script src=" https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 </body>
 
 </html>
