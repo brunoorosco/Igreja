@@ -28,18 +28,14 @@
         <div class="container">
         <br>
           <div class="page-header">
-            <a class="btn btn-Secondary float-right" href="pdf_encontrista.php" role="button" aria-pressed="true"  target="_blank">   Imprimir </a>
-                <h3>Lista de Encontrista - Encontro n</h3>
+          <h3 class="text-center">Lista de Encontrista - Encontro n</h3>
+            <a class="btn btn-Secondary float-right" href="pdf_encontrista.php" role="button" aria-pressed="true"  target="_blank" style="margin-right: 15px !important;">   Imprimir </a>
+              
           </div>
-          <div class="card">
-               <div class="card-header">
-                    <h4 class="card-title text-center"> Lista de Encontrista</h4>
-                    <a class="btn btn-Secondary float-right" href="pdf_encontrista.php" role="button" aria-pressed="true"  target="_blank">   Imprimir </a>
-              </div>
-           </div><br>
           <br>
-          <div class="row text-center">
-                <div class="col-md-12 table-responsive"> <!--     <p>
+          <br>
+          <div class="panel panel-primary">
+               <div class="col-md-12 table-responsive"> <!--     <p>
                     <a href="create.php" class="btn btn-success">Adicionar</a>
                 </p>-->
 
@@ -165,42 +161,9 @@
               </div>
             </div>
 
-       <script type="text/javascript">
-        $('#exampleModal').on('show.bs.modal', function (event) {
-          var button = $(event.relatedTarget) // Button that triggered the modal
-          var recipient = button.data('whatever') // Extract info from data-* attributes
-          var recipientnome = button.data('whatevernome')
-          var recipientdetalhes = button.data('whateverdetalhes')
-          // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-          // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-          var modal = $(this)
-          modal.find('.modal-title').text('ID'+recipient)
-          modal.find('#id-curso').val(recipient)
-          modal.find('#recipient-name').val(recipientnome)
-          modal.find('#detalhes').val(recipientdetalhes)
+    
+<script src="encontrista.js" type="text/javascript"></script>  
 
-        });
-
-     </script>
-  <script >
-        $(document).ready(function() {
-            $('#tabela_encontrista').DataTable( {
-            "language": {
-                "lengthMenu": "Mostrar _MENU_ itens por página",
-                "zeroRecords": "Nenhum Item Encontrado",
-                "info": "",
-                "infoEmpty": "",
-                "infoFiltered": "",
-                "search": "Procurar:"
-            }
-    } );
-} );
-          
-      </script>
-
-
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
-      <script src=" https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 </body>
 
 </html>

@@ -32,3 +32,20 @@ function maiuscula(z){
 }
 //FIM DA FUNÇÃO MASCARA MAIUSCULA
 
+$(document).ready(function() {
+    $('#tabela_membros').DataTable( {
+    "language": {
+        "lengthMenu": "Mostrar _MENU_ itens por página",
+        "zeroRecords": "Nenhum Item Encontrado",
+        "info": "",
+        "infoEmpty": "",
+        "infoFiltered": "",
+        "search": "Procurar:",
+        "paginate": {
+                  "previous": "Anterior",
+                  "next": "Próximo"
+                }
+        
+        }
+    }
+    )});
