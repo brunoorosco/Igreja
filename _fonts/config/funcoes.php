@@ -127,3 +127,16 @@ $start_sem_barra = $data_sem_barra . " " . $hora;
       return $rows[0]['idmembros'];
 
 }}}
+
+function carrega_conf($conf)
+{
+      $sql = "SELECT _status FROM config_sistem where funcao = '$conf'";
+      $pdo = Banco::conectar();
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $exec =  $pdo->query($sql);
+      $rows = $exec->fetchAll(PDO::FETCH_ASSOC);
+      $total = count($rows);
+      Banco::desconectar();
+     if($total > 0 )  return $rows[0]['_status']; //[0] representa o numero da coloca que estou procurando no caso como só tem uma é 0
+
+}

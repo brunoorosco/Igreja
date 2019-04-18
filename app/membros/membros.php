@@ -50,52 +50,41 @@
                     <tbody>
                         <?php
                         $pdo = Banco::conectar();
-
+                        $config = carrega_conf("todos_membros");
+                       
                         include_once("./seleciona_usuario.php");
-                        
+                       
                         while($row = $query->fetch(PDO::FETCH_ASSOC))
-                       // $sql = 'SELECT * FROM membros ORDER BY nome ASC LIMIT 10';
-                      // foreach($pdo->query($sql)as $row)
-                        {
+                        {  
                             echo '<tr>';
 			                      echo '<th class="text-left" scope="row">'. $row['nome'] . '</th>';
-                          //  echo '<td class="text-left">'. $row['endereco'] . '</td>';
+                          // echo '<td class="text-left">'. $row['endereco'] . '</td>';
                             echo '<td>'. $row['telefone'] . '</td>';
-                         //   echo '<td>'. $row['email'] . '</td>';
+                          // echo '<td>'. $row['email'] . '</td>';
                             echo '<td>'.date("d/m",strtotime(str_replace('/','-',$row['nasc']))).'</td>';
                             echo '<td>'. $row['cargo'] . '</td>';
                             echo '<td>'. $row['supervisao'] . '</td>';
                             ?>
-                            <td>
-                           <div class="btn-group btn-sm ">
-                          
-                           
+                        <td>
+                        <div class="btn-group btn-sm ">                          
                         
                             <?php   
-                            $codUser = $_SESSION['codigoUsuario'];
-                            $sql = "SELECT * FROM membros where  idmembros = $codUser ";
+                              $codUser = $_SESSION['codigoUsuario'];
+                              $sql = "SELECT * FROM membros where  idmembros = $codUser ";
+                                      $exec =  $pdo->query($sql);
+                                      $rows = $exec->fetchAll(PDO::FETCH_ASSOC);
+                                      $total = count($rows);
+                                      $_SESSION['supervisao'] = $rows[0]['supervisao']; 
+                                  //    echo  $row['supervisao'];                 
+                                      if(isset($_SESSION['supervisao']) && ($_SESSION['supervisao']== $row['supervisao'] ) || ($_SESSION['nivel'] == '1')){?>
 
-                                    $exec =  $pdo->query($sql);
-                                    $rows = $exec->fetchAll(PDO::FETCH_ASSOC);
-                                    $total = count($rows);
-                                    $_SESSION['supervisao'] = $rows[0]['supervisao']; 
-                                //    echo  $row['supervisao'];                 
-                                    if(isset($_SESSION['supervisao']) && ($_SESSION['supervisao']== $row['supervisao'] ) || ($_SESSION['nivel'] == '1')){?>
-
-                                          <button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idmembros']; ?>"></button>
-                                          <button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever='<?php echo $row["idmembros"];?>'
-                                                  data-whatevernome='<?php echo $row['nome'];?>' data-whateverendereco='<?php echo $row['endereco'];?>' data-whateverdata='<?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['nasc'])));?>'
-                                                  data-whatevercargo='<?php echo $row['cargo'];?>' data-whatevertel='<?php echo $row['telefone'];?>'  ></button>
-                                          <button type="button" class="btn btn-danger fas fa-trash"></button></div> <?php }
-                                          
-                                                                      /*
-                                          echo '<a class="btn btn-warning btn-sm" href="update.php?id='.$row['idmembros'].'">Editar</a>';
-                                          echo '';
-                                          echo '<a class="btn btn-danger btn-sm" href="delete.php?id='.$row['idmembros'].'">Excluir</a>';*/
-                                          echo '</td>';
-                                          echo '</tr>';
-                                          echo '<div class="row"></div>';
-                      ?>
+                                            <button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idmembros']; ?>"></button>
+                                            <button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever='<?php echo $row["idmembros"];?>'
+                                                    data-whatevernome='<?php echo $row['nome'];?>' data-whateverendereco='<?php echo $row['endereco'];?>' data-whateverdata='<?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['nasc'])));?>'
+                                                    data-whatevercargo='<?php echo $row['cargo'];?>' data-whatevertel='<?php echo $row['telefone'];?>'  ></button>
+                                            <button type="button" class="btn btn-danger fas fa-trash"></button></div> <?php }
+                                            echo '</td></tr><div class="row"></div>';
+                                ?>
 
           <div class="modal fade" id="myModal<?php echo $row['idmembros']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                   <div class="modal-dialog" role="document">

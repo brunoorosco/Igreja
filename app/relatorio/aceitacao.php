@@ -14,24 +14,32 @@
 		<title>Cursos TMAC</title>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
         <script src="../../_fonts/js/Chart.min.js"></script>
+        <script src="./relatorio.js"></script>
+        <style type="text/css">
+      #chart-container {
+        width: 640px;
+        height: auto;
+      }
+    </style>
     </head>
     <body>
-        <div class="container">
-        
+        <div class="container">        
             <canvas id="primeiroGrafico"></canvas>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     </div>
+    
+    
+        <div id="chart-container">
+            <canvas id="mycanvas"></canvas>
+        </div>
+            
+    
+    
+    
+    
+    
+    
+    
+    
     <script>
          let primeiroGrafico = document.getElementById('primeiroGrafico').getContext('2d');
     

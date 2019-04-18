@@ -22,7 +22,7 @@
           $html .=  '<table class="table table-striped table-sm table-hover text-center">';
           $html .= '<thead >';
           $html .= '<tr>';
-          $html .= '<th width=75px>Código</th>';
+          $html .= '<th width=75px>Cód</th>';
           $html .= '<th width=300px>Nome</th>';
           $html .= '<th width=200px>Telefone</th>';
           $html .= '<th width=150px>CEM</th>';

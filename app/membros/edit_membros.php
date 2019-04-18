@@ -26,7 +26,7 @@ function edicao(){
 				':idmembros'    => $id,
 				':nome'         => $nome,
 				':endereco'     => $endereco,
-				':nasc'  	    => $data_
+				':nasc'  	      => $data_
 			));
 			$db = null;
 	     //	echo $stmt->rowCount();

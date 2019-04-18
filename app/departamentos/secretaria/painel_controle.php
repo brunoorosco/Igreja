@@ -160,16 +160,26 @@ input:checked + .slider:before {
       <script>
       function verificaChecks() {
         var aChk = document.getElementsByName("item");
+        var bot;
         for (var i=0;i<aChk.length;i++){
             if (aChk[0].checked == true){
-            // CheckBox Marcado... Faça alguma coisa... Ex:
-          console.log("marcado.");
+           // CheckBox Marcado... Faça alguma coisa... Ex:
+          bot = 's';
+        //   console.log("marcado.");
 
         }  else {
-          console.log("não marcado.");// CheckBox Não Marcado... Faça alguma outra coisa...
-        }
+          bot = 'n';
+         // console.log("não marcado.");// CheckBox Não Marcado... Faça alguma outra coisa...
+        }       
     }
+    controle("todos_membros", bot);
 }
+
+function controle(nome_funcao, valor){	
+   $.get( "config_DB.php", { funcao: nome_funcao, status: valor } );
+ }
+
+
 
 
       </script>

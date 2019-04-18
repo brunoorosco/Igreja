@@ -1,27 +1,34 @@
 $(document).ready(function(){
     $.ajax({
-      url: "http://localhost/chartjs/data.php",
+      url: "./relatorioDB.php",
       method: "GET",
       success: function(data) {
-        console.log(data);
-        var player = [];
-        var score = [];
-  
+      //  console.log(data);
+        var turma = [];
+        var n_alunos = [];
+        var tamanho = turma.length;
+        for (var pos = 0; pos < turma.length; pos++) { 
+          console.log(turma[pos]);
+                  }
+
+        //console.log(tamanho);
+      //  console.log(n_alunos);
+
         for(var i in data) {
-          player.push("Player " + data[i].playerid);
-          score.push(data[i].score);
+          turma.push("Turma " + data[i].curso);
+          n_alunos.push(data[i].alunos);
         }
   
         var chartdata = {
-          labels: player,
+          labels: turma,  //pega as informações oriundas de turma push
           datasets : [
             {
-              label: 'Player Score',
+              label: 'Quantidade de Alunos',
               backgroundColor: 'rgba(200, 200, 200, 0.75)',
               borderColor: 'rgba(200, 200, 200, 0.75)',
               hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
               hoverBorderColor: 'rgba(200, 200, 200, 1)',
-              data: score
+              data: n_alunos
             }
           ]
         };
@@ -34,7 +41,7 @@ $(document).ready(function(){
         });
       },
       error: function(data) {
-        console.log(data);
+        //console.log(data);
       }
     });
   });
