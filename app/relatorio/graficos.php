@@ -24,10 +24,20 @@
     </style>
     </head>
     <body style="background-color:#eeeeee;">      
-        <div class="container">
-           
-            <canvas id="curso"></canvas>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm chart-container">
+                        <canvas id="curso"></canvas>
+                </div>
+                
+                <div class="col-sm chart-container">
+                        <canvas id="aceitou"></canvas>
+                </div>
                
+                <div class="col-sm chart-container">
+                        <canvas id="encontro"></canvas>
+                </div>
+            </div> 
         </div>  
       
    

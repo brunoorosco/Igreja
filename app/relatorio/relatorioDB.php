@@ -20,6 +20,10 @@ switch ($selec){
 
        break;
 
+       default:
+       return false;
+       break;
+
 }
 
 
@@ -30,7 +34,7 @@ function curso(){
     $data = array();
     // $soma = $pdo->query("SELECT SUM(alunos) AS total FROM turma where curso='2'")->fetchColumn(); //soma os valores dos itens da celulas
     //$sql = "SELECT   alunos, COUNT(alunos) AS Qtd FROM  turma GROUP BY alunos HAVING  COUNT(alunos) > 1 ORDER BY COUNT(alunos) DESC";
-    //$sql_ = "SELECT curso, COUNT(alunos) AS 'alunos'  FROM turma GROUP BY curso";//funcionando
+    $sql = "SELECT curso, COUNT(alunos) AS 'alunos'  FROM turma GROUP BY curso";//funcionando
     $sql_= "SELECT infocursos.tema as curso, COUNT(membros.idmembros) as alunos	FROM turma INNER JOIN membros
              ON turma.alunos = membros.idmembros INNER JOIN infocursos
               ON turma.curso = infocursos.idCursos GROUP BY turma.curso";
@@ -39,7 +43,7 @@ function curso(){
         {       
                 $data[] = $row;
               }
-    print json_encode($data);
+     print json_encode($data);
 }
 
 function aceitou(){
@@ -51,6 +55,7 @@ function aceitou(){
       {       
          $data[] = $row;
       }
+     
    print json_encode($data);
    }
 ?>

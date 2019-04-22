@@ -34,6 +34,7 @@ $(document).ready(function(){
         var ctx = $("#curso");
   
         var barGraph = new Chart(ctx, {
+          responsive: true,
           type: 'bar',
           data: chartdata,
           options: {
