@@ -5,35 +5,52 @@ if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
 require_once '../../_fonts/config/banco.php';
 require_once '../../_fonts/config/funcoes.php';
 
+$selec = $_GET['selec'];
+
+switch ($selec){
+      case 1: 
+          curso();
+          break;
+
+       case 2:
+          aceitou();
+       break;
+
+       case 3:
+
+       break;
+
+}
 
 
-//é preciso contar a quantidade de registros dentro do mes para carregar o grafico
-//$query = sprintf("SELECT playerid, score FROM score ORDER BY playerid");
 
 
-$pdo = Banco::conectar();
-$sql = 'SELECT  alunos, curso FROM turma ';
-$data = array();
+function curso(){
+    $pdo = Banco::conectar();
+    $data = array();
+    // $soma = $pdo->query("SELECT SUM(alunos) AS total FROM turma where curso='2'")->fetchColumn(); //soma os valores dos itens da celulas
+    //$sql = "SELECT   alunos, COUNT(alunos) AS Qtd FROM  turma GROUP BY alunos HAVING  COUNT(alunos) > 1 ORDER BY COUNT(alunos) DESC";
+    //$sql_ = "SELECT curso, COUNT(alunos) AS 'alunos'  FROM turma GROUP BY curso";//funcionando
+    $sql_= "SELECT infocursos.tema as curso, COUNT(membros.idmembros) as alunos	FROM turma INNER JOIN membros
+             ON turma.alunos = membros.idmembros INNER JOIN infocursos
+              ON turma.curso = infocursos.idCursos GROUP BY turma.curso";
 
-// $soma = $pdo->query("SELECT SUM(alunos) AS total FROM turma where curso='2'")->fetchColumn(); //soma os valores dos itens da celulas
-//$sql = "SELECT   alunos, COUNT(alunos) AS Qtd FROM  turma GROUP BY alunos HAVING  COUNT(alunos) > 1 ORDER BY COUNT(alunos) DESC";
+    foreach($pdo->query($sql_)as $row)
+        {       
+                $data[] = $row;
+              }
+    print json_encode($data);
+}
 
-$sql_ = "SELECT curso, COUNT(alunos) AS 'alunos'  FROM turma GROUP BY curso";
+function aceitou(){
+  $pdo = Banco::conectar();
+  $data = array();
+  $sql_= "SELECT aceit_reconc as aceitou, COUNT(aceit_reconc) as quant	FROM aceitoujesus GROUP BY aceit_reconc";
 
-foreach($pdo->query($sql)as $row)
-  	{       
-            $data[] = $row;
-          }
-
-   
-foreach($pdo->query($sql_)as $row)
-{       
-        $data[] = $row;
-      }       
-$pdo = Banco::desconectar();
-
-//imprime em formato json para o js
-//print_r ($data);
-print json_encode($data);
-
+  foreach($pdo->query($sql_)as $row)
+      {       
+         $data[] = $row;
+      }
+   print json_encode($data);
+   }
 ?>

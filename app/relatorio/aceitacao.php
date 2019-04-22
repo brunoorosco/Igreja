@@ -34,12 +34,6 @@
             
     
     
-    
-    
-    
-    
-    
-    
     <script>
          let primeiroGrafico = document.getElementById('primeiroGrafico').getContext('2d');
     
@@ -59,8 +53,8 @@
                 backgroundColor: "rgba(0, 255, 0, 0.3)",
                 borderColor: "#002200"
             }
-        ]
-    }
+               ]
+            }
          });
 
     </script>
