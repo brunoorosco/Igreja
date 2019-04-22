@@ -38,8 +38,10 @@
                         <canvas id="encontro"></canvas>
                 </div>
             </div> 
+                <button type="submit" name="button" value="Valida Checks" onclick="relatorio_banco('reconciliou')">teste</button>
+            
         </div>  
       
-   
+   <script src="./relatorio.js" ></script>
     </body>
     </html>

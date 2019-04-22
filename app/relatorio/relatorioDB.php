@@ -6,6 +6,7 @@ require_once '../../_fonts/config/banco.php';
 require_once '../../_fonts/config/funcoes.php';
 
 $selec = $_GET['selec'];
+$func = $_GET['funcao'];
 
 switch ($selec){
       case 1: 
@@ -13,7 +14,7 @@ switch ($selec){
           break;
 
        case 2:
-          aceitou();
+          aceitou($func);
        break;
 
        case 3:
@@ -46,11 +47,12 @@ function curso(){
      print json_encode($data);
 }
 
-function aceitou(){
+function aceitou($funcao){
+
   $pdo = Banco::conectar();
   $data = array();
-  $sql_= "SELECT aceit_reconc as aceitou, COUNT(aceit_reconc) as quant	FROM aceitoujesus GROUP BY aceit_reconc";
-
+  $sql_= "SELECT aceit_reconc as funcao, COUNT(aceit_reconc) as quant	FROM aceitoujesus where aceit_reconc='$funcao' GROUP BY aceit_reconc";
+  
   foreach($pdo->query($sql_)as $row)
       {       
          $data[] = $row;
