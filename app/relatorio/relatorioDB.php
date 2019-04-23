@@ -18,7 +18,7 @@ switch ($selec){
        break;
 
        case 3:
-
+            fun($func);
        break;
 
        default:
@@ -60,4 +60,27 @@ function aceitou($funcao){
      
    print json_encode($data);
    }
+   
+
+function fun($funcao){
+
+  $pdo = Banco::conectar();
+  $data = array();
+  $sql_= "SELECT aceit_reconc as funcao, COUNT(aceit_reconc) as quant	FROM aceitoujesus where aceit_reconc='$funcao' GROUP BY aceit_reconc";
+  
+  foreach($pdo->query($sql_)as $row)
+      {       
+         $data[] = $row;
+      }
+
+     echo $row['funcao'];
+     
+  // print ($data[0]);
+   //print json_encode($data);
+   
+   }
+
+
+
+
 ?>

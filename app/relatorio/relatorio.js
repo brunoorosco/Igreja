@@ -1,3 +1,5 @@
+'<?php require_once("relatorioDB.php")?>'
+
 var teste;
 
 $(document).ready(function(){
@@ -146,24 +148,36 @@ $(document).ready(function(){
 
   function relatorio_banco(funcao)
   {
+    var func = [];
+    var n_pessoas = [];
+   
       
     $.ajax({
       url: "./relatorioDB.php?selec=2&funcao="+funcao,
       method: "GET",
+      dataType: "json",
       success: function(data) {
-    
-        var func = [];
-        var n_pessoas = [];
-       
+
+        //console.log(data);
+
         for(var i in data) {
           func.push(data[i].funcao);
           n_pessoas.push(data[i].quant);
         }
-         var texto = JSON.stringify({funcao: +func ,quantidade: +n_pessoas});
-         var texto_json = JSON.stringify(texto);
+          func = "aceitou";
+          n_pessoas = "10";
 
-        
-          return texto;
+         var texto = {funcao: func ,quantidade: n_pessoas};
+         var texto_json = JSON.stringify(texto);
+         //console.log(texto_json);
+
+         var obj = new Object();
+          obj.funcao = func;
+          obj.quant  = n_pessoas;
+        var jsonString= JSON.stringify(obj);
+
+       
+          return jsonString;
 
        },
       error: function(data) {
@@ -176,17 +190,31 @@ $(document).ready(function(){
 
   $(document).ready(function(){
 
-     console.log(relatorio_banco(aceitou));
-
-     var texto = relatorio_banco(aceitou);
-     var func = [];
+    var func = [];
      var quant = [];
+    
+     loadData();
+
+   $.getJSON("./relatorioDB.php?selec=2&funcao=aceitou", function (data){
+    callback(JSON.stringify(data));
+   });
+   //{    //alert(texto);
+     
+    
+     console.log(texto);
+    //});
+    
+
+     
      
       for(var i in texto) {
         func.push(texto[i].funcao);                   
         quant.push(texto[i].quant);
+        console.log(texto[i]);
         }
 
+     //   console.log(func);
+       // console.log(quant);
        
 
         var chartdata = {
@@ -214,3 +242,12 @@ $(document).ready(function(){
         }
        });
     });
+
+   
+   
+    function loadData(idIndicadores, idUgbs) {
+      $.getJSON("./relatorioDB.php?selec=2&funcao=aceitou", { data:{ funcao: aceitou, selec : 2 }, format: "json" }).done(function (data) {
+          dataFromLoadData = data;
+          console.log(data);
+      });
+  }

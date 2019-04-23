@@ -1,7 +1,9 @@
 <?php
 
-	include_once("../../_fonts/config/banco.php");
-  	include_once "../../menu.php";
+	  include_once "../../_fonts/config/banco.php";
+      include_once "../../menu.php";
+      require_once "./func_relatorio.php";
+      
 	if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
 ?>
 
@@ -40,16 +42,16 @@
          let chart = new Chart(primeiroGrafico, {
             type: 'bar',
             data: {
-                labels: ['mar', 'abril', 'maio', 'Junho', 'julho', 'Setembro'],
+                labels: ["mar"], 
                 datasets: [{
-                label: 'Reconciliação',
-                data: [173448346, 175885229, 178276128, 180619108, 182911487, 185150806],
+                label: "<?php echo fun("aceitou"); ?>",
+                data: ["<?php echo quant("aceitou"); ?>"],
                 backgroundColor: "rgba(0, 34,255, 0.3)",
                 borderColor: "#0000ff"
             },
             {
-                label: 'Aceitação de Jesus',
-                data: [173448346, 185150806, 175885229, 182911487, 178276128, 180619108],
+                label: "<?php echo fun("reconciliou"); ?>",
+                data: ['<?php echo quant("reconciliou"); ?>'],
                 backgroundColor: "rgba(0, 255, 0, 0.3)",
                 borderColor: "#002200"
             }
