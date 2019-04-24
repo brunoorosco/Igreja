@@ -1,8 +1,9 @@
 <?php
 
-	include_once("../../_fonts/config/banco.php");
-  	include_once "../../menu.php";
-	if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
+        include_once "../../_fonts/config/banco.php";
+        include_once "../../menu.php";
+        require_once "./func_relatorio.php";
+        if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +36,7 @@
                 </div>
                
                 <div class="col-sm chart-container">
-                        <canvas id="encontro"></canvas>
+                        <canvas id="Grafico"></canvas>
                 </div>
             </div> 
                 <button type="submit" name="button" value="Valida Checks" onclick="relatorio_banco('reconciliou')">teste</button>

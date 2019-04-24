@@ -1,9 +1,47 @@
-'<?php require_once("relatorioDB.php")?>'
-
-var teste;
 
 $(document).ready(function(){
-    $.ajax({
+  var funcao;
+  
+
+  request.done(function(resposta) {
+  //  funcao = resposta;   
+});
+  
+      var resp_1 = VerBanco( "aceitou" );
+      var resp_2 = VerBanco( "reconciliou" );
+       
+       //console.log(teste);
+
+       //loadData( "3", "aceitou", function (response) {console.log(response);});
+      
+
+  let primeiroGrafico = document.getElementById('Grafico').getContext('2d');
+    
+  let chart = new Chart(primeiroGrafico, {
+     type: 'bar',
+     data: {
+         labels: ["mar"], 
+         datasets: [{
+         label: resp_1,
+         data: [" "],
+         backgroundColor: "rgba(0, 34,255, 0.3)",
+         borderColor: "#0000ff"
+     },
+     {
+         label: resp_2,
+         data: [''],
+         backgroundColor: "rgba(0, 255, 0, 0.3)",
+         borderColor: "#002200"
+     }
+        ]
+     }
+  });
+
+
+
+
+
+   $.ajax({
       url: "./relatorioDB.php?selec=1",
       method: "GET",
       success: function(data) {
@@ -188,66 +226,54 @@ $(document).ready(function(){
 
   }
 
-  $(document).ready(function(){
+  ///************ função pra remover aluno a turma ***************** */
+  function loadData(valor, funcao, response) {			
+      var provisorio = "teste";
+						//verifica se valores estão chegando corretamente 
+				//console.log({ nome: valor , curso: idcurso });
+			$.get( "relatorioDB.php" , { selec: valor , funcao: funcao })//acesso ao banco declarando as variaveis post e seus valores
+					.done(function ( data ) {
+            response(data);
+            //console.log( "Mensagem: " + data );
+          });
+          
+			}
+ //////////////////////////////////////////////////////////////////// 
 
-    var func = [];
-     var quant = [];
-    
-     loadData();
+  var request = $.ajax({
+    //
+    // A propriedade `url` é local, arquivo, script, alvo de sua requisição.
+    //
+    url: "./relatorioDB.php",
+    //
+    // A propriedade `type` é o verbo HTTP (GET, POST, HEAD, etc...)
+    //
+    type: "GET",
+    //
+    // A propriedade `data` são os dados de sua aplicação.
+    //
+    data: "selec=3&funcao=aceitou",
+    //
+    // A propriedade `dataType` refere-se ao tipo de dado que o servidor deve retornar a requisição.
+    //
+    dataType: "html"
+});
 
-   $.getJSON("./relatorioDB.php?selec=2&funcao=aceitou", function (data){
-    callback(JSON.stringify(data));
-   });
-   //{    //alert(texto);
-     
-    
-     console.log(texto);
-    //});
-    
 
-     
-     
-      for(var i in texto) {
-        func.push(texto[i].funcao);                   
-        quant.push(texto[i].quant);
-        console.log(texto[i]);
-        }
 
-     //   console.log(func);
-       // console.log(quant);
-       
 
-        var chartdata = {
-          labels: func,  //pega as informações oriundas de turma push
-          datasets : [{
-              label: 'Alunos',
-              backgroundColor: 'rgba(50, 50, 50, 0.75)',
-              borderColor: 'rgba(200, 100, 100, 0.75)',
-              hoverBackgroundColor: 'rgba(200, 100, 100, .75)',
-              hoverBorderColor: 'rgba(200, 200, 200, 1)',
-              data: quant,
-            }]          
-        };
-  
-        var ctx = $("#encontro");
-  
-        var barGraph = new Chart(ctx, {
-          type: 'bar',
-          data: chartdata,
-          options: {
-            title: {
-                display: true,
-                text: 'Encontros'
-            }
-        }
-       });
-    });
+function VerBanco( str ){
+ var retorno;
+ $.ajax({
+    url:    "relatorioDB.php",
+    type:   "get",
+    dataType: "html",
+    data:   { selec: "3" , funcao: str },
+    async: false,
 
-   
-   
-    function loadData(idIndicadores, idUgbs) {
-      $.getJSON("./relatorioDB.php?selec=2&funcao=aceitou", { data:{ funcao: aceitou, selec : 2 }, format: "json" }).done(function (data) {
-          dataFromLoadData = data;
-          console.log(data);
-      });
-  }
+    success: function( data ){
+        retorno = data;           
+    }
+});
+return retorno;
+}
