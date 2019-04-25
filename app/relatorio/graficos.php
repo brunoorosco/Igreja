@@ -19,8 +19,8 @@
         <style type="text/css">
         
         #chart-container {
-        width: 800px;
-        height: 800px;
+        width: 600px;
+        height: 400px;
       }
     </style>
     </head>
@@ -31,13 +31,17 @@
                         <canvas id="curso"></canvas>
                 </div>
                 
-                <div class="col-sm chart-container">
-                        <canvas id="aceitou"></canvas>
-                </div>
                
                 <div class="col-sm chart-container">
                         <canvas id="Grafico"></canvas>
                 </div>
+            </div>
+            <div class="row">
+            <div class="col-sm chart-container">
+                        
+                </div>
+            
+            
             </div> 
                 <button type="submit" name="button" value="Valida Checks" onclick="relatorio_banco('reconciliou')">teste</button>
             

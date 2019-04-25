@@ -1,16 +1,31 @@
 
 $(document).ready(function(){
-  var funcao;
+  var turma;
   
 
   request.done(function(resposta) {
   //  funcao = resposta;   
 });
   
-      var resp_1 = VerBanco( "aceitou" );
-      var resp_2 = VerBanco( "reconciliou" );
-       
-       //console.log(teste);
+var quantidade = [];
+var quantidade1 = [];
+var fun = [];
+var fun1 = [];
+
+var data = VerBanco( "aceitou" );
+var resp_2 = VerBanco( "reconciliou" );
+
+for(var i in data) {            
+  quantidade.push(data[i].quant);
+  fun.push(data[i].funcao);
+}
+
+for(var i in resp_2) {            
+  quantidade1.push(resp_2[i].quant);
+  fun1.push(resp_2[i].funcao);
+}
+
+
 
        //loadData( "3", "aceitou", function (response) {console.log(response);});
       
@@ -22,23 +37,20 @@ $(document).ready(function(){
      data: {
          labels: ["mar"], 
          datasets: [{
-         label: resp_1,
-         data: [" "],
+         label: fun,
+         data: [quantidade],
          backgroundColor: "rgba(0, 34,255, 0.3)",
          borderColor: "#0000ff"
      },
      {
-         label: resp_2,
-         data: [''],
+         label: fun1,
+         data: [quantidade1],
          backgroundColor: "rgba(0, 255, 0, 0.3)",
          borderColor: "#002200"
      }
         ]
      }
   });
-
-
-
 
 
    $.ajax({
@@ -267,7 +279,7 @@ function VerBanco( str ){
  $.ajax({
     url:    "relatorioDB.php",
     type:   "get",
-    dataType: "html",
+    dataType: "json",
     data:   { selec: "3" , funcao: str },
     async: false,
 

@@ -79,10 +79,10 @@ function fun($funcao){
          $data[] = $row;
       }
 
-     echo $row['funcao'];
+   //  echo $row['funcao'];
     
   // print ($data[0]);
-   //print json_encode($data);
+   print json_encode($data);
    
    }
 
@@ -100,4 +100,5 @@ function fun($funcao){
          print $row['quant'];       
        }
 
+       $sql = "SELECT EXTRACT(YEAR_MONTH FROM cadastro) as data from aceitoujesus GROUP BY EXTRACT(YEAR_MONTH FROM cadastro)";   
 ?>
