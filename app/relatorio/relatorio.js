@@ -7,44 +7,49 @@ $(document).ready(function(){
   //  funcao = resposta;   
 });
   
-var quantidade = [];
-var quantidade1 = [];
-var fun = [];
-var fun1 = [];
+    var graf1_quant = [];
+    var graf2_quant = [];
+    var graf1_funcao = [];
+    var graf2_funcao = [];
+    var labels = [];
 
-var data = VerBanco( "aceitou" );
-var resp_2 = VerBanco( "reconciliou" );
+    var data = VerBanco( "aceitou", 3 );
+    var resp_2 = VerBanco( "reconciliou", 3 );
+    var label = VerBanco( 0, 5 );
 
-for(var i in data) {            
-  quantidade.push(data[i].quant);
-  fun.push(data[i].funcao);
-}
+    var leitura = VerBanco( "aceitou", 6 );
+    console.log(leitura);
 
-for(var i in resp_2) {            
-  quantidade1.push(resp_2[i].quant);
-  fun1.push(resp_2[i].funcao);
-}
+    for(var i in leitura) {            
+          graf1_quant.push(leitura[i].quant);
+          graf1_funcao.push(leitura[i].funcao);
+          //labels.push(leitura[i].data); 
+        }
 
+    var leitura = VerBanco( "reconciliou", 6 );
+    for(var i in leitura) {            
+      graf2_quant.push(leitura[i].quant);
+      graf2_funcao.push(leitura[i].funcao);
+      labels.push(leitura[i].data); 
+    }
 
-
-       //loadData( "3", "aceitou", function (response) {console.log(response);});
-      
+    console.log(labels);
 
   let primeiroGrafico = document.getElementById('Grafico').getContext('2d');
     
   let chart = new Chart(primeiroGrafico, {
      type: 'bar',
      data: {
-         labels: ["mar"], 
+         labels: labels, 
          datasets: [{
-         label: fun,
-         data: [quantidade],
+         label: "Aceitou",
+         data: graf1_quant,
          backgroundColor: "rgba(0, 34,255, 0.3)",
          borderColor: "#0000ff"
      },
      {
-         label: fun1,
-         data: [quantidade1],
+         label: "Reconciliou",
+         data: graf2_quant,
          backgroundColor: "rgba(0, 255, 0, 0.3)",
          borderColor: "#002200"
      }
@@ -274,13 +279,13 @@ for(var i in resp_2) {
 
 
 
-function VerBanco( str ){
+function VerBanco( str, valor ){
  var retorno;
  $.ajax({
     url:    "relatorioDB.php",
     type:   "get",
     dataType: "json",
-    data:   { selec: "3" , funcao: str },
+    data:   { selec: valor , funcao: str },
     async: false,
 
     success: function( data ){
@@ -289,3 +294,16 @@ function VerBanco( str ){
 });
 return retorno;
 }
+
+let dataAttack = new Dataset;
+  dataAttack.dataset.label = 'Attack';
+  dataAttack.dataset.backgroundColor = 'rgba(255, 35, 35, 0.2)';
+  dataAttack.dataset.borderColor = 'rgba(255, 35, 35, 1)';
+let dataRecon = new Dataset;
+  dataRecon.dataset.label = 'Reconciliou';
+  dataRecon.dataset.backgroundColor = 'rgba(54, 162, 235, 0.2)';
+  dataRecon.dataset.borderColor = 'rgba(54, 162, 235, 1)';
+let dataAceitou = new Dataset;
+  dataAceitou.dataset.label = 'Aceitou';
+  dataAceitou.dataset.backgroundColor = 'rgba(255, 206, 86, 0.2)';
+  dataAceitou.dataset.borderColor = 'rgba(255, 206, 86, 1)';

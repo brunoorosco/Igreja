@@ -23,8 +23,17 @@ switch ($selec){
        break;
 
        case 4:
-            quant($funcao);
+            quant($func);
       break;
+
+       case 5:
+            labels();
+      break;
+
+       case 6:
+            lab($func);
+      break;
+
        default:
        return false;
        break;
@@ -100,5 +109,33 @@ function fun($funcao){
          print $row['quant'];       
        }
 
-       $sql = "SELECT EXTRACT(YEAR_MONTH FROM cadastro) as data from aceitoujesus GROUP BY EXTRACT(YEAR_MONTH FROM cadastro)";   
+      function labels(){
+      $pdo = Banco::conectar();
+      $data = array();
+      $sql_ = "SELECT EXTRACT(YEAR_MONTH FROM cadastro) as data from aceitoujesus GROUP BY EXTRACT(YEAR_MONTH FROM cadastro)";   
+      foreach($pdo->query($sql_)as $row)
+          {       
+             $data[] = $row;
+          }
+    
+            $teste = array($data);
+         //print $row['quant'];
+         print $teste;
+
+       } 
+
+       function lab($funcao){
+         $pdo = Banco::conectar();
+         $data = array();
+         $sql_ = "SELECT EXTRACT(YEAR_MONTH FROM cadastro) as data, aceit_reconc as funcao, COUNT(aceit_reconc) as quant from aceitoujesus WHERE aceit_reconc = '$funcao' GROUP BY EXTRACT(YEAR_MONTH FROM cadastro), aceit_reconc";   
+         foreach($pdo->query($sql_)as $row)
+             {       
+                $data[] = $row;
+             }
+       
+            //print $row['quant'];
+            print json_encode($data);
+   
+          } 
+    
 ?>
