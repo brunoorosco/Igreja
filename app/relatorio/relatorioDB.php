@@ -7,6 +7,7 @@ require_once '../../_fonts/config/funcoes.php';
 
 $selec = $_GET['selec'];
 $func = $_GET['funcao'];
+$mes = $_GET['mes'];
 
 
 switch ($selec){
@@ -31,7 +32,7 @@ switch ($selec){
       break;
 
        case 6:
-            lab($func);
+            lab($func, $mes);
       break;
 
        default:
@@ -118,24 +119,26 @@ function fun($funcao){
              $data[] = $row;
           }
     
-            $teste = array($data);
-         //print $row['quant'];
-         print $teste;
+          print json_encode($data);
+        
 
        } 
 
-       function lab($funcao){
+       function lab($funcao, $month){
          $pdo = Banco::conectar();
          $data = array();
-         $sql_ = "SELECT EXTRACT(YEAR_MONTH FROM cadastro) as data, aceit_reconc as funcao, COUNT(aceit_reconc) as quant from aceitoujesus WHERE aceit_reconc = '$funcao' GROUP BY EXTRACT(YEAR_MONTH FROM cadastro), aceit_reconc";   
-         foreach($pdo->query($sql_)as $row)
-             {       
-                $data[] = $row;
-             }
-       
-            //print $row['quant'];
-            print json_encode($data);
-   
+         $sql_ = "SELECT  aceit_reconc as funcao, COUNT(aceit_reconc) as quant from aceitoujesus WHERE  EXTRACT(YEAR_MONTH FROM cadastro) = '$month' AND aceit_reconc = '$funcao'  GROUP BY EXTRACT(YEAR_MONTH FROM cadastro), aceit_reconc";   
+         
+        foreach($pdo->query($sql_)as $row)
+             {    
+         $data[] = $row;
+         
           } 
+          print json_encode($data);
+         
+         }
     
+
+
+
 ?>

@@ -17,20 +17,22 @@ $(document).ready(function(){
     var resp_2 = VerBanco( "reconciliou", 3 );
     var label = VerBanco( 0, 5 );
 
-    var leitura = VerBanco( "aceitou", 6 );
+    for(var i in label) {            
+        labels.push(label[i].data); 
+    }
+
+    var leitura = VerBanco( "aceitou", 6, "201812" );
     console.log(leitura);
 
     for(var i in leitura) {            
           graf1_quant.push(leitura[i].quant);
           graf1_funcao.push(leitura[i].funcao);
-          //labels.push(leitura[i].data); 
-        }
+           }
 
-    var leitura = VerBanco( "reconciliou", 6 );
+    var leitura = VerBanco( "reconciliou", 6, "201812" );
     for(var i in leitura) {            
       graf2_quant.push(leitura[i].quant);
       graf2_funcao.push(leitura[i].funcao);
-      labels.push(leitura[i].data); 
     }
 
     console.log(labels);
@@ -279,13 +281,13 @@ $(document).ready(function(){
 
 
 
-function VerBanco( str, valor ){
+function VerBanco( str, valor, month ){
  var retorno;
  $.ajax({
     url:    "relatorioDB.php",
     type:   "get",
     dataType: "json",
-    data:   { selec: valor , funcao: str },
+    data:   { selec: valor , funcao: str, mes: month },
     async: false,
 
     success: function( data ){
