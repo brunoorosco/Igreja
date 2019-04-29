@@ -65,7 +65,7 @@ function aceitou($funcao){
 
   $pdo = Banco::conectar();
   $data = array();
-  $sql_= "SELECT aceit_reconc as funcao, COUNT(aceit_reconc) as quant	FROM aceitoujesus where aceit_reconc='$funcao' GROUP BY aceit_reconc";
+  $sql_= "SELECT aceit_reconc as funcao, COUNT(aceit_reconc) as quant	FROM aceita_jesus where aceit_reconc='$funcao' GROUP BY aceit_reconc";
   
   foreach($pdo->query($sql_)as $row)
       {       
@@ -82,7 +82,7 @@ function fun($funcao){
 
   $pdo = Banco::conectar();
   $data = array();
-  $sql_= "SELECT aceit_reconc as funcao, COUNT(aceit_reconc) as quant	FROM aceitoujesus where aceit_reconc='$funcao' GROUP BY aceit_reconc";
+  $sql_= "SELECT aceit_reconc as funcao, COUNT(aceit_reconc) as quant	FROM aceita_jesus where aceit_reconc='$funcao' GROUP BY aceit_reconc";
   
   foreach($pdo->query($sql_)as $row)
       {       
@@ -100,7 +100,7 @@ function fun($funcao){
 
       $pdo = Banco::conectar();
       $data = array();
-      $sql_= "SELECT aceit_reconc as funcao, COUNT(aceit_reconc) as quant	FROM aceitoujesus where aceit_reconc='$funcao' GROUP BY aceit_reconc";
+      $sql_= "SELECT aceit_reconc as funcao, COUNT(aceit_reconc) as quant	FROM aceita_jesus where aceit_reconc='$funcao' GROUP BY aceit_reconc";
       
       foreach($pdo->query($sql_)as $row)
           {       
@@ -113,7 +113,9 @@ function fun($funcao){
       function labels(){
       $pdo = Banco::conectar();
       $data = array();
-      $sql_ = "SELECT EXTRACT(YEAR_MONTH FROM cadastro) as data from aceitoujesus GROUP BY EXTRACT(YEAR_MONTH FROM cadastro)";   
+      $sql_ = "SELECT EXTRACT(YEAR_MONTH FROM cadastro) as data 
+                  from aceita_jesus GROUP BY EXTRACT(YEAR_MONTH FROM cadastro)  
+                     ORDER BY EXTRACT(YEAR_MONTH FROM cadastro) DESC LIMIT 3";   
       foreach($pdo->query($sql_)as $row)
           {       
              $data[] = $row;
@@ -127,8 +129,10 @@ function fun($funcao){
        function lab($funcao, $month){
          $pdo = Banco::conectar();
          $data = array();
-         $sql_ = "SELECT  aceit_reconc as funcao, COUNT(aceit_reconc) as quant from aceitoujesus WHERE  EXTRACT(YEAR_MONTH FROM cadastro) = '$month' AND aceit_reconc = '$funcao'  GROUP BY EXTRACT(YEAR_MONTH FROM cadastro), aceit_reconc";   
-         
+         $sql_ = "SELECT  aceit_reconc as funcao, COUNT(aceit_reconc) as quant from aceita_jesus 
+                     WHERE  EXTRACT(YEAR_MONTH FROM cadastro) = '$month' AND aceit_reconc = '$funcao'  
+                     GROUP BY EXTRACT(YEAR_MONTH FROM cadastro), aceit_reconc";   
+                           
         foreach($pdo->query($sql_)as $row)
              {    
          $data[] = $row;
@@ -138,7 +142,4 @@ function fun($funcao){
          
          }
     
-
-
-
 ?>

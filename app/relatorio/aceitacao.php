@@ -25,41 +25,15 @@
     </style>
     </head>
     <body>
-        <div class="container">        
-            <canvas id="primeiroGrafico"></canvas>
-    </div>
+          
     
-    
-        <div id="chart-container">
-            <canvas id="mycanvas"></canvas>
+        <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+            <canvas id="Grafico"></canvas>
         </div>
             
     
-    
-    <script>
-         let primeiroGrafico = document.getElementById('primeiroGrafico').getContext('2d');
-    
-         let chart = new Chart(primeiroGrafico, {
-            type: 'bar',
-            data: {
-                labels: ["mar"], 
-                datasets: [{
-                label: "<?php echo fun("aceitou"); ?>",
-                data: ["<?php echo quant("aceitou"); ?>"],
-                backgroundColor: "rgba(0, 34,255, 0.3)",
-                borderColor: "#0000ff"
-            },
-            {
-                label: "<?php echo fun("reconciliou"); ?>",
-                data: ['<?php echo quant("reconciliou"); ?>'],
-                backgroundColor: "rgba(0, 255, 0, 0.3)",
-                borderColor: "#002200"
-            }
-               ]
-            }
-         });
-
-    </script>
+   
+   <script src="./relatorio.js" ></script>
     
    
     </body>

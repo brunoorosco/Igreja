@@ -1,13 +1,13 @@
-
 $(document).ready(function(){
   var turma;
   
-
   request.done(function(resposta) {
   //  funcao = resposta;   
 });
   
     var graf1_quant = [];
+    var graf1 = [];
+    var graf2 = [];
     var graf2_quant = [];
     var graf1_funcao = [];
     var graf2_funcao = [];
@@ -15,27 +15,31 @@ $(document).ready(function(){
 
     var data = VerBanco( "aceitou", 3 );
     var resp_2 = VerBanco( "reconciliou", 3 );
-    var label = VerBanco( 0, 5 );
-
-    for(var i in label) {            
-        labels.push(label[i].data); 
-    }
-
-    var leitura = VerBanco( "aceitou", 6, "201812" );
-    console.log(leitura);
-
+    
+    var leitura = VerBanco( 0, 5, 0 );  //faz a leitura do mes de forma distinta 
+     
     for(var i in leitura) {            
-          graf1_quant.push(leitura[i].quant);
-          graf1_funcao.push(leitura[i].funcao);
-           }
+        labels.push(leitura[i].data);
+        
+        var txt = VerBanco( "aceitou", 6,  labels[i] ); 
+        for(var j in txt) {            
+          graf1.push(txt[j].quant);
+                    }
+        var txt = VerBanco( "reconciliou", 6,  labels[i] ); 
+        for(var j in txt) {            
+          graf2.push(txt[j].quant);
+                    }
 
-    var leitura = VerBanco( "reconciliou", 6, "201812" );
-    for(var i in leitura) {            
-      graf2_quant.push(leitura[i].quant);
-      graf2_funcao.push(leitura[i].funcao);
+        labels[i] = labels[i].substring(4, 6)+"/"+labels[i].substring(0, 4);
+        console.log(labels[i] + graf1[i])
     }
-
-    console.log(labels);
+         
+          labels.reverse();
+          graf1.reverse();
+          graf2.reverse();
+          
+          console.log(labels);
+    
 
   let primeiroGrafico = document.getElementById('Grafico').getContext('2d');
     
@@ -45,18 +49,36 @@ $(document).ready(function(){
          labels: labels, 
          datasets: [{
          label: "Aceitou",
-         data: graf1_quant,
+         data: graf1,
          backgroundColor: "rgba(0, 34,255, 0.3)",
          borderColor: "#0000ff"
      },
      {
          label: "Reconciliou",
-         data: graf2_quant,
+         data: graf2,
          backgroundColor: "rgba(0, 255, 0, 0.3)",
          borderColor: "#002200"
      }
         ]
-     }
+     },
+     options: {
+      title: {
+          display: true,
+          text: 'Alunos p/ Curso',
+          events: ['click']
+      },
+      scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero:true
+            }
+        }],
+        xAxes: [{
+          categoryPercentage: 0.7,
+          barPercentage: 0.7
+      }],
+    }
+  }
   });
 
 
@@ -296,16 +318,3 @@ function VerBanco( str, valor, month ){
 });
 return retorno;
 }
-
-let dataAttack = new Dataset;
-  dataAttack.dataset.label = 'Attack';
-  dataAttack.dataset.backgroundColor = 'rgba(255, 35, 35, 0.2)';
-  dataAttack.dataset.borderColor = 'rgba(255, 35, 35, 1)';
-let dataRecon = new Dataset;
-  dataRecon.dataset.label = 'Reconciliou';
-  dataRecon.dataset.backgroundColor = 'rgba(54, 162, 235, 0.2)';
-  dataRecon.dataset.borderColor = 'rgba(54, 162, 235, 1)';
-let dataAceitou = new Dataset;
-  dataAceitou.dataset.label = 'Aceitou';
-  dataAceitou.dataset.backgroundColor = 'rgba(255, 206, 86, 0.2)';
-  dataAceitou.dataset.borderColor = 'rgba(255, 206, 86, 1)';
