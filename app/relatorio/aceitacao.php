@@ -25,14 +25,19 @@
     </style>
     </head>
     <body>
-          
-    
-        <div class="chart-container" style="position: relative; height:40vh; width:80vw">
-            <canvas id="Grafico"></canvas>
-        </div>
-            
-    
-   
+    <div class="container-fluid">   
+          <div class="row">
+              <div class="col-8">   
+                  <div class="chart-container" style="position: relative; height:35vh; width:60vw" >
+                      <canvas id="Grafico"></canvas>
+                  </div>
+              </div>
+              <div class="col-4" style="position: relative; height:35vh; width:60vw">
+                      <canvas id="GraficoPizza" width="400" height="400"></canvas>
+                 </div>
+            </div>
+     </div>
+                
    <script src="./relatorio.js" ></script>
     
    

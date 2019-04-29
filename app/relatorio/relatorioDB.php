@@ -35,6 +35,10 @@ switch ($selec){
             lab($func, $mes);
       break;
 
+       case 7:
+            total($mes);
+         break;
+
        default:
        return false;
        break;
@@ -141,5 +145,27 @@ function fun($funcao){
           print json_encode($data);
          
          }
+
+
+       
+
+      function total($funcao){
+
+         $pdo = Banco::conectar();
+         $data = array();
+         $sql_= "SELECT aceit_reconc as funcao, COUNT(aceit_reconc) as quant	FROM aceita_jesus GROUP BY aceit_reconc";
+         
+         foreach($pdo->query($sql_)as $row)
+            {       
+               $data[] = $row;
+            }
+      
+         //  echo $row['funcao'];
+         
+         // print ($data[0]);
+         print json_encode($data);
+         
+         }
+   
     
 ?>

@@ -5,16 +5,12 @@ $(document).ready(function(){
   //  funcao = resposta;   
 });
   
-    var graf1_quant = [];
     var graf1 = [];
     var graf2 = [];
-    var graf2_quant = [];
-    var graf1_funcao = [];
-    var graf2_funcao = [];
     var labels = [];
 
-    var data = VerBanco( "aceitou", 3 );
-    var resp_2 = VerBanco( "reconciliou", 3 );
+    //var data = VerBanco( "aceitou", 3 );
+    //var resp_2 = VerBanco( "reconciliou", 3 );
     
     var leitura = VerBanco( 0, 5, 0 );  //faz a leitura do mes de forma distinta 
      
@@ -40,48 +36,91 @@ $(document).ready(function(){
           
           console.log(labels);
     
-
   let primeiroGrafico = document.getElementById('Grafico').getContext('2d');
     
   let chart = new Chart(primeiroGrafico, {
-     type: 'bar',
-     data: {
-         labels: labels, 
-         datasets: [{
-         label: "Aceitou",
-         data: graf1,
-         backgroundColor: "rgba(0, 34,255, 0.3)",
-         borderColor: "#0000ff"
-     },
-     {
-         label: "Reconciliou",
-         data: graf2,
-         backgroundColor: "rgba(0, 255, 0, 0.3)",
-         borderColor: "#002200"
-     }
-        ]
-     },
-     options: {
-      title: {
-          display: true,
-          text: 'Alunos p/ Curso',
-          events: ['click']
-      },
-      scales: {
-        yAxes: [{
-            ticks: {
-                beginAtZero:true
+          type: 'bar',
+          data: {
+              labels: labels, 
+              datasets: [{
+              label: "Aceitou",
+              data: graf1,
+              backgroundColor: "rgba(0, 34,255, 0.9)",
+              borderColor: "#0000ff"
+          },
+          {
+              label: "Reconciliou",
+              data: graf2,
+              backgroundColor: "rgba(0, 255, 0, 0.9)",
+              borderColor: "#002200"
+          }
+              ]
+          },
+          options: {
+            title: {
+                display: true,
+                text: 'Pessoas que Aceitaram e Reconciliaram',
+                events: ['click']
+            },
+            scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }],
+              xAxes: [{
+                categoryPercentage: 0.7,
+                barPercentage: 0.7
+            }],
+          }
+        }
+        });
+
+        labels = [];
+        graf1 = [];
+
+        var leitura = VerBanco( 0, 7, 0 );  //faz a leitura do mes de forma distinta 
+        for(var i in leitura) {            
+          labels.push(leitura[i].funcao);
+          graf1.push(leitura[i].quant);
+          console.log(labels[i] + graf1[i]);
+                 }
+  
+      //    labels[i] = labels[i].substring(4, 6)+"/"+labels[i].substring(0, 4);
+          
+      
+
+
+
+       
+        let GraficoPizza = document.getElementById('GraficoPizza').getContext('2d');
+      
+        let chartt = new Chart(GraficoPizza, {
+          type: 'doughnut',
+          data: {
+              labels: labels, 
+              datasets: [{
+              label: "Aceitou",
+              data: graf1,
+              backgroundColor: [
+                              'rgba(255, 99, 132, 0.9)',
+                              'rgba(54, 162, 235, 0.9)',
+                              'rgba(255, 206, 86, 0.9)',
+                              'rgba(75, 192, 192, 0.9)'],
+              borderColor: "#fff"
+          },
+                ]
+          },
+          options: {
+            title: {
+                display: true,
+                text: 'Total de Pessoas',
+                events: ['click']
             }
-        }],
-        xAxes: [{
-          categoryPercentage: 0.7,
-          barPercentage: 0.7
-      }],
-    }
-  }
-  });
+        }
+        });
 
-
+        
    $.ajax({
       url: "./relatorioDB.php?selec=1",
       method: "GET",
