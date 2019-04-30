@@ -27,14 +27,14 @@ $(document).ready(function(){
                     }
 
         labels[i] = labels[i].substring(4, 6)+"/"+labels[i].substring(0, 4);
-        console.log(labels[i] + graf1[i])
+  //      console.log(labels[i] + graf1[i])
     }
          
           labels.reverse();
           graf1.reverse();
           graf2.reverse();
           
-          console.log(labels);
+     //     console.log(labels);
     
   let primeiroGrafico = document.getElementById('Grafico').getContext('2d');
     
@@ -57,10 +57,15 @@ $(document).ready(function(){
               ]
           },
           options: {
+            legend: {
+              position: 'bottom',
+            },
             title: {
                 display: true,
                 text: 'Pessoas que Aceitaram e Reconciliaram',
-                events: ['click']
+                fontSize: 18,
+                padding: 20
+               
             },
             scales: {
               yAxes: [{
@@ -78,20 +83,23 @@ $(document).ready(function(){
 
         labels = [];
         graf1 = [];
+        ano = [];
+        var totls;
 
         var leitura = VerBanco( 0, 7, 0 );  //faz a leitura do mes de forma distinta 
         for(var i in leitura) {            
           labels.push(leitura[i].funcao);
           graf1.push(leitura[i].quant);
-          console.log(labels[i] + graf1[i]);
+          ano = (leitura[1].ano);
+         
                  }
   
       //    labels[i] = labels[i].substring(4, 6)+"/"+labels[i].substring(0, 4);
           
       
-
-
-
+          totls = somarValores(graf1);
+         
+          
        
         let GraficoPizza = document.getElementById('GraficoPizza').getContext('2d');
       
@@ -112,12 +120,37 @@ $(document).ready(function(){
                 ]
           },
           options: {
+            responsive: true,
+            legend: {
+              position: 'bottom',
+            },
             title: {
-                display: true,
-                text: 'Total de Pessoas',
-                events: ['click']
+              display: true,
+              text: 'Total em ' + ano +  ': ' + totls + ' pessoas',
+              fontSize: 18,
+              padding: 20
+            },
+            animation: {
+              animateScale: true,
+              animateRotate: true
+            },
+            tooltips: {
+                callbacks: {
+                  label: function(tooltipItem, data) {
+                    var dataset = data.datasets[tooltipItem.datasetIndex];
+                    var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                      return parseInt(previousValue) + parseInt(currentValue);
+                    });
+                    var currentValue = dataset.data[tooltipItem.index];
+                    console.log(currentValue);
+                    var percentage = Math.floor(((currentValue/total) * 100)+0.5);         
+                    console.log(percentage);
+                    return labels[tooltipItem.index] + ": " + percentage + "% Equivale à: " + currentValue ;
+                    
+                  }
+              }
             }
-        }
+          }
         });
 
         
@@ -262,6 +295,18 @@ $(document).ready(function(){
 
   });
 
+  function somarValores(quant){
+    var soma = 0;
+    var teste = [];
+       console.log(quant);
+    for (var i=0; i<quant.length; i++){
+
+            teste[i] = parseInt(quant[i]);      
+            soma += parseInt(teste[i]);
+            console.log(quant[i]) ;
+          }  
+      return soma;
+    }
 
 
   function relatorio_banco(funcao)

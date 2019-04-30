@@ -92,7 +92,7 @@ border-radius: 6px 0 6px 6px;
 </style>
 </head>
 <body>
-<?php echo ($_SESSION['supervisao']); ?>
+<?php //echo ($_SESSION['supervisao']); ?>
   <nav class="navbar navbar-expand-lg navbar-light bg-warning"  role="navigation">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" >

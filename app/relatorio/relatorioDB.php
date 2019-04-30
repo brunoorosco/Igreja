@@ -153,7 +153,7 @@ function fun($funcao){
 
          $pdo = Banco::conectar();
          $data = array();
-         $sql_= "SELECT aceit_reconc as funcao, COUNT(aceit_reconc) as quant	FROM aceita_jesus GROUP BY aceit_reconc";
+         $sql_= "SELECT aceit_reconc as funcao, COUNT(aceit_reconc) as quant, YEAR(cadastro) as ano FROM aceita_jesus where YEAR(cadastro)>'2018' GROUP BY aceit_reconc";
          
          foreach($pdo->query($sql_)as $row)
             {       

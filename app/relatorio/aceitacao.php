@@ -33,7 +33,16 @@
                   </div>
               </div>
               <div class="col-4" style="position: relative; height:35vh; width:60vw">
-                      <canvas id="GraficoPizza" width="400" height="400"></canvas>
+                      <canvas id="GraficoPizza"> </canvas>
+                      <div class="">
+                         <div class="form-group col-md-4 right">
+                           <label for="inputState">Ano</label>
+                            <select id="inputState" class="form-control">
+                              <option selected>2019</option>
+                              <option>2018</option>
+                               </select>
+                      </div>
+                      </div>
                  </div>
             </div>
      </div>

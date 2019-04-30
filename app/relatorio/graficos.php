@@ -27,12 +27,12 @@
     <body style="background-color:#eeeeee;">      
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm chart-container">
+                <div class="col-sm chart-container" style="position: relative; height:35vh; width:60vw">
                         <canvas id="curso"></canvas>
                 </div>
                 
                
-                <div class="col-sm chart-container">
+                <div class="col-sm chart-container" style="position: relative; height:30vh; width:50vw">
                         <canvas id="Grafico"></canvas>
                 </div>
             </div>
