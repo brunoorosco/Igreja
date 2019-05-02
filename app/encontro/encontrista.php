@@ -26,13 +26,11 @@
 
 <body>
         <div class="container">
-        <br>
-          <div class="page-header">
-          <h3 class="text-center">Lista de Encontrista - Encontro n</h3>
-            <a class="btn btn-Secondary float-right" href="pdf_encontrista.php" role="button" aria-pressed="true"  target="_blank" style="margin-right: 15px !important;">   Imprimir </a>
-              
-          </div>
-          <br>
+              <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Lista de Encontrista - Encontro <?php echo "teste"; ?> </h3>
+                </div>
+              </div> 
           <br>
           <div class="panel panel-primary">
                <div class="col-md-12 table-responsive"> <!--     <p>
@@ -75,9 +73,9 @@
                            <div class="btn-group btn-sm">
                            <button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idEncontrista']; ?>"></button>
 
-                            <button type="button" class="btn btn-warning fas fa-edit disabled" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idEncontrista']; ?>" data-whatevernome="<?php echo $row['nomeEnc']; ?>"data-whateverdetalhes="<?php echo $row['']; ?>"></button>
+                          <!--  <button type="button" class="btn btn-warning fas fa-edit disabled" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idEncontrista']; ?>" data-whatevernome="<?php echo $row['nomeEnc']; ?>"data-whateverdetalhes="<?php echo $row['']; ?>"></button>
 
-                            <button type="button" class="btn btn-danger fas fa-trash disabled"></button>
+                            <button type="button" class="btn btn-danger fas fa-trash disabled"></button>-->
                           </div>
                             <?php
                             /*
@@ -132,7 +130,11 @@
                     </tbody>
                 </table>
 
-        </div></div></div>
+        </div></div>
+        <div class="container">
+        
+        <a class="btn btn-Secondary float-left" href="pdf_encontrista.php" role="button" aria-pressed="true"  target="_blank" style="margin-left: 15px !important;">   Imprimir </a>
+        </div>    
       <!--mudar editeModal-->
           <div class="modal fade" id="__editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
               <div class="modal-dialog" role="document">

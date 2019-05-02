@@ -25,11 +25,12 @@
 
 <body>
     <div class="container">
-          <div class="card">
-               <div class="card-header">
-                    <h4 class="card-title text-center"> Lista de Membros</h4>
+              <div class="card">
+                <div class="card-header">
+                    <h4 class="text-center"> Lista de Membros</h4>
+                 </div>
               </div>
-           </div><br>
+           <br>
       <div class="panel panel-primary">
             <div class="col-lg-12 table-responsive"> <!--     <p>
                 <a href="create.php" class="btn btn-success">Adicionar</a>
@@ -76,7 +77,7 @@
                                       $total = count($rows);
                                       $_SESSION['supervisao'] = $rows[0]['supervisao']; 
                                   //    echo  $row['supervisao'];                 
-                                      if(isset($_SESSION['supervisao']) && ($_SESSION['supervisao']== $row['supervisao'] ) || ($_SESSION['nivel'] == '1')){?>
+                                      if(isset($_SESSION['supervisao']) && ($_SESSION['supervisao'] == $row['supervisao'] ) || ($_SESSION['nivel'] == '1')){?>
 
                                             <button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idmembros']; ?>"></button>
                                             <button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever='<?php echo $row["idmembros"];?>'
@@ -135,6 +136,8 @@
                         ?>
                     </tbody>
                 </table>
+              </div>
+              </div>
                 <nav>
                   <ul class="pagination">
             <?php 
@@ -145,8 +148,7 @@
             Banco::desconectar();?>
               </ul>
               </nav>
-           </div>
-          </div>
+            
         </div>
 
       <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
@@ -190,7 +192,7 @@
             </div>
         </div>
 
-        </div>
+        
       </div>
     
       <script src="membros.js" type="text/javascript"></script>

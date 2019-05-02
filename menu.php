@@ -110,7 +110,7 @@ border-radius: 6px 0 6px 6px;
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Cadastro</a>
                           <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="<?= $URLBASE.'app/encontro/cad_Encontrista.php'?>">Encontrista</a></li>
-                            <li><a class="dropdown-item disabled" href="">Equipe</a></li>
+                            <!--<li><a class="dropdown-item disabled" href="">Equipe</a></li>-->
                             <li><a class="dropdown-item" href="<?= $URLBASE.'app/membros/cadastro.php'?>">Membro</a></li>
                            <!-- <li><a class="dropdown-item" href="<?= $URLBASE.'app/calendario/cadastroEvento.php'?>">Evento</a></li>-->
                           </ul>
@@ -200,7 +200,7 @@ border-radius: 6px 0 6px 6px;
             </li>
           <?php } ?>
             <li class="nav-item active" >
-                <a class="dropdown-item" href="#"><i class="fa fa-bible"> IGREJAS</i></span></a>
+                <a class="dropdown-item" href="#"><i class="fa fa-bible"> IGREJAS</i></a>
             </li>
               </ul>
       </div>
@@ -211,7 +211,7 @@ border-radius: 6px 0 6px 6px;
                 if(isset($_SESSION['usuario'])){
                     echo "<i class='text-secondary fa fa-user'> ".($_SESSION['usuario'])."</i>";?>
 
-                    <input type="button" class="btn btn-outline-secondary"  onclick="location.href='http://localhost/www/igreja/app/login/logout.php'" value="Sair"/>
+                    <input type="button" class="btn btn-outline-secondary"  onclick="location.href='http://secretariacac.ga/app/login/logout.php'" value="Sair"/>
 
                 <?php
                          }

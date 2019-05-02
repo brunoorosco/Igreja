@@ -29,7 +29,7 @@
     html, body{height:100%;}
 
       body{
-        background-image: url(../../img/efata.jpg);
+        background-image: url(http://localhost/www/igreja/_fonts/img/efata.jpg);
         background-size: cover;
         color: white;
         background-repeat: no-repeat;
@@ -113,7 +113,7 @@ color: white;
 										</div>
 
 						 				<div class="form-group">
-										 	<input type="email" name="email" id="email" class="form-control" placeholder="seu_email@email" required=""style="border-radius: 8px!important;
+										 	<input type="email" name="email" id="email" class="form-control" placeholder="seu_email@email" style="border-radius: 8px!important;
 		                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
 										</div>
 

@@ -30,7 +30,7 @@
     html, body{height:100%;}
 
       body{
-        background-image: url(../../img/efata.jpg);
+        background-image: url(http://localhost/www/igreja/_fonts/img/efata.jpg);
         background-size: cover;
         color: white;
         background-repeat: no-repeat;
@@ -99,12 +99,12 @@
           				</div>
 
           				<div class="form-group">
-          				  	<input type="text" name="endereco" id="end" class="form-control" placeholder="Endereço" required=""style="border-radius: 8px!important;
+          				  	<input type="text" name="endereco" id="end" class="form-control" placeholder="Endereço" style="border-radius: 8px!important;
                       background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
           				</div>
 
           				 <div class="form-group">
-          				 	<input type="text" name="telefone" class="form-control tel" placeholder="Celular com DDD" id="tel" required=""style="border-radius: 8px!important;
+          				 	<input type="text" name="telefone" class="form-control tel" placeholder="Celular com DDD" id="tel" style="border-radius: 8px!important;
                     background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
           				 </div>
 

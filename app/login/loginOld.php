@@ -45,7 +45,6 @@ else
   //validarUsuario();
 ?>
 
-<!DOCTYPE html>
 <html>
     
 <head>
@@ -62,7 +61,7 @@ else
 
 <style type="text/css">
     body{
-        background-image: url(img/logo_comun_desf_pret.png);
+        background-image: url(../../_fonts/img/logo_comun.png);
         background-size: cover;
         color: black;
         background-repeat: no-repeat;
