@@ -36,9 +36,9 @@ $(document).ready(function(){
           
      //     console.log(labels);
     
-  let primeiroGrafico = document.getElementById('Grafico').getContext('2d');
+  var primeiroGrafico = document.getElementById('Grafico');
     
-  let chart = new Chart(primeiroGrafico, {
+  var Grafico = new Chart(primeiroGrafico, {
           type: 'bar',
           data: {
               labels: labels, 
