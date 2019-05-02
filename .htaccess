@@ -1,1 +1,12 @@
 php_flag output_buffering on
+
+
+RewriteEngine On
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^secretariacac.ga [NC]
+RewriteRule ^(.*)$ http://www.secretariacac.ga/$1 [L,R=301]
+

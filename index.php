@@ -99,7 +99,10 @@
                    title:  '<?php echo $row_events['titulo']; ?>',
                    start:  '<?php echo $row_events['inicioevento']; ?>',
                    end:    '<?php echo $row_events['terminoevento']; ?>',
-                   color:  '<?php echo $row_events['color']; ?>',
+                   rendering: 'background',
+                   color:  '<?php echo $row_events['color']; ?>'
+                  
+        
                    },<?php
                    }
                  ?>
@@ -253,14 +256,14 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title text-center">Dados do Evento</h4>
+          <h4 class="modal-title text-center" id="title"></h4>
         </div>
         <div class="modal-body">
           <dl class="dl-horizontal">
             <dt>Código do Evento</dt>
             <dd id="id"></dd>
-            <dt>Titulo do Evento</dt>
-            <dd id="title"></dd>
+           <!-- <dt>Titulo do Evento</dt>
+            <dd id="title"></dd>-->
             <dt>Inicio do Evento</dt>
             <dd id="start"></dd>
             <dt>Fim do Evento</dt>
