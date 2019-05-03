@@ -1,9 +1,10 @@
 $(document).ready(function(){
   var turma;
-  
+ 
+  /*
   request.done(function(resposta) {
   //  funcao = resposta;   
-});
+});*/
   
     var graf1 = [];
     var graf2 = [];
@@ -100,7 +101,7 @@ $(document).ready(function(){
           totls = somarValores(graf1);
          
           
-       
+   /*    
         let GraficoPizza = document.getElementById('GraficoPizza').getContext('2d');
       
         let chartt = new Chart(GraficoPizza, {
@@ -289,7 +290,7 @@ $(document).ready(function(){
       error: function(data) {
         //console.log(data);
       }
-    });
+    });*/
     
     
 

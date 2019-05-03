@@ -11,6 +11,7 @@ require_once '../../_fonts/config/funcoes.php';
   $_SESSION['username'] = $login;
   $_SESSION['loggedin_time'] = time();
 
+
   $codigoUsuario = autenticar($login, sha1($senha));
 
   $_SESSION['codigoUsuario'] = $codigoUsuario;
@@ -23,7 +24,7 @@ require_once '../../_fonts/config/funcoes.php';
                 title: 'Login efetuado com sucesso!',
                         type: 'success',
                         timer: 5000});</script>";
-     header("location:../../index.php?id=".$_SESSION['codigoUsuario']."");exit;
+     header("location:../../?id=".$_SESSION['codigoUsuario']."");exit;
 
   }
   else {
@@ -33,7 +34,7 @@ require_once '../../_fonts/config/funcoes.php';
                title: 'Acesso Negado!',
                        type: 'error',
                        timer: 5000});</script>";
-   header("location:../../index.php");exit;
+   header("location:../../");exit;
 
 //    header("location:login.php?getErro='Usuário ou senha errados'");
 

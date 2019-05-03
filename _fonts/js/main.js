@@ -13,8 +13,90 @@ $(document).ready(function(){
 			  $('.data').mask('00/00/0000');
 			  $('#cep').mask('00000-000');
 			  $('.tel').mask('(00) 00000-0000');
-			  $('#cpf').mask('000.000.000-00');
-          });
+				$('#cpf').mask('000.000.000-00');
+//////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////////
+				jQuery('#formulario_encontrista').submit(function(){
+					var dados = $(this).serialize();
+						$.ajax({
+						type:'POST',
+						url: "../../app/encontro/cad_DB_Encontrista.php",
+						dataType: 'json',
+						data: dados,
+						success:function(response){ //retorna o echo do php
+
+							//alert(response);
+							Swal.fire({
+							title: response.mens1,
+							type:  response.mens2,
+							timer: 5000});
+							if(response.mens3 == '1')resetform();
+							//document.getElementById('#formulario_encontrista').reset();
+
+						},
+						erro: function(response) {
+							Swal.fire({
+							title: 'Erro ao cadastrar, tente novamente!!!',
+							type: 'error',
+							timer: 5000});
+						}
+					});
+
+					return false;
+					});
+//////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////
+				$('#ajax_form').submit(function(){
+					var cargo = $('#cargo').val();
+					var dados = $(this).serialize();
+					event.preventDefault();
+					$.ajax({
+					type:'POST',
+					url: "../../app/membros/cadDB.php",
+					dataType: 'json',     // para obter a resposta no formato json e rodar no sweetalert2
+					data: dados,
+					success:function(response){ //retorna o echo do php
+					console.log(cargo);	
+					console.log(response);
+						if(response.mens1 == '1' && (cargo == 'Bispo') || (cargo == 'Pastor') || (cargo == 'Supervisor')  )senha();/*
+						Swal.fire({
+						title: response.mens1,
+						type:  response.mens2,
+						timer: 5000});*/
+						
+						// se mens3 igual a 2 - indica que este cadastro já existe, possibilitando a edição do mesmo
+							if(response.mens3 == '2'){
+								Swal.fire({
+									title: 'Este membro já esta cadastrado!!!',
+									type:  'warning'
+									});
+							}
+						// se mens3 igual a 4 - indica que este cadastro foi realizado, e reseta todos os campos do formulario
+							if(response.mens3 == '4')resetform();
+
+					},
+					erro: function(response) {
+						//console.log(response);
+						alert(response);
+
+						Swal.fire({
+						title: 'Erro ao cadastrar, tente novamente!!!',
+						type: 'error',
+						timer: 5000});
+					}
+				});
+
+				return false;
+				});
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+});
 ////////////////////////////////////////////////////////////////////////////////////////////
 
   $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
@@ -31,34 +113,7 @@ $(document).ready(function(){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 jQuery(document).ready(function(){
-				jQuery('#formulario_encontrista').submit(function(){
-					var dados = $(this).serialize();
-				 		$.ajax({
-						type:'POST',
-						url: "../../app/encontro/cad_DB_Encontrista.php",
-						dataType: 'json',
-						data: dados,
-						success:function(response){ //retorna o echo do php
-
-              //alert(response);
-				 			Swal.fire({
-							title: response.mens1,
-							type:  response.mens2,
-							timer: 5000});
-              if(response.mens3 == '1')resetform();
-							//document.getElementById('#formulario_encontrista').reset();
-
-				 		},
-						erro: function(response) {
-              Swal.fire({
-						  title: 'Erro ao cadastrar, tente novamente!!!',
-							type: 'error',
-							timer: 5000});
-						}
-					});
-
-					return false;
-			   	});
+				
 			});
 ///////////////////////////////////////////////////////////////////////////
 
@@ -85,48 +140,7 @@ jQuery(document).ready(function(){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       $(document).ready(function(){
-				$('#ajax_form').submit(function(){
-									var cargo = $('#cargo').val();
-									var dados = $(this).serialize();
-								  event.preventDefault();
-      				 		$.ajax({
-      						type:'POST',
-      						url: "../../app/membros/cadDB.php",
-      						dataType: 'json',     // para obter a resposta no formato json e rodar no sweetalert2
-      						data: dados,
-									success:function(response){ //retorna o echo do php
-									console.log(cargo);	
-									console.log(response);
-										if(response.mens1 == '1' && (cargo == 'Bispo') || (cargo == 'Pastor') || (cargo == 'Supervisor')  )senha();/*
-                  	Swal.fire({
-      							title: response.mens1,
-      							type:  response.mens2,
-										timer: 5000});*/
-										
-										// se mens3 igual a 2 - indica que este cadastro já existe, possibilitando a edição do mesmo
-											if(response.mens3 == '2'){
-												Swal.fire({
-													title: 'Este membro já esta cadastrado!!!',
-													type:  'warning'
-													});
-											}
-										// se mens3 igual a 4 - indica que este cadastro foi realizado, e reseta todos os campos do formulario
-											if(response.mens3 == '4')resetform();
-
-      				 		},
-      						erro: function(response) {
-                    //console.log(response);
-                    alert(response);
-
-      						  Swal.fire({
-      						  title: 'Erro ao cadastrar, tente novamente!!!',
-      							type: 'error',
-      							timer: 5000});
-      						}
-      					});
-								
-      					return false;
-      			   	});
+				
       			});
 /////////////////////////////////////////////////////////////////////////////////////
 	//Mascara para o campo data e hora
