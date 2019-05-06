@@ -28,7 +28,7 @@
     html, body{height:100%;}
 
       body{
-        background-image: url(../../../img/efata.jpg);
+        background-image: url(../../../_fonts/img/efata.jpg);
         background-size: cover;
         color: white;
         background-repeat: no-repeat;
@@ -90,7 +90,7 @@ color: white;
        <div class="container">
        		<div class="row"></div>
        				<div class="col-md-6 offset-md-3">
-									<form  class="formulario" id="form_aceitaJesus" action="" method="post"  >
+									<form  class="formulario" id="form_aceitaJesus_" action="./aceita_DB.php" method="post"  >
 										<h3  class="h3"style="text-align: center;">Aceitou/Reconciliou</h3><br>
 				 						<div class="form-group ">
 				 								<input type="text" name="nome" id="nome"class="form-control" placeholder="Nome Completo" required=""style="border-radius: 8px!important;
@@ -103,7 +103,7 @@ color: white;
 										</div>
 
 										<div class="form-group input-group">
-										 	 <input type="text" name="telefone" class="form-control tel" placeholder="Celular com DDD" id="tel" required=""style="border-radius: 8px!important;
+										 	 <input type="text" name="telefone" class="form-control tel" placeholder="Celular com DDD" id="tel" style="border-radius: 8px!important;
 		                   background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
 											 <input type="text" class="form-control" name="nascimento" id="data" placeholder="Data de Nascimento" maxlength="10"style="border-radius: 8px!important;
 		                   background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
@@ -167,6 +167,7 @@ color: white;
 		<script type="text/javascript" src="../../../_fonts/js/sweetalert2.all.min.js"></script>
 
 	<script type="text/javascript">
+	mascara();
 		  $('#cargo').change(function(){
 	    $(this).css('color', 'white');
 	  });

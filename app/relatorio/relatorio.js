@@ -403,3 +403,100 @@ function VerBanco( str, valor, month ){
 
     return retorno;
 }
+
+function grafico()
+{
+  var graf1 = [];
+    var graf2 = [];
+    var labels = [];
+
+    //var data = VerBanco( "aceitou", 3 );
+    //var resp_2 = VerBanco( "reconciliou", 3 );
+    
+    var leitura = VerBanco( 0, 5, 0 );  //faz a leitura do mes de forma distinta 
+     
+    for(var i in leitura) {            
+        labels.push(leitura[i].data);
+        
+        var txt = VerBanco( "aceitou", 6,  labels[i] ); 
+        for(var j in txt) {            
+          graf1.push(txt[j].quant);
+                    }
+        var txt = VerBanco( "reconciliou", 6,  labels[i] ); 
+        for(var j in txt) {            
+          graf2.push(txt[j].quant);
+                    }
+
+        labels[i] = labels[i].substring(4, 6)+"/"+labels[i].substring(0, 4);
+  //      console.log(labels[i] + graf1[i])
+    }
+         
+          labels.reverse();
+          graf1.reverse();
+          graf2.reverse();
+          
+     //     console.log(labels);
+    
+  var primeiroGrafico = document.getElementById('Grafico');
+    
+  var Grafico = new Chart(primeiroGrafico, {
+          type: 'bar',
+          data: {
+              labels: labels, 
+              datasets: [{
+              label: "Aceitou",
+              data: graf1,
+              backgroundColor: "rgba(0, 34,255, 0.9)",
+              borderColor: "#0000ff"
+          },
+          {
+              label: "Reconciliou",
+              data: graf2,
+              backgroundColor: "rgba(0, 255, 0, 0.9)",
+              borderColor: "#002200"
+          }
+              ]
+          },
+          options: {
+            legend: {
+              position: 'bottom',
+            },
+            title: {
+                display: true,
+                text: 'Pessoas que Aceitaram e Reconciliaram',
+                fontSize: 18,
+                padding: 20
+               
+            },
+            scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }],
+              xAxes: [{
+                categoryPercentage: 0.7,
+                barPercentage: 0.7
+            }],
+          }
+        }
+        });
+
+        labels = [];
+        graf1 = [];
+        ano = [];
+        var totls;
+
+        var leitura = VerBanco( 0, 7, 0 );  //faz a leitura do mes de forma distinta 
+        for(var i in leitura) {            
+          labels.push(leitura[i].funcao);
+          graf1.push(leitura[i].quant);
+          ano = (leitura[1].ano);
+         
+                 }
+  
+      //    labels[i] = labels[i].substring(4, 6)+"/"+labels[i].substring(0, 4);
+          
+      
+          totls = somarValores(graf1);
+}

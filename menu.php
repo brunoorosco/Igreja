@@ -190,11 +190,11 @@ border-radius: 6px 0 6px 6px;
                     <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Relatórios</a>
                     <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="<?= $URLBASE.'app/relatorio/aceitacao.php'?>">Aceitação/Reconciliação</a></li>
-                            <li><a class="dropdown-item" href="#">Batismo</a></li>
+                          <!--  <li><a class="dropdown-item" href="#">Batismo</a></li>
                             <li><a class="dropdown-item" href="#">Pessoas Encontro</a></li>
                             <li><a class="dropdown-item" href="<?= $URLBASE.'app/relatorio/'?>">Equipe Encontro</a></li>
                             <li><a class="dropdown-item" href="<?= $URLBASE.'app/relatorio/aluno_curso.php'?>">Alunos x Curso</a></li>
-                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/relatorio/graficos.php'?>">Geral</a></li>
+                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/relatorio/graficos.php'?>">Geral</a></li>-->
                         </ul>
                             </li>  <?php  }?>
               </ul>

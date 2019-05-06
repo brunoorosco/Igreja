@@ -86,7 +86,11 @@ var myChart = new Chart(ctx, {
         }
     }
 });
-</script>
+
+window.onload = function() {
+            grafico();
+    }
+    </script>
      </div>
                 
    <script src="./relatorio.js" ></script>

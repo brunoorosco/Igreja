@@ -17,18 +17,16 @@
    ///////  VERIFICA SE USUARIO EMAIL JÁ ESTA CADASTRADO ///////////
 try{
        
-      $sql = "INSERT INTO aceitouJesus (nome, telefone, cargo, endereco, cem, cadastrado, aceit_reconc, cadastro) 
-      values (:nome, :telefone, :cargo, :endereco,:supervisao, :cadastrado, :aceitou, :cadastro)";
+      $sql = "INSERT INTO aceita_jesus (nome, telefone,  endereco, cem, aceit_reconc, cadastro) 
+      values (:nome, :telefone, :endereco,:supervisao, :aceitou, :cadastro)";
      
         $db = new db();
         $db = $db->connect();
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':nome',$nome);
         $stmt->bindParam(':telefone',$telefone);
-        $stmt->bindParam(':cargo',$cargo);
         $stmt->bindParam(':endereco',$endereco);
         $stmt->bindParam(':supervisao',$supervisao);
-        $stmt->bindParam(':cadastrado',$id);
         $stmt->bindParam(':aceitou',$aceitou);
         $stmt->bindParam(':cadastro',$dataCadastro);
 
