@@ -19,9 +19,14 @@
     <link href='_fonts/css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
 
 
-    <script src='_fonts/js/moment.min.js'></script>
-		<script src='_fonts/js/fullcalendar.min.js'></script>
-		<script src='_fonts/js/pt-br.js'></script>
+    <!--  <script src='_fonts/js/moment.min.js'></script>
+		<script src='_fonts/js/fullcalendar.min.js'></script>-->
+    <!-- <script src='_fonts/js/pt-br.js'></script>-->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js'></script> 
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/locale/pt-br.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/gcal.js'></script>
+   
     <script src='_fonts/js/sweetalert2.all.min.js'></script>
     <style type="text/css">
 

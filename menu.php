@@ -266,7 +266,8 @@ border-radius: 6px 0 6px 6px;
 
 
 
-<script src="<?= $URLBASE.'_fonts/js/jquery-3.3.1.min.js'?>"></script>
+<!--<script src="<?= $URLBASE.'_fonts/js/jquery-3.3.1.min.js'?>"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
 <script src="<?= $URLBASE.'_fonts/js/popper.min.js'?>"></script>
 <script src="<?= $URLBASE.'_fonts/js/bootstrap.min.js'?>"></script>
 <script src="<?= $URLBASE.'_fonts/js/main.js'?>"></script>

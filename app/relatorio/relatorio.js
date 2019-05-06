@@ -299,12 +299,12 @@ $(document).ready(function(){
   function somarValores(quant){
     var soma = 0;
     var teste = [];
-       console.log(quant);
+    //   console.log(quant);
     for (var i=0; i<quant.length; i++){
 
             teste[i] = parseInt(quant[i]);      
             soma += parseInt(teste[i]);
-            console.log(quant[i]) ;
+      //      console.log(quant[i]) ;
           }  
       return soma;
     }
@@ -395,11 +395,11 @@ function VerBanco( str, valor, month ){
     type:   "get",
     dataType: "json",
     data:   { selec: valor , funcao: str, mes: month },
-    async: false,
-
-    success: function( data ){
+    async: false})
+    .done(function( data ) {
+   // success: function( data ){
         retorno = data;           
-    }
-});
-return retorno;
+    });
+
+    return retorno;
 }

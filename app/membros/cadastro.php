@@ -166,6 +166,7 @@ color: white;
 		$('#cem').css('color','gray');
 		$('#cem').attr('disabled', true);
 
+		mascara();
 	//	$('#senha').attr('disabled', true);
 	//	$('#senha').hide();
 /*

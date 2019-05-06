@@ -39,7 +39,8 @@
         background-size: cover;
         color: white;
         background-repeat: no-repeat;
-        background-position: center;
+        background-po
+				sition: center;
         background-attachment: fixed;
 
 
@@ -86,7 +87,12 @@
         border-radius: 0px;
         background-color: rgba(23, 3, 3, 0.48);
         color: white;
-        border-radius:1px solid #291212
+        
+				
+				
+				
+				
+				border-radius:1px solid #291212
        }
 
 	     .form-signin{
@@ -97,13 +103,7 @@
 			}
     </style>
     <script type="text/javascript">
-
-		 	  $(document).ready(function(){
-				  $('#data').mask('00/00/0000');
-				  $('#cep').mask('00000-000');
-				  $('.tel').mask('(00) 00000-0000');
-				  $('#cpf').mask('000.000.000-00');
-				 });
+		mascara();
 		 </script>
 
 	</head>

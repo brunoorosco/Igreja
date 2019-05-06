@@ -177,6 +177,7 @@
       $('#cem_input').css('color','a0a0a0');
       $('#cem_input').attr('disabled', true);
 
+        mascara();
     //    $('#cem').css('color','#707070');
 		    //$('#cem').attr('disabled', true);
 		</script>
