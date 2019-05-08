@@ -1,10 +1,11 @@
+/*
 $(document).ready(function(){
   var turma;
  
   /*
   request.done(function(resposta) {
   //  funcao = resposta;   
-});*/
+});
   
     var graf1 = [];
     var graf2 = [];
@@ -290,11 +291,11 @@ $(document).ready(function(){
       error: function(data) {
         //console.log(data);
       }
-    });*/
+    });
     
     
 
-  });
+  });*/
 
   function somarValores(quant){
     var soma = 0;
@@ -491,12 +492,80 @@ function grafico()
         for(var i in leitura) {            
           labels.push(leitura[i].funcao);
           graf1.push(leitura[i].quant);
-          ano = (leitura[1].ano);
-         
-                 }
+          ano = (leitura[1].ano);   }
   
-      //    labels[i] = labels[i].substring(4, 6)+"/"+labels[i].substring(0, 4);
-          
-      
           totls = somarValores(graf1);
-}
+  }
+
+  function grafico2()
+  {
+    var graf1 = [];
+    var graf2 = [];
+    var labels = [];
+
+        var leitura = VerBanco( 0, 7, 0 );  //faz a leitura do mes de forma distinta 
+        for(var i in leitura) {            
+          labels.push(leitura[i].funcao);
+          graf1.push(leitura[i].quant);
+          ano = (leitura[1].ano);
+        
+                }
+  
+        //    labels[i] = labels[i].substring(4, 6)+"/"+labels[i].substring(0, 4);
+          
+  
+          totls = somarValores(graf1);
+        
+          
+        let GraficoPizza = document.getElementById('GraficoPizza').getContext('2d');
+  
+        let chartt = new Chart(GraficoPizza, {
+          type: 'doughnut',
+          data: {
+              labels: labels, 
+              datasets: [{
+              label: "Aceitou",
+              data: graf1,
+              backgroundColor: [
+                              'rgba(255, 99, 132, 0.9)',
+                              'rgba(54, 162, 235, 0.9)',
+                              'rgba(255, 206, 86, 0.9)',
+                              'rgba(75, 192, 192, 0.9)'],
+                  borderColor: "#fff"
+              },
+              ]
+            },
+            options: {
+              responsive: true,
+              legend: {
+                position: 'bottom',
+              },
+              title: {
+                display: true,
+                text: 'Total em ' + ano +  ': ' + totls + ' pessoas',
+                fontSize: 18,
+                padding: 20
+              },
+              animation: {
+                animateScale: true,
+                animateRotate: true
+              },
+              tooltips: {
+                  callbacks: {
+                    label: function(tooltipItem, data) {
+                      var dataset = data.datasets[tooltipItem.datasetIndex];
+                      var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                        return parseInt(previousValue) + parseInt(currentValue);
+                      });
+                      var currentValue = dataset.data[tooltipItem.index];
+                      console.log(currentValue);
+                      var percentage = Math.floor(((currentValue/total) * 100)+0.5);         
+                      console.log(percentage);
+                      return labels[tooltipItem.index] + ": " + percentage + "% Equivale à: " + currentValue ;
+                      
+                    }
+                }
+              }
+            }
+        })
+      }
