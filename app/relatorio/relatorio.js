@@ -465,10 +465,18 @@ function grafico()
             title: {
                 display: true,
                 text: 'Pessoas que Aceitaram e Reconciliaram',
-                fontSize: 18,
-                padding: 20
+                fontSize: 20,
+                padding: 30
                
             },
+            layout: {
+              padding: {
+                  left: 0,
+                  right: 0,
+                  top: 0,
+                  bottom: 0
+              }
+          },
             scales: {
               yAxes: [{
                   ticks: {
@@ -499,6 +507,9 @@ function grafico()
 
   function grafico2()
   {
+    var canvas = document.getElementById("GraficoPizza");
+    var ctx = canvas.getContext("2d");
+
     var graf1 = [];
     var graf2 = [];
     var labels = [];
@@ -515,13 +526,16 @@ function grafico()
           
   
           totls = somarValores(graf1);
-        
+
+                 
           
-        let GraficoPizza = document.getElementById('GraficoPizza').getContext('2d');
+        let GraficoPizza = canvas.getContext('2d');
   
         let chartt = new Chart(GraficoPizza, {
           type: 'doughnut',
-          data: {
+          showTooltips: false,
+          onAnimationProgress: drawSegmentValues,
+           data: {
               labels: labels, 
               datasets: [{
               label: "Aceitou",
@@ -535,23 +549,42 @@ function grafico()
               },
               ]
             },
-            options: {
+           options: {
+             maintainAspectRatio: false,
+             spanGaps: false,
               responsive: true,
-              legend: {
+              legend: {  //AJUSTES DAS LEGENDAS
+                display: true,
                 position: 'bottom',
-                
-              },
-              title: {
+                labels: {
+                    fontColor: "#000",   
+                    boxWidth: 14,
+                    fontFamily: 'arial'
+                }
+            },
+              title: { //AJUSTE DO TITULO
                 display: true,
                 text: 'Total em ' + ano +  ': ' + totls + ' pessoas',
-                fontSize: 18,
-                padding: 20
+                fontSize: 20,
+                padding: 30
               },
               animation: {
+                onProgress: function(animation) {
+                  progress.value = animation.animationObject.currentStep / animation.animationObject.numSteps;
+              },
                 animateScale: true,
                 animateRotate: true
               },
-              tooltips: {
+              layout: {
+                padding: {
+                    left: 0,
+                    right: 0,
+                    top: 00,
+                    bottom: 0
+                }
+            }, 
+               tooltips: {
+                 model: 'label',
                   callbacks: {
                     label: function(tooltipItem, data) {
                       var dataset = data.datasets[tooltipItem.datasetIndex];
@@ -559,14 +592,58 @@ function grafico()
                         return parseInt(previousValue) + parseInt(currentValue);
                       });
                       var currentValue = dataset.data[tooltipItem.index];
-                      console.log(currentValue);
+                    //  console.log(currentValue);
                       var percentage = Math.floor(((currentValue/total) * 100)+0.5);         
-                      console.log(percentage);
+                    //  console.log(percentage);
                       return labels[tooltipItem.index] + ": " + percentage + "% Equivale à: " + currentValue ;
                       
                     }
                 }
-              }
+              },
+             
+              plugins: {
+                datalabels: {
+                    formatter: function(value, ctx) {
+                        let sum = 0;
+                        let dataArr = ctx.chart.data.datasets[0].data;
+                        dataArr.map(data => {
+                            sum += data;
+                        });
+                        let percentage = (value * 100 / sum).toFixed(0) + "%";
+                        return percentage;
+                    },
+                    font: {
+                        weight: "normal"
+                    },
+                    color: "#fff"
+                }
             }
+          }
         })
+
+        
+      }
+      function drawSegmentValues()
+      {
+          for(var i=0; i<chartt.segments.length; i++) 
+          {
+              ctx.fillStyle="white";
+              var textSize = canvas.width/10;
+              ctx.font= textSize+"px Verdana";
+              // Get needed variables
+              var value = chartt.segments[i].value;
+              var startAngle = chartt.segments[i].startAngle;
+              var endAngle = chartt.segments[i].endAngle;
+              var middleAngle = startAngle + ((endAngle - startAngle)/2);
+      
+              // Compute text location
+              var posX = (radius/2) * Math.cos(middleAngle) + midX;
+              var posY = (radius/2) * Math.sin(middleAngle) + midY;
+      
+              // Text offside by middle
+              var w_offset = ctx.measureText(value).width/2;
+              var h_offset = textSize/4;
+      
+              GraficoPizza.fillText(value, posX - w_offset, posY + h_offset);
+          }
       }

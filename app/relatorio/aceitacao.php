@@ -18,47 +18,172 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
        <!-- <script src="../../_fonts/js/Chart.min.js"></script>-->
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@1"></script> 
+        <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
         <script src="./relatorio.js"></script>
         <style type="text/css">
-      #chart-container {
-        width: 640px;
-        height: auto;
-      }
+  
+      body {
+    background-color: #f6f6f6;
+}
+
+body.iframe {
+    background-color: #fff;
+}
+
+.wrapper {
+    padding: 15px;
+}
+
+.chart_container {
+ 
+    margin-bottom: 15px;
+    background: #fff;
+    -webkit-box-shadow: 0 0 5px 0 #ddd;
+    box-shadow: 0 0 5px 0 #ddd;
+    border-radius: 2px;
+}
+
+.chart {
+    height: 400px;
+}
+
+#score-card {
+    height: 500px;
+}
+
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
     </style>
     </head>
     <body>
-    <div class="container-fluid">   
-          <div class="row">
-              <div class="col-7">   
-                  <div class="chart-container" style="position: relative; height:35vh; width:60vw" >
-                      <canvas id="Grafico"></canvas>
-                  </div>
-              </div>
-              <div class="col-5" style="position: relative; height45vh; width:60vw">
-                      <canvas id="GraficoPizza"> </canvas>
-                      <div class="">
-                         <div class="form-group col-md-4 right">
-                          <!-- <label for="inputState">Ano</label>
-                            <select id="inputState" class="form-control">
-                              <option selected>2019</option>
-                              <option>2018</option>
-                               </select>-->
-                      </div>
-                      </div>
+ 
+     <div class="wrapper">
+    <div class="row">
+        <div class="col-lg-6 col-md-9 col-sm-9">
+            <div class="chart_container">
+                <div class="chart" id="score-card"> <canvas id="Grafico"></canvas></div>
+            </div>
+        </div>
+   
+        <div class="col-lg-3 col-md-6 col-sm-6 ">
+            <div class="chart_container">
+                <div class="chart" id="score-card"> 
+                  <canvas id="GraficoPizza"  width="50" height="50" 
+                          class="chart chart-doughnut"
+                          chart-data="chart.data"
+                          chart-labels="chart.labels"
+                          chart-colours="chart.colours"
+                          chart-legend="true"
+                          chart-options="{tooltipTemplate: '<%=label%>: <%= numeral(value).format('($00[.]00)') %> - <%= numeral(circumference / 6.283).format('(0[.][00]%)') %>'">> </canvas>
                 </div>
             </div>
-           
-<script>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 ">
+            <div class="chart_container">
+                <div class="chart" id="finance-dept"><canvas id="canvas"></canvas></div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="row">
+        <div class="col-md-4 col-sm-12">
+            <div class="chart_container">
+                <div class="chart" id="salary"></div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <div class="chart_container">
+                <div class="chart" id="grade-composition"></div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <div class="chart_container">
+                <div class="chart" id="employment-date"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="chart_container">
+                <div class="chart" id="score-card"></div>
+            </div>-->
+    </div>
+</div>
+      
+     <script>
 window.onload = function() {
             grafico();
             grafico2();
+            teste();
+            
     }
-    </script>
-     </div>
-                
-   <script src="./relatorio.js" ></script>
+
+    function teste(){
+          var data = [
+          {
+              value: 300,
+              color:"#F7464A",
+              highlight: "#FF5A5E",
+              label: "Red"
+          },
+          {
+              value: 50,
+              color: "#46BFBD",
+              highlight: "#5AD3D1",
+              label: "Green"
+          },
+          {
+              value: 100,
+              color: "#FDB45C",
+              highlight: "#FFC870",
+              label: "Yellow"
+          }
+      ];
+
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+      var midX = canvas.width/2;
+      var midY = canvas.height/2
+
+// Create a pie chart
+      var myPieChart = new Chart(ctx).Pie(data, {
+          showTooltips: false,
+          onAnimationProgress: drawSegmentValues
+      });
+
+      var radius = myPieChart.outerRadius;
+    }
     
+function drawSegmentValues()
+{
+    for(var i=0; i<myPieChart.segments.length; i++) 
+    {
+        ctx.fillStyle="white";
+        var textSize = canvas.width/10;
+        ctx.font= textSize+"px Verdana";
+        // Get needed variables
+        var value = myPieChart.segments[i].value;
+        var startAngle = myPieChart.segments[i].startAngle;
+        var endAngle = myPieChart.segments[i].endAngle;
+        var middleAngle = startAngle + ((endAngle - startAngle)/2);
+
+        // Compute text location
+        var posX = (radius/2) * Math.cos(middleAngle) + midX;
+        var posY = (radius/2) * Math.sin(middleAngle) + midY;
+
+        // Text offside by middle
+        var w_offset = ctx.measureText(value).width/2;
+        var h_offset = textSize/4;
+
+        ctx.fillText(value, posX - w_offset, posY + h_offset);
+       }
+      }  
+    </script> 
+
+ 
+
+
    
     </body>
     </html>
