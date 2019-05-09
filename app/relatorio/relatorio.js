@@ -539,6 +539,7 @@ function grafico()
               responsive: true,
               legend: {
                 position: 'bottom',
+                
               },
               title: {
                 display: true,
