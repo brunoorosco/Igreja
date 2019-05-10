@@ -448,7 +448,7 @@ function grafico()
               label: "Aceitou",
               data: graf1,
               backgroundColor: "rgba(250, 150, 150, 0.9)",
-              borderColor: "#0000ff"
+              borderColor: "#000"
           },
           {
               label: "Reconciliou",
@@ -548,8 +548,7 @@ function grafico()
               ]
             },
            options: {
-             maintainAspectRatio: true,
-             spanGaps: false,
+            
               responsive: true,
               legend: {  //AJUSTES DAS LEGENDAS
                 display: true,
@@ -567,7 +566,47 @@ function grafico()
                 padding: 30
               },
                 animateScale: true,
-                animateRotate: true
+                animateRotate: true,
+               
+                tooltips: {
+                  model: 'label',
+                   callbacks: {
+                     label: function(tooltipItem, data) {
+                       var dataset = data.datasets[tooltipItem.datasetIndex];
+                       var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                         return parseInt(previousValue) + parseInt(currentValue);
+                       });
+                       var currentValue = dataset.data[tooltipItem.index];
+                     //  console.log(currentValue);
+                       var percentage = Math.floor(((currentValue/total) * 100)+0.5);         
+                     //  console.log(percentage);
+                       //return labels[tooltipItem.index] + ": " + percentage + "% Equivale à: " + currentValue ;
+                       return "Total: " + currentValue ;
+                       
+                     }
+                 }
+                },
+
+                plugins:{
+                  datalabels: {
+                      formatter: function(value, ctx) {
+                          let sum = 0;
+                          console.log(value);
+                          let dataArr = ctx.chart.data.datasets[0].data;
+                          dataArr.map(data => {
+                              sum += parseInt(data);
+                              console.log(sum);
+                          });
+                          let percentage = (value * 100 / sum).toFixed(0) + "%";
+                        
+                          return percentage;
+                      },
+                      font: {
+                           weight: "normal"
+                      },
+                      color: "#000"
+                  }
+                    }
               },
               layout: {
                 padding: {
@@ -577,42 +616,10 @@ function grafico()
                     bottom: 0
                 }
               }, 
-               tooltips: {
-                 model: 'label',
-                  callbacks: {
-                    label: function(tooltipItem, data) {
-                      var dataset = data.datasets[tooltipItem.datasetIndex];
-                      var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
-                        return parseInt(previousValue) + parseInt(currentValue);
-                      });
-                      var currentValue = dataset.data[tooltipItem.index];
-                    //  console.log(currentValue);
-                      var percentage = Math.floor(((currentValue/total) * 100)+0.5);         
-                    //  console.log(percentage);
-                      return labels[tooltipItem.index] + ": " + percentage + "% Equivale à: " + currentValue ;
-                      
-                    }
-                }
-              },
+            
+              
              
-              plugins:{
-                datalabels: {
-                    formatter: function(value, ctx) {
-                        let sum = 0;
-                        let dataArr = ctx.chart.data.datasets[0].data;
-                        dataArr.map(data => {
-                            sum += data;
-                        });
-                        let percentage = (value * 100 / sum).toFixed(0) + "%";
-                        console.log(percentage);
-                        return percentage;
-                    },
-                    font: {
-                         weight: "normal"
-                    },
-                    color: "#000"
-                }
-            }
+       
           })
         }       
       
