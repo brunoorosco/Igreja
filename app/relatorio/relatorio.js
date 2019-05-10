@@ -447,13 +447,13 @@ function grafico()
               datasets: [{
               label: "Aceitou",
               data: graf1,
-              backgroundColor: "rgba(0, 34,255, 0.9)",
+              backgroundColor: "rgba(250, 150, 150, 0.9)",
               borderColor: "#0000ff"
           },
           {
               label: "Reconciliou",
               data: graf2,
-              backgroundColor: "rgba(0, 255, 0, 0.9)",
+              backgroundColor: "rgba(250, 250, 100, 0.9)",
               borderColor: "#002200"
           }
               ]
@@ -471,8 +471,8 @@ function grafico()
             },
             layout: {
               padding: {
-                  left: 0,
-                  right: 0,
+                  left: 10,
+                  right: 10,
                   top: 0,
                   bottom: 0
               }
@@ -533,16 +533,14 @@ function grafico()
   
         let chartt = new Chart(GraficoPizza, {
           type: 'doughnut',
-          showTooltips: false,
-          onAnimationProgress: drawSegmentValues,
-           data: {
+          data: {
               labels: labels, 
               datasets: [{
               label: "Aceitou",
               data: graf1,
               backgroundColor: [
                               'rgba(255, 99, 132, 0.9)',
-                              'rgba(54, 162, 235, 0.9)',
+                              'rgba(250, 250, 100, 0.95)',
                               'rgba(255, 206, 86, 0.9)',
                               'rgba(75, 192, 192, 0.9)'],
                   borderColor: "#fff"
@@ -550,7 +548,7 @@ function grafico()
               ]
             },
            options: {
-             maintainAspectRatio: false,
+             maintainAspectRatio: true,
              spanGaps: false,
               responsive: true,
               legend: {  //AJUSTES DAS LEGENDAS
@@ -568,21 +566,17 @@ function grafico()
                 fontSize: 20,
                 padding: 30
               },
-              animation: {
-                onProgress: function(animation) {
-                  progress.value = animation.animationObject.currentStep / animation.animationObject.numSteps;
-              },
                 animateScale: true,
                 animateRotate: true
               },
               layout: {
                 padding: {
-                    left: 0,
-                    right: 0,
+                    left: 10,
+                    right: 10,
                     top: 00,
                     bottom: 0
                 }
-            }, 
+              }, 
                tooltips: {
                  model: 'label',
                   callbacks: {
@@ -601,7 +595,7 @@ function grafico()
                 }
               },
              
-              plugins: {
+              plugins:{
                 datalabels: {
                     formatter: function(value, ctx) {
                         let sum = 0;
@@ -610,40 +604,15 @@ function grafico()
                             sum += data;
                         });
                         let percentage = (value * 100 / sum).toFixed(0) + "%";
+                        console.log(percentage);
                         return percentage;
                     },
                     font: {
-                        weight: "normal"
+                         weight: "normal"
                     },
-                    color: "#fff"
+                    color: "#000"
                 }
             }
-          }
-        })
-
-        
-      }
-      function drawSegmentValues()
-      {
-          for(var i=0; i<chartt.segments.length; i++) 
-          {
-              ctx.fillStyle="white";
-              var textSize = canvas.width/10;
-              ctx.font= textSize+"px Verdana";
-              // Get needed variables
-              var value = chartt.segments[i].value;
-              var startAngle = chartt.segments[i].startAngle;
-              var endAngle = chartt.segments[i].endAngle;
-              var middleAngle = startAngle + ((endAngle - startAngle)/2);
+          })
+        }       
       
-              // Compute text location
-              var posX = (radius/2) * Math.cos(middleAngle) + midX;
-              var posY = (radius/2) * Math.sin(middleAngle) + midY;
-      
-              // Text offside by middle
-              var w_offset = ctx.measureText(value).width/2;
-              var h_offset = textSize/4;
-      
-              GraficoPizza.fillText(value, posX - w_offset, posY + h_offset);
-          }
-      }

@@ -17,8 +17,9 @@
 		<title>Cursos TMAC</title>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
        <!-- <script src="../../_fonts/js/Chart.min.js"></script>-->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-        <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.5.0"></script>
+
         <script src="./relatorio.js"></script>
         <style type="text/css">
   
@@ -70,13 +71,7 @@ body.iframe {
         <div class="col-lg-3 col-md-6 col-sm-6 ">
             <div class="chart_container">
                 <div class="chart" id="score-card"> 
-                  <canvas id="GraficoPizza"  width="50" height="50" 
-                          class="chart chart-doughnut"
-                          chart-data="chart.data"
-                          chart-labels="chart.labels"
-                          chart-colours="chart.colours"
-                          chart-legend="true"
-                          chart-options="{tooltipTemplate: '<%=label%>: <%= numeral(value).format('($00[.]00)') %> - <%= numeral(circumference / 6.283).format('(0[.][00]%)') %>'">> </canvas>
+                  <canvas id="GraficoPizza"  width="30" height="30"></canvas>
                 </div>
             </div>
         </div>
