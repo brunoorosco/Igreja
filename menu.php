@@ -250,19 +250,30 @@ border-radius: 6px 0 6px 6px;
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Forgot password</h3>
+                <h3>Esqueceu sua senha</h3>
                 <button type="button" class="close font-weight-light" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <p>Reset your password..</p>
+            <form method="post" action="./app/membros/atualizar_senha.php">
+             <div class="form-row align-items-center">
+             <label>Insira seu e-mail de cadastro!!!</label>
+             <div class="col-sm-12 my-1">
+             <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroupUsername" name="txtemail" placeholder="Username" style="with:100px">
+                </div>
+              </div>
             </div>
             <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                <button class="btn btn-primary">Save changes</button>
-            </div>
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Fechar</button>
+                <button class="btn btn-primary" name="submit">Redefinir senha</button>
+            </div></form>
         </div>
     </div>
-</div>
+</div></div>
 
 
 

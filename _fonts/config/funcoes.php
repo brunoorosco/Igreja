@@ -64,7 +64,7 @@ function enviarEmail($destino,$senha)
     $from = "SecretariaCAC";
     $to = $destino;
     $subject = "Senha de acesso a secretariacac";
-    $message = "Usuário: ".$destino;
+    $message = "Usuário: ".$destino. "</br>Senha de acesso: ".$senha;
     $headers = "De:". $from;
     mail($to, $subject, $message, $headers);
     echo "A mensagem de e-mail foi enviada.";
