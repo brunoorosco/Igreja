@@ -85,6 +85,18 @@ color: white;
 	  .btn-group-justified .btn .btn,
 	  .btn-group-justified .btn-group .btn {
 	   width: 100%; }
+
+		 .botoes .btn{
+	background-color: transparent;
+	border-color:  white;
+	color: white;
+	margin:auto;
+	width: 100%;
+	border-radius: 8px;
+	border-radius:1px solid #291212;
+	border-color:1px solid #291212;
+
+}
 </style>
 	<body>
        <div class="container">
@@ -94,24 +106,24 @@ color: white;
 										<h3  class="h3"style="text-align: center;">Aceitou/Reconciliou</h3><br>
 				 						<div class="form-group ">
 				 								<input type="text" name="nome" id="nome"class="form-control" placeholder="Nome Completo" required=""style="border-radius: 8px!important;
-			                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+			                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important;">
 				 						</div>
 
 										<div class="form-group">
 										  	<input type="text" name="endereco" id="end" class="form-control" placeholder="Endereço" required=""style="border-radius: 8px!important;
-			                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+			                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important;">
 										</div>
 
 										<div class="form-group input-group">
 										 	 <input type="text" name="telefone" class="form-control tel" placeholder="Celular com DDD" id="tel" style="border-radius: 8px!important;
-		                   background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+		                   background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; ">
 											 <input type="text" class="form-control" name="nascimento" id="data" placeholder="Data de Nascimento" maxlength="10"style="border-radius: 8px!important;
-		                   background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+		                   background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; ">
 										</div>
 
 							  		<div class="form-group input-group">
 											<select class="form-control" id="cargo" name="cargo" style="text: #fff !important;color: gray;border-radius: 8px!important;
-	                        background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;">
+	                        background-color: rgba(23, 3, 3, 0.48)!important; ">
 														<option disable hidden value="" >Cargo</option>
 														<option >Pastor</option>
 														<option >Supervisor</option>
@@ -121,7 +133,7 @@ color: white;
 														<option >Membro</option>
 											 </select>
                        <select class="form-control" id="supervisao" name="supervisao" style="text: #fff !important;color: gray;border-radius: 8px!important;
-	                        background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;">
+	                        background-color: rgba(23, 3, 3, 0.48)!important; ">
 														<option disable hidden value="" >CEM</option>
 														<?php
 																		//	require_once 'database.php';	
@@ -138,17 +150,31 @@ color: white;
 																							?>							
 														</select>
 										</div>
-										<div class="form-group input-group">
-										 	 <select class="form-control" id="aceitou" name="aceitou" style="text: #fff !important;color: gray;border-radius: 8px!important;
-	                        background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;">
-														<option disable hidden value="">Aceitou/Reconci</option>
-														<option >Aceitou</option>
-														<option >Reconciliou</option>
-												</select>
-											 <input type="text" class="form-control data" name="cadastro" id="data" placeholder="Data que aceitou" maxlength="10"style="border-radius: 8px!important;
-		                   background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+									
+												<div class="form-group input-group">
+													<select class="form-control" id="aceitou" name="aceitou" style="text: #fff !important;color: gray;border-radius: 8px!important;
+															background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;">
+																<option disable hidden value="">Aceitou/Reconci</option>
+																<option >Aceitou</option>
+																<option >Reconciliou</option>
+														</select>
+													<input type="text" class="form-control data" name="cadastro" id="data" placeholder="Data que aceitou" maxlength="10"style="border-radius: 8px!important;
+													background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+												</div>
+										
+											<div class="form-group">
+												<div class="btn-group btn-group-toggle botoes btn-block" data-toggle="buttons">
+															<label class="btn btn-light active" >
+																	<input type="radio" name="TP_BATIZADO" id="1" autocomplete="off" value="1" checked > Batizado
+															</label>
+															<label class="btn btn-light">
+																	<input type="radio" name="TP_BATIZADO" id="2" autocomplete="off" value="2"> Não Batizado
+															</label>
+												</div>
 										</div>
 
+
+										
 										<div class="btn-group btn-group-justified" role="group">
 											 <div class="btn-group" role="group">
 													<button type="reset"  id="reset" class="btn btn-dark btn-block" style="z-index=1;width:100%;

@@ -33,8 +33,7 @@ try {
   }
  else
   {
-        enviarEmail($user,$senha);
-        $_SESSION['msg_log'] = "<script>	Swal.fire({
+         $_SESSION['msg_log'] = "<script>	Swal.fire({
           title: 'Este email não esta cadastrado em nosso sistema!!!',
                   type: 'error',
                   timer: 5000});</script>";
