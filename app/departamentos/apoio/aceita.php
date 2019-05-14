@@ -165,10 +165,10 @@ color: white;
 											<div class="form-group">
 												<div class="btn-group btn-group-toggle botoes btn-block" data-toggle="buttons">
 															<label class="btn btn-light active" >
-																	<input type="radio" name="TP_BATIZADO" id="1" autocomplete="off" value="1" checked > Batizado
+																	<input type="radio" name="TP_BATIZADO" id="1" autocomplete="off" value="sim" checked > Batizado
 															</label>
 															<label class="btn btn-light">
-																	<input type="radio" name="TP_BATIZADO" id="2" autocomplete="off" value="2"> Não Batizado
+																	<input type="radio" name="TP_BATIZADO" id="2" autocomplete="off" value="não"> Não Batizado
 															</label>
 												</div>
 										</div>
