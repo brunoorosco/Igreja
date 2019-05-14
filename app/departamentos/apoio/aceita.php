@@ -87,22 +87,46 @@ color: white;
 	   width: 100%; }
 
 		 .botoes .btn{
-	background-color: transparent;
-	border-color:  white;
-	color: white;
-	margin:auto;
-	width: 100%;
-	border-radius: 8px;
-	border-radius:1px solid #291212;
-	border-color:1px solid #291212;
+				background-color: rgba(23, 3, 3, 0.48);
+				border-color:  #cbcbcb;
+				color: gray;
+				margin:auto;
+				width: 100%;
+				border-radius: 8px;
+				border-radius:1px solid #291212;
+				border-color:1px solid #291212;
 
+}
+
+::-webkit-input-placeholder {
+   color: red;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: red;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: red;  
+}
+
+:-ms-input-placeholder {  
+   color: red;  
+}
+
+input::placeholder {
+ /* color: black;
+	background-color: red;
+	font-style: italic;*/
+  font-size: 1.0em;
+  
 }
 </style>
 	<body>
        <div class="container">
        		<div class="row"></div>
        				<div class="col-md-6 offset-md-3">
-									<form  class="formulario" id="form_aceitaJesus_" action="./aceita_DB.php" method="post"  >
+									<form  class="formulario" id="form_aceitaJesus" action="" method="post"  >
 										<h3  class="h3"style="text-align: center;">Aceitou/Reconciliou</h3><br>
 				 						<div class="form-group ">
 				 								<input type="text" name="nome" id="nome"class="form-control" placeholder="Nome Completo" required=""style="border-radius: 8px!important;
@@ -158,7 +182,7 @@ color: white;
 																<option >Aceitou</option>
 																<option >Reconciliou</option>
 														</select>
-													<input type="text" class="form-control data" name="cadastro" id="data" placeholder="Data que aceitou" maxlength="10"style="border-radius: 8px!important;
+													<input type="text" class="form-control data" name="cadastro" id="data" placeholder="Data que aceitou" maxlength="10" style="border-radius: 8px!important;
 													background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
 												</div>
 										

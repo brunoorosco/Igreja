@@ -6,6 +6,8 @@ require('../../_fonts/fpdf/fpdf.php');
   include ('../../_fonts/config/banco.php');
 // Connect to database...
 
+$GLOBALS["branch"] = ""; //variavel tipo global para o cabeçalho 
+
 class PDF extends FPDF
 {
 // Page header
@@ -18,7 +20,9 @@ function Header()
     // Move to the right
     $this->Cell(80);
     // Title
-    $this->Cell(30,10,'Encontro com Deus Nº 130',0,0,'C');
+    $this->Cell(30,10,'Encontro com Deus Nº 134',0,0,'C');
+    $this->Cell(-30,22,$GLOBALS["branch"],0,0,'C');
+  
     // Line break
     $this->Ln(20);
 }
@@ -52,9 +56,11 @@ $busca   = array(array("nome" => "nomeEnc", "width" => 80),
 //$pdf->AddPage();
 
 $pdf = new PDF();
+$GLOBALS["branch"] = "Mulheres"; //sempre inserir esta variavel tipo global antes de adicionar nova pagina
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->SetFont('Times','',12);
+
 
 
 
@@ -77,7 +83,57 @@ $name = "";
 
 
 $pdo = Banco::conectar();
-$sql = 'SELECT nomeEnc,telEnc,CEM FROM encontrista ORDER BY sexoEnc ASC, nomeEnc ASC';
+$sql = 'SELECT nomeEnc,telEnc,CEM FROM encontrista where sexoEnc = "feminino" ORDER BY nomeEnc ASC';
+$j =1;
+
+
+foreach($pdo->query($sql)as $row)
+          {
+            $pdf->SetX(15);
+              $code = $j++;
+              //$name =  $row['nomeEnc'];
+              //$tel = $row['telEnc'];
+              // $CEM =  $row['CEM'];
+
+            // $pdf->Cell($column['width'], 6, strtoupper($column['name']), 1, 0, 'L', 1);
+            $pdf->Cell(10, 6, $code, 0);
+              foreach ($busca as $column)
+              {
+                
+                $pdf->Cell($column['width'], 6, $row[$column['nome']], 0);
+                  // print_r($busca['nome']);
+              }
+              $pdf->Ln();
+                              							  
+              }
+
+
+
+
+$GLOBALS["branch"] = "Homens";//sempre inserir esta variavel tipo global antes de adicionar nova pagina
+$pdf->AddPage();
+$pdf->AliasNbPages();
+$pdf->SetFont('Times','',12);
+
+
+// Table header
+$pdf->SetFillColor(232, 232, 232);
+$pdf->SetFont('Arial', 'B', 10);
+ // Position at 1.5 cm from bottom
+ $pdf->SetX(15);
+foreach ($columns as $column)
+{
+    $pdf->Cell($column['width'], 6, strtoupper($column['name']), 1, 0, 'L', 1);
+}
+$pdf->Ln();
+
+// Table rows
+$pdf->SetFont('Arial', '', 10);
+
+$code = "";
+$name = "";
+
+$sql = 'SELECT nomeEnc,telEnc,CEM FROM encontrista where sexoEnc = "masculino"  ORDER BY  nomeEnc ASC';
 $j =1;
 
 
