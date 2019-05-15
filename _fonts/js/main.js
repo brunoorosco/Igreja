@@ -62,12 +62,15 @@ $(document).ready(function(){
 					success:function(response){ //retorna o echo do php
 					console.log(cargo);	
 					console.log(response);
-						if(response.mens1 == '1' && (cargo == 'Bispo') || (cargo == 'Pastor') || (cargo == 'Supervisor')  )senha();/*
-						Swal.fire({
-						title: response.mens1,
-						type:  response.mens2,
-						timer: 5000});*/
-						
+						if(response.mens1 == '1' && (cargo == 'Bispo') || (cargo == 'Pastor') || (cargo == 'Supervisor')  )senha();
+
+								if(response.mens1 == '1' && (cargo == 'Líder') || (cargo == 'Auxiliar') || (cargo == 'Membro') || (cargo == 'Anfitrião') ){
+								Swal.fire({
+								title: 'Cadastro realizado com sucesso!!!',
+								type:  'success',
+								timer: 5000});
+							}
+								
 						// se mens3 igual a 2 - indica que este cadastro já existe, possibilitando a edição do mesmo
 							if(response.mens3 == '2'){
 								Swal.fire({

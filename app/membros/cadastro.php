@@ -88,12 +88,11 @@ color: white;
 	   width: 100%; }
 </style>
 	<body>
-	<a title='Remover linha' class='deletrow' onclick="confirmExcluir($id)" href='javascript:;'><i class='fa fa-remove resultsfa5'></i></a>
-       <div class="container">										
+	     <div class="container">										
 
        		<div class="row"></div>
        				<div class="col-md-6 offset-md-3">
-									<form  class="formulario" id="ajax_form" action="" method="post"  >
+									<form  class="formulario" id="ajax_form_" action="./cadDB.php" method="post"  >
 										<h3  class="h3"style="text-align: center;">Cadastro de Membros</h3><br>
 				 						<div class="form-group ">
 				 								<input type="text" name="nome" id="nome"class="form-control" placeholder="Nome Completo" required=""style="border-radius: 8px!important;
@@ -167,6 +166,8 @@ color: white;
 		$('#cem').attr('disabled', true);
 
 		mascara();
+
+		tabela();
 	//	$('#senha').attr('disabled', true);
 	//	$('#senha').hide();
 /*

@@ -16,20 +16,20 @@
 
    ///////  VERIFICA SE USUARIO EMAIL JÁ ESTA CADASTRADO ///////////
 try{
-       $sql = "SELECT * FROM membros where email = '$email'";
-       $pdo = Banco::conectar();
-       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-       $exec =  $pdo->query($sql);
-       $rows = $exec->fetchAll(PDO::FETCH_ASSOC);
-       $total = count($rows);
-       Banco::desconectar();
+            $sql = "SELECT * FROM membros where email = '$email' AND nome = '$nome' ";
+            $pdo = Banco::conectar();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $exec =  $pdo->query($sql);
+            $rows = $exec->fetchAll(PDO::FETCH_ASSOC);
+            $total = count($rows);
+            Banco::desconectar();
 
-        if ($total > 0){
-         //   echo "Este membro já esta Cadastrado!!!";
-            //echo json_encode(array('mens1' => "Este membro já esta cadastrado!","mens2"=>"warning","mens3"=>"2" ));//mens3 = representa que usuario já existe no banco
-            echo json_encode(array('mens1' => "2","mens2"=>"1","mens3"=>"2" ));//mens3 = representa que usuario já existe no banco
-                }
-      else{
+                if ($total > 0 && $emai != ""){
+                //   echo "Este membro já esta Cadastrado!!!";
+                    //echo json_encode(array('mens1' => "Este membro já esta cadastrado!","mens2"=>"warning","mens3"=>"2" ));//mens3 = representa que usuario já existe no banco
+                    echo json_encode(array('mens1' => "2","mens2"=>"1","mens3"=>"2" ));//mens3 = representa que usuario já existe no banco
+                        }
+                else{
 
       //$senha = (geraSenha(6, false, true));
       // $senhaCrip = sha1($senha);

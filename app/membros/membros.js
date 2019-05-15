@@ -32,7 +32,7 @@ function maiuscula(z){
 }
 //FIM DA FUNÇÃO MASCARA MAIUSCULA
 
-$(document).ready(function() {
+function tabela(){
     $('#tabela_membros').DataTable( {
     "language": {
         "lengthMenu": "Mostrar _MENU_ itens por página",
@@ -48,4 +48,4 @@ $(document).ready(function() {
         
         }
     }
-    )});
+    )}
