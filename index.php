@@ -74,7 +74,7 @@
 
          events: [ <?php
                $pdo = Banco::conectar();
-               $sql = 'SELECT * FROM eventos';
+               $sql = 'SELECT * from eventos where inicioevento >= CUrdate()';
                foreach($pdo->query($sql)as $row_events) { ?>
                {
                id:     '<?php echo $row_events['id']; ?>',

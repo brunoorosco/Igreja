@@ -14,7 +14,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Cursos TMAC</title>
+		<title>Relatório</title>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
        <!-- <script src="../../_fonts/js/Chart.min.js"></script>-->
        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
@@ -77,7 +77,9 @@ body.iframe {
         </div>
         <div class="col-lg-3 col-md-6 col-sm-6 ">
             <div class="chart_container">
-                <div class="chart" id="finance-dept"><canvas id="canvas"></canvas></div>
+                <div class="chart" id="finance-dept">  
+                    <canvas id="GraficoBatizado"  width="30" height="30"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -110,6 +112,7 @@ body.iframe {
 window.onload = function() {
             grafico();
             grafico2();
+            graficoBatizado();
             
             
     }

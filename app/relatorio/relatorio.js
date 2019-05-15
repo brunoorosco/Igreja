@@ -678,3 +678,128 @@ function grafico()
           })
         }       
       
+        function graficoBatizado()
+  {
+    var canvas = document.getElementById("GraficoPizza");
+    var ctx = canvas.getContext("2d");
+
+    var graf1 = [];
+    var graf2 = [];
+    var labels = [];
+
+        var leitura = VerBanco( 0, 7, 0 );  //faz a leitura do mes de forma distinta 
+        for(var i in leitura) {            
+          labels.push(leitura[i].funcao);
+          graf1.push(leitura[i].quant);
+          ano = (leitura[1].ano);
+        
+                }
+  
+        //    labels[i] = labels[i].substring(4, 6)+"/"+labels[i].substring(0, 4);
+          
+  
+          totls = somarValores(graf1);
+
+                 
+          
+        let GraficoBatizado = canvas.getContext('2d');
+  
+        let chartt = new Chart(GraficoBatizado, {
+          type: 'doughnut',
+          data: {
+              labels: labels, 
+              datasets: [{
+              label: "Batizados",
+              data: graf1,
+              backgroundColor: [
+                              'rgba(255, 99, 132, 0.9)',
+                              'rgba(250, 250, 100, 0.95)',
+                              'rgba(255, 206, 86, 0.9)',
+                              'rgba(75, 192, 192, 0.9)'],
+                  borderColor: "#fff"
+              },
+              ]
+            },
+           options: {
+            elements: {
+              center: {
+                text: totls,
+                color: '#ababab', // Default is #000000
+                fontStyle: 'Arial', // Default is Arial
+                sidePadding: 15 // Defualt is 20 (as a percentage)
+              }
+            },
+            
+              responsive: true,
+              legend: {  //AJUSTES DAS LEGENDAS
+                display: true,
+                position: 'bottom',
+                labels: {
+                    fontColor: "#000",   
+                    boxWidth: 14,
+                    fontFamily: 'arial'
+                }
+            },
+              title: { //AJUSTE DO TITULO
+                display: true,
+                text: 'Pessoas Batizadas '+ ano +  ': ' + totls + ' pessoas',
+                fontSize: 20,
+                padding: 30
+              },
+                animateScale: true,
+                animateRotate: true,
+               
+                tooltips: {
+                  model: 'label',
+                   callbacks: {
+                     label: function(tooltipItem, data) {
+                       var dataset = data.datasets[tooltipItem.datasetIndex];
+                       var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                         return parseInt(previousValue) + parseInt(currentValue);
+                       });
+                       var currentValue = dataset.data[tooltipItem.index];
+                     //  console.log(currentValue);
+                       var percentage = Math.floor(((currentValue/total) * 100)+0.5);         
+                     //  console.log(percentage);
+                       //return labels[tooltipItem.index] + ": " + percentage + "% Equivale à: " + currentValue ;
+                       return "Total: " + currentValue ;
+                       
+                     }
+                 }
+                },
+
+                plugins:{
+                  datalabels: {
+                      formatter: function(value, ctx) {
+                          let sum = 0;
+                         // console.log(value);
+                          let dataArr = ctx.chart.data.datasets[0].data;
+                          dataArr.map(data => {
+                              sum += parseInt(data);
+                          //    console.log(sum);
+                          });
+                          let percentage = (value * 100 / sum).toFixed(0) + "%";
+                        
+                          return percentage;
+                      },
+                      font: {
+                           weight: "normal"
+                      },
+                      color: "#000"
+                  }
+                    }
+              },
+              layout: {
+                padding: {
+                    left: 10,
+                    right: 10,
+                    top: 00,
+                    bottom: 0
+                }
+              }, 
+            
+              
+             
+       
+          })
+        }       
