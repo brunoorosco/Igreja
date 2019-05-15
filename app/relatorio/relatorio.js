@@ -680,7 +680,7 @@ function grafico()
       
         function graficoBatizado()
   {
-    var canvas = document.getElementById("GraficoPizza");
+    var canvas = document.getElementById("GraficoBatizado");
     var ctx = canvas.getContext("2d");
 
     var graf1 = [];
