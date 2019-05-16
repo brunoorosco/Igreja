@@ -684,17 +684,23 @@ function grafico()
     var ctx = canvas.getContext("2d");
 
     var graf1 = [];
-    var graf2 = [];
+    var batizado = [];
     var labels = [];
+    var labels_bat = [];
 
         var leitura = VerBanco( 0, 7, 0 );  //faz a leitura do mes de forma distinta 
         for(var i in leitura) {            
           labels.push(leitura[i].funcao);
           graf1.push(leitura[i].quant);
           ano = (leitura[1].ano);
-        
                 }
   
+        var leitura = VerBanco( 0, 8, 0 );  //faz a leitura do mes de forma distinta 
+        for(var i in leitura) {            
+          labels.push(leitura[i].funcao);
+          batizado.push(leitura[i].bat);
+    
+                }
         //    labels[i] = labels[i].substring(4, 6)+"/"+labels[i].substring(0, 4);
           
   
@@ -707,18 +713,29 @@ function grafico()
         let chartt = new Chart(GraficoBatizado, {
           type: 'doughnut',
           data: {
-              labels: labels, 
+               
               datasets: [{
-              label: "Batizados",
+              label: "Aceitou",
               data: graf1,
               backgroundColor: [
                               'rgba(255, 99, 132, 0.9)',
                               'rgba(250, 250, 100, 0.95)',
                               'rgba(255, 206, 86, 0.9)',
-                              'rgba(75, 192, 192, 0.9)'],
+                               'rgba(75, 192, 192, 0.9)'],
                   borderColor: "#fff"
               },
-              ]
+              {
+                label: "Batizados",
+                data: batizado,
+                backgroundColor: [
+                                'rgba(255, 99, 132, 0.9)',
+                                'rgba(250, 250, 100, 0.95)',
+                                'rgba(255, 206, 86, 0.9)',
+                                'rgba(75, 192, 192, 0.9)'],
+                    borderColor: "#fff"
+                },
+              ],
+              labels: labels,
             },
            options: {
             elements: {
@@ -753,6 +770,8 @@ function grafico()
                   model: 'label',
                    callbacks: {
                      label: function(tooltipItem, data) {
+                                     
+                      //console.log(data.labels); 
                        var dataset = data.datasets[tooltipItem.datasetIndex];
                        var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
                          return parseInt(previousValue) + parseInt(currentValue);

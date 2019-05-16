@@ -38,6 +38,9 @@ switch ($selec){
        case 7:
             total($mes);
          break;
+       case 8:
+            batizado($mes);
+         break;
 
        default:
        return false;
@@ -154,6 +157,24 @@ function fun($funcao){
          $pdo = Banco::conectar();
          $data = array();
          $sql_= "SELECT aceit_reconc as funcao, COUNT(aceit_reconc) as quant, YEAR(cadastro) as ano FROM aceita_jesus where YEAR(cadastro)>'2018' GROUP BY aceit_reconc";
+         
+         foreach($pdo->query($sql_)as $row)
+            {       
+               $data[] = $row;
+            }
+      
+         //  echo $row['funcao'];
+         
+         // print ($data[0]);
+         print json_encode($data);
+         
+         }
+   
+      function batizado($funcao){
+
+         $pdo = Banco::conectar();
+         $data = array();
+         $sql_= "SELECT batizado as funcao, COUNT(batizado) as bat, YEAR(cadastro) as ano FROM aceita_jesus where YEAR(cadastro)>'2018' GROUP BY batizado";
          
          foreach($pdo->query($sql_)as $row)
             {       
