@@ -13,7 +13,9 @@ $(document).ready(function() {
               }
     }
   });
+
 });
+
 
 
 
@@ -31,3 +33,51 @@ $('#exampleModal').on('show.bs.modal', function (event) {
     modal.find('#detalhes').val(recipientdetalhes)
 
   });
+
+  
+  $(".rows").on('click',function() {
+     var horario;
+     var tableData = $(this).children("td").map(function(){  
+       return $(this).text();
+     }).get();
+    
+     nome = $.trim(tableData[1]);
+     console.log(nome);
+
+     $.ajax({
+      timeout: 3000,
+      type:'get',		//Definimos o método HTTP usado
+      dataType: 'json',	//Definimos o tipo de retorno
+      url: './funcao_encontro.php',//Definindo o arquivo onde serão buscados os dados
+      data:  {name: nome},//variaveis post e seus valores
+      success: function(dados){
+        for(var i=0;dados.length>i;i++){
+          //Adicionando registros retornados na tabela
+            $('#Modal-info div#obs').text('Observações: '+dados[i].observacao);
+            $('#Modal-info div#nome').text(dados[i].nomeEnc);
+            $('#Modal-info div#cem').text('CEM: '+dados[i].CEM);
+            $('#Modal-info div#tel').text('Telefone: '+dados[i].telEnc);
+            $('#Modal-info div#endereco').text('Endereço: '+dados[i].endEnc);
+            data = converteData(dados[i].nascEnc)
+            $('#Modal-info div#niver').text('Aniversário: '+data);
+          }
+        },
+        error: function(dados){
+
+          alert("Erro ao carregar os dados"+dados.msg);//se tiver alguma falha no acesso ao banco gerar um alert
+
+      }
+      });
+    
+        
+     $('#Modal-info').modal('show');
+});
+
+$('.btn-salvar').on('click',function(){
+  alert('Salvo');
+   $('#Modal-info').modal('hide');
+});
+
+function converteData(niver){
+  return niver.split('-').reverse().join('/');
+}

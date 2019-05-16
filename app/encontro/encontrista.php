@@ -20,11 +20,14 @@
     <style type="text/css">
     .table tbody tr:hover td, .table tbody tr:hover th {
         background-color: #9ACD32 !important;
+        cursor:pointer;
     }
     </style>
+
 </head>
 
 <body>
+        
         <div class="container">
               <div class="card">
                 <div class="card-header">
@@ -49,8 +52,8 @@
                             <!--<th scope="col">Aniversário</th>-->
                              <!--<th scope="col">Função</th>-->
                             <th scope="col">CEM</th>
-                            <th scope="col-sm-2">Ação</th>
-                        </tr>
+                            <th scope="col">Observação</th>
+                         </tr>
                     </thead>
                     <tbody>
                         <?php
@@ -59,7 +62,7 @@
                         $i = 1;
                         foreach($pdo->query($sql)as $row)
                         {
-                            echo '<tr>';
+                            echo '<tr class="rows">';
                             echo '<td>'.$i++.'</td>';
 			                      echo '<td class="text-left" scope="row">'. $row['nomeEnc'] . '</td>';
                          //   echo '<td>'. $row['endereco'] . '</td>';
@@ -67,22 +70,8 @@
                          //   echo '<td>'. $row['email'] . '</td>';
                          //   echo '<td>'.date("d/m",strtotime(str_replace('/','-',$row['nasc']))).'</td>';
                          //   echo '<td>'. $row['cargo'] . '</td>';
-                            echo '<td>'. $row['CEM'] . '</td>';
-                            ?>
-                            <td>
-                           <div class="btn-group btn-sm">
-                           <button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idEncontrista']; ?>"></button>
-
-                          <!--  <button type="button" class="btn btn-warning fas fa-edit disabled" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idEncontrista']; ?>" data-whatevernome="<?php echo $row['nomeEnc']; ?>"data-whateverdetalhes="<?php echo $row['']; ?>"></button>
-
-                            <button type="button" class="btn btn-danger fas fa-trash disabled"></button>-->
-                          </div>
-                            <?php
-                            /*
-                            echo '<a class="btn btn-warning btn-sm" href="update.php?id='.$row['idEncontrista'].'">Editar</a>';
-                            echo '';
-                            echo '<a class="btn btn-danger btn-sm" href="delete.php?id='.$row['idEncontrista'].'">Excluir</a>';*/
-                            echo '</td>';
+                            echo '<td>'. $row['CEM'] . '</td>';           
+                            echo '<td>'.$row['observacao'].'</td>';
                             echo '</tr>';
                             echo '<div class="row"></div>';
                       ?>
@@ -148,10 +137,12 @@
                                   <div class="form-group">
                                       <label for="recipient-name" class="control-label">Nome:</label>
                                       <input name="nome" type="text" class="form-control" id="recipient-name">
+                                      <p></p>
                                   </div>
                                   <div class="form-group">
                                     <label for="message-text" class="control-label">Detalhes:</label>
                                     <textarea name="detalhes" class="form-control" id="detalhes"></textarea>
+                                  
                                   </div>
                                 <input name="id" type="hidden" class="form-control" id="idrso" value="">
                                 <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
@@ -162,6 +153,44 @@
                  </div>
               </div>
             </div>
+
+            <div class="modal fade" id="Modal-info" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title " id="Modal-infoLabel">  <div id="nome"></div></h4>
+                      </div>
+                      <div class="modal-body">
+                          <div class="container-fluid">
+                              <div class="form-group row">
+                                <div class="col text-left"> 
+                                      <div id="niver"></div>
+                                </div>
+                                <div class="col-6">
+                                      <div id="cem"></div>
+                                </div>
+                              </div>
+                                <div class="form-group row">
+                                      <div class="col text-left">
+                                          <div id="endereco"></div>
+                                      </div>
+                                </div>
+                                <div class="form-group row">
+                                     <div class="col text-left">  
+                                        <div id="tel"></div>
+                                     </div>
+                                </div>
+                                <div class="form-group row">
+                                      <div class="col text-left">
+                                         <div id="obs"></div>
+                                      </div>
+                                </div>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
 
     
 <script src="encontrista.js" type="text/javascript"></script>  

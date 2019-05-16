@@ -60,29 +60,33 @@ body.iframe {
     </head>
     <body>
  
-     <div class="wrapper">
+<div class="wrapper">
     <div class="row">
         <div class="col-lg-6 col-md-12 col-sm-12">
             <div class="chart_container">
-                <div class="chart" id="score-card"> <canvas id="Grafico"></canvas></div>
+                <div class="chart" id="score-card"> 
+                    <canvas id="Grafico"></canvas>
+                </div>
             </div>
         </div>
    
         <div class="col-lg-6 col-md-12 col-sm-12 ">
-            <div class="chart_container">
+        <div class="row">
+            <div class="chart_container col-6">
                 <div class="chart" id="score-card"> 
-                  <canvas id="GraficoPizza"  width="30" height="30"></canvas>
+                  <canvas id="GraficoPizza" height="310" ></canvas>
+                </div>
+            </div>    
+          
+            <div class="chart_container col-6">
+                <div class="chart" id="score-card">  
+                    <canvas id="GraficoBatizado" height="310"></canvas>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-12 col-sm-12 ">
-            <div class="chart_container">
-                <div class="chart" id="finance-dept">  
-                    <canvas id="GraficoBatizado"  width="30" height="30"></canvas>
-                </div>
-            </div>
+           </div> 
         </div>
     </div>
+</div> 
     <!--<div class="row">
         <div class="col-md-4 col-sm-12">
             <div class="chart_container">
@@ -105,11 +109,9 @@ body.iframe {
             <div class="chart_container">
                 <div class="chart" id="score-card"></div>
             </div>-->
-    </div>
-</div>
-      
+         
      <script>
-window.onload = function() {
+            window.onload = function() {
             grafico();
             grafico2();
             graficoBatizado();

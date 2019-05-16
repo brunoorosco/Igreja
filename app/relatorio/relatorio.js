@@ -678,7 +678,7 @@ function grafico()
           })
         }       
       
-        function graficoBatizado()
+function graficoBatizado()
   {
     var canvas = document.getElementById("GraficoBatizado");
     var ctx = canvas.getContext("2d");
@@ -688,23 +688,14 @@ function grafico()
     var labels = [];
     var labels_bat = [];
 
-        var leitura = VerBanco( 0, 7, 0 );  //faz a leitura do mes de forma distinta 
-        for(var i in leitura) {            
-          labels.push(leitura[i].funcao);
-          graf1.push(leitura[i].quant);
-          ano = (leitura[1].ano);
-                }
-  
         var leitura = VerBanco( 0, 8, 0 );  //faz a leitura do mes de forma distinta 
         for(var i in leitura) {            
           labels.push(leitura[i].funcao);
-          batizado.push(leitura[i].bat);
-    
-                }
-        //    labels[i] = labels[i].substring(4, 6)+"/"+labels[i].substring(0, 4);
-          
+          batizado.push(leitura[i].quant);
+          ano = (leitura[1].ano);
+                } 
   
-          totls = somarValores(graf1);
+          totls = somarValores(batizado);
 
                  
           
@@ -714,22 +705,11 @@ function grafico()
           type: 'doughnut',
           data: {
                
-              datasets: [{
-              label: "Aceitou",
-              data: graf1,
-              backgroundColor: [
-                              'rgba(255, 99, 132, 0.9)',
-                              'rgba(250, 250, 100, 0.95)',
-                              'rgba(255, 206, 86, 0.9)',
-                               'rgba(75, 192, 192, 0.9)'],
-                  borderColor: "#fff"
-              },
+              datasets: [
               {
                 label: "Batizados",
                 data: batizado,
                 backgroundColor: [
-                                'rgba(255, 99, 132, 0.9)',
-                                'rgba(250, 250, 100, 0.95)',
                                 'rgba(255, 206, 86, 0.9)',
                                 'rgba(75, 192, 192, 0.9)'],
                     borderColor: "#fff"

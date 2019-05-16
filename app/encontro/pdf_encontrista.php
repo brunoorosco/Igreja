@@ -7,7 +7,14 @@ require('../../_fonts/fpdf/fpdf.php');
 // Connect to database...
 
 $GLOBALS["branch"] = ""; //variavel tipo global para o cabeçalho 
+$GLOBALS["encontro"] = "";
 
+         ///FUNÇÃO PARA INSERIR PROXIMO Nº DE ENCONTRO
+               $pdo = Banco::conectar();
+               $sql = 'SELECT * from info_encontro where data_inicio >= CUrdate() limit 1';
+               foreach($pdo->query($sql)as $row_events) { $GLOBALS["encontro"]  =  $row_events['n_encontro']; }
+        //////////////////////////////////////////////
+               
 class PDF extends FPDF
 {
 // Page header
@@ -20,7 +27,7 @@ function Header()
     // Move to the right
     $this->Cell(80);
     // Title
-    $this->Cell(30,10,'Encontro com Deus Nº 134',0,0,'C');
+    $this->Cell(30,10,'Encontro com Deus Nº: '.$GLOBALS["encontro"],0,0,'C');
     $this->Cell(-30,22,$GLOBALS["branch"],0,0,'C');
   
     // Line break

@@ -174,7 +174,7 @@ function fun($funcao){
 
          $pdo = Banco::conectar();
          $data = array();
-         $sql_= "SELECT batizado as funcao, COUNT(batizado) as bat, YEAR(cadastro) as ano FROM aceita_jesus where YEAR(cadastro)>'2018' GROUP BY batizado";
+         $sql_= "SELECT batizado as funcao, COUNT(batizado) as quant, YEAR(cadastro) as ano FROM aceita_jesus where YEAR(cadastro)>'2018' GROUP BY batizado";
          
          foreach($pdo->query($sql_)as $row)
             {       
