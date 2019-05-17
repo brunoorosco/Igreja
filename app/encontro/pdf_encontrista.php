@@ -1,18 +1,20 @@
 <?php
 //include("mpdf60/mpdf.php");
+include_once("../../_fonts/config/funcoes.php");
 require('../../_fonts/fpdf/fpdf.php');
+
 
 //Connect to your database
   include ('../../_fonts/config/banco.php');
 // Connect to database...
 
+
 $GLOBALS["branch"] = ""; //variavel tipo global para o cabeçalho 
 $GLOBALS["encontro"] = "";
 
          ///FUNÇÃO PARA INSERIR PROXIMO Nº DE ENCONTRO
-               $pdo = Banco::conectar();
-               $sql = 'SELECT * from info_encontro where data_inicio >= CUrdate() limit 1';
-               foreach($pdo->query($sql)as $row_events) { $GLOBALS["encontro"]  =  $row_events['n_encontro']; }
+                $teste =  encontro();
+                $GLOBALS["encontro"] = $teste;
         //////////////////////////////////////////////
                
 class PDF extends FPDF

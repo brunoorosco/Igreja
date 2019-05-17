@@ -21,6 +21,7 @@
 $(document).ready(function(){
 				jQuery('#formulario_encontrista').submit(function(){
 					var dados = $(this).serialize();
+					console.log(dados);
 						$.ajax({
 						type:'POST',
 						url: "../../app/encontro/cad_DB_Encontrista.php",
@@ -132,6 +133,7 @@ $(document).ready(function(){
         	$('#end').val("");
         	$('#sexo').val("");
         	$('#supervisao').val("");
+        	$('cem').val("");
           //.not('.button,:submit,:reset,:hidden')
           //.val('')
           //.removeAttr('checked')

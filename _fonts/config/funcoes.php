@@ -143,7 +143,7 @@ function encontro(){
 $pdo = Banco::conectar();
 $sql = 'SELECT * from info_encontro where data_inicio >= CUrdate() limit 1';
 foreach($pdo->query($sql)as $row_events) { 
-  $data[]  =  $row_events['n_encontro']; 
+  $data  =  $row_events['n_encontro']; 
 }
-echo $data;
+return $data;
 }

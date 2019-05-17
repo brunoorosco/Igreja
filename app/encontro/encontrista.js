@@ -58,8 +58,7 @@ $('#exampleModal').on('show.bs.modal', function (event) {
             $('#Modal-info div#cem').text('CEM: '+dados[i].CEM);
             $('#Modal-info div#tel').text('Telefone: '+dados[i].telEnc);
             $('#Modal-info div#endereco').text('Endereço: '+dados[i].endEnc);
-            data = converteData(dados[i].nascEnc)
-            $('#Modal-info div#niver').text('Aniversário: '+data);
+            
           }
         },
         error: function(dados){

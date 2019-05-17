@@ -70,7 +70,7 @@ body.iframe {
             </div>
         </div>
    
-        <div class="col-lg-6 col-md-12 col-sm-12 ">
+        <div class="col-lg-6 col-md-12 col-sm-12" id="score_card" >
         <div class="row">
             <div class="chart_container col-6">
                 <div class="chart" id="score-card"> 

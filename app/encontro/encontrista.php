@@ -31,7 +31,7 @@
         <div class="container">
               <div class="card">
                 <div class="card-header">
-                    <h3 class="text-center">Lista de Encontrista - Encontro <?php echo "teste"; ?> </h3>
+                    <h3 class="text-center">Lista de Encontrista - Encontro nº <?php echo encontro();?> </h3>
                 </div>
               </div> 
           <br>
@@ -164,11 +164,11 @@
                       <div class="modal-body">
                           <div class="container-fluid">
                               <div class="form-group row">
-                                <div class="col text-left"> 
-                                      <div id="niver"></div>
+                                 <div class="col-6">
+                                      <div id="cem"></div>
                                 </div>
                                 <div class="col-6">
-                                      <div id="cem"></div>
+                                      <div id="tel"></div>
                                 </div>
                               </div>
                                 <div class="form-group row">
@@ -176,11 +176,7 @@
                                           <div id="endereco"></div>
                                       </div>
                                 </div>
-                                <div class="form-group row">
-                                     <div class="col text-left">  
-                                        <div id="tel"></div>
-                                     </div>
-                                </div>
+                                
                                 <div class="form-group row">
                                       <div class="col text-left">
                                          <div id="obs"></div>

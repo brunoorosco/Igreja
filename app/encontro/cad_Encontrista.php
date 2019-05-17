@@ -3,6 +3,8 @@
        include_once("../../_fonts/config/funcoes.php");
        include_once "../../menu.php";
        if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
+        validarUsuario();
+         
 ?>
 
 <!DOCTYPE html>
@@ -92,7 +94,7 @@
        	<div class="row"></div>
        		<div class="col-md-6 offset-md-3">
           	<form class="formulario"  id="formulario_encontrista" action="" method="post" >
-          				<h3 class="h3">Inscrição de Encontristas</h3><br>
+          				<h3 class="h3">Inscrição de Encontristas</h3><p class="h3 text-center"> Encontro nº <?php echo encontro();?></p><br>
           				<div class="form-group ">
           				<input type="text" name="nome" id="nome" class="form-control" placeholder="Nome Completo" required="" style="border-radius: 8px!important;
                   background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
@@ -137,7 +139,7 @@
                               <option>Zô</option>
 	        						    </select>
                           <?php } else{ ?> 
-                          <input type="text" name="supervisao" id= "cem_input" class="form-control" placeholder="CEM" value="<?php echo carrega_dados(); ?>" style="border-radius: 8px!important;
+                          <input type="text" name="cem" id= "cem" class="form-control" placeholder="CEM" value="<?php echo carrega_dados(); ?>" style="border-radius: 8px!important;
 				                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;"> <?php } ?>
 
           				</div>
@@ -174,8 +176,8 @@
           $(this).css('color', 'white');
         });
         
-      $('#cem_input').css('color','a0a0a0');
-      $('#cem_input').attr('disabled', true);
+      $('#cem').css('color','a0a0a0');
+      $('#cem').attr('disabled', true);
 
         mascara();
     //    $('#cem').css('color','#707070');
