@@ -13,8 +13,8 @@ $GLOBALS["branch"] = ""; //variavel tipo global para o cabeçalho
 $GLOBALS["encontro"] = "";
 
          ///FUNÇÃO PARA INSERIR PROXIMO Nº DE ENCONTRO
-                $teste =  encontro();
-                $GLOBALS["encontro"] = $teste;
+                $encontro =  encontro();
+                $GLOBALS["encontro"] = $encontro;
         //////////////////////////////////////////////
                
 class PDF extends FPDF
@@ -93,6 +93,10 @@ $name = "";
 
 $pdo = Banco::conectar();
 $sql = 'SELECT nomeEnc,telEnc,CEM FROM encontrista where sexoEnc = "feminino" ORDER BY nomeEnc ASC';
+$sql = "SELECT * FROM encontro INNER JOIN encontrista
+    ON encontro.encontrista = encontrista.idEncontrista     
+    WHERE encontro.n_encontro = '$encontro' AND encontrista.sexoEnc = 'feminino'
+    ORDER BY encontrista.nomeEnc ASC";
 $j =1;
 
 
@@ -143,6 +147,10 @@ $code = "";
 $name = "";
 
 $sql = 'SELECT nomeEnc,telEnc,CEM FROM encontrista where sexoEnc = "masculino"  ORDER BY  nomeEnc ASC';
+$sql = "SELECT * FROM encontro INNER JOIN encontrista
+    ON encontro.encontrista = encontrista.idEncontrista     
+    WHERE encontro.n_encontro = '$encontro' AND encontrista.sexoEnc = 'masculino'
+    ORDER BY encontrista.nomeEnc ASC";
 $j =1;
 
 

@@ -25,6 +25,8 @@
   
       body {
     background-color: #f6f6f6;
+    margin: 0;  
+     padding: 0;
 }
 
 body.iframe {
@@ -38,7 +40,7 @@ body.iframe {
 .chart_container {
  
     margin-bottom: 15px;
-    background: #fff;
+     background: #fff;
     -webkit-box-shadow: 0 0 5px 0 #ddd;
     box-shadow: 0 0 5px 0 #ddd;
     border-radius: 2px;
@@ -46,16 +48,47 @@ body.iframe {
 
 .chart {
     height: 400px;
+    padding: 5px 5px 5px 5px;
+
 }
 
 #score-card {
-    height: auto;
+    height: 400px; 
 }
 
 .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
     padding-left: 10px;
     padding-right: 10px;
 }
+
+.row > div p {
+    background: #fff;
+    padding: 5px 5px 5px 5px;
+    margin: 5px 5px 5px 5px ;
+
+    }
+
+    /* substitua 200px pela altura do quadro com duas linhas, "MELHOR" */
+    .min-height-200 { 
+        min-height: 100px; 
+        margin: 5px 5px 5px 5px;
+        border-radius: 8px;
+       
+         } 
+
+        #my-div {
+          background-color:#fff;
+         
+          height: 100px;
+          }
+
+          a.fill-div {
+          text-align: center;
+          display: block;
+          height: 100%;
+          width: 100%;
+          text-decoration: none;
+          }
     </style>
     </head>
     <body>
@@ -65,50 +98,56 @@ body.iframe {
         <div class="col-lg-6 col-md-12 col-sm-12">
             <div class="chart_container">
                 <div class="chart" id="score-card"> 
-                    <canvas id="Grafico"></canvas>
+                    <canvas id="Grafico" style="position: relative; height:60vh; width:80vw;"></canvas>
                 </div>
             </div>
         </div>
    
         <div class="col-lg-6 col-md-12 col-sm-12" id="score_card" >
-        <div class="row">
-            <div class="chart_container col-6">
+        <div class="row chart_container" >
+            <div class="col-6">
                 <div class="chart" id="score-card"> 
-                  <canvas id="GraficoPizza" height="310" ></canvas>
+                  <canvas id="GraficoPizza"></canvas>
                 </div>
             </div>    
           
-            <div class="chart_container col-6">
+            <div class="col-6 ">
                 <div class="chart" id="score-card">  
-                    <canvas id="GraficoBatizado" height="310"></canvas>
+                    <canvas id="GraficoBatizado"></canvas>
                 </div>
             </div>
            </div> 
         </div>
     </div>
-</div> 
-    <!--<div class="row">
-        <div class="col-md-4 col-sm-12">
-            <div class="chart_container">
-                <div class="chart" id="salary"></div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-12">
-            <div class="chart_container">
-                <div class="chart" id="grade-composition"></div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-12">
-            <div class="chart_container">
-                <div class="chart" id="employment-date"></div>
-            </div>
-        </div>
-    </div>
+
     <div class="row">
-        <div class="col-xs-12">
+         <div class="col-lg-6 col-md-12 col-sm-12" >
             <div class="chart_container">
-                <div class="chart" id="score-card"></div>
-            </div>-->
+                <div class="chart" id="score_card">
+                    <h3 class="text-center"> CEM's - Quantidade de Membros</h3>
+                            <div class="row">
+                                <div  id="my-div" class="col border bg-light min-height-200" style="margin-left: 30px;"><a href="#" class="fill-div"></a></div>
+                                <div class="col border bg-light min-height-200">Cadastro de Equipe</div>
+                                <div class="col border bg-light min-height-200">col</div>
+                                <div class="col border bg-light min-height-200" style="margin-right: 30px;">col</div>
+                            </div>
+                        <div class="row" >
+                                <div class="col border bg-light min-height-200" style="margin-left: 30px;">col</div>
+                                <div class="col border bg-light min-height-200">col</div>
+                                <div class="col border bg-light min-height-200">col</div>
+                                <div class="col border bg-light min-height-200" style="margin-right: 30px;">col</div>
+                        </div>
+
+                    </div>
+                </div>
+         </div>
+                <div class="col-lg-6 col-md-12 col-sm-12"  style="margin-left: -15px; margin-right:15px;">
+                    <div class="chart_container">
+                        <div class="chart" id="score_card"></div>
+                    </div>
+                </div>
+          </div>
+    </div>
          
      <script>
             window.onload = function() {

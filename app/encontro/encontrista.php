@@ -5,6 +5,7 @@
  include_once("../../menu.php");
  
  validarUsuario();
+ $encontro = encontro();
 
 ?>
 <!DOCTYPE html>
@@ -15,23 +16,36 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    
     <title>Encontrista</title>
-
+   
     <style type="text/css">
     .table tbody tr:hover td, .table tbody tr:hover th {
         background-color: #9ACD32 !important;
         cursor:pointer;
     }
+    .toolbar {
+    float:left;
+    margin-left: 350px;
+    padding-bottom: -11px;
+    }
+    .dataTables_length{
+      width:300px !important;
+    }
+    #tabela_encontrista_length{
+      width:300px !important;
+    }
+    
     </style>
 
 </head>
 
 <body>
-        
+
         <div class="container">
               <div class="card">
                 <div class="card-header">
-                    <h3 class="text-center">Lista de Encontrista - Encontro nº <?php echo encontro();?> </h3>
+                    <h3 class="text-center">Lista de Encontrista - Encontro nº <?php echo $encontro;?> </h3>
                 </div>
               </div> 
           <br>
@@ -40,7 +54,7 @@
                     <a href="create.php" class="btn btn-success">Adicionar</a>
                 </p>-->
 
-                <table class="table table-striped table-sm table-hover text-center" id="tabela_encontrista">
+                <table class="table table-striped table-sm table-hover text-center" id="tabela_encontrista" cellspacing="0" width="100%">
                     <thead >
                         <tr>
 
@@ -58,7 +72,11 @@
                     <tbody>
                         <?php
                         $pdo = Banco::conectar();
-                        $sql = 'SELECT * FROM encontrista ORDER BY sexoEnc ASC, nomeEnc ASC';
+                        //$sql = 'SELECT * FROM encontrista ORDER BY sexoEnc ASC, nomeEnc ASC';
+                        $sql = "SELECT * FROM encontro INNER JOIN encontrista
+                                  ON encontro.encontrista = encontrista.idEncontrista     
+                                  WHERE encontro.n_encontro = '$encontro' 
+                                  ORDER BY encontrista.sexoEnc ASC, encontrista.nomeEnc ASC";
                         $i = 1;
                         foreach($pdo->query($sql)as $row)
                         {

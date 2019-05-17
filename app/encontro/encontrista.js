@@ -1,5 +1,7 @@
 $(document).ready(function() {
-    $('#tabela_encontrista').DataTable( {
+    var table = $('#tabela_encontrista').DataTable( {
+         
+              
             "language": {
             "lengthMenu": "Mostrar _MENU_ itens por página",
             "zeroRecords": "Nenhum Item Encontrado",
@@ -12,8 +14,9 @@ $(document).ready(function() {
                 "next": "Próximo"
               }
     }
+    
   });
-
+  
 });
 
 

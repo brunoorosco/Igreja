@@ -1,4 +1,7 @@
 <?php
+include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/banco.php");
+include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/funcoes.php");
+   
     if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
     global $URLBASE;
     $URLBASE = "http://localhost/www/igreja/";
@@ -110,7 +113,7 @@ border-radius: 6px 0 6px 6px;
                       <ul class="dropdown-menu multi-level" aria-labelledby="navbarDropdownMenuLink">
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Cadastro</a>
                           <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/encontro/cad_Encontrista.php'?>">Encontrista</a></li>
+                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/encontro/cad_Encontrista.php'?>">Encontrista nº <?php echo encontro();?> </a></li>
                             <!--<li><a class="dropdown-item disabled" href="">Equipe</a></li>-->
                             <li><a class="dropdown-item" href="<?= $URLBASE.'app/membros/cadastro.php'?>">Membro</a></li>
                            <!-- <li><a class="dropdown-item" href="<?= $URLBASE.'app/calendario/cadastroEvento.php'?>">Evento</a></li>-->
