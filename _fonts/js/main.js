@@ -17,40 +17,8 @@
 	}
 //////////////////////////////////////////////////////////////////////////////////////////
 
-/////////////////////////////////////////////////////////////////////////////////////////
-$(document).ready(function(){
-				jQuery('#formulario_encontrista').submit(function(){
-					var dados = $(this).serialize();
-					console.log(dados);
-						$.ajax({
-						type:'POST',
-						url: "../../app/encontro/cad_DB_Encontrista.php",
-						dataType: 'json',
-						data: dados,
-						success:function(response){ //retorna o echo do php
-
-							//alert(response);
-							Swal.fire({
-							title: response.mens1,
-							type:  response.mens2,
-							timer: 5000});
-							if(response.mens3 == '1')resetform();
-							//document.getElementById('#formulario_encontrista').reset();
-
-						},
-						erro: function(response) {
-							Swal.fire({
-							title: 'Erro ao cadastrar, tente novamente!!!',
-							type: 'error',
-							timer: 5000});
-						}
-					});
-
-					return false;
-					});
-//////////////////////////////////////////////////////////////////////////
-
 ////////////////////////////////////////////////////////////////////////////
+$(document).ready(function() {
 				$('#ajax_form').submit(function(){
 					var cargo = $('#cargo').val();
 					var dados = $(this).serialize();
@@ -133,7 +101,9 @@ $(document).ready(function(){
         	$('#end').val("");
         	$('#sexo').val("");
         	$('#supervisao').val("");
-        	$('cem').val("");
+        	$('#cem').val("");
+        	$('#cem_input').val("");
+        	$('#cem_sel').val("");
           //.not('.button,:submit,:reset,:hidden')
           //.val('')
           //.removeAttr('checked')

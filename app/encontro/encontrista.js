@@ -16,10 +16,72 @@ $(document).ready(function() {
     }
     
   });
+
+  jQuery('#formulario_encontrista').submit(function(){
+    var dados = $(this).serialize();
+      $.ajax({
+      type:'POST',
+      url: "./cad_DB_Encontrista.php",
+      dataType: 'json',
+      data: dados,
+      success:function(response){ //retorna o echo do php
+
+        //alert(response);
+        Swal.fire({
+        title: response.mens1,
+        type:  response.mens2,
+        timer: 5000});
+        if(response.mens3 == '1')resetform();
+        //document.getElementById('#formulario_encontrista').reset();
+
+      },
+      erro: function(response) {
+        Swal.fire({
+        title: 'Erro ao cadastrar, tente novamente!!!',
+        type: 'error',
+        timer: 5000});
+      }
+    });
+
+    return false;
   
+    });
+
+
 });
 
-
+function mouse(encontrista){
+      Swal.fire({
+        title: 'Você deseja excluir?',
+        text: "Você não poderá reverter isso!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim, excluir!'
+      }).then((result) => {
+        if (result.value) {
+          //função get para delete
+          $.ajax({
+            timeout: 3000,
+            type:'get',		//Definimos o método HTTP usado
+            dataType: 'json',	//Definimos o tipo de retorno
+            url: './funcao_encontro.php',//Definindo o arquivo onde serão buscados os dados
+            data:  {name: encontrista},//variaveis post e seus valores
+            success: function(dados){
+          
+          Swal.fire(
+            'Deletado!',
+            'Este encontrista foi deletado com sucesso.',
+            'success'
+              )
+          }
+        })
+      }
+    })
+        
+        return false;
+    }
 
 
 $('#exampleModal').on('show.bs.modal', function (event) {
@@ -38,6 +100,7 @@ $('#exampleModal').on('show.bs.modal', function (event) {
   });
 
   
+ 
   $(".rows").on('click',function() {
      var horario;
      var tableData = $(this).children("td").map(function(){  
@@ -83,3 +146,8 @@ $('.btn-salvar').on('click',function(){
 function converteData(niver){
   return niver.split('-').reverse().join('/');
 }
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////

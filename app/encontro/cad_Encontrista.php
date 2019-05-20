@@ -1,9 +1,10 @@
 <?php
-     	include_once("../../_fonts/config/banco.php");
+     	 include_once("../../_fonts/config/banco.php");
        include_once("../../_fonts/config/funcoes.php");
-       include_once "../../menu.php";
+       include_once("../../menu.php");
        if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
-        validarUsuario();
+      
+       validarUsuario();
          
 ?>
 
@@ -18,6 +19,8 @@
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script type="text/javascript" src="./encontrista.js"></script>
+
 
 		<title>Inscrição de Encontristas</title>
 
@@ -118,9 +121,9 @@
           								      <option>Masculino</option>
           						    </select>
                       <?php  if(($_SESSION['nivel'] == '1') || ($_SESSION['nivel'] == '4')){ ?>    
-          					    <select class="form-control" id="cem" name="cem" style="text: #fff !important;color: gray;border-radius: 8px!important;
+          					    <select class="form-control" id="cem_sel" name="cem" style="text: #fff !important;color: gray;border-radius: 8px!important;
                         background-color: rgba(23, 3, 3, 0.48)!important; border-radius:1px solid #291212 !important;">
-          										<option hidden>CEM</option>
+          										<option disable hidden value="">CEM</option>
 								              <option>Aldo</option>
 								              <option>Casais</option>
                               <option>Carapicuiba</option>
@@ -139,7 +142,7 @@
                               <option>Zô</option>
 	        						    </select>
                           <?php } else{ ?> 
-                          <input type="text" name="cem" id= "cem" class="form-control" placeholder="CEM" value="<?php echo carrega_dados(); ?>" style="border-radius: 8px!important;
+                          <input type="text" name="cem" id= "cem_input" class="form-control" placeholder="CEM" value="<?php echo carrega_dados(); ?>" style="border-radius: 8px!important;
 				                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;"> <?php } ?>
 
           				</div>
@@ -166,22 +169,23 @@
           		</div>
 
 		<script type="text/javascript" src="../../_fonts/js/jquery.mask.min.js"></script>
-		<script type="text/javascript" src="../../_fonts/js/sweetalert2.all.min.js"></script>
+	
 
 		<script type="text/javascript">
         $('#sexo').change(function(){
           $(this).css('color', 'white');
         });
-        $('#cem').change(function(){
+        $('#cem_sel').change(function(){
           $(this).css('color', 'white');
         });
         
-      $('#cem').css('color','a0a0a0');
-      $('#cem').attr('disabled', true);
+      $('#cem_input').css('color','a0a0a0');
+      $('#cem_input').attr('disabled', true);
 
         mascara();
     //    $('#cem').css('color','#707070');
 		    //$('#cem').attr('disabled', true);
+       
 		</script>
 	</body>
 </html>

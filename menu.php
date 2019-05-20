@@ -287,6 +287,7 @@ border-radius: 6px 0 6px 6px;
 <script src="<?= $URLBASE.'_fonts/js/main.js'?>"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src=" https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
 </body>
 </html>

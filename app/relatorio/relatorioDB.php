@@ -42,6 +42,12 @@ switch ($selec){
             batizado($mes);
          break;
 
+      case 10:
+         membros($mes);
+      break;
+
+
+
        default:
        return false;
        break;
@@ -147,10 +153,7 @@ function fun($funcao){
           } 
           print json_encode($data);
          
-         }
-
-
-       
+         }      
 
       function total($funcao){
 
@@ -181,12 +184,30 @@ function fun($funcao){
                $data[] = $row;
             }
       
-         //  echo $row['funcao'];
+         // echo $row['funcao'];
          
          // print ($data[0]);
          print json_encode($data);
          
          }
+         
+         function membros($funcao){
+
+            $pdo = Banco::conectar();
+            $data = array();
+            $sql_= "SELECT  COUNT(idmembros) as membros FROM membros where cem='$funcao'";
+            
+            foreach($pdo->query($sql_)as $row)
+               {       
+                  $data[] = $row;
+               }
+         
+            // echo $row['funcao'];
+            
+            // print ($data[0]);
+            print json_encode($data);
+            
+            }
    
     
 ?>

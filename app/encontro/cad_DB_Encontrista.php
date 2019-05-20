@@ -1,5 +1,5 @@
 <?php
-header("Content-type: text/html; charset=utf-8");
+
 require_once '../../_fonts/config/banco.php';
 require_once '../../_fonts/config/funcoes.php';
 
@@ -49,8 +49,8 @@ require_once '../../_fonts/config/funcoes.php';
              if( $stmt->execute()){
    
                $id = $db->lastinsertId();
-               $db = new db();
-               $db = $db->connect();
+             //  $db = new db();
+              // $db = $db->connect();
                $stmt = $db->prepare($sql_);
                $stmt->bindParam(':n_encontro',$n_encontro);
                $stmt->bindParam(':encontrista',$id);

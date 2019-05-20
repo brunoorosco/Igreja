@@ -16,6 +16,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.css">
     
     <title>Encontrista</title>
    
@@ -54,7 +55,7 @@
                     <a href="create.php" class="btn btn-success">Adicionar</a>
                 </p>-->
 
-                <table class="table table-striped table-sm table-hover text-center" id="tabela_encontrista" cellspacing="0" width="100%">
+                <table class="table table-striped table-sm table-hover text-center" id="tabela_encontrista" cellspacing="0" width="100%" >
                     <thead >
                         <tr>
 
@@ -69,7 +70,7 @@
                             <th scope="col">Observação</th>
                          </tr>
                     </thead>
-                    <tbody>
+                    <tbody onmousedown="" class="context-menu-one">
                         <?php
                         $pdo = Banco::conectar();
                         //$sql = 'SELECT * FROM encontrista ORDER BY sexoEnc ASC, nomeEnc ASC';
@@ -208,6 +209,57 @@
 
     
 <script src="encontrista.js" type="text/javascript"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.ui.position.js"></script>
+<script type="text/javascript">
+  
+/*  $(function(){
+    $.contextMenu({
+        selector: '.context-menu-one', 
+        callback: function(key, options) {
+            var m = "clicked: " + key + $(this).text();
+            window.console && console.log(m) || alert(m); 
+        },
+        items: {
+            "edit": {name: "Edit", icon: "edit", accesskey: "e"},
+            "cut": {name: "Cut", icon: "cut", accesskey: "c"},
+            // first unused character is taken (here: o)
+            "copy": {name: "Copy", icon: "copy", accesskey: "c o p y"},
+            // words are truncated to their first letter (here: p)
+            "paste": {name: "Paste", icon: "paste", accesskey: "cool paste"},
+            "delete": {name: "Delete", icon: "delete"},
+            "sep1": "---------",
+            "quit": {name: "Quit", icon: function($element, key, item){ return 'context-menu-icon context-menu-icon-quit'; }}
+        }
+    });
+});*/
+
+$(function(){
+    $('#tabela_encontrista').contextMenu({
+        selector: 'tr', 
+        callback: function(key, options) {
+            var m = "clicked: " + key + " on " + $(this).text();
+           
+           var tableData = $(this).children("td").map(function(){  
+              return $(this).text();
+            }).get();
+            
+            nome = $.trim(tableData[1]);
+            mouse(nome);
+            //window.console && console.log(m) || alert(nome); 
+        },
+        items: {
+         //   "edit": {name: "Edit", icon: "edit"},
+         //   "cut": {name: "Cut", icon: "cut"},
+         //   "copy": {name: "Copy", icon: "copy"},
+         //   "paste": {name: "Paste", icon: "paste"},
+            "delete": {name: "Delete", icon: "delete"},
+         //   "sep1": "---------",
+            "quit": {name: "Quit", icon: function($element, key, item){ return 'context-menu-icon context-menu-icon-quit'; }}
+        }
+    });
+});
+    </script>
 
 </body>
 

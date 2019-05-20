@@ -154,7 +154,7 @@ function grafico()
     }
   });
 
-  var graf1 = [];
+    var graf1 = [];
     var graf2 = [];
     var labels = [];
 
@@ -186,6 +186,9 @@ function grafico()
      //     console.log(labels);
     
   var primeiroGrafico = document.getElementById('Grafico');
+  var ctx = primeiroGrafico.getContext("2d");
+  ctx.canvas.width = 250;
+  ctx.canvas.height = 100;
     
   var Grafico = new Chart(primeiroGrafico, {
           type: 'bar',
@@ -207,12 +210,13 @@ function grafico()
           },
           options: {
             responsive: true,
+            maintainAspectRatio: false,
               legend: {
               position: 'bottom',
             },
             title: {
                 display: true,
-                text: 'Pessoas que Aceitaram e Reconciliaram',
+                text: 'Aceitaram e Reconciliaram',
                 fontSize: 20,
                 padding: 30
                
@@ -259,7 +263,7 @@ function grafico()
     var canvas = document.getElementById("GraficoPizza");
     var ctx = canvas.getContext("2d");
     ctx.canvas.width = 250;
-      ctx.canvas.height = 210;
+     ctx.canvas.height = 210;
 
     var graf1 = [];
     var graf2 = [];
@@ -277,10 +281,6 @@ function grafico()
           
   
           totls = somarValores(graf1);
-
-                 
-          
-        let GraficoPizza = canvas.getContext('2d');
   
         let chartt = new Chart(GraficoPizza, {
           type: 'doughnut',
@@ -309,6 +309,7 @@ function grafico()
             },
             
               responsive: true,
+              maintainAspectRatio: false,
               legend: {  //AJUSTES DAS LEGENDAS
                 display: true,
                 position: 'bottom',
@@ -320,7 +321,8 @@ function grafico()
             },
               title: { //AJUSTE DO TITULO
                 display: true,
-                text: 'Total em ' + ano +  ': ' + totls + ' pessoas',
+                //text: 'Total em ' + ano +  ': ' + totls + ' pessoas',
+                text: 'Aceitaram/Reconciliaram',
                 fontSize: 20,
                 padding: 30
               },
@@ -432,6 +434,7 @@ function graficoBatizado()
             },
             
               responsive: true,
+              maintainAspectRatio: false,
               legend: {  //AJUSTES DAS LEGENDAS
                 display: true,
                 position: 'bottom',
@@ -443,7 +446,8 @@ function graficoBatizado()
             },
               title: { //AJUSTE DO TITULO
                 display: true,
-                text: 'Pessoas Batizadas '+ ano +  ': ' + totls + ' pessoas',
+                text:'Batizados/ Não Batizados',
+               // text: 'Pessoas Batizadas '+ ano +  ': ' + totls + ' pessoas',
                 fontSize: 20,
                 padding: 30
               },
@@ -499,10 +503,24 @@ function graficoBatizado()
                     top: 00,
                     bottom: 0
                 }
-              }, 
-            
-              
-             
-       
+              },       
           })
         }       
+
+  function cem( cem ){
+          var retorno;
+          $.ajax({
+             url:    "relatorioDB.php",
+             type:   "get",
+             dataType: "json",
+             data:   { selec: "10" , mes: cem },
+             async: false})
+             .done(function( data ) {
+            // success: function( data ){
+                 retorno = data;    
+                 console.log(retorno);       
+             });
+             $.('#my-div').text(retorno);
+             return retorno;
+         }
+         
