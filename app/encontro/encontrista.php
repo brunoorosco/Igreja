@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.css">
     
+    <script src="encontrista.js" type="text/javascript"></script>
     <title>Encontrista</title>
    
     <style type="text/css">
@@ -50,7 +51,7 @@
                 </div>
               </div> 
           <br>
-          <div class="panel panel-primary">
+          <div class="panel panel-primary" id="tabela_teste">
                <div class="col-md-12 table-responsive"> <!--     <p>
                     <a href="create.php" class="btn btn-success">Adicionar</a>
                 </p>-->
@@ -208,37 +209,18 @@
                   </div>
 
     
-<script src="encontrista.js" type="text/javascript"></script>  
+  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.ui.position.js"></script>
-<script type="text/javascript">
-  
-/*  $(function(){
-    $.contextMenu({
-        selector: '.context-menu-one', 
-        callback: function(key, options) {
-            var m = "clicked: " + key + $(this).text();
-            window.console && console.log(m) || alert(m); 
-        },
-        items: {
-            "edit": {name: "Edit", icon: "edit", accesskey: "e"},
-            "cut": {name: "Cut", icon: "cut", accesskey: "c"},
-            // first unused character is taken (here: o)
-            "copy": {name: "Copy", icon: "copy", accesskey: "c o p y"},
-            // words are truncated to their first letter (here: p)
-            "paste": {name: "Paste", icon: "paste", accesskey: "cool paste"},
-            "delete": {name: "Delete", icon: "delete"},
-            "sep1": "---------",
-            "quit": {name: "Quit", icon: function($element, key, item){ return 'context-menu-icon context-menu-icon-quit'; }}
-        }
-    });
-});*/
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
-$(function(){
+<script>
+ $(function(){
     $('#tabela_encontrista').contextMenu({
         selector: 'tr', 
         callback: function(key, options) {
-            var m = "clicked: " + key + " on " + $(this).text();
+          //  var m = "clicked: " + key + " on " + $(this).text();
+            var m = key;
            
            var tableData = $(this).children("td").map(function(){  
               return $(this).text();
@@ -246,7 +228,16 @@ $(function(){
             
             nome = $.trim(tableData[1]);
             cem = $.trim(tableData[3]);
-            mouse(nome,cem);
+            linha = $.trim(tableData[0]);
+            
+            if(m == "delete"){
+                   mouse(nome,cem, linha);
+                          
+            }
+            else if(m == "quit") ;
+                       
+            
+           
             //window.console && console.log(m) || alert(nome); 
         },
         items: {
@@ -260,7 +251,50 @@ $(function(){
         }
     });
 });
-    </script>
+
+
+function mouse(encontrista, cem, linha){
+ 
+ Swal.fire({
+   title: 'Você deseja excluir?',
+   text: "Você não poderá reverter isso!",
+   type: 'warning',
+   showCancelButton: true,
+   confirmButtonColor: '#3085d6',
+   cancelButtonColor: '#d33',
+   confirmButtonText: 'Sim, excluir!'
+ }).then((result) => {
+   if (result.value) {
+     //função get para delete
+     $.ajax({
+       timeout: 3000,
+       type:'get',		//Definimos o método HTTP usado
+       dataType: 'json',	//Definimos o tipo de retorno
+       url: './delete_encontrista.php',//Definindo o arquivo onde serão buscados os dados
+       data:  {name: encontrista, cem:cem},//variaveis post e seus valores
+       success: function(dados){
+         
+     Swal.fire(
+       'Deletado!',
+       'O encontrista '+dados+' foi deletado com sucesso.',
+       'success'
+         )
+         removeLinha(linha);    
+     }
+   })
+ }
+})
+ 
+   return false;
+}
+
+// funcao remove uma linha da tabela
+function removeLinha(linha) {
+ // var i=linha.parentNode.parentNode.rowIndex;
+   document.getElementById('tabela_encontrista').deleteRow(linha);
+   
+}        
+</script>
 
 </body>
 

@@ -124,6 +124,7 @@ body.iframe {
          <div class="col-lg-6 col-md-12 col-sm-12" >
             <div class="chart_container">
                 <div class="chart" id="score_card">
+                    <div id="membros"></div>
                     <h3 class="text-center"> CEM's - Quantidade de Membros</h3>
                             <div class="row">
                                 <div  id="my-div" class="col border bg-light min-height-200" style="margin-left: 30px;"><a href="#" class="fill-div"></a></div>
@@ -154,6 +155,7 @@ body.iframe {
             grafico();
             grafico2();
             graficoBatizado();
+            cem("Lica");
             
             
     }

@@ -505,7 +505,9 @@ function graficoBatizado()
                 }
               },       
           })
-        }       
+        }      
+        
+        
 
   function cem( cem ){
           var retorno;
@@ -513,14 +515,35 @@ function graficoBatizado()
              url:    "relatorioDB.php",
              type:   "get",
              dataType: "json",
-             data:   { selec: "10" , mes: cem },
+             data:   { selec: "10" , mes: cem, funcao: "0"},
              async: false})
              .done(function( data ) {
             // success: function( data ){
                  retorno = data;    
-                 console.log(retorno);       
+                 for(var i=0;data.length>i;i++){
+                  //Adicionando registros retornados na tabela
+                    //$('#membros').append('<div id="adic_aluno">'+data[i].quant_membros+data[i].supervisao+'</div>');
+                    $('<div></div>', { id: data[i].supervisao, class: 'col border bg-light min-height-200', 'outro-atributo': data[i].quant_membros}).appendTo('#membros');
+                         document.getElementById(data[i].supervisao).innerHTML = "<h3>" + data[i].supervisao +"</h3>"+ "\n" + data[i].quant_membros;
+                  }
+                                    
              });
-             $.('#my-div').text(retorno);
+           
+               
+            var member= [];
+            var titulo= [];
+
+                for(var i in retorno) {
+
+              member.push(retorno[i].quant_membros);
+
+            }
+
+            console.log(member);
+            var div = document.getElementById("my-div");
+            
+             div.innerHTML = "<h3>" + member +"</h3>"+ "\n" + member;
+
              return retorno;
          }
          

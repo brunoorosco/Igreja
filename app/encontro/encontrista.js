@@ -17,6 +17,19 @@ $(document).ready(function() {
     
   });
 
+  cadastro();
+ 
+
+   /* var updater = setTimeout (function () {
+      $('#tabela_encontrista').load ('encontrista.php', 'update=true');
+      }, 3000);*/
+
+
+});
+
+     
+
+function cadastro(){
   jQuery('#formulario_encontrista').submit(function(){
     var dados = $(this).serialize();
       $.ajax({
@@ -31,7 +44,8 @@ $(document).ready(function() {
         title: response.mens1,
         type:  response.mens2,
         timer: 5000});
-        if(response.mens3 == '1')resetform();
+        if(response.mens3 == '1')
+        resetform();
         //document.getElementById('#formulario_encontrista').reset();
 
       },
@@ -47,41 +61,8 @@ $(document).ready(function() {
   
     });
 
+}
 
-});
-
-function mouse(encontrista, cem){
-      Swal.fire({
-        title: 'Você deseja excluir?',
-        text: "Você não poderá reverter isso!",
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Sim, excluir!'
-      }).then((result) => {
-        if (result.value) {
-          //função get para delete
-          $.ajax({
-            timeout: 3000,
-            type:'get',		//Definimos o método HTTP usado
-            dataType: 'json',	//Definimos o tipo de retorno
-            url: './delete_encontrista.php',//Definindo o arquivo onde serão buscados os dados
-            data:  {name: encontrista, cem:cem},//variaveis post e seus valores
-            success: function(dados){
-          
-          Swal.fire(
-            'Deletado!',
-            'O encontrista '+dados+' foi deletado com sucesso.',
-            'success'
-              )
-          }
-        })
-      }
-    })
-        
-        return false;
-    }
 
 
 $('#exampleModal').on('show.bs.modal', function (event) {

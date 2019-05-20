@@ -191,11 +191,11 @@ function fun($funcao){
          
          }
          
-         function membros($funcao){
+         function membros($cem){
 
             $pdo = Banco::conectar();
             $data = array();
-            $sql_= "SELECT  COUNT(idmembros) as membros FROM membros where cem='$funcao'";
+            $sql_= "SELECT  DISTINCT supervisao , COUNT(idmembros) as quant_membros  FROM membros GROUP BY supervisao";
             
             foreach($pdo->query($sql_)as $row)
                {       
