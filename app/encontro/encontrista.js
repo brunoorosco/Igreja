@@ -50,7 +50,7 @@ $(document).ready(function() {
 
 });
 
-function mouse(encontrista){
+function mouse(encontrista, cem){
       Swal.fire({
         title: 'Você deseja excluir?',
         text: "Você não poderá reverter isso!",
@@ -66,13 +66,13 @@ function mouse(encontrista){
             timeout: 3000,
             type:'get',		//Definimos o método HTTP usado
             dataType: 'json',	//Definimos o tipo de retorno
-            url: './funcao_encontro.php',//Definindo o arquivo onde serão buscados os dados
-            data:  {name: encontrista},//variaveis post e seus valores
+            url: './delete_encontrista.php',//Definindo o arquivo onde serão buscados os dados
+            data:  {name: encontrista, cem:cem},//variaveis post e seus valores
             success: function(dados){
           
           Swal.fire(
             'Deletado!',
-            'Este encontrista foi deletado com sucesso.',
+            'O encontrista '+dados+' foi deletado com sucesso.',
             'success'
               )
           }

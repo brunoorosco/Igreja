@@ -70,7 +70,7 @@
                             <th scope="col">Observação</th>
                          </tr>
                     </thead>
-                    <tbody onmousedown="" class="context-menu-one">
+                    <tbody  class="context-menu-one">
                         <?php
                         $pdo = Banco::conectar();
                         //$sql = 'SELECT * FROM encontrista ORDER BY sexoEnc ASC, nomeEnc ASC';
@@ -245,7 +245,8 @@ $(function(){
             }).get();
             
             nome = $.trim(tableData[1]);
-            mouse(nome);
+            cem = $.trim(tableData[3]);
+            mouse(nome,cem);
             //window.console && console.log(m) || alert(nome); 
         },
         items: {
