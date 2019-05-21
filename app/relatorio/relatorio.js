@@ -520,30 +520,27 @@ function graficoBatizado()
              .done(function( data ) {
             // success: function( data ){
                  retorno = data;    
+                 var j = '0';
+                 var ka= '0';
                  for(var i=0;data.length>i;i++){
                   //Adicionando registros retornados na tabela
-                    //$('#membros').append('<div id="adic_aluno">'+data[i].quant_membros+data[i].supervisao+'</div>');
-                    $('<div></div>', { id: data[i].supervisao, class: 'col border bg-light min-height-200', 'outro-atributo': data[i].quant_membros}).appendTo('#membros');
-                         document.getElementById(data[i].supervisao).innerHTML = "<h3>" + data[i].supervisao +"</h3>"+ "\n" + data[i].quant_membros;
-                  }
+                   
+                    console.log(ka);
+                      
+                    $('<div>', { id: data[i].supervisao, class: 'col border bg-light min-height-100'}).appendTo('#membros'+[ka]);
+                         document.getElementById(data[i].supervisao).innerHTML = "<h3>" + data[i].supervisao +"</h3>"+ "\n" +"<h2 id='fonte'>"+ data[i].quant_membros+"</h2>";
+                         if(++j >= '4')
+                         {   j='0';
+                             ka++;
+                             
+                         }
+                       
+                  
+                        }
                                     
              });
            
                
-            var member= [];
-            var titulo= [];
-
-                for(var i in retorno) {
-
-              member.push(retorno[i].quant_membros);
-
-            }
-
-            console.log(member);
-            var div = document.getElementById("my-div");
-            
-             div.innerHTML = "<h3>" + member +"</h3>"+ "\n" + member;
-
              return retorno;
          }
          

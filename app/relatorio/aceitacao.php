@@ -16,9 +16,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Relatório</title>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+       
        <!-- <script src="../../_fonts/js/Chart.min.js"></script>-->
        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.5.0"></script>
+
 
         <script src="./relatorio.js"></script>
         <style type="text/css">
@@ -75,6 +78,15 @@ body.iframe {
         border-radius: 8px;
        
          } 
+         
+    .min-height-100 { 
+        min-height: 100px; 
+        margin: 5px 5px 5px 5px;
+        border-radius: 8px;
+        width: 100px;
+       
+         }
+
 
         #my-div {
           background-color:#fff;
@@ -89,6 +101,11 @@ body.iframe {
           width: 100%;
           text-decoration: none;
           }
+
+        h2#fonte{
+            font-family: 'Oswald', sans-serif;
+            font-size:50px;
+        }  
     </style>
     </head>
     <body>
@@ -124,21 +141,16 @@ body.iframe {
          <div class="col-lg-6 col-md-12 col-sm-12" >
             <div class="chart_container">
                 <div class="chart" id="score_card">
-                    <div id="membros"></div>
+               
+                   
                     <h3 class="text-center"> CEM's - Quantidade de Membros</h3>
-                            <div class="row">
-                                <div  id="my-div" class="col border bg-light min-height-200" style="margin-left: 30px;"><a href="#" class="fill-div"></a></div>
-                                <div class="col border bg-light min-height-200">Cadastro de Equipe</div>
-                                <div class="col border bg-light min-height-200">col</div>
-                                <div class="col border bg-light min-height-200" style="margin-right: 30px;">col</div>
-                            </div>
-                        <div class="row" >
-                                <div class="col border bg-light min-height-200" style="margin-left: 30px;">col</div>
-                                <div class="col border bg-light min-height-200">col</div>
-                                <div class="col border bg-light min-height-200">col</div>
-                                <div class="col border bg-light min-height-200" style="margin-right: 30px;">col</div>
-                        </div>
-
+                    <div class ="row text-center" id="membros0" style="margin-left: 10px;margin-right:10px;"> </div>
+                    <div class ="row text-center" id="membros1" style="margin-left: 10px;margin-right:10px;"> </div>
+                    <div class ="row text-center" id="membros2" style="margin-left: 10px;margin-right:10px;"> </div>
+                    <div class ="row text-center" id="membros3" style="margin-left: 10px;margin-right:10px;"> </div>
+                    <div class ="row text-center" id="membros4" style="margin-left: 10px;margin-right:10px;"> </div>
+                          
+                    
                     </div>
                 </div>
          </div>
