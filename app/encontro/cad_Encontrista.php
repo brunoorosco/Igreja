@@ -46,9 +46,8 @@
         background: rgba(45, 45, 125, 0.60);
         color: white;
         padding: 40px;
-        margin-top: 100px;
-        padding-bottom: 60px;
-        padding-bottom: 30px;
+        margin-top: 100px;       
+        padding-bottom: 40px;
         box-shadow: 10px 10px 5px rgba(6, 1, 1, 0.50);
         border-radius:8px;
       }
@@ -127,17 +126,19 @@
 								              <option>Aldo</option>
 								              <option>Casais</option>
                               <option>Carapicuiba</option>
-                              <option>Gledson/Vanessa</option>
+                              <option>Eliseu /Marlene</option>
+                              
+                              <option>Gledson /Vanessa</option>
                               <option>Itaqua</option>
                               <option>Itu</option>
                               <option>Jaqueline</option>
                               <option>Jd. kemel</option>
-                              <option>Pr. Joel</option>
+                              <option>Pr. Joel/ Regiane</option>
                               <option>Lika</option>
                               <option>Martins/Shirley</option>
                               <option>Mirtes</option>
                               <option>Novo Tempo(Valdirene)</option>
-                              <option>Pr.Laercio/Pra.Vera</option>
+                              <option>Pr.Laercio/ Vera</option>
                               <option>WAGUERSON</option>
                               <option>Zô</option>
 	        						    </select>

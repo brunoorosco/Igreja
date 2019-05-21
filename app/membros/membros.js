@@ -49,3 +49,14 @@ function tabela(){
         }
     }
     )}
+
+ $(document).ready(function() {
+       tabela();
+    
+       /* var updater = setTimeout (function () {
+          $('#tabela_encontrista').load ('encontrista.php', 'update=true');
+          }, 3000);*/
+    
+    
+    });
+    
