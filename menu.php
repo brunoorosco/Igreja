@@ -24,7 +24,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/funcoes.php");
     <style type="text/css">
 
     #conteudo { width: 500px; height: 300px;}
-
+    #sair{   cursor:pointer; }
   /*  .dropdown-submenu {
       position: relative;
       }
@@ -217,9 +217,9 @@ border-radius: 6px 0 6px 6px;
             <?php
 
                 if(isset($_SESSION['usuario'])){
-                    echo "<i class='text-secondary fa fa-user'> ".($_SESSION['usuario'])."</i>";?>
+                    echo "<a  href='#' id='perfil'><i class='text-secondary fa fa-user'> ".($_SESSION['usuario'])."</i></a>";?>
 
-                    <input type="button" class="btn btn-outline-secondary"  onclick="location.href='http://localhost/www/igreja/app/login/logout.php'" value="Sair"/>
+                    <input type="button" class="btn btn-outline-secondary" onclick="location.href='http://localhost/www/igreja/app/login/logout.php'" value="Sair"/>
 
                 <?php
                          }
@@ -282,6 +282,34 @@ border-radius: 6px 0 6px 6px;
     </div>
 </div></div>
 
+<div id="perfilModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myperfil" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Editar meu perfil</h3>
+                <button type="button" class="close font-weight-light" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+            <form method="post" action="">
+             <div class="form-row align-items-center">
+             <label>Insira seu e-mail de cadastro!!!</label>
+             <div class="col-sm-12 my-1">
+             <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroupUsername" name="txtemail" placeholder="Username" style="with:100px">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Fechar</button>
+                <button class="btn btn-primary" name="submit">Redefinir senha</button>
+            </div></form>
+        </div>
+    </div>
+</div></div>
 
 
 <!--<script src="<?= $URLBASE.'_fonts/js/jquery-3.3.1.min.js'?>"></script>-->

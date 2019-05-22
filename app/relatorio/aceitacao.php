@@ -70,7 +70,6 @@ body.iframe {
 }
 
 .row > div p {
-    background: #fff;
     padding: 5px 5px 5px 5px;
     margin: 5px 5px 5px 5px ;
 
@@ -85,7 +84,7 @@ body.iframe {
          } 
          
     .min-height-100 { 
-        min-height: 100px; 
+        min-height: 70px; 
         margin: 5px 5px 5px 5px;
         border-radius: 8px;
         width: 100px;
@@ -95,7 +94,7 @@ body.iframe {
 
         #my-div {
           background-color:#fff;
-         
+       
           height: 100px;
           }
 
@@ -107,10 +106,9 @@ body.iframe {
           text-decoration: none;
           }
 
-        h2#fonte{
-            font-family: 'Oswald', sans-serif;
-            font-size:50px;
-        }  
+        .counter { background-color: #0088cc; padding: 5px 0; border-radius: 5px;}
+        .count-title { font-size: 50px; font-weight: normal;  margin-top: 5px; margin-bottom: 0; text-align: center; color:white; font-family: 'Oswald', sans-serif;}
+        .count-text { font-size: 20px; font-weight: normal;  margin-top: 5px; margin-bottom: 0; text-align: center; color:white;}
     </style>
     </head>
     <body>
@@ -161,8 +159,9 @@ body.iframe {
                 <div class="chart_container">
                 <div class="chart" id="score_card">
                     <h3 class="text-center"> Encontro nº <?php echo encontro();?></h3>
-                    <div class ="row text-center" id="membros0" style="margin-left: 10px;margin-right:10px; margin-top:20px;"> </div>
+                    <div class ="row text-center counter" id="membros0" style="margin-left: 10px;margin-right:10px; margin-top:20px;"> </div>
                     <div class ="row text-center" id="membros1" style="margin-left: 10px;margin-right:10px;"> </div>
+
                     <div class ="row text-center" id="membros2" style="margin-left: 10px;margin-right:10px;"> </div>
                     <div class ="row text-center" id="membros3" style="margin-left: 10px;margin-right:10px;"> </div>
                     <div class ="row text-center" id="membros4" style="margin-left: 10px;margin-right:10px;"> </div>
@@ -179,7 +178,7 @@ body.iframe {
             grafico();
             grafico2();
             graficoBatizado();
-            cem("Lica");
+            cem();
             
             
     }

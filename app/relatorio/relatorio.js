@@ -509,13 +509,13 @@ function graficoBatizado()
         
         
 
-  function cem( cem ){
+  function cem(){
           var retorno;
           $.ajax({
              url:    "relatorioDB.php",
              type:   "get",
              dataType: "json",
-             data:   { selec: "10" , mes: cem, funcao: "0"},
+             data:   { selec: "10" , mes: "0", funcao: "0"},
              async: false})
              .done(function( data ) {
             // success: function( data ){
@@ -527,8 +527,8 @@ function graficoBatizado()
                    
                     console.log(ka);
                       
-                    $('<div>', { id: data[i].supervisao, class: 'col border bg-light min-height-100'}).appendTo('#membros'+[ka]);
-                         document.getElementById(data[i].supervisao).innerHTML = "<h3>" + data[i].supervisao +"</h3>"+ "\n" +"<h2 id='fonte'>"+ data[i].quant_membros+"</h2>";
+                    $('<div>', { id: data[i].supervisao, class: 'counter col border min-height-100'}).appendTo('#membros'+[ka]);
+                         document.getElementById(data[i].supervisao).innerHTML = "<h2 class='count-title'>" + data[i].quant_membros +"</h2>"+ "\n" +"<p class='count-text'>"+ data[i].supervisao+"</p>";
                          if(++j >= '4')
                          {   j='0';
                              ka++;

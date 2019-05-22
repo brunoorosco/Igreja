@@ -13,69 +13,13 @@
     <meta charset="utf-8">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="./style_painel.css" />
+    <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+    <script src="./painel.js"></script>
+
      <title>Secretaria Geral</title>
-    <style>
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 52px;
-  height: 24px;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
- }
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 20px;
-  width: 20px;
-  left: 4px;
-  bottom: 2px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 25px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-</style>
-</head>
+ </head>
 
 <body>
     <div class="container">
@@ -101,15 +45,28 @@ input:checked + .slider:before {
 
         </div>
         <div class="media text-muted pt-3">
-           <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <strong class="d-block text-gray-dark">@username</strong>
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-          </p>
-        </div>
+             <div class="card" id="filtro" style="width: 22rem;">
+                     <div class="card-header"><h5 class="card-title">Filtro de membros Cadastrados</h5></div>
+                        <div class="card-block">
+                          <br>
+                                <input type="range" class="custom-range" id="slider_filtro"  min="1" max="10" step="1">
+                           
+                              <div class="total">
+                                  <div class="totalInner">
+                                      <div class="price">
+                                      <span style="color: #808080;">Maior que </span><span id="priceValue">1</span><span style="color: #808080;"> Membros</span>
+                                      </div>
+                                     
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+           </div>
+          
         <div class="media text-muted pt-3">
            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <strong class="d-block text-gray-dark">@username</strong>
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+            
+        
           </p>
         </div>
         <small class="d-block text-right mt-3">
@@ -157,33 +114,13 @@ input:checked + .slider:before {
 
   </div>
 
-      <script>
-      function verificaChecks() {
-        var aChk = document.getElementsByName("item");
-        var bot;
-        for (var i=0;i<aChk.length;i++){
-            if (aChk[0].checked == true){
-           // CheckBox Marcado... Faça alguma coisa... Ex:
-          bot = 's';
-        //   console.log("marcado.");
-
-        }  else {
-          bot = 'n';
-         // console.log("não marcado.");// CheckBox Não Marcado... Faça alguma outra coisa...
-        }       
+  <script>
+            window.onload = function() {
+           atualiza("filtro_membros");
+            
     }
-    controle("todos_membros", bot);
-}
 
-function controle(nome_funcao, valor){	
-   $.get( "config_DB.php", { funcao: nome_funcao, status: valor } );
- }
-
-
-
-
-      </script>
-
+    </script> 
 
 </body>
 </html>

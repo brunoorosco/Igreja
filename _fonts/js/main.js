@@ -65,7 +65,42 @@ $(document).ready(function() {
 				return false;
 				});
 /////////////////////////////////////////////////////////////////////////////////////////////////
+$("#perfilModal").on('click',function() {
+	var horario;
+	var tableData = $(this).children("td").map(function(){  
+		return $(this).text();
+	}).get();
+ 
+	nome = $.trim(tableData[1]);
+	console.log(nome);
 
+	$.ajax({
+	 timeout: 3000,
+	 type:'get',		//Definimos o método HTTP usado
+	 dataType: 'json',	//Definimos o tipo de retorno
+	 url: './funcao_encontro.php',//Definindo o arquivo onde serão buscados os dados
+	 data:  {name: nome},//variaveis post e seus valores
+	 success: function(dados){
+		 for(var i=0;dados.length>i;i++){
+			 //Adicionando registros retornados na tabela
+				 $('#Modal-info div#obs').text('Observações: '+dados[i].observacao);
+				 $('#Modal-info div#nome').text(dados[i].nomeEnc);
+				 $('#Modal-info div#cem').text('CEM: '+dados[i].CEM);
+				 $('#Modal-info div#tel').text('Telefone: '+dados[i].telEnc);
+				 $('#Modal-info div#endereco').text('Endereço: '+dados[i].endEnc);
+				 
+			 }
+		 },
+		 error: function(dados){
+
+			 alert("Erro ao carregar os dados"+dados.msg);//se tiver alguma falha no acesso ao banco gerar um alert
+
+	 }
+	 });
+ 
+		 
+	$('#perfil').modal('show');
+});
 ////////////////////////////////////////////////////////////////////////////////////////////////
 });
 

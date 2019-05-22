@@ -43,7 +43,7 @@ switch ($selec){
          break;
 
       case 10:
-         membros($mes);
+         membros();
       break;
 
 
@@ -191,19 +191,26 @@ function fun($funcao){
          
          }
          
-         function membros($cem){
+         function membros(){
 
             $pdo = Banco::conectar();
             $data = array();
+
+            $sql= " SELECT _status FROM config_sistem where funcao='filtro_membros'";
+            $filtro = $pdo->query($sql)->fetch();
+            $fil = $filtro[0];
+           
+           
+            
             //$sql_= "SELECT  DISTINCT supervisao , COUNT(idmembros) as quant_membros  FROM membros GROUP BY supervisao";
-            $sql_= "SELECT DISTINCT(supervisao), COUNT(supervisao)  as quant_membros  FROM membros group by supervisao HAVING COUNT(supervisao) > '2'";
+            $sql_= "SELECT DISTINCT(supervisao), COUNT(supervisao)  as quant_membros  FROM membros group by supervisao HAVING COUNT(supervisao) > '$fil'";
             
             foreach($pdo->query($sql_)as $row)
                {       
                   $data[] = $row;
                }
-         
-            // echo $row['funcao'];
+               $pdo=null;   
+            //echo $row['funcao'];
             
             // print ($data[0]);
             print json_encode($data);
