@@ -126,6 +126,9 @@ border-radius: 6px 0 6px 6px;
                             <li><a class="dropdown-item" href="<?= $URLBASE.'app/membros/membros.php'?>">Membros</a></li>
                           </ul>
                         </li>
+                        <!--//  só vai acessar as pessoas que tiverem permissão de acesso a um dos grupos abaixo     -->
+
+            <?php  if((isset($_SESSION['nivel'])) && ($_SESSION['nivel'] == '1') || ($_SESSION['nivel'] == '4')){ ?>  
                 <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Cursos</a>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="<?= $URLBASE.'app/curso/Cursos.php'?>">Novo Curso</a></li>
@@ -133,6 +136,7 @@ border-radius: 6px 0 6px 6px;
                       <li><a class="dropdown-item" href="<?= $URLBASE.'app/membros/membros.php'?>">Informações de Curso</a></li>
                     </ul>
                 </li>
+            <?php } ?>
                 <li class="divider"></li>
                 <li class="dropdown-submenu">
                     <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Ministérios</a>
