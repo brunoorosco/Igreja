@@ -156,19 +156,18 @@ body.iframe {
             </div>
          </div>
                 <div class="col-lg-6 col-md-12 col-sm-12"  style="margin-left: -15px; margin-right:15px;">
-                <div class="chart_container">
-                <div class="chart" id="score_card">
-                    <h3 class="text-center"> Encontro nº <?php echo encontro();?></h3>
-                    <div class ="row text-center counter" id="membros0" style="margin-left: 10px;margin-right:10px; margin-top:20px;"> </div>
-                    <div class ="row text-center" id="membros1" style="margin-left: 10px;margin-right:10px;"> </div>
-
-                    <div class ="row text-center" id="membros2" style="margin-left: 10px;margin-right:10px;"> </div>
-                    <div class ="row text-center" id="membros3" style="margin-left: 10px;margin-right:10px;"> </div>
-                    <div class ="row text-center" id="membros4" style="margin-left: 10px;margin-right:10px;"> </div>
-                    <div class ="row text-center" id="membros5" style="margin-left: 10px;margin-right:10px;"> </div>
-                    <div class ="row text-center" id="membros6" style="margin-left: 10px;margin-right:10px;"> </div>
-                </div>
-            </div>
+                     <div class="chart_container">
+                            <div class="chart" id="score_card">
+                                <h3 class="text-center"> Último Encontro nº <?php echo ultimo_encontro();?></h3>
+                                <div class ="row text-center" id="encontrista0" style="margin-left: 10px;margin-right:10px; margin-top:20px;"> </div>
+                                <div class ="row text-center" id="encontrista1" style="margin-left: 10px;margin-right:10px;"> </div>
+                                <div class ="row text-center" id="encontrista2" style="margin-left: 10px;margin-right:10px;"> </div>
+                                <div class ="row text-center" id="encontrista3" style="margin-left: 10px;margin-right:10px;"> </div>
+                                <div class ="row text-center" id="encontrista4" style="margin-left: 10px;margin-right:10px;"> </div>
+                                <div class ="row text-center" id="encontrista5" style="margin-left: 10px;margin-right:10px;"> </div>
+                                <div class ="row text-center" id="encontrista6" style="margin-left: 10px;margin-right:10px;"> </div>
+                            </div>
+                        </div>
                 </div>
           </div>
     </div>
@@ -179,6 +178,7 @@ body.iframe {
             grafico2();
             graficoBatizado();
             cem();
+            encontrista();
             
             
     }

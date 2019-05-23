@@ -544,3 +544,38 @@ function graficoBatizado()
              return retorno;
          }
          
+  function encontrista(){
+          var retorno;
+          $.ajax({
+             url:    "relatorioDB.php",
+             type:   "get",
+             dataType: "json",
+             data:   { selec: "11" , mes: "0", funcao: "0"},
+             async: false})
+             .done(function( data ) {
+            // success: function( data ){
+                 retorno = data;    
+                 var j = '0';
+                 var ka= '0';
+                 for(var i=0;data.length>i;i++){
+                  //Adicionando registros retornados na tabela
+                   
+                    console.log(data[i].supervisao+" - "+data[i].quant_encontrista);
+                      
+                    $('<div>', { id: data[i].supervisao+"_enc", class: 'counter col border min-height-100'}).appendTo('#encontrista'+[ka]);
+                         document.getElementById(data[i].supervisao+"_enc").innerHTML = "<h2 class='count-title'>" + data[i].quant_encontrista +"</h2>"+ "\n" +"<p class='count-text'>"+ data[i].supervisao+"</p>";
+                         if(++j >= '4')
+                         {   j='0';
+                             ka++;
+                             
+                         }
+                       
+                  
+                        }
+                                    
+             });
+           
+               
+             return retorno;
+         }
+         

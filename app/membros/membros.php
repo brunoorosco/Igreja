@@ -68,7 +68,7 @@
 
                         while($row = $query->fetch(PDO::FETCH_ASSOC))
                         {
-                            echo '<tr>';
+                            echo '<tr style="height: 39px;">';
 			                      echo '<th class="text-left" scope="row">'. $row['nome'] . '</th>';
                           // echo '<td class="text-left">'. $row['endereco'] . '</td>';
                             echo '<td>'. $row['telefone'] . '</td>';

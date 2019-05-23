@@ -4,6 +4,8 @@
 if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
 require_once '../../_fonts/config/banco.php';
 require_once '../../_fonts/config/funcoes.php';
+# Informa qual o conjunto de caracteres será usado.
+header('Content-Type: text/html; charset=utf-8');
 
 $selec = $_GET['selec'];
 $func = $_GET['funcao'];
@@ -44,6 +46,9 @@ switch ($selec){
 
       case 10:
          membros();
+      break;
+      case 11:
+         encontrista();
       break;
 
 
@@ -199,8 +204,7 @@ function fun($funcao){
             $sql= " SELECT _status FROM config_sistem where funcao='filtro_membros'";
             $filtro = $pdo->query($sql)->fetch();
             $fil = $filtro[0];
-           
-           
+                      
             
             //$sql_= "SELECT  DISTINCT supervisao , COUNT(idmembros) as quant_membros  FROM membros GROUP BY supervisao";
             $sql_= "SELECT DISTINCT(supervisao), COUNT(supervisao)  as quant_membros  FROM membros group by supervisao HAVING COUNT(supervisao) > '$fil'";
@@ -217,5 +221,30 @@ function fun($funcao){
             
             }
    
+         function encontrista(){
+
+            $pdo = Banco::conectar();
+            $data = array();
+
+            $sql= " SELECT _status FROM config_sistem where funcao='filtro_membros'";
+            $filtro = $pdo->query($sql)->fetch();
+            $fil = $filtro[0];
+                                 
+            $sql_ = "SELECT DISTINCT encontrista.CEM as supervisao, COUNT(encontrista.idEncontrista) as quant_encontrista FROM encontro INNER JOIN encontrista  ON encontro.encontrista = encontrista.idEncontrista     
+            WHERE encontro.n_encontro = '130' group BY encontrista.CEM ";
+            
+            foreach($pdo->query($sql_)as $row)
+               {       
+                  $data[] = $row;
+               }
+               $pdo=null;   
+            //echo $row['funcao'];
+            
+            // print ($data[0]);
+            print json_encode($data);
+            
+            }
+   
+
     
 ?>
