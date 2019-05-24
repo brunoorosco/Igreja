@@ -20,80 +20,10 @@ include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/funcoes.php");
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?= $URLBASE.'_fonts/css/bootstrap.min.css'?>">
-    <style type="text/css">
-
-    #conteudo { width: 500px; height: 300px;}
-    #sair{   cursor:pointer; }
-  /*  .dropdown-submenu {
-      position: relative;
-      }
-
-      .dropdown-submenu a::after {
-      transform: rotate(-90deg);
-      position: absolute;
-      right: 6px;
-      top: .8em;
-      }
-
-    .dropdown-submenu .dropdown-menu {
-      top: 0;
-      left: 100%;
-      margin-left: .1rem;
-      margin-right: .1rem;
-      }
-      .marginBottom-0 {margin-bottom:0;}
-*/
-.dropdown-submenu {
-position: relative;
-}
-
-.dropdown-submenu>.dropdown-menu {
-top: 0;
-left: 100%;
-margin-top: -6px;
-margin-left: -1px;
--webkit-border-radius: 0 6px 6px 6px;
--moz-border-radius: 0 6px 6px;
-border-radius: 0 6px 6px 6px;
-}
-
-.dropdown-submenu:hover>.dropdown-menu {
+    <link rel="stylesheet" href="<?= $URLBASE.'_fonts/css/menu.css'?>">
     
-
-}
-
-.dropdown-submenu>a:after {
-display: block;
-content: " ";
-float: right;
-width: 0;
-height: 0;
-border-color: transparent;
-border-style: solid;
-border-width: 5px 0 5px 5px;
-border-left-color: #ccc;
-margin-top: 5px;
-margin-right: -10px;
-}
-
-.dropdown-submenu:hover>a:after {
-border-left-color: #000;
-}
-
-.dropdown-submenu.pull-left {
-float: none;
-}
-
-.dropdown-submenu.pull-left>.dropdown-menu {
-left: -100%;
-margin-left: 10px;
--webkit-border-radius: 6px 0 6px 6px;
--moz-border-radius: 6px 0 6px 6px;
-border-radius: 6px 0 6px 6px;
-}
-
-</style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   
 </head>
 <body>
 <?php //echo ($_SESSION['supervisao']); ?>
@@ -217,7 +147,7 @@ border-radius: 6px 0 6px 6px;
             <?php
 
                 if(isset($_SESSION['usuario'])){
-                    echo "<a  href='#' id='perfil'><i class='text-secondary fa fa-user'> ".($_SESSION['usuario'])."</i></a>";?>
+                    echo "<a  class='perfil_modal' href='#' data-toggle='modal' data-target='#perfilModal'><i class='text-secondary fa fa-user'> ".($_SESSION['usuario'])."</i></a>";?>
 
                     <input type="button" class="btn btn-outline-secondary" onclick="location.href='http://localhost/www/igreja/app/login/logout.php'" value="Sair"/>
 
@@ -265,12 +195,12 @@ border-radius: 6px 0 6px 6px;
              <div class="form-row align-items-center">
              <label>Insira seu e-mail de cadastro!!!</label>
              <div class="col-sm-12 my-1">
-             <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+             <label class="sr-only" for="email_perfil">Username</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                     <div class="input-group-text">@</div>
                     </div>
-                    <input type="text" class="form-control" id="inlineFormInputGroupUsername" name="txtemail" placeholder="Username" style="with:100px">
+                    <input type="text" class="form-control" name="txtemail" placeholder="Username" style="with:100px">
                 </div>
               </div>
             </div>
@@ -282,44 +212,116 @@ border-radius: 6px 0 6px 6px;
     </div>
 </div></div>
 
-<div id="perfilModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myperfil" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Editar meu perfil</h3>
-                <button type="button" class="close font-weight-light" data-dismiss="modal" aria-hidden="true">×</button>
-            </div>
-            <div class="modal-body">
-            <form method="post" action="">
-             <div class="form-row align-items-center">
-             <label>Insira seu e-mail de cadastro!!!</label>
-             <div class="col-sm-12 my-1">
-             <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                    <div class="input-group-text">@</div>
-                    </div>
-                    <input type="text" class="form-control" id="inlineFormInputGroupUsername" name="txtemail" placeholder="Username" style="with:100px">
+<div class="modal fade" id="perfilModal" tabindex="-1" role="dialog" aria-labelledby="perfilModalLabel" aria-hidden="true">
+		  	<div class="modal-dialog" role="document">
+			  	<div class="modal-content">
+			  		<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="perfilModalLabel">Meu Cadastro</h4>
+			  		</div>
+			  	    <div class="modal-body">                     
+                            <div class="row justify-content-md-center">
+                                <form  method="POST" action="">
+                                    <div class="form-group">
+                                        <label for="nome" class="control-label">Nome</label>
+                                        <input name="nome" type="text" class="form-control" id="nome_cad">
+                                            </div>
+                                    <div class="form-group">
+                                        <label for="endereco" class="control-label">Endereço</label>
+                                        <input name="endereco" class="form-control" id="endereco_cad" type="text">
+                                    </div>
+                                    <div class="form-group input-group justify-content-between">
+                                        <div class="">
+                                            <label for="niver" class="control-label">Aniversario</label>
+                                            <input name="niver" class="form-control" id="niver_cad" onkeypress="Data(event, this)">
+                                        </div>
+                                        
+                                        <div class="">
+                                            <label for="telefone" class="control-label">Telefone</label>
+                                            <input name="telefone" class="form-control" id="tel_cad">
+                                        </div>
+                                    </div>
+
+                                    <div  class="form-group">
+                                            <label for="cem" class="control-label">C.E.M.</label>
+                                            <input name="cem" class="form-control" id="cem_cad">
+                                    </div>
+
+                                    <div  class="form-group" >
+                                            <label for="telefone" class="control-label">E-m@il</label>
+                                            <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">@</div>
+                                            </div>
+                                                 <input type="text" class="form-control" id="email_cad" name="txtemail" placeholder="Email" >
+                                            </div>
+                                    </div>
+                                    
+                                    <div class="form-group input-group justify-content-between">
+                                        <div class="">
+                                            <label for="nova_senha" class="control-label">Nova Senha</label>
+                                            <input name="nova_senha" class="form-control validate" autocomplete="off" minlength="6" maxlength="15"  required  type="password" id="senha">
+                                        </div>
+                                        
+                                        <div class="">
+                                            <label for="repete_senha" class="control-label">Repita Senha</label>
+                                            <input name="repete_senha" class="form-control" autocomplete="off" minlength="6" maxlength="15"  required type="password" id="senha2" onkeyUp="validarSenha('senha', 'senha2');">
+                                        </div>
+                                    </div>
+                                    
+                                    <br>
+
+                                        <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                                                <button class="btn btn-success">Editar</button>
+                                            
+                                        </div>
+                                </form>
+                           </div>
+                         </div>
+                     </div>
                 </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Fechar</button>
-                <button class="btn btn-primary" name="submit">Redefinir senha</button>
-            </div></form>
-        </div>
-    </div>
-</div></div>
+                              
+            </div></div>
 
 
 <!--<script src="<?= $URLBASE.'_fonts/js/jquery-3.3.1.min.js'?>"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-<script src="<?= $URLBASE.'_fonts/js/popper.min.js'?>"></script>
-<script src="<?= $URLBASE.'_fonts/js/bootstrap.min.js'?>"></script>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!--<script src="<?= $URLBASE.'_fonts/js/popper.min.js'?>"></script>
+<script src="<?= $URLBASE.'_fonts/js/bootstrap.min.js'?>"></script>-->
 <script src="<?= $URLBASE.'_fonts/js/main.js'?>"></script>
+
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src=" https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+<script>
+           function validarSenha(name1, name2)
+{
+    var senha1 = document.getElementById(name1).value;
+    var senha2 = document.getElementById(name2).value;
+	    if (senha1 != "" && senha2 != "" && senha1 === senha2)
+            {
+                
+                $('#senha2').css('border', 'solid 3px rgba(1, 150, 1, 0.70)');
+            }
+            else
+            {
+            
+           //     $('#senha2').css('border-color','rgba(250, 1, 1, 0.50)');
+                $('#senha2').css('border', 'solid 3px rgba(250, 1, 1, 0.50)');
+                
+                //alert('senhas diferentes');
+            }
+        }
+
+       
+            </script>       
 
 </body>
 </html>

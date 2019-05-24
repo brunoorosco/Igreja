@@ -65,42 +65,8 @@ $(document).ready(function() {
 				return false;
 				});
 /////////////////////////////////////////////////////////////////////////////////////////////////
-$("#perfilModal").on('click',function() {
-	var horario;
-	var tableData = $(this).children("td").map(function(){  
-		return $(this).text();
-	}).get();
- 
-	nome = $.trim(tableData[1]);
-	console.log(nome);
 
-	$.ajax({
-	 timeout: 3000,
-	 type:'get',		//Definimos o método HTTP usado
-	 dataType: 'json',	//Definimos o tipo de retorno
-	 url: './funcao_encontro.php',//Definindo o arquivo onde serão buscados os dados
-	 data:  {name: nome},//variaveis post e seus valores
-	 success: function(dados){
-		 for(var i=0;dados.length>i;i++){
-			 //Adicionando registros retornados na tabela
-				 $('#Modal-info div#obs').text('Observações: '+dados[i].observacao);
-				 $('#Modal-info div#nome').text(dados[i].nomeEnc);
-				 $('#Modal-info div#cem').text('CEM: '+dados[i].CEM);
-				 $('#Modal-info div#tel').text('Telefone: '+dados[i].telEnc);
-				 $('#Modal-info div#endereco').text('Endereço: '+dados[i].endEnc);
-				 
-			 }
-		 },
-		 error: function(dados){
-
-			 alert("Erro ao carregar os dados"+dados.msg);//se tiver alguma falha no acesso ao banco gerar um alert
-
-	 }
-	 });
- 
-		 
-	$('#perfil').modal('show');
-});
+$("#tel_cad").mask("(99) 99999-9999"); 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 });
 
@@ -119,6 +85,38 @@ $("#perfilModal").on('click',function() {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+$(".perfil_modal").on('click',function() {
+		$.ajax({
+	 method:'get',		//Definimos o método HTTP usado
+	 dataType: 'json',	//Definimos o tipo de retorno
+	 cache: false,
+	 url: 'http://localhost/www/igreja/_fonts/config/cadastro_perfil.php',//Definindo o arquivo onde serão buscados os dados
+	 data: {funcao: 'cadastro'}//variaveis post e seus valores
+	}) 
+	.done(function(dados){
+	
+		 for(var i=0;dados.length>i;i++){
+
+			 //Adicionando registros retornados na tabela
+				 document.getElementById("nome_cad").value = dados[i].nome;
+				 document.getElementById("email_cad").value = dados[i].email;
+				 document.getElementById("tel_cad").value = dados[i].telefone;
+				 document.getElementById("niver_cad").value = dados[i].nasc;
+				 document.getElementById("cem_cad").value = dados[i].supervisao;
+				 document.getElementById("endereco_cad").value = dados[i].endereco;
+				 
+			 }
+			 $('#perfilModal').modal('show');
+		 })
+		 .fail(function(dados){
+
+			 alert("Erro ao carregar os dados: "+ dados.msg);//se tiver alguma falha no acesso ao banco gerar um alert
+
+	 });
+ 	 
+
+});
 ///////////////////////////////////////////////////////////////////////////
 
   function resetform(){
@@ -215,6 +213,43 @@ $("#perfilModal").on('click',function() {
             }
 ///////////////////////////////////////////////////////////////////////////////////////////q
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+function Telefone(evento){
+	var keypress=(window.event)?event.keyCode:evento.which;
+	console.log(keypress);
+	campo = eval (objeto);
+	if (campo.value == '(00) 00000-0000'){
+		campo.value=""
+	}
+
+	caracteres = '0123456789';
+	separacao1 = '/';
+	separacao2 = ' ';
+	separacao3 = ':';
+	conjunto1 = 2;
+	conjunto2 = 5;
+	conjunto3 = 10;
+	conjunto4 = 13;
+	conjunto5 = 16;
+	if ((caracteres.search(String.fromCharCode (keypress))!=-1) && campo.value.length < (15)){
+		if (campo.value.length == 1 )
+		campo.value = "("+campo.value;
+		if (campo.value.length == conjunto1 )
+		campo.value = campo.value + separacao1;
+		else if (campo.value.length == conjunto2)
+		campo.value = campo.value + separacao1;
+		else if (campo.value.length == conjunto3)
+		campo.value = campo.value + separacao2;
+		else if (campo.value.length == conjunto4)
+		campo.value = campo.value + separacao3;
+		else if (campo.value.length == conjunto5)
+		campo.value = campo.value + separacao3;
+	}else{
+		event.returnValue = false;
+	}
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////q
 		async	function senha(){
 				 const {value: password} = await swal({
@@ -241,5 +276,30 @@ $("#perfilModal").on('click',function() {
 					//Swal.fire('Entered password: ' + password)
 				}					
 		}
-
+////////////////////////////////////////////////////////////////////////////////////////
+		$('#perfilModal').on('show.bs.modal', function (event) {
+			var button = $(event.relatedTarget) // Button that triggered the modal
+			var recipientnome = button.data('whatevernome')
+			var recipientdetalhes = button.data('whateverendereco')
+			var recipientdata = button.data('whateverdata')
+			var recipientemail = button.data('whateveremail')
+			var recipientcargo = button.data('whatevercargo')
+			var recipientcem = button.data('whatevercem')
+			var recipienttel = button.data('whatevertel')
+			// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+			// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+			var modal = $(this)
+			modal.find('.modal-title').text(recipientnome)
+			modal.find('#nome_cad').val(recipientnome)
+			modal.find('#endereco_cad').val(recipientdetalhes)
+			modal.find('#email_cad').val(recipientemail)
+			modal.find('#niver_cad').val(recipientdata)
+			modal.find('#cargo_cad').val(recipientcargo)
+			modal.find('#cem_cad').val(recipientcem)
+			modal.find('#tel_cad').val(recipienttel)
+			//console.log(recipientdata);
+			
+			
+			});
 	
+			

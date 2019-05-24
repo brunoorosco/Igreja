@@ -186,26 +186,26 @@
 			  	        	<div class="modal-body">
                         <form method="POST" action="./edit_membros.php">
                             <div class="form-group">
-                                <label for="recipient-name" class="control-label">Nome:</label>
-                                <input name="nome" type="text" class="form-control" id="recipient-name">
+                                <label for="nome" class="control-label">Nome:</label>
+                                <input name="nome" type="text" class="form-control" id="nome_modal">
 				                    </div>
                             <div class="form-group">
-                                <label for="message-text" class="control-label">Endereço:</label>
-                                <input name="endereco" class="form-control" id="endereco">
+                                <label for="endereco" class="control-label">Endereço:</label>
+                                <input name="endereco" class="form-control" id="endereco_modal">
                             </div>
                             <div class="form-group input-group">
                                   <div>
                                       <label for="niver" class="control-label">Aniversário:</label>
-                                      <input name="niver" class="form-control" id="niver" onkeypress="Data(event, this)">
+                                      <input name="niver" class="form-control" id="niver_modal" onkeypress="Data(event, this)">
                                   </div>
                                   <div>
                                       <label for="telefone" class="control-label">Telefone:</label>
-                                      <input name="telefone" class="form-control" id="tel">
+                                      <input name="telefone" class="form-control" id="tel_modal">
                                   </div>
                             </div>
                             <div class="form-group">   
                                 <label for="email" class="control-label">E-m@il:</label>
-                                <input name="email" class="form-control" id="email">
+                                <input name="email" class="form-control" id="email_modal">
                             </div>
                             <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
