@@ -345,7 +345,9 @@
           $("#message").alert('close');
 
           }, 5000);
+          
         };
+        mascara();
 
     </script>
 

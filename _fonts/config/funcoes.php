@@ -141,7 +141,7 @@ function carrega_conf($conf)
 }
 function encontro(){
 $pdo = Banco::conectar();
-$sql = 'SELECT * from info_encontro where data_inicio >= CUrdate() limit 1';
+$sql = 'SELECT * from info_encontro where data_inicio >= DATE_SUB(CURDATE(), INTERVAL 5 DAY) limit 1';//DATE_ADD(CURDATE(), INTERVAL 120 DAY)
 foreach($pdo->query($sql)as $row_events) { 
   $data  =  $row_events['n_encontro']; 
 }

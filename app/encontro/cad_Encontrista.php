@@ -37,7 +37,7 @@
       body{
         background-image: url(http://localhost/www/igreja/_fonts/img/efata.jpg);
         background-size: cover;
-        color: white;
+       
         background-repeat: no-repeat;
         background-position: center;
         background-attachment: fixed;
@@ -51,7 +51,7 @@
         box-shadow: 10px 10px 5px rgba(6, 1, 1, 0.50);
         border-radius:8px;
       }
-      @media(min-width:700px) {
+      @media(min-width:690px) {
       	 .formulario{
             width: 400px;
             margin-top: 30px;
@@ -63,7 +63,7 @@
       	 .formulario{
              width: 400px;
              margin-top: 40px;
-             margin-left: auto;
+             margin-left: -46px;
              margin-right: auto;
             border-radius:5px;
              }
@@ -169,7 +169,6 @@
           		  </div>
           		</div>
 
-		<script type="text/javascript" src="../../_fonts/js/jquery.mask.min.js"></script>
 	
 
 		<script type="text/javascript">

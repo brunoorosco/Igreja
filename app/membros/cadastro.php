@@ -31,7 +31,6 @@
       body{
         background-image: url(http://localhost/www/igreja/_fonts/img/efata.jpg);
         background-size: cover;
-        color: white;
         background-repeat: no-repeat;
         background-position: center;
         background-attachment: fixed;
@@ -60,7 +59,7 @@
       	 .formulario{
              width: 400px;
              margin-top: 50px;
-             margin-left: -5%;
+             margin-left: -15%;
       }
      }
 

@@ -233,12 +233,12 @@ include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/funcoes.php");
                                     <div class="form-group input-group justify-content-between">
                                         <div class="">
                                             <label for="niver" class="control-label">Aniversario</label>
-                                            <input name="niver" class="form-control" id="niver_cad" onkeypress="Data(event, this)">
+                                            <input name="niver" class="form-control data" id="niver_cad">
                                         </div>
                                         
                                         <div class="">
                                             <label for="telefone" class="control-label">Telefone</label>
-                                            <input name="telefone" class="form-control" id="tel_cad">
+                                            <input name="telefone" class="form-control tel" id="tel_cad">
                                         </div>
                                     </div>
 
@@ -295,6 +295,8 @@ include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/funcoes.php");
 <!--<script src="<?= $URLBASE.'_fonts/js/popper.min.js'?>"></script>
 <script src="<?= $URLBASE.'_fonts/js/bootstrap.min.js'?>"></script>-->
 <script src="<?= $URLBASE.'_fonts/js/main.js'?>"></script>
+<script type="text/javascript" src="_fonts/js/jquery.mask.min.js"></script>
+
 
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src=" https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
@@ -319,8 +321,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/funcoes.php");
                 //alert('senhas diferentes');
             }
         }
-
-       
+mascara();
             </script>       
 
 </body>
