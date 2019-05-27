@@ -27,12 +27,13 @@
     .min-height-200 { 
         min-height: 200px; 
         margin: 10px 10px 10px 10px;
-        border-radius: 8px;  } 
-
-        #my-div {
-          background-color: lightgrey;
+        border-radius: 8px; 
+        background-color: lightgrey;
           width: 200px;
-          height: 200px;
+          height: 200px; } 
+
+        .my-div {
+       
           }
 
           a.fill-div {
@@ -56,8 +57,8 @@
           </div>
           <div class="container bg-secondary ";" style="border-radius: 8px !important; padding-left: 20px;padding-rigth: 20px; " >
            <div class="row" style="margin-top: 10px; ">
-                  <div  id="my-div" class="col border bg-light min-height-200" style=" background-image: url('http:/www/igreja/_fonts/img/equipe.png');background-size: cover"><a href="#" class="fill-div"></a></div>
-                  <div class="col border bg-light min-height-200">Cadastro de Equipe</div>
+                  <div class="col border bg-light min-height-200" style=" background-image: url('http:/www/igreja/_fonts/img/equipe.png');background-size: cover"><a href="#" class="fill-div"></a></div>
+                  <div class="col border bg-light min-height-200" style=" background-image: url('http:/www/igreja/_fonts/img/tarefa.png');background-size: cover"><a href="./tarefas_equipe.php" class="fill-div"></a></div>
                   <div class="col border bg-light min-height-200">col</div>
                   <div class="col border bg-light min-height-200">col</div>
              </div>

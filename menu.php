@@ -295,7 +295,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/funcoes.php");
 <!--<script src="<?= $URLBASE.'_fonts/js/popper.min.js'?>"></script>
 <script src="<?= $URLBASE.'_fonts/js/bootstrap.min.js'?>"></script>-->
 <script src="<?= $URLBASE.'_fonts/js/main.js'?>"></script>
-<script type="text/javascript" src="_fonts/js/jquery.mask.min.js"></script>
+<script type="text/javascript" src="<?= $URLBASE.'/_fonts/js/jquery.mask.min.js'?>"></script>
 
 
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
