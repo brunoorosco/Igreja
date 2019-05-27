@@ -76,6 +76,7 @@ function curso(){
         {       
                 $data[] = $row;
               }
+              $pdo=null;   
      print json_encode($data);
 }
 
@@ -89,7 +90,7 @@ function aceitou($funcao){
       {       
          $data[] = $row;
       }
-     
+      $pdo=null;   
    print json_encode($data);
    }
    
@@ -108,7 +109,7 @@ function fun($funcao){
       }
 
    //  echo $row['funcao'];
-    
+   $pdo=null;   
   // print ($data[0]);
    print json_encode($data);
    
@@ -124,7 +125,7 @@ function fun($funcao){
           {       
              $data[] = $row;
           }
-    
+          $pdo=null;   
          print $row['quant'];       
        }
 
@@ -138,7 +139,7 @@ function fun($funcao){
           {       
              $data[] = $row;
           }
-    
+          $pdo=null;   
           print json_encode($data);
         
 
@@ -156,6 +157,7 @@ function fun($funcao){
          $data[] = $row;
          
           } 
+          $pdo=null;   
           print json_encode($data);
          
          }      
@@ -164,13 +166,13 @@ function fun($funcao){
 
          $pdo = Banco::conectar();
          $data = array();
-         $sql_= "SELECT aceit_reconc as funcao, COUNT(aceit_reconc) as quant, YEAR(cadastro) as ano FROM aceita_jesus where YEAR(cadastro)>'2018' GROUP BY aceit_reconc";
+         $sql_= "SELECT aceit_reconc as funcao, COUNT(aceit_reconc) as quant, YEAR(cadastro) as ano FROM aceita_jesus where cadastro > DATE_sub(CURDATE(), INTERVAL 90 DAY) GROUP BY aceit_reconc";
          
          foreach($pdo->query($sql_)as $row)
             {       
                $data[] = $row;
             }
-      
+            $pdo=null;   
          //  echo $row['funcao'];
          
          // print ($data[0]);
@@ -182,12 +184,13 @@ function fun($funcao){
 
          $pdo = Banco::conectar();
          $data = array();
-         $sql_= "SELECT batizado as funcao, COUNT(batizado) as quant, YEAR(cadastro) as ano FROM aceita_jesus where YEAR(cadastro)>'2018' GROUP BY batizado";
+         $sql_= "SELECT batizado as funcao, COUNT(batizado) as quant, YEAR(cadastro) as ano FROM aceita_jesus where cadastro > DATE_sub(CURDATE(), INTERVAL 90 DAY) GROUP BY batizado";
          
          foreach($pdo->query($sql_)as $row)
             {       
                $data[] = $row;
             }
+            $pdo=null;   
       
          // echo $row['funcao'];
          
@@ -226,12 +229,13 @@ function fun($funcao){
             $pdo = Banco::conectar();
             $data = array();
 
-            $sql= " SELECT _status FROM config_sistem where funcao='filtro_membros'";
-            $filtro = $pdo->query($sql)->fetch();
-            $fil = $filtro[0];
-                                 
-            $sql_ = "SELECT DISTINCT encontrista.CEM as supervisao, COUNT(encontrista.idEncontrista) as quant_encontrista FROM encontro INNER JOIN encontrista  ON encontro.encontrista = encontrista.idEncontrista     
-            WHERE encontro.n_encontro = '130' group BY encontrista.CEM ";
+            $last_encontro=ultimo_encontro();
+
+            echo $last_encontro;
+
+            $sql_ = "SELECT DISTINCT encontrista.CEM as supervisao, COUNT(encontrista.idEncontrista) as quant_encontrista FROM encontro 
+            INNER JOIN encontrista  ON encontro.encontrista = encontrista.idEncontrista     
+            WHERE encontro.n_encontro = '$last_encontro' group BY encontrista.CEM ";
             
             foreach($pdo->query($sql_)as $row)
                {       

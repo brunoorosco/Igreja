@@ -525,7 +525,7 @@ function graficoBatizado()
                  for(var i=0;data.length>i;i++){
                   //Adicionando registros retornados na tabela
                    
-                    console.log(ka);
+                    console.log(data[i].supervisao);
                       
                     $('<div>', { id: data[i].supervisao, class: 'counter col border min-height-100'}).appendTo('#membros'+[ka]);
                          document.getElementById(data[i].supervisao).innerHTML = "<h2 class='count-title'>" + data[i].quant_membros +"</h2>"+ "\n" +"<p class='count-text'>"+ data[i].supervisao+"</p>";
@@ -560,7 +560,7 @@ function graficoBatizado()
                  for(var i=0;data.length>i;i++){
                   //Adicionando registros retornados na tabela
                    
-                    console.log(data[i].supervisao+" - "+data[i].quant_encontrista);
+                    //console.log(data[i].supervisao+" - "+data[i].quant_encontrista);
                       
                     $('<div>', { id: data[i].supervisao+"_enc", class: 'counter col border min-height-100'}).appendTo('#encontrista'+[ka]);
                          document.getElementById(data[i].supervisao+"_enc").innerHTML = "<h2 class='count-title'>" + data[i].quant_encontrista +"</h2>"+ "\n" +"<p class='count-text'>"+ data[i].supervisao+"</p>";

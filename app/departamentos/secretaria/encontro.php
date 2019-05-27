@@ -57,10 +57,10 @@
           </div>
           <div class="container bg-secondary ";" style="border-radius: 8px !important; padding-left: 20px;padding-rigth: 20px; " >
            <div class="row" style="margin-top: 10px; ">
-                  <div class="col border bg-light min-height-200" style=" background-image: url('http:/www/igreja/_fonts/img/equipe.png');background-size: cover"><a href="#" class="fill-div"></a></div>
-                  <div class="col border bg-light min-height-200" style=" background-image: url('http:/www/igreja/_fonts/img/tarefa.png');background-size: cover"><a href="./tarefas_equipe.php" class="fill-div"></a></div>
-                  <div class="col border bg-light min-height-200">col</div>
-                  <div class="col border bg-light min-height-200">col</div>
+                  <div class="col border bg-light min-height-200" data-toggle="tooltip" data-placement="top" title="Cadastro da Equipe" style=" background-image: url('http:/www/igreja/_fonts/img/equipe.png');background-size: cover"><a href="#" class="fill-div" ></a></div>
+                  <div class="col border bg-light min-height-200" data-toggle="tooltip" data-placement="top" title="Tarefas da Equipe" style=" background-image: url('http:/www/igreja/_fonts/img/tarefa.png');background-size: cover"><a href="./tarefas_equipe.php" class="fill-div"></a></div>
+                  <div class="col border bg-light min-height-200" data-toggle="tooltip" data-placement="top" title="Entrada de $$$">col</div>
+                  <div class="col border bg-light min-height-200" data-toggle="tooltip" data-placement="top" title="Saída de $$$">col</div>
              </div>
            <div class="row" style="margin-top: 10px; ">
                   <div class="col border bg-light min-height-200"></div>
@@ -70,7 +70,11 @@
              </div>
              </div>
              </div>
-                      
-      
+
+<script>
+              $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})        
+</script>
 </body> 
 </html> 
