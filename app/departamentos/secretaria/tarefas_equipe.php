@@ -73,12 +73,14 @@
                         <div class="row">
                             <div id="cozinha" class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)" style="background-color:rgba(250,10,10,0.3)"><h4 class="text-center"> Cozinha</h4></div>
                             <div id="dormitorio" class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(250,250,10,0.3)"><h4 class="text-center"> Dormitório</h4></div>
+                            <div id="manutencao" class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(50,150,100,0.3)"><h4 class="text-center"> Enfermagem</h4></div>
                             <div id="manutencao" class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(50,150,100,0.3)"><h4 class="text-center"> Manutenção</h4></div>
                             </div>
                         <div class="row">
                             <div class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(200,10,100,0.3)"><h4 class="text-center"> Refeitório</h4></div>
                             <div class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(100,150,50,0.3)"><h4 class="text-center"> Templo</h4></div>
-                            <div class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(150,250,100,0.3)"><h4 class="text-center"> Secretária</h4></div>
+                            <div class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(250,250,250,0.3)"><h4 class="text-center"> Secretária</h4></div>
+                            <div class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(150,250,100,0.3)"><h4 class="text-center"> Sonoplastia</h4></div>
                             </div>
                        
                     </div>    
