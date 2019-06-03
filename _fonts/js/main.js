@@ -21,53 +21,69 @@
 
 ////////////////////////////////////////////////////////////////////////////
 $(document).ready(function() {
-				$('#ajax_form').submit(function(){
-					var cargo = $('#cargo').val();
-					var dados = $(this).serialize();
-					event.preventDefault();
-					$.ajax({
-					type:'POST',
-					url: "../../app/membros/cadDB.php",
-					dataType: 'json',     // para obter a resposta no formato json e rodar no sweetalert2
-					data: dados,
-					success:function(response){ //retorna o echo do php
-					//console.log(cargo);	
-					//console.log(response);
-						if(response.mens1 == '1' && (cargo == 'Bispo') || (cargo == 'Pastor') || (cargo == 'Supervisor')  )senha();
+////////////////////////////////////////////////////////////////////////////
+		$('#ajax_form').submit(function(){
+			var cargo = $('#cargo').val();
+			var dados = $(this).serialize();
+			event.preventDefault();
+			$.ajax({
+			type:'POST',
+			url: "../../app/membros/cadDB.php",
+			dataType: 'json',     // para obter a resposta no formato json e rodar no sweetalert2
+			data: dados,
+			success:function(response){ //retorna o echo do php
+					if(response.mens1 == '1' && (cargo == 'Bispo') || (cargo == 'Pastor') || (cargo == 'Supervisor')  )senha();
 
 						if(response.mens1 == '1' && (cargo == 'Líder') || (cargo == 'Auxiliar') || (cargo == 'Membro') || (cargo == 'Anfitrião') ){
-							window.location.reload();
-								Swal.fire({
-								title: 'Cadastro realizado com sucesso!!!',
-								type:  'success',
-								timer: 5000});
-							}
-								
-						// se mens1 igual a 2 - indica que este cadastro já existe, possibilitando a edição do mesmo
-							if(response.mens1 == '2'){
-								Swal.fire({
-									title: 'Este membro já esta cadastrado!!!',
-									type:  'warning'
-									});
-							}
-						// se mens3 igual a 4 - indica que este cadastro foi realizado, e reseta todos os campos do formulario
-							if(response.mens3 == '4')resetform();
-
-					},
-					erro: function(response) {
-						//console.log(response);
-						alert(response);
-
 						Swal.fire({
-						title: 'Erro ao cadastrar, tente novamente!!!',
-						type: 'error',
+						title: 'Cadastro realizado com sucesso!!!',
+						type:  'success',
 						timer: 5000});
+					//	window.location.reload(1);
 					}
-				});
 
-				return false;
-				});
+				// se mens3 igual a 2 - indica que este cadastro já existe, possibilitando a edição do mesmo
+					if(response.mens3 == '2'){
+						Swal.fire({
+							title: 'Este membro já esta cadastrado!!!',
+							type:  'warning'
+							});
+					}
+				// se mens3 igual a 4 - indica que este cadastro foi realizado, e reseta todos os campos do formulario
+					if(response.mens3 == '4')resetform_cadastro();
+
+			},
+			erro: function(response) {
+				//console.log(response);
+				alert(response);
+
+				Swal.fire({
+				title: 'Erro ao cadastrar, tente novamente!!!',
+				type: 'error',
+				timer: 5000});
+			}
+		});
+
+		return false;
+		});
 /////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+});
+
+///////////////////////////////////////////////////////////////////////////
+
+function resetform_cadastro(){
+	$('#nome').val("");
+	$('#cargo').val("");
+	$('#tel').val("");
+	$('#data').val("");
+	$('#email').val("");
+	$('#end').val("");
+	 //$('#cem').val("");
+	}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 });
@@ -304,4 +320,3 @@ function Telefone(evento){
 			
 			});
 	
-			
