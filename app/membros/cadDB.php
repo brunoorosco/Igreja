@@ -24,7 +24,7 @@ try{
             $total = count($rows);
             Banco::desconectar();
 
-                if ($total > 0 && $emai != ""){
+                if ($total > 0 && $email != ""){
                 //   echo "Este membro já esta Cadastrado!!!";
                     //echo json_encode(array('mens1' => "Este membro já esta cadastrado!","mens2"=>"warning","mens3"=>"2" ));//mens3 = representa que usuario já existe no banco
                     echo json_encode(array('mens1' => "2","mens2"=>"1","mens3"=>"2" ));//mens3 = representa que usuario já existe no banco

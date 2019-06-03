@@ -13,6 +13,7 @@
 			  $('.data').mask('00/00/0000');
 			  $('#cep').mask('00000-000');
 			  $('.tel').mask('(00) 00000-0000');
+			  $('#tel_fixo').mask('(00) 0000-0000');
 				$('#cpf').mask('000.000.000-00');
 				
 	}
@@ -30,19 +31,20 @@ $(document).ready(function() {
 					dataType: 'json',     // para obter a resposta no formato json e rodar no sweetalert2
 					data: dados,
 					success:function(response){ //retorna o echo do php
-					console.log(cargo);	
-					console.log(response);
+					//console.log(cargo);	
+					//console.log(response);
 						if(response.mens1 == '1' && (cargo == 'Bispo') || (cargo == 'Pastor') || (cargo == 'Supervisor')  )senha();
 
-								if(response.mens1 == '1' && (cargo == 'Líder') || (cargo == 'Auxiliar') || (cargo == 'Membro') || (cargo == 'Anfitrião') ){
+						if(response.mens1 == '1' && (cargo == 'Líder') || (cargo == 'Auxiliar') || (cargo == 'Membro') || (cargo == 'Anfitrião') ){
+							window.location.reload();
 								Swal.fire({
 								title: 'Cadastro realizado com sucesso!!!',
 								type:  'success',
 								timer: 5000});
 							}
 								
-						// se mens3 igual a 2 - indica que este cadastro já existe, possibilitando a edição do mesmo
-							if(response.mens3 == '2'){
+						// se mens1 igual a 2 - indica que este cadastro já existe, possibilitando a edição do mesmo
+							if(response.mens1 == '2'){
 								Swal.fire({
 									title: 'Este membro já esta cadastrado!!!',
 									type:  'warning'
@@ -134,7 +136,7 @@ $(".perfil_modal").on('click',function() {
         	$('#end').val("");
         	$('#sexo').val("");
         	$('#supervisao').val("");
-        	$('#cem').val("");
+        //	$('#cem').val("");
         	$('#cem_input').val("");
         	$('#cem_sel').val("");
           //.not('.button,:submit,:reset,:hidden')

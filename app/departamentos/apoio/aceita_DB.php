@@ -10,16 +10,17 @@
     $nasc = $_POST['nascimento'];
     $supervisao = $_POST['supervisao'];
     $dataCadastro = date("Y-m-d",strtotime(str_replace('/','-',$_POST['cadastro'])));
-    $niver = date("Y-m-d",strtotime(str_replace('/','-',$nasc)));
+   // $niver = date("Y-m-d",strtotime(str_replace('/','-',$nasc)));
     $aceitou = $_POST['aceitou'];
     $batizado = $_POST['TP_BATIZADO'];
+    $fixo = $_POST['fixo'];
     $id = carrega_id_usuario();
 
    ///////  VERIFICA SE USUARIO EMAIL JÁ ESTA CADASTRADO ///////////
 try{
        
-      $sql = "INSERT INTO aceita_jesus (nome, telefone,  endereco, cem, aceit_reconc, cadastro, batizado) 
-      values (:nome, :telefone, :endereco,:supervisao, :aceitou, :cadastro, :batizado)";
+      $sql = "INSERT INTO aceita_jesus (nome, telefone,  endereco, cem, aceit_reconc, cadastro, batizado, fixo, idade) 
+      values (:nome, :telefone, :endereco,:supervisao, :aceitou, :cadastro, :batizado, :fixo, :idade)";
      
         $db = new db();
         $db = $db->connect();
@@ -31,6 +32,8 @@ try{
         $stmt->bindParam(':aceitou',$aceitou);
         $stmt->bindParam(':cadastro',$dataCadastro);
         $stmt->bindParam(':batizado',$batizado);
+        $stmt->bindParam(':fixo',$fixo);
+        $stmt->bindParam(':idade',$nasc);
 
         if( $stmt->execute()){
                  echo json_encode(array('mens1' => "Cadastrado realizado com sucesso!","mens2"=>"success","mens3"=>"4" ));

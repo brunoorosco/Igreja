@@ -231,7 +231,7 @@ function fun($funcao){
 
             $last_encontro=ultimo_encontro();
 
-            echo $last_encontro;
+            //echo $last_encontro;
 
             $sql_ = "SELECT DISTINCT encontrista.CEM as supervisao, COUNT(encontrista.idEncontrista) as quant_encontrista FROM encontro 
             INNER JOIN encontrista  ON encontro.encontrista = encontrista.idEncontrista     

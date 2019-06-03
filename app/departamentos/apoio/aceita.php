@@ -87,7 +87,7 @@ color: white;
 	   width: 100%; }
 
 		 .botoes .btn{
-				background-color: rgba(23, 3, 3, 0.48);
+				background-color: rgba(23, 3, 3, 0.48) !important;
 				border-color:  #cbcbcb;
 				color: gray;
 				margin:auto;
@@ -141,8 +141,10 @@ input::placeholder {
 										<div class="form-group input-group">
 										 	 <input type="text" name="telefone" class="form-control tel" placeholder="Celular com DDD" id="tel" style="border-radius: 8px!important;
 		                   background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; ">
-											 <input type="text" class="form-control" name="nascimento" id="data" placeholder="Data de Nascimento" maxlength="10"style="border-radius: 8px!important;
-		                   background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; ">
+											 	
+												 <input type="text" class="form-control" name="fixo" id="tel_fixo" placeholder="Tel. Fixo c/ DDD" maxlength="14"  style="border-radius: 8px!important;
+		                   				background-color: rgba(23, 3, 3, 0.48)!important;color: white!important;" >															
+												
 										</div>
 
 							  		<div class="form-group input-group">
@@ -187,12 +189,17 @@ input::placeholder {
 												</div>
 										
 											<div class="form-group">
-												<div class="btn-group btn-group-toggle botoes btn-block" data-toggle="buttons">
-															<label class="btn btn-light active" >
+												
+												<div class="btn-group btn-group-toggle  btn-block" data-toggle="buttons">
+												
+												<input type="text" class="form-control" name="nascimento" placeholder="Idade" maxlength="2"style="border-radius: 8px!important;
+		                   background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; margin-rigth:1px">
+											 	
+															<label class="btn btn-light active btn-group-justified " >
 																	<input type="radio" name="TP_BATIZADO" id="1" autocomplete="off" value="sim" checked > Batizado
 															</label>
-															<label class="btn btn-light">
-																	<input type="radio" name="TP_BATIZADO" id="2" autocomplete="off" value="não"> Não Batizado
+															<label class="btn btn-light btn-group-justified ">
+																	<input type="radio" name="TP_BATIZADO" id="2" autocomplete="off" value="não">Não Batizado
 															</label>
 												</div>
 										</div>

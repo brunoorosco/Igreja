@@ -54,8 +54,10 @@ include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/funcoes.php");
                             <li><a class="dropdown-item" href="<?= $URLBASE.'app/encontro/encontrista.php'?>">Encontristas</a></li>
                             <li><a class="dropdown-item" href="">Equipe</a></li>
                             <li><a class="dropdown-item" href="<?= $URLBASE.'app/membros/membros.php'?>">Membros</a></li>
+                            <li><a class="dropdown-item" href="">Minha CEM</a></li>
                           </ul>
                         </li>
+                       
                         <!--//  só vai acessar as pessoas que tiverem permissão de acesso a um dos grupos abaixo     -->
 
             <?php  if((isset($_SESSION['nivel'])) && ($_SESSION['nivel'] == '1') || ($_SESSION['nivel'] == '4')){ ?>  
@@ -126,7 +128,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/funcoes.php");
                 <li class="dropdown-submenu">
                     <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Relatórios</a>
                     <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/relatorio/aceitacao.php'?>">Aceitação/Reconciliação</a></li>
+                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/relatorio/aceitacao.php'?>">Geral</a></li>
                           <!--  <li><a class="dropdown-item" href="#">Batismo</a></li>
                             <li><a class="dropdown-item" href="#">Pessoas Encontro</a></li>
                             <li><a class="dropdown-item" href="<?= $URLBASE.'app/relatorio/'?>">Equipe Encontro</a></li>
