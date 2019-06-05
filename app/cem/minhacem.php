@@ -23,12 +23,8 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
        
-       <!-- <script src="../../_fonts/js/Chart.min.js"></script>-->
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.5.0"></script>
+     
 
-
-        <script src="./relatorio.js"></script>
         <style type="text/css">
   
       body {
@@ -94,7 +90,6 @@ body.iframe {
 
         #my-div {
           background-color:#fff;
-       
           height: 100px;
           }
 
@@ -109,69 +104,133 @@ body.iframe {
         .counter { background-color: #0088cc; padding: 5px 0; border-radius: 5px;}
         .count-title { font-size: 50px; font-weight: normal;  margin-top: 5px; margin-bottom: 0; text-align: center; color:white; font-family: 'Oswald', sans-serif;}
         .count-text { font-size: 20px; font-weight: normal;  margin-top: 5px; margin-bottom: 0; text-align: center; color:white;}
+
+        #faixa
+        {
+            background-color:#0288D1;
+            width:auto;
+            padding-top: 8px ;
+            margin: 5px 15px 10px 15px !important;
+            height: 60px;
+         
+            
+        }
+
+        .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+  
+      /* substitua 200px pela altura do quadro com duas linhas, "MELHOR" */
+     
+
+    .container-box {
+    margin: 5px 15px 10px 15px !important;
+    display: grid;
+    text-align:center;
+    /*grid-gap: 10px;
+    grid-template-columns: auto;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 300px 300px;
+    grid-template-areas:
+        'a b c d e'
+        'a f g g g'
+       
+    ;*/
+   grid-gap: 1rem;
+   grid-template-columns:  repeat(6, auto);
+   grid-template-rows: repeat(6, 100px);
+    }
+    
+
+    .box {
+    background-color: #EEEEEE;
+    border-radius: 5px;
+    }
+/*
+    .a {
+    grid-area: a;
+    }
+
+    .b {
+    grid-area: b;
+    }
+
+    .c {
+    grid-area: c;
+    }
+
+    .d {
+    grid-area: d;
+    }
+
+    .e {
+    grid-area: e;
+    }
+
+    .f {
+    grid-area: f;
+    }
+
+    .g {
+    grid-area: g;
+    }
+
+    .h {
+    grid-area: h;
+    }*/
+
+    .a {
+       grid-row: 1 / -1;
+       grid-column: 1/ 3;
+   }
+  
+   .b {
+       grid-column: 3 / 4;
+       grid-row: 1 / 4;
+   }
+
+   .c {
+       grid-row: 1 / 3;
+       grid-column: 4 / 5; 
+   }
+
+   .d {
+       grid-row: 1 / 3;
+       grid-column: 5 / 6;
+   }
+
+   .e {
+       grid-row: 1 / 3;
+       grid-column: 6 / -1;
+   }
+
+   .f {
+       grid-row: 4 / -1;
+       grid-column: 3 / 4;
+   }
+   .g {
+       grid-row: 3 / -1;
+       grid-column: 4 / -1;
+   }
     </style>
     </head>
     <body>
- 
-<div class="wrapper">
-    <div class="row">
-        <div class="col-lg-6 col-md-12 col-sm-12">
-            <div class="chart_container">
-            
-                <div class="chart" id="score-card"> 
-                    <canvas id="Grafico"></canvas>
-                </div>
-            </div>
-        </div>
-   
-        <div class="col-lg-6 col-md-12 col-sm-12" id="score_card" >
-        <div class="row chart_container" >
-            <div class="col-6">
-                <div class="chart" id="score-card"> 
-                  <canvas id="GraficoPizza"></canvas>
-                </div>
-            </div>    
-          
-            <div class="col-6 ">
-                <div class="chart" id="score-card">  
-                    <canvas id="GraficoBatizado"></canvas>
-                </div>
-            </div>
-           </div> 
-        </div>
+ <div class="container-fluid rounded" id="faixa">
+          <h2 class="text-center">Minha CEM</h2>
+ </div>
+
+    <div class="container-box">
+        <div class="box a">Membros</div>
+        <div class="box b">Discipulado</div>
+        <div class="box c">Ultimo Encontro</div>
+        <div class="box d">Ultimo Encontro</div>
+        <div class="box e">Ultimo Encontro</div>
+        <div class="box f">Escola de Profeta</div>
+       
+        <div class="box g">Relatório</div>
     </div>
 
-    <div class="row">
-         <div class="col-lg-6 col-md-12 col-sm-12" >
-            <div class="chart_container">
-                <div class="chart" id="score_card">
-                    <h3 class="text-center"> Membros da CEM</h3>
-                    <div class ="row text-center" id="membros0" style="margin-left: 10px;margin-right:10px; margin-top:20px;"> </div>
-                    <div class ="row text-center" id="membros1" style="margin-left: 10px;margin-right:10px;"> </div>
-                    <div class ="row text-center" id="membros2" style="margin-left: 10px;margin-right:10px;"> </div>
-                    <div class ="row text-center" id="membros3" style="margin-left: 10px;margin-right:10px;"> </div>
-                    <div class ="row text-center" id="membros4" style="margin-left: 10px;margin-right:10px;"> </div>
-                    <div class ="row text-center" id="membros5" style="margin-left: 10px;margin-right:10px;"> </div>
-                    <div class ="row text-center" id="membros6" style="margin-left: 10px;margin-right:10px;"> </div>
-                </div>
-            </div>
-         </div>
-                <div class="col-lg-6 col-md-12 col-sm-12"  style="margin-left: -15px; margin-right:15px;">
-                     <div class="chart_container">
-                            <div class="chart" id="score_card">
-                                <h3 class="text-center">teste <?php echo ultimo_encontro();?></h3>
-                                <div class ="row text-center" id="encontrista0" style="margin-left: 10px;margin-right:10px; margin-top:20px;"> </div>
-                                <div class ="row text-center" id="encontrista1" style="margin-left: 10px;margin-right:10px;"> </div>
-                                <div class ="row text-center" id="encontrista2" style="margin-left: 10px;margin-right:10px;"> </div>
-                                <div class ="row text-center" id="encontrista3" style="margin-left: 10px;margin-right:10px;"> </div>
-                                <div class ="row text-center" id="encontrista4" style="margin-left: 10px;margin-right:10px;"> </div>
-                                <div class ="row text-center" id="encontrista5" style="margin-left: 10px;margin-right:10px;"> </div>
-                                <div class ="row text-center" id="encontrista6" style="margin-left: 10px;margin-right:10px;"> </div>
-                            </div>
-                        </div>
-                </div>
-          </div>
-    </div>
          
      <script>
             window.onload = function() {
@@ -182,9 +241,13 @@ body.iframe {
 
     </script> 
 
+
  
 
 
-   
+     <!-- <script src="../../_fonts/js/Chart.min.js"></script>-->
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.5.0"></script>
+
     </body>
     </html>
