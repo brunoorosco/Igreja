@@ -138,7 +138,7 @@ body.iframe {
        
     ;*/
    grid-gap: 1rem;
-   grid-template-columns:  repeat(6, auto);
+   grid-template-columns:  repeat(10, 1fr);
    grid-template-rows: repeat(6, 100px);
     }
     
@@ -147,39 +147,41 @@ body.iframe {
     background-color: #EEEEEE;
     border-radius: 5px;
     }
-
+ 
     .a {
        grid-row: 1 / -1;
        grid-column: 1/ 3;
+       overflow-y: scroll;
+       
    }
   
    .b {
-       grid-column: 3 / 4;
+       grid-column: 3 / 5;
        grid-row: 1 / 4;
    }
 
    .c {
        grid-row: 1 / 3;
-       grid-column: 4 / 5; 
+       grid-column: 5 / 7; 
    }
 
    .d {
        grid-row: 1 / 3;
-       grid-column: 5 / 6;
+       grid-column: 7 / 9;
    }
 
    .e {
        grid-row: 1 / 3;
-       grid-column: 6 / -1;
+       grid-column: 9 / -1;
    }
 
    .f {
        grid-row: 4 / -1;
-       grid-column: 3 / 4;
+       grid-column: 3 / 5;
    }
    .g {
        grid-row: 3 / -1;
-       grid-column: 4 / -1;
+       grid-column: 5 / -1;
    }
     </style>
     </head>
@@ -189,7 +191,7 @@ body.iframe {
  </div>
 
     <div class="container-box">
-        <div class="box a" id="membrosCEM">Membros</div>
+        <div class="box a" id="membrosCEM"> <h5 class="text-center">Membros</h5></div>
         <div class="box b">Discipulado</div>
         <div class="box c">Ultimo Encontro</div>
         <div class="box d">Ultimo Encontro</div>
@@ -210,7 +212,7 @@ body.iframe {
     </script> 
 
 
-      <script src="./cem.js"></script>-->
+      <script src="./cem.js"></script>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.5.0"></script>
 

@@ -18,7 +18,8 @@ function cem(){
                 
              // $('<div>', { id: data[i].supervisao, class: 'counter col border min-height-100'}).appendTo('#membros'+[ka]);
                   // document.getElementById('membrosCEM').innerHTML = "<h2 class='count-title'>" + data[i].quant_membros +"</h2>"+ "\n" +"<p class='count-text'>"+ data[i].supervisao+"</p>";
-                  // document.getElementById('membrosCEM').innerHTML = "<p class='count-text'>"+ data[i].nome+"</p>";            
+                   var teste = document.getElementById('membrosCEM').innerHTML += "<div style=' width: 300px;' class='text-left color-black'id='membro" +i+ "'>"+ data[i].nome+"</div>";     
+                  
             
                   }
                               
