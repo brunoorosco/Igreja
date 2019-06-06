@@ -14,7 +14,7 @@ function cem(){
            for(var i=0;data.length>i;i++){
             //Adicionando registros retornados na tabela
              
-              console.log(i+" - "+data[i].nome);
+              //console.log(i+" - "+data[i].nome);
                 
              // $('<div>', { id: data[i].supervisao, class: 'counter col border min-height-100'}).appendTo('#membros'+[ka]);
                   // document.getElementById('membrosCEM').innerHTML = "<h2 class='count-title'>" + data[i].quant_membros +"</h2>"+ "\n" +"<p class='count-text'>"+ data[i].supervisao+"</p>";

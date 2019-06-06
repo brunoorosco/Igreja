@@ -27,6 +27,26 @@
 
         <style type="text/css">
   
+
+/* Layout styles -----------------------------------*/
+@media (min-width: 620px) {
+ main {
+    column-count: 2;
+    column-gap: 20px;
+  }
+  
+  section {
+    break-inside: avoid;
+  }
+}
+
+@media (min-width: 960px) {
+  main {
+     column-count: 3;
+  }
+}
+
+
       body {
     background-color: #f6f6f6;
     margin: 0;  
@@ -123,25 +143,31 @@ body.iframe {
   
       /* substitua 200px pela altura do quadro com duas linhas, "MELHOR" */
      
+      @media (min-width: 620px) 
+      {
+        .container-box {
+        margin: 5px 15px 10px 15px !important;
+        display: grid;
+        text-align:center;
+        grid-gap: 1rem;
+        grid-template-columns:  repeat(5, minmax(100px,1 fr));
+        object-fit: cover;
+      
+        }
+      }
 
-    .container-box {
-    margin: 5px 15px 10px 15px !important;
-    display: grid;
-    text-align:center;
-    /*grid-gap: 10px;
-    grid-template-columns: auto;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 300px 300px;
-    grid-template-areas:
-        'a b c d e'
-        'a f g g g'
-       
-    ;*/
-   grid-gap: 1rem;
-   grid-template-columns:  repeat(10, 1fr);
-   grid-template-rows: repeat(6, 100px);
-    }
-    
+      @media (min-width: 960px) 
+      {
+        .container-box {
+        margin: 5px 15px 10px 15px !important;
+        display: grid;
+        text-align:center;
+        grid-gap: 1rem;
+        grid-template-columns:  repeat(10, 1fr);
+        object-fit: cover;
+        grid-template-rows: repeat(6, 100px);
+        }
+      }
 
     .box {
     background-color: #EEEEEE;
@@ -191,15 +217,16 @@ body.iframe {
  </div>
 
     <div class="container-box">
-        <div class="box a" id="membrosCEM"> <h5 class="text-center">Membros</h5></div>
-        <div class="box b">Discipulado</div>
-        <div class="box c">Ultimo Encontro</div>
-        <div class="box d">Ultimo Encontro</div>
-        <div class="box e">Ultimo Encontro</div>
-        <div class="box f">Escola de Profeta</div>
+            <div class="box a" id="membrosCEM"> <h5 class="text-center">Membros</h5></div>
+            <div class="box b">Discipulado</div>
+            <div class="box c">Ultimo Encontro</div>
+            <div class="box d">Ultimo Encontro</div>
+            <div class="box e">Ultimo Encontro</div>
+            <div class="box f">Escola de Profeta</div>
        
         <div class="box g">Relatório</div>
     </div>
+  
 
          
      <script>
