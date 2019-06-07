@@ -65,22 +65,22 @@
             
      <div class="row">
                 
-                <div class="col-3  min-height-600 border" ondrop="drop(event)" ondragover="allowDrop(event)" id="equipe">
+                <div class="col-3  min-height-600 border" ondrop="drop(event)" ondragover="allowDrop(event)" id="tarefa1">
                         <h4 class="text-center" id="move_text" draggable="true" ondragstart="drag(event)"> Equipe</h4>
                 </div>
 
                     <div class="col min-height-600">
                         <div class="row">
-                            <div id="cozinha" class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)" style="background-color:rgba(250,10,10,0.3)"><h4 class="text-center"> Cozinha</h4></div>
-                            <div id="dormitorio" class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(250,250,10,0.3)"><h4 class="text-center"> Dormitório</h4></div>
-                            <div id="manutencao" class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(50,150,100,0.3)"><h4 class="text-center"> Enfermagem</h4></div>
-                            <div id="manutencao" class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(50,150,100,0.3)"><h4 class="text-center"> Manutenção</h4></div>
+                            <div id="tarefa2" class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)" style="background-color:rgba(250,10,10,0.3)"><h4 class="text-center"> Cozinha</h4></div>
+                            <div id="tarefa3" class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(250,250,10,0.3)"><h4 class="text-center"> Dormitório</h4></div>
+                            <div id="tarefa4" class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(50,150,100,0.3)"><h4 class="text-center"> Enfermagem</h4></div>
+                            <div id="tarefa5" class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(50,150,100,0.3)"><h4 class="text-center"> Manutenção</h4></div>
                             </div>
                         <div class="row">
-                            <div class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(200,10,100,0.3)"><h4 class="text-center"> Refeitório</h4></div>
-                            <div class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(100,150,50,0.3)"><h4 class="text-center"> Templo</h4></div>
-                            <div class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(250,250,250,0.3)"><h4 class="text-center"> Secretária</h4></div>
-                            <div class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(150,250,100,0.3)"><h4 class="text-center"> Sonoplastia</h4></div>
+                            <div id="tarefa6" class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(200,10,100,0.3)"><h4 class="text-center"> Refeitório</h4></div>
+                            <div id="tarefa7" class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(100,150,50,0.3)"><h4 class="text-center"> Templo</h4></div>
+                            <div id="tarefa8" class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(250,250,250,0.3)"><h4 class="text-center"> Secretária</h4></div>
+                            <div id="tarefa9" class="col border min-height-200" ondrop="drop(event)" ondragover="allowDrop(event)"style="background-color:rgba(150,250,100,0.3)"><h4 class="text-center"> Sonoplastia</h4></div>
                             </div>
                        
                     </div>    
@@ -95,32 +95,7 @@
             
     }
 
-function allowDrop(ev)
-    {
-        ev.preventDefault();
-    }
-  
-function drag(ev)
-    {
-        ev.dataTransfer.setData("Text",ev.target.id);
-    }
-  
-function drop(ev)
-    {
-        var data = ev.dataTransfer.getData("Text");
-        var div =  document.getElementById(data);
-        ev.target.appendChild(div);
-        //alert( document.getElementById(data).textContent + data.innerHTML());
-        alert(div.parentElement.id +" - " + div.children[0].id);
-        
 
-        ev.preventDefault();
-        var salva = document.getElementById( div.children[0].id).firstChild.nodeValue; 
-      // var valor = $(salva p).attr('id');
-         alert(salva);
-         console.log(div.children[1].id);
-        //salva_tarefa(data);
-    }
 </script>          
       
 </body> 

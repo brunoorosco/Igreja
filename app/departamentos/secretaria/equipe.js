@@ -1,3 +1,30 @@
+function allowDrop(ev)
+    {
+        ev.preventDefault();
+    }
+  
+function drag(ev)
+    {
+        ev.dataTransfer.setData("Text",ev.target.id);
+    }
+  
+function drop(ev)
+    {
+        var data = ev.dataTransfer.getData("Text");
+        var div =  document.getElementById(data);
+        ev.target.appendChild(div);
+        //alert( document.getElementById(data).textContent + data.innerHTML());
+      //  alert(div.parentElement.id +" - " + div.children[0].id);
+        
+
+        ev.preventDefault();
+        var salva = document.getElementById( div.children[0].id).firstChild.nodeValue; 
+       // var valor = $(salva p).attr('id');
+         
+         console.log(div.children[1].id);
+        salva_tarefa(salva);
+    }
+
 function carrega_equipe(){
     var retorno;
     $.ajax({
@@ -15,9 +42,67 @@ function carrega_equipe(){
             //Adicionando registros retornados na tabela
              
               console.log(data[i].tarefa+" - "+data[i].equipe);
-                
+               j =  data[i].tarefa;
+               $('#tarefa'+j).append('<div id="equipe'+[i]+'"draggable="true" ondragstart="drag(event)" class="text-letf bg-transparent texto_p">'+
+               '<span id="equipe_p'+[i]+'">'+data[i].equipe+'</span><span hidden>'+data[i].tarefa+'</span></div>'); 
             // $('<div>', { id: "equipe"+[i], class: 'text-left', draggable="true" ondragstart="drag(event)"}).appendTo();
                  //  document.getElementById("equipe"+[i]).innerHTML = "<h2><span>" + data[i].equipe +"</span></h2>"; 
+                 
+            /*     switch (data[i].tarefa)
+                 {
+                   case '1':
+                      $('#tarefa'+j).append('<div id="equipe'+[i]+'"draggable="true" ondragstart="drag(event)" class="text-letf bg-transparent texto_p">'+
+                        '<span id="equipe_p'+[i]+'">'+data[i].equipe+'</span><span hidden>'+data[i].tarefa+'</span></div>'); 
+                    break;    
+                   
+                    case '2':
+                      $('#tarefa'+j).append('<div id="equipe'+[i]+'"draggable="true" ondragstart="drag(event)" class="text-letf bg-transparent texto_p">'+
+                               '<span id="equipe_p'+[i]+'">'+data[i].equipe+'</span><span>'+data[i].tarefa+'</span></div>'); 
+                    break;
+
+                    case '3':
+                      $('#tarefa'+j).append('<div id="equipe'+[i]+'"draggable="true" ondragstart="drag(event)" class="text-letf bg-transparent texto_p">'+
+                               '<span id="equipe_p'+[i]+'">'+data[i].equipe+'</span><span>'+data[i].tarefa+'</span></div>'); 
+                    break;
+                    
+                    case '4':
+                      $('#tarefa'+j).append('<div id="equipe'+[i]+'"draggable="true" ondragstart="drag(event)" class="text-letf bg-transparent texto_p">'+
+                               '<span id="equipe_p'+[i]+'">'+data[i].equipe+'</span><span>'+data[i].tarefa+'</span></div>'); 
+                    break;
+                    
+                    case '5':
+                      $('#tarefa'+j).append('<div id="equipe'+[i]+'"draggable="true" ondragstart="drag(event)" class="text-letf bg-transparent texto_p">'+
+                               '<span id="equipe_p'+[i]+'">'+data[i].equipe+'</span><span>'+data[i].tarefa+'</span></div>'); 
+                    break;
+                   case '6':
+                      $('#tarefa'+j).append('<div id="equipe'+[i]+'"draggable="true" ondragstart="drag(event)" class="text-letf bg-transparent texto_p">'+
+                        '<span id="equipe_p'+[i]+'">'+data[i].equipe+'</span><span hidden>'+data[i].tarefa+'</span></div>'); 
+                    break;    
+                   
+                    case '7':
+                      $('#tarefa'+j).append('<div id="equipe'+[i]+'"draggable="true" ondragstart="drag(event)" class="text-letf bg-transparent texto_p">'+
+                               '<span id="equipe_p'+[i]+'">'+data[i].equipe+'</span><span>'+data[i].tarefa+'</span></div>'); 
+                    break;
+
+                    case '8':
+                      $('#tarefa'+j).append('<div id="equipe'+[i]+'"draggable="true" ondragstart="drag(event)" class="text-letf bg-transparent texto_p">'+
+                               '<span id="equipe_p'+[i]+'">'+data[i].equipe+'</span><span>'+data[i].tarefa+'</span></div>'); 
+                    break;
+                    
+                    case '9':
+                      $('#tarefa'+j).append('<div id="equipe'+[i]+'"draggable="true" ondragstart="drag(event)" class="text-letf bg-transparent texto_p">'+
+                               '<span id="equipe_p'+[i]+'">'+data[i].equipe+'</span><span>'+data[i].tarefa+'</span></div>'); 
+                    break;
+                    
+                    case '10':
+                      $('#tarefa'+j).append('<div id="equipe'+[i]+'"draggable="true" ondragstart="drag(event)" class="text-letf bg-transparent texto_p">'+
+                               '<span id="equipe_p'+[i]+'">'+data[i].equipe+'</span><span>'+data[i].tarefa+'</span></div>'); 
+                    break;
+                    
+
+
+                 }*/
+                 /*
                  if(data[i].tarefa == '0' ){
                         $('#equipe').append('<div id="equipe'+[i]+'"draggable="true" ondragstart="drag(event)" class="text-letf bg-transparent texto_p">'+
                         '<span id="equipe_p'+[i]+'">'+data[i].equipe+'</span><span hidden>'+data[i].tarefa+'</span></div>');  }
@@ -29,11 +114,17 @@ function carrega_equipe(){
                                else if(data[i].tarefa == '2' ) {
                                 $('#cozinha').append('<div id="equipe'+[i]+'"draggable="true" ondragstart="drag(event)" class="text-letf bg-transparent texto_p">'+
                                       '<span id="equipe_p'+[i]+'">'+data[i].equipe+'</span><span>'+data[i].tarefa+'</span></div>');  }
-    
+    */
                   }
                               
        });
      
          
        return retorno;
+   }
+   
+   function salva_tarefa(tarefa)
+   {
+    alert(tarefa);
+
    }

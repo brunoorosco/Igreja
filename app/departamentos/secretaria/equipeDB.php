@@ -80,7 +80,7 @@ function curso(){
 }
 
 function equipe(){
-
+        //tarefaENC -> reppresenta tarefa que o membro vai exercer
   $pdo = Banco::conectar();
   $data = array();
   $sql_= "SELECT equipe, tarefaEnc	FROM equipe";

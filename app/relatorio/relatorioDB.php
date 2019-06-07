@@ -47,6 +47,7 @@ switch ($selec){
       case 10:
          membros();
       break;
+
       case 11:
          encontrista();
       break;
