@@ -1,30 +1,15 @@
 <?php 
  include("../../../vendor/autoload.php");
 
- $html = "
- <fieldset>
- <h1>Recibo de Pagamento</h1>
- <p class='center sub-titulo'>
- Nº <strong>0001</strong> - 
- VALOR <strong>R$ 700,00</strong>
- </p>
- <p>Recebi(emos) de <strong>Ebrahim Paula Leite</strong></p>
- <p>a quantia de <strong>Setecentos Reais</strong></p>
- <p>Correspondente a <strong>Serviços prestados ..<strong></p>
- <p>e para clareza firmo(amos) o presente.</p>
- <p class='direita'>Itapeva, 11 de Julho de 2017</p>
- <p>Assinatura ......................................................................................................................................</p>
- <p>Nome <strong>Alberto Nascimento Junior</strong> CPF/CNPJ: <strong>222.222.222-02</strong></p>
- <p>Endereço <strong>Rua Doutor Pinheiro, 144 - Centro, Itapeva - São Paulo</strong></p>
- </fieldset>
- <div class='creditos'>
- <p><a href='https://www.webcreative.com.br/artigo/gerar-pdf-com-php-e-html-usando-a-biblioteca-mpdf' target='_blank'>Aprenda como gerar PDF com PHP e HTML usando a biblioteca MPDF aqui</a></p>
- </div>
- ";
+ $html = file_get_contents('tarefas_equipe.php');
 
- $mpdf = new \Mpdf\Mpdf(); 
+ $mpdf = new \Mpdf\Mpdf([
+    'mode' => 'utf-8',
+    'format' => [190, 236],
+    'orientation' => 'L'
+ ]); 
  $mpdf-> SetDisplayMode('fullpage');
- $css = file_get_contents("css/estilo.css");
+ $css = file_get_contents("style_painel.css");
  $mpdf->WriteHTML($css,1);
  $mpdf->WriteHTML($html);
  $mpdf->Output();

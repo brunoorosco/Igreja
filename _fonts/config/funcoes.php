@@ -139,18 +139,29 @@ function carrega_conf($conf)
      if($total > 0 )  return $rows[0]['_status']; //[0] representa o numero da coloca que estou procurando no caso como só tem uma é 0
 
 }
-function encontro(){
+function encontro(){ //devolve o numero do encontro ou reencontro atual e se é encontro ou reeecontro
 $pdo = Banco::conectar();
-$sql = 'SELECT * from info_encontro where data_inicio >= DATE_SUB(CURDATE(), INTERVAL 5 DAY) limit 1';//DATE_ADD(CURDATE(), INTERVAL 120 DAY)
+$sql = 'SELECT * from info_encontro where data_inicial >= DATE_SUB(CURDATE(), INTERVAL 5 DAY) order by data_inicial asc limit 1';//DATE_ADD(CURDATE(), INTERVAL 120 DAY)
 foreach($pdo->query($sql)as $row_events) { 
-  $data  =  $row_events['n_encontro']; 
+  $data  =  $row_events['tipo'].' Nº '.$row_events['n_encontro']; 
+  
 }
 return $data;
 }
 
+function encontro_atual(){ //devolve o numero do encontro ou reencontro atual
+  $pdo = Banco::conectar();
+  $sql = 'SELECT * from info_encontro where data_inicial >= DATE_SUB(CURDATE(), INTERVAL 5 DAY) order by data_inicial asc limit 1';//DATE_ADD(CURDATE(), INTERVAL 120 DAY)
+  foreach($pdo->query($sql)as $row_events) { 
+     $data = $row_events['n_encontro']; 
+    
+  }
+  return $data;
+  }
+
 function ultimo_encontro(){
   $pdo = Banco::conectar();
-  $sql = 'SELECT * from info_encontro where data_inicio <= CUrdate() order by n_encontro desc limit 1';
+  $sql = 'SELECT * from info_encontro where data_inicial <= CUrdate() order by n_encontro desc limit 1';
   foreach($pdo->query($sql)as $row_events) { 
     $data  =  $row_events['n_encontro']; 
   }
@@ -158,6 +169,10 @@ function ultimo_encontro(){
   }
 
 
- 
+function enc_reenc()
+{
+  $sql = 'SELECT * from info_encontro having data_inicial BETWEEN curdate() AND date_add(curdate(),INTERVAL 30 day)';
+}
+
   ?>
 

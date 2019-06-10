@@ -96,15 +96,15 @@
        	<div class="row"></div>
        		<div class="col-md-6 offset-md-3">
           	<form class="formulario"  id="formulario_encontrista" action="" method="post" >
-          				<h3 class="h3">Inscrição de Encontristas</h3><p class="h3 text-center"> Encontro nº <?php echo encontro();?></p><br>
+          				<h3 class="h3 text-center">Cadastro</h3><p class="h3 text-center"><?php echo encontro();?></p><br>
           				<div class="form-group ">
           				<input type="text" name="nome" id="nome" class="form-control" placeholder="Nome Completo" required="" style="border-radius: 8px!important;
-                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;" onkeyup="maiuscula(this)">
           				</div>
 
           				<div class="form-group">
           				  	<input type="text" name="endereco" id="end" class="form-control" placeholder="Endereço" style="border-radius: 8px!important;
-                      background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
+                      background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;" onkeyup="maiuscula(this)">
           				</div>
 
           				 <div class="form-group">
@@ -138,6 +138,8 @@
                               <option>Martins/Shirley</option>
                               <option>Mirtes</option>
                               <option>Novo Tempo(Valdirene)</option>
+
+                              <option>Pr.Bete/ Julio</option>
                               <option>Pr.Laercio/ Vera</option>
                               <option>WAGUERSON</option>
                               <option>Zô</option>
@@ -150,7 +152,7 @@
 
           			 <div class="form-group input-group">
           				 	<textarea type="text" name="obser" class="form-control" placeholder="Observações" id="am2" style="border-radius: 8px!important;
-                    background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;"></textarea>   				 
+                    background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;" onkeyup="maiuscula(this)"></textarea>   				 
           				 </div>
 
 

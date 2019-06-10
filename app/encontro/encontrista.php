@@ -5,7 +5,8 @@
  include_once("../../menu.php");
  
  validarUsuario();
- $encontro = encontro();
+ $encontro = encontro_atual();
+ $encontro_txt = encontro();
 
 ?>
 <!DOCTYPE html>
@@ -47,7 +48,7 @@
         <div class="container">
               <div class="card">
                 <div class="card-header">
-                    <h3 class="text-center">Lista de Encontrista - Encontro nº <?php echo $encontro;?> </h3>
+                    <h3 class="text-center">Lista de Participantes - <?php echo $encontro_txt;?> </h3>
                 </div>
               </div> 
           <br>

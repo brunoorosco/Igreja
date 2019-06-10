@@ -39,8 +39,7 @@
         background-size: cover;
         color: white;
         background-repeat: no-repeat;
-        background-po
-				sition: center;
+        background-position: center;
         background-attachment: fixed;
 
 

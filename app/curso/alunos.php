@@ -179,24 +179,8 @@ window.onload = function() {
 			<div class="col">
 			<h3> Participantes </h3>
 				<div id="texto">
-				<?php/*
-					$pdo = Banco::conectar();
-					$sql = "SELECT infocursos.nomeCursos, membros.nome, membros.idmembros	FROM turma INNER JOIN membros
-					ON turma.alunos = membros.idmembros INNER JOIN infocursos
-					ON turma.curso = infocursos.idCursos WHERE infocursos.idCursos ORDER BY membros.nome ASC";
-					
-					foreach($pdo->query($sql)as $row){
-						// echo '<span>'.$row['nome'] .'</span></br>';
-						echo '<div>
-									<a href="#" class="remove">
-												<span class="valorSpan">'.$row['idmembros'].' - '.$row['nome'].'</span>
-									</a>
-								</div>
-								';
-						}
-						
-				//		if( $total = count($row) == 0) echo "Não há alunos cadastrados neste curso";
-					*/
+				<?php
+				
 					?></div>
 					</div> <!--MOSTRA AQUELES QUE ESTÃO INSERIDOS NO EVENTO, CURSO OU/E MINISTÉRIO -->
 					<div class="col">

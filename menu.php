@@ -43,7 +43,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/funcoes.php");
                       <ul class="dropdown-menu multi-level" aria-labelledby="navbarDropdownMenuLink">
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Cadastro</a>
                           <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/encontro/cad_Encontrista.php'?>">Encontrista nº <?php echo encontro();?> </a></li>
+                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/encontro/cad_Encontrista.php'?>"><?php echo encontro();?> </a></li>
                             <!--<li><a class="dropdown-item disabled" href="">Equipe</a></li>-->
                             <li><a class="dropdown-item" href="<?= $URLBASE.'app/membros/cadastro.php'?>">Membro</a></li>
                            <!-- <li><a class="dropdown-item" href="<?= $URLBASE.'app/calendario/cadastroEvento.php'?>">Evento</a></li>-->

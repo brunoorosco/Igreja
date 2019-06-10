@@ -14,12 +14,13 @@ require_once '../../_fonts/config/funcoes.php';
     $sexoEnc = $_POST['sexo'];
     $cem_geral = $_POST['cem'];
     $CEM = carrega_dados();
-    $n_encontro = encontro();
+    $n_encontro = encontro_atual();
+   // echo $n_encontro;
     //$nascEnc = date("Y-m-d",strtotime(str_replace('/','-',$nascEnc)));
 
 
    ///////  VERIFICA SE USUARIO EMAIL JÁ ESTA CADASTRADO ///////////
-       $sql = "SELECT * FROM encontrista where telEnc = '$telEnc'";
+       $sql = "SELECT * FROM encontrista where nomeEnc = '$nomeEnc'";
        $pdo = Banco::conectar();
        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
        $exec =  $pdo->query($sql);
