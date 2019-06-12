@@ -22,11 +22,11 @@ switch ($selec){
        break;
 
        case 3:
-            fun($func);
+            cem();
        break;
 
        case 4:
-            quant($func);
+       membros($func);
       break;
 
        case 5:
@@ -45,7 +45,7 @@ switch ($selec){
          break;
 
       case 10:
-         membros();
+        
       break;
       case 11:
          encontrista();
@@ -100,20 +100,26 @@ function equipe(){
 
 
 
-function fun($funcao){
+function cem(){
 
-  $pdo = Banco::conectar();
-  $data = array();
-  $sql_= "SELECT aceit_reconc as funcao, COUNT(aceit_reconc) as quant	FROM aceita_jesus where aceit_reconc='$funcao' GROUP BY aceit_reconc";
-  
-  foreach($pdo->query($sql_)as $row)
+   $pdo = Banco::conectar();
+   $data = array();
+
+   $sql= " SELECT _status FROM config_sistem where funcao='filtro_membros'";
+   $filtro = $pdo->query($sql)->fetch();
+   $fil = $filtro[0];
+             
+   
+   $sql_= "SELECT DISTINCT(supervisao) as cem FROM membros group by supervisao HAVING COUNT(supervisao) > '$fil'";
+   
+   foreach($pdo->query($sql_)as $row)
       {       
          $data[] = $row;
       }
-
-   //  echo $row['funcao'];
-    
-  // print ($data[0]);
+      $pdo=null;   
+   //echo $row['funcao'];
+   
+   // print ($data[0]);
    print json_encode($data);
    
    }
@@ -200,18 +206,13 @@ function fun($funcao){
          
          }
          
-         function membros(){
-
+         function membros($member){
             $pdo = Banco::conectar();
             $data = array();
-
-            $sql= " SELECT _status FROM config_sistem where funcao='filtro_membros'";
-            $filtro = $pdo->query($sql)->fetch();
-            $fil = $filtro[0];
-                      
+    
             
             //$sql_= "SELECT  DISTINCT supervisao , COUNT(idmembros) as quant_membros  FROM membros GROUP BY supervisao";
-            $sql_= "SELECT DISTINCT(supervisao), COUNT(supervisao)  as quant_membros  FROM membros group by supervisao HAVING COUNT(supervisao) > '$fil'";
+            $sql_= "SELECT nome  FROM membros where supervisao='$member'";
             
             foreach($pdo->query($sql_)as $row)
                {       

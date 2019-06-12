@@ -12,9 +12,19 @@ require('../../_fonts/fpdf/fpdf.php');
 $GLOBALS["branch"] = ""; //variavel tipo global para o cabeçalho 
 $GLOBALS["encontro"] = "";
 
+///////////  prepara variavel e textos
+$encontro_txt =  encontro();
+//$encontro_numero = substr($encontro_txt,(strlen($encontro_txt)-3),strlen($encontro_txt)); //pega as 3 ultimos caracteres
+$encontro_numero = preg_replace("/[^0-9]/", "", $encontro_txt);
+$encontro_frase = strstr($encontro_txt, ' ', true);
+
+//print encontro_atual();
+//print $encontro_frase. 'com Deus - Nº'.$encontro_numero;
+
          ///FUNÇÃO PARA INSERIR PROXIMO Nº DE ENCONTRO
-                $encontro =  encontro();
-                $GLOBALS["encontro"] = $encontro;
+                $encontro_atual =  encontro_atual();
+               // $encontro_txt =  encontro();
+                $GLOBALS["encontro"] = $encontro_frase. ' com Deus - Nº '.$encontro_numero;
         //////////////////////////////////////////////
                
 class PDF extends FPDF
@@ -29,7 +39,7 @@ function Header()
     // Move to the right
     $this->Cell(80);
     // Title
-    $this->Cell(30,10,'Encontro com Deus Nº: '.$GLOBALS["encontro"],0,0,'C');
+    $this->Cell(30,10,$GLOBALS["encontro"],0,0,'C');
     $this->Cell(-30,22,$GLOBALS["branch"],0,0,'C');
   
     // Line break
@@ -95,7 +105,7 @@ $pdo = Banco::conectar();
 $sql = 'SELECT nomeEnc,telEnc,CEM FROM encontrista where sexoEnc = "feminino" ORDER BY nomeEnc ASC';
 $sql = "SELECT * FROM encontro INNER JOIN encontrista
     ON encontro.encontrista = encontrista.idEncontrista     
-    WHERE encontro.n_encontro = '$encontro' AND encontrista.sexoEnc = 'feminino'
+    WHERE encontro.n_encontro = '$encontro_atual' AND encontrista.sexoEnc = 'feminino'
     ORDER BY encontrista.nomeEnc ASC";
 $j =1;
 
@@ -149,7 +159,7 @@ $name = "";
 $sql = 'SELECT nomeEnc,telEnc,CEM FROM encontrista where sexoEnc = "masculino"  ORDER BY  nomeEnc ASC';
 $sql = "SELECT * FROM encontro INNER JOIN encontrista
     ON encontro.encontrista = encontrista.idEncontrista     
-    WHERE encontro.n_encontro = '$encontro' AND encontrista.sexoEnc = 'masculino'
+    WHERE encontro.n_encontro = '$encontro_atual' AND encontrista.sexoEnc = 'masculino'
     ORDER BY encontrista.nomeEnc ASC";
 $j =1;
 

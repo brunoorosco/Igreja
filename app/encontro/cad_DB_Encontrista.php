@@ -21,6 +21,10 @@ require_once '../../_fonts/config/funcoes.php';
 
    ///////  VERIFICA SE USUARIO EMAIL JÁ ESTA CADASTRADO ///////////
        $sql = "SELECT * FROM encontrista where nomeEnc = '$nomeEnc'";
+       $sql = "SELECT * FROM encontro 
+       INNER JOIN encontrista  ON encontro.encontrista = encontrista.idEncontrista     
+       WHERE encontro.n_encontro = '$n_encontro' AND encontrista.nomeEnc = '$nomeEnc' group BY encontrista.CEM ";
+       
        $pdo = Banco::conectar();
        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
        $exec =  $pdo->query($sql);
