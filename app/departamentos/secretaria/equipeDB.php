@@ -26,7 +26,7 @@ switch ($selec){
        break;
 
        case 4:
-       membros($func);
+            membros($func);
       break;
 
        case 5:
@@ -212,7 +212,7 @@ function cem(){
     
             
             //$sql_= "SELECT  DISTINCT supervisao , COUNT(idmembros) as quant_membros  FROM membros GROUP BY supervisao";
-            $sql_= "SELECT nome  FROM membros where supervisao='$member'";
+            $sql_= "SELECT idmembros as id, nome  FROM membros where supervisao='$member' order by nome";
             
             foreach($pdo->query($sql_)as $row)
                {       

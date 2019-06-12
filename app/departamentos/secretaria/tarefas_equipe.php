@@ -27,7 +27,7 @@
      <div class="row">
                 
                 <div class="col-3  min-height-600 border" ondrop="drop(event)" ondragover="allowDrop(event)" id="tarefa1">
-                        <h4 class="text-center" id="move_text" draggable="true" ondragstart="drag(event)"> Equipe</h4>
+                        <h4 class="text-center" id="move_text"> Equipe</h4>
                 </div>
 
                     <div class="col min-height-600">

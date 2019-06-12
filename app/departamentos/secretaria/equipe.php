@@ -17,12 +17,7 @@
     <title>Secretaria Encontro</title>
 
    <style> 
-  .row > div p {
-    background: #555555;
-    padding: 10px 10px 10px 10px;
-    margin: 10px 10px 10px 10px ;
-    }
-
+  
     /* substitua 200px pela altura do quadro com duas linhas, "MELHOR" */
     .min-height-200 { 
         min-height: 200px; 
@@ -32,10 +27,13 @@
           width: 200px;
           height: 200px; } 
 
-        .my-div {
-       
+          #tabsCem {
+              width: 95%;
+              margin-left: auto;
+              margin-right: auto;
+              margin-top: 5px;
+              
           }
-
           a.fill-div {
           text-align: center;
           display: block;
@@ -56,23 +54,42 @@
                 </div>
           </div>
            <div class="row" style="margin-top: 10px; ">
-            <div class="col border rounded">
-                <ul class="nav nav-tabs" id="tabsCem">
+            <div class="col border rounded " >
+               
+                <ul class="nav nav-tabs" id="tabsCem" role="tablist">
                    
-                    </ul>
+                </ul>
                 
                
-                <div class="tab-content" id="myTabContent">
+                <div class="tab-content" id="myTabContent" style="text-transform: uppercase;">
                     
                 </div>
             </div>
-            <div class="col border rounded">Equipe</div>
-             </div>
-             </div>
 
+            <div class="col border rounded" ondrop="drop(event)" ondragover="allowDrop(event)" style="text-transform: uppercase;" >Equipe
+             </div>
+            
+            
+            </div>
+            
+             </div>
+            
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.ui.position.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>            
 <script src="./equipe.js"></script>
 <script>
     carregar_membros();
+
+    $(document).ready(function () {
+        $(".removerItem").click(function(){
+  	    $(this).parent().parent().empty();
+});
+
+});
+
+  
+
 </script>
 </body> 
 </html> 
