@@ -12,15 +12,21 @@ function drop(ev)
     {
         var data = ev.dataTransfer.getData("Text");
         var div =  document.getElementById(data);
-        ev.target.appendChild(div);
+        ev.target.appendChild(div); //cria uma nova div no elemento pai
+
+        for(var i = 0; i < div.children.length; i++){
+          alert(div.children[i].tagName + div.children[i].id )
+        }
+
         //alert( document.getElementById(data).textContent + data.innerHTML());
       //  alert(div.parentElement.id +" - " + div.children[0].id);
         ev.preventDefault();
         var salva = document.getElementById( div.children[0].id).firstChild.nodeValue; 
+        var salva1 = document.getElementById( div.children[1].id).firstChild.nodeValue; 
        // var valor = $(salva p).attr('id');
          
-         console.log(data+"-"+salva);
-        salva_tarefa(div+"-"+data+"-"+salva);
+        console.log(data+"-"+salva);
+        salva_tarefa(div+"-"+data+"-"+salva+salva1);
     }
 
 function carrega_equipe(){
@@ -110,7 +116,7 @@ function member(memb, posicao){
   $.getJSON( "./equipeDB.php", { selec: '4' , funcao: memb, },function( json ) {
     for(var i=0;json.length>i;i++){
       $('#member'+posicao).append('<div id="'+cem+[i]+' "draggable="true" ondragstart="drag(event)" class="text-letf bg-transparent">'+
-      '<span id="'+cem+'_'+[i]+'">'+json[i].nome+'</span><span hidden>'+json[i].id+'</span></div>');  
+      '<span id="'+cem+'_'+[i]+'">'+json[i].nome+'</span><span id="teste">'+json[i].id+'</span></div>');  
    
     }
    });
