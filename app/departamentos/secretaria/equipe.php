@@ -66,8 +66,12 @@
                 </div>
             </div>
 
-            <div class="col border rounded" ondrop="drop(event)" ondragover="allowDrop(event)" style="text-transform: uppercase;" >Equipe
-             </div>
+            <div id="equipe_cadastrada" class="col border rounded" ondrop="drop(event)" ondragover="allowDrop(event)" style="text-transform: uppercase;">
+           <p><h4 class="text-center" >Equipe</h4></p>
+                
+               
+            
+            </div>
             
             
             </div>
@@ -80,15 +84,9 @@
 <script src="./equipe.js"></script>
 <script>
     carregar_membros();
+    carregar_equipe();
 
-    $(document).ready(function () {
-        $(".removerItem").click(function(){
-  	    $(this).parent().parent().empty();
-});
-
-});
-
-  
+     
 
 </script>
 </body> 

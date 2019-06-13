@@ -14,7 +14,7 @@ $mes = "";
 
 switch ($selec){
       case 1: 
-          curso();
+          cadastro_equipe();
           break;
 
        case 2:
@@ -62,15 +62,15 @@ switch ($selec){
 
 
 
-function curso(){
+function cadastro_equipe()
+{
     $pdo = Banco::conectar();
     $data = array();
     // $soma = $pdo->query("SELECT SUM(alunos) AS total FROM turma where curso='2'")->fetchColumn(); //soma os valores dos itens da celulas
     //$sql = "SELECT   alunos, COUNT(alunos) AS Qtd FROM  turma GROUP BY alunos HAVING  COUNT(alunos) > 1 ORDER BY COUNT(alunos) DESC";
-    $sql = "SELECT curso, COUNT(alunos) AS 'alunos'  FROM turma GROUP BY curso";//funcionando
-    $sql_= "SELECT infocursos.tema as curso, COUNT(membros.idmembros) as alunos	FROM turma INNER JOIN membros
-             ON turma.alunos = membros.idmembros INNER JOIN infocursos
-              ON turma.curso = infocursos.idCursos GROUP BY turma.curso";
+    $sql_= "SELECT membros.idmembros as id, membros.nome as equipe, info_encontro.n_encontro FROM equipe 
+    INNER JOIN membros ON equipe.membro = membros.idmembros 
+    INNER JOIN info_encontro ON equipe.encontro = info_encontro.id GROUP by membros.nome";
 
     foreach($pdo->query($sql_)as $row)
         {       

@@ -153,3 +153,32 @@ function member(memb, posicao){
           }
       });
   });
+
+  function carregar_equipe(){
+    //  alert("ok");
+      var retorno;
+      $.ajax({
+         url:    "equipeDB.php",
+         type:   "get",
+         dataType: "json",
+         data:   { selec: "1" , funcao: "0"}
+         })
+         .done(function( data ) {
+        // success: function( data ){
+             retorno = data;    
+             var j = '0';
+             var ka= '0';
+             for(var i=0;data.length>i;i++){
+              //Adicionando registros retornados na tabela
+               
+                console.log(data[i].equipe);
+                 j =  data[i].equipe;
+               
+                 $('#equipe_cadastrada').append('<div id="eq_cad'+[i]+' "draggable="true" ondragstart="drag(event)" class="text-letf bg-transparent">'+
+                 '<span id="equipe_cad'+[i]+'">'+data[i].equipe+'</span><span hidden>'+data[i].id+'</span></div>');  
+                 
+              }
+                      
+         });
+         return retorno;
+  }
