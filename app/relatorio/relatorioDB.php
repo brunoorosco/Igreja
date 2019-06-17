@@ -41,7 +41,7 @@ switch ($selec){
             total($mes);
          break;
        case 8:
-            batizado($mes);
+            batizado($func,$mes);
          break;
 
       case 10:
@@ -50,6 +50,10 @@ switch ($selec){
 
       case 11:
          encontrista();
+      break;
+
+      case 12:
+         num_rel_bati($func, $mes);
       break;
 
 
@@ -163,6 +167,23 @@ function fun($funcao){
          
          }      
 
+       function num_rel_bati($funcao, $month){
+         $pdo = Banco::conectar();
+         $data = array();
+         $sql_ = "SELECT  batizado as funcao, COUNT(aceit_reconc) as quant from aceita_jesus 
+                     WHERE  EXTRACT(YEAR_MONTH FROM cadastro) = '$month' AND batizado = '$funcao'  
+                     GROUP BY EXTRACT(YEAR_MONTH FROM cadastro), batizado";   
+                           
+        foreach($pdo->query($sql_)as $row)
+             {    
+         $data[] = $row;
+         
+          } 
+          $pdo=null;   
+          print json_encode($data);
+         
+         }      
+
       function total($funcao){
 
          $pdo = Banco::conectar();
@@ -181,12 +202,14 @@ function fun($funcao){
          
          }
    
-      function batizado($funcao){
+      function batizado($funcao, $month){
 
          $pdo = Banco::conectar();
          $data = array();
          $sql_= "SELECT batizado as funcao, COUNT(batizado) as quant, YEAR(cadastro) as ano FROM aceita_jesus where cadastro > DATE_sub(CURDATE(), INTERVAL 90 DAY) GROUP BY batizado";
-         
+         $sql= "SELECT batizado as funcao, COUNT(batizado) as quant from aceita_jesus 
+                     WHERE  EXTRACT(YEAR_MONTH FROM cadastro) = '$month' AND batizado = '$funcao'
+                     GROUP BY EXTRACT(YEAR_MONTH FROM cadastro), batizado";   
          foreach($pdo->query($sql_)as $row)
             {       
                $data[] = $row;
@@ -250,6 +273,9 @@ function fun($funcao){
             
             }
    
-
+/*$sql_ = "SELECT $funcao as funcao, COUNT('$funcao') as quant, EXTRACT(YEAR_MONTH FROM cadastro) as ano
+               FROM aceita_jesus 
+                     where cadastro > DATE_sub(CURDATE(), INTERVAL 90 DAY) 
+                           GROUP BY EXTRACT(YEAR_MONTH FROM cadastro), '$funcao'";*/
     
 ?>

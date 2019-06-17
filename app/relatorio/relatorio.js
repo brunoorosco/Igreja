@@ -1,3 +1,5 @@
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
   function somarValores(quant){
     var soma = 0;
     var teste = [];
@@ -6,7 +8,7 @@
 
             teste[i] = parseInt(quant[i]);      
             soma += parseInt(teste[i]);
-      //      console.log(quant[i]) ;
+            
           }  
       return soma;
     }
@@ -161,6 +163,7 @@ function grafico()
     //var data = VerBanco( "aceitou", 3 );
     //var resp_2 = VerBanco( "reconciliou", 3 );
     
+    //pesquisa informações para recolhimento dos dados do grafico
     var leitura = VerBanco( 0, 5, 0 );  //faz a leitura do mes de forma distinta 
      
     for(var i in leitura) {            
@@ -178,12 +181,21 @@ function grafico()
         labels[i] = labels[i].substring(4, 6)+"/"+labels[i].substring(0, 4);
   //      console.log(labels[i] + graf1[i])
     }
+    
+    var teste = [];
+    var teste2 = [];
+    teste = somarValores(graf1);
+    teste2 = somarValores(graf2);
+    var adicionar = [graf1, teste2];
          
           labels.reverse();
           graf1.reverse();
           graf2.reverse();
-          
-     //     console.log(labels);
+
+        
+         console.log(teste);
+         console.log(teste2);
+         console.log(adicionar);
     
   var primeiroGrafico = document.getElementById('Grafico');
   var ctx = primeiroGrafico.getContext("2d");
@@ -268,6 +280,7 @@ function grafico()
     var graf1 = [];
     var graf2 = [];
     var labels = [];
+    var labels_ = [];
 
         var leitura = VerBanco( 0, 7, 0 );  //faz a leitura do mes de forma distinta 
         for(var i in leitura) {            
@@ -276,12 +289,29 @@ function grafico()
           ano = (leitura[1].ano);
         
                 }
-  
-        //    labels[i] = labels[i].substring(4, 6)+"/"+labels[i].substring(0, 4);
+               
+          /*      var leitura = VerBanco( 0, 5, 0 );  //faz a leitura do mes de forma distinta 
+                   for(var i in leitura) {            
+                    labels.push(leitura[i].data);
+                    
+                    var txt = VerBanco( "sim", 12,  labels[i] ); 
+                    for(var j in txt) {            
+                      graf1.push(txt[j].quant);
+                                }
+                    var txt = VerBanco( "não", 12,  labels[i] ); 
+                    for(var j in txt) {            
+                      graf2.push(txt[j].quant);
+                                }
           
-  
-          totls = somarValores(graf1);
-  
+                }       
+              
+        //    labels[i] = labels[i].substring(4, 6)+"/"+labels[i].substring(0, 4);
+  */
+         totls = somarValores(graf1);
+       //  totls += somarValores(graf2);
+
+          
+
         let chartt = new Chart(GraficoPizza, {
           type: 'doughnut',
           data: {
@@ -390,22 +420,45 @@ function graficoBatizado()
     var ctx = canvas.getContext("2d");
     ctx.canvas.height = 220;
     var graf1 = [];
+    var batizado_s = [];
+    var batizado_n = [];
     var batizado = [];
     var labels = [];
-    var labels_bat = [];
+    var legenda = [];
 
         var leitura = VerBanco( 0, 8, 0 );  //faz a leitura do mes de forma distinta 
         for(var i in leitura) {            
-          labels.push(leitura[i].funcao);
+          legenda.push(leitura[i].funcao);
           batizado.push(leitura[i].quant);
+          
           ano = (leitura[1].ano);
                 } 
-  
-          totls = somarValores(batizado);
+                console.log(batizado);
 
+                var leitura = VerBanco( 0, 5, 0 );  //faz a leitura do mes de forma distinta 
+                for(var i in leitura) {            
+                 labels.push(leitura[i].data);
                  
+                 var txt = VerBanco( "sim", 12,  labels[i] ); 
+                 for(var j in txt) {            
+                   batizado_s.push(txt[j].quant);
+                             }
+                 var txt = VerBanco( "não", 12,  labels[i] ); 
+                 for(var j in txt) {            
+                   batizado_n.push(txt[j].quant);
+                             }
+       
+             }            
+  
+            // totls = somarValores(batizado);
+         //    totls += somarValores(batizado_s);
+         //   var batiz = somarValores(batizado_s)+','+somarValores(batizado_n);                 
           
-        let GraficoBatizado = canvas.getContext('2d');
+          batizado = batiz.toString();
+          //console.log(batizado);
+        
+        
+          let GraficoBatizado = canvas.getContext('2d');
   
         let chartt = new Chart(GraficoBatizado, {
           type: 'doughnut',
@@ -421,7 +474,7 @@ function graficoBatizado()
                     borderColor: "#fff"
                 },
               ],
-              labels: labels,
+              labels: legenda,
             },
            options: {
             elements: {
@@ -525,7 +578,7 @@ function graficoBatizado()
                  for(var i=0;data.length>i;i++){
                   //Adicionando registros retornados na tabela
                    
-                    console.log(data[i].supervisao);
+                 //   console.log(data[i].supervisao);
                       
                     $('<div>', { id: data[i].supervisao, class: 'counter col border min-height-100'}).appendTo('#membros'+[ka]);
                          document.getElementById(data[i].supervisao).innerHTML = "<h2 class='count-title'>" + data[i].quant_membros +"</h2>"+ "\n" +"<p class='count-text'>"+ data[i].supervisao+"</p>";
