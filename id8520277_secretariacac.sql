@@ -34,7 +34,7 @@ CREATE TABLE `aceita_jesus` (
   `endereco` varchar(50) DEFAULT NULL,
   `telefone` varchar(15) DEFAULT NULL,
   `aceit_reconc` varchar(12) NOT NULL,
-  `cadastro` date DEFAULT current_timestamp(),
+  `cadastro` date NOT NULL,
   `batizado` varchar(5) DEFAULT NULL,
   `cem` varchar(25) DEFAULT NULL,
   `idade` varchar(5) DEFAULT '0',

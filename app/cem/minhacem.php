@@ -27,7 +27,7 @@
          </head>
     <body>
  <div class="container-fluid rounded" id="faixa">
-          <h2 class="text-center">Minha CEM</h2>
+          <h2 class="text-center text-white">Minha CEM</h2>
  </div>
 
     <div class="container-box">

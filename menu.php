@@ -54,7 +54,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/funcoes.php");
                             <li><a class="dropdown-item" href="<?= $URLBASE.'app/encontro/encontrista.php'?>">Encontristas</a></li>
                             <li><a class="dropdown-item" href="">Equipe</a></li>
                             <li><a class="dropdown-item" href="<?= $URLBASE.'app/membros/membros.php'?>">Membros</a></li>
-                            <li><a class="dropdown-item" href="">Minha CEM</a></li>
+                            <li><a class="dropdown-item" href="<?= $URLBASE.'app/cem/minhacem.php'?>">Minha CEM</a></li>
                           </ul>
                         </li>
                        
