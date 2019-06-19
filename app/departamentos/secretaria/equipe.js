@@ -14,19 +14,19 @@ function drop(ev)
         var div =  document.getElementById(data);
         ev.target.appendChild(div); //cria uma nova div no elemento pai
 
-        for(var i = 0; i < div.children.length; i++){
-          alert(div.children[i].tagName + div.children[i].id )
-        }
+       // for(var i = 0; i < div.children.length; i++){
+       //   alert(div.children[i].id + div.lastChild.innerHTML)
+       // }
 
         //alert( document.getElementById(data).textContent + data.innerHTML());
       //  alert(div.parentElement.id +" - " + div.children[0].id);
         ev.preventDefault();
-        var salva = document.getElementById( div.children[0].id).firstChild.nodeValue; 
-        var salva1 = document.getElementById( div.children[1].id).firstChild.nodeValue; 
-       // var valor = $(salva p).attr('id');
-         
-        console.log(data+"-"+salva);
-        salva_tarefa(div+"-"+data+"-"+salva+salva1);
+        //var salva = document.getElementById( div.children[0].id).firstChild.nodeValue; 
+        var salva  = div.firstChild.innerHTML; //pega o texto do primeiro elemento TAG da div
+        var salva1 = div.lastChild.innerHTML; //pega o texto do ultimo elemento TAG da div
+       
+        console.log(data+"-"+salva+"-"+salva1);
+        salva_tarefa(salva1);
     }
 
 function carrega_equipe(){
@@ -35,7 +35,7 @@ function carrega_equipe(){
        url:    "equipeDB.php",
        type:   "get",
        dataType: "json",
-       data:   { selec: "2" , funcao: "0"},
+       data:   { selec: "2" , funcao: "0", fulano:"0"},
        async: false})
        .done(function( data ) {
       // success: function( data ){
@@ -62,7 +62,8 @@ function carrega_equipe(){
    
    function salva_tarefa(tarefa)
    {
-    alert(tarefa);
+    //alert(tarefa);
+    cad_equipe(tarefa);
 
    }
 
@@ -73,7 +74,7 @@ function carrega_equipe(){
        url:    "equipeDB.php",
        type:   "get",
        dataType: "json",
-       data:   { selec: "3" , funcao: "0"}
+       data:   { selec: "3" , funcao: "0", fulano:"0"}
        })
        .done(function( data ) {
       // success: function( data ){
@@ -113,10 +114,10 @@ function member(memb, posicao){
 
   var cem = memb.trim();
   console.log(cem);
-  $.getJSON( "./equipeDB.php", { selec: '4' , funcao: memb, },function( json ) {
+  $.getJSON( "./equipeDB.php", { selec: '4' , funcao: memb, fulano:"0"},function( json ) {
     for(var i=0;json.length>i;i++){
       $('#member'+posicao).append('<div id="'+cem+[i]+' "draggable="true" ondragstart="drag(event)" class="text-letf bg-transparent">'+
-      '<span id="'+cem+'_'+[i]+'">'+json[i].nome+'</span><span id="teste">'+json[i].id+'</span></div>');  
+      '<span id="'+cem+'_'+[i]+'">'+json[i].nome+'</span><span hidden id="memb'+[i]+'">'+json[i].id+'</span></div>');  
    
     }
    });
@@ -167,7 +168,7 @@ function member(memb, posicao){
          url:    "equipeDB.php",
          type:   "get",
          dataType: "json",
-         data:   { selec: "1" , funcao: "0"}
+         data:   { selec: "1" , funcao: "0", funano: "0"}
          })
          .done(function( data ) {
         // success: function( data ){
@@ -187,4 +188,27 @@ function member(memb, posicao){
                       
          });
          return retorno;
+  }
+
+  function cad_equipe(membre){
+      alert(membre);
+      var retorno;
+      $.ajax({
+         url:    "equipeDB.php",
+         type:   "get",
+         dataType: "json",
+         data:   { selec: "9" , funcao: "0", funano:membre}
+         })
+         .done(function( data ) {
+        // success: function( data ){
+            retorno = data.mens;    
+            alert(retorno);     
+            })
+            .fail(function(data){
+            alert(data.mens);     
+            
+            });
+
+        
+            return retorno;
   }

@@ -158,8 +158,8 @@ include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/funcoes.php");
                       else {?>
 
                       <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Entrar <span class="caret"></span></button>
-                  <?php     if(isset($_SESSION['msg_login']))
-                                 echo( $_SESSION['msg_login']);} ?>
+                  <?php     if(isset($_SESSION['msg_login_']))
+                                 echo( $_SESSION['msg_login_']);} ?>
 
 
                 <ul class="dropdown-menu dropdown-menu-right mt-2">
