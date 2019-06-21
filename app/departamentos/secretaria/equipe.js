@@ -74,17 +74,18 @@ function carrega_equipe(){
        url:    "equipeDB.php",
        type:   "get",
        dataType: "json",
-       data:   { selec: "3" , funcao: "0", fulano:"0"}
+       data:   { selec: "3" , funcao: "0", fulano: "0"}
        })
        .done(function( data ) {
       // success: function( data ){
-           retorno = data;    
+           retorno = data;
+          // alert(retorno);    
            var j = '0';
            var ka= '0';
            for(var i=0;data.length>i;i++){
             //Adicionando registros retornados na tabela
              
-              console.log(data[i].cem);
+    //          console.log(data[i].cem);
                j =  data[i].cem;
               
               if(i==0)
@@ -114,7 +115,7 @@ function member(memb, posicao){
 
   var cem = memb.trim();
   console.log(cem);
-  $.getJSON( "./equipeDB.php", { selec: '4' , funcao: memb, fulano:"0"},function( json ) {
+  $.getJSON( "./equipeDB.php", { selec: '4' , funcao: memb, fulano:'0'},function( json ) {
     for(var i=0;json.length>i;i++){
       $('#member'+posicao).append('<div id="'+cem+[i]+' "draggable="true" ondragstart="drag(event)" class="text-letf bg-transparent">'+
       '<span id="'+cem+'_'+[i]+'">'+json[i].nome+'</span><span hidden id="memb'+[i]+'">'+json[i].id+'</span></div>');  
@@ -168,7 +169,7 @@ function member(memb, posicao){
          url:    "equipeDB.php",
          type:   "get",
          dataType: "json",
-         data:   { selec: "1" , funcao: "0", funano: "0"}
+         data:   { selec: "1" , funcao: "0", fulano: "0"}
          })
          .done(function( data ) {
         // success: function( data ){
@@ -178,7 +179,7 @@ function member(memb, posicao){
              for(var i=0;data.length>i;i++){
               //Adicionando registros retornados na tabela
                
-                console.log(data[i].equipe);
+               // console.log(data[i].equipe);
                  j =  data[i].equipe;
                
                  $('#equipe_cadastrada').append('<div id="eq_cad'+[i]+' "draggable="true" ondragstart="drag(event)" class="text-letf bg-transparent">'+
@@ -197,7 +198,7 @@ function member(memb, posicao){
          url:    "equipeDB.php",
          type:   "get",
          dataType: "json",
-         data:   { selec: "9" , funcao: "0", funano:membre}
+         data:   { selec: "9" , funcao: "0", fulano:membre}
          })
          .done(function( data ) {
         // success: function( data ){

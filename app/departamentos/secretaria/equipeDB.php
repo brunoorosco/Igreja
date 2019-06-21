@@ -9,9 +9,7 @@ header('Content-Type: text/html; charset=utf-8');
 
 $selec = $_GET['selec'];
 $func = $_GET['funcao'];
-
-   if(!isset($_GET['funalo']))$cad_equipe = 0;
-         else $cad_equipe = $_GET['funalo']; 
+$cad_equipe = $_GET['fulano']; 
 $mes = "";
 
 
@@ -49,7 +47,7 @@ switch ($selec){
          break;
 
       case 9:
-            cadastra_equipe();//função para cadastrar a equipe nos encontros           
+            cadastra_equipe($cad_equipe);//função para cadastrar a equipe nos encontros           
 
       break;
       
@@ -73,7 +71,7 @@ switch ($selec){
 
 
 
-function carrega_equipe()
+function carrega_equipe()//responsavel por carregar equipe já cadastrada
 {
     $pdo = Banco::conectar();
     $data = array();
@@ -263,23 +261,23 @@ function cem(){
             }
    
             //////cadastrado da equipe no encontro
-         function cadastro_equipe($funcao){
+         function cadastra_equipe($membro){
 
                $tarefa_padrao = 1;
-               $encontro = encontro_atual();
+               $encontro = id_encontro_atual();
 
                $pdo = Banco::conectar();
                $data = array();
                $sql_= "INSERT INTO equipe(membro, encontro, tarefaEnc) VALUES (:membro, :encontro, :tarefaEnc) ";
                
-               $stmt = $db->prepare($sql_);
-               $stmt->bindParam(':membro',$cad_equipe);
+               $stmt = $pdo->prepare($sql_);
+               $stmt->bindParam(':membro',$membro);
                $stmt->bindParam(':encontro',$encontro);
                $stmt->bindParam(':tarefaEnc',$tarefa_padrao);
                $stmt->execute();
-               $db = null;
+               $pdo = null;
             
-               echo json_encode("mens":"cadastrado");
+               echo json_encode(array("mens"=>"cadastrado"));
                
                // print ($data[0]);
             //   print json_encode($data);

@@ -159,6 +159,16 @@ function encontro_atual(){ //devolve o numero do encontro ou reencontro atual
   return $data;
   }
 
+function id_encontro_atual(){ //devolve o numero do encontro ou reencontro atual
+  $pdo = Banco::conectar();
+  $sql = 'SELECT * from info_encontro where data_inicial >= DATE_SUB(CURDATE(), INTERVAL 5 DAY) order by data_inicial asc limit 1';//DATE_ADD(CURDATE(), INTERVAL 120 DAY)
+  foreach($pdo->query($sql)as $row_events) { 
+     $data = $row_events['id']; 
+    
+  }
+  return $data;
+  }
+
 function ultimo_encontro(){
   $pdo = Banco::conectar();
   $sql = 'SELECT * from info_encontro where data_inicial <= CUrdate() order by n_encontro desc limit 1';

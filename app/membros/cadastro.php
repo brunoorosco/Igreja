@@ -91,7 +91,7 @@ color: white;
 
        		<div class="row"></div>
        				<div class="col-md-6 offset-md-3">
-									<form  class="formulario" id="ajax_form_" action="./cadDB.php" method="post"  >
+									<form  class="formulario" id="ajax_form" action="" method="post"  >
 										<h3  class="h3"style="text-align: center;">Cadastro de Membros</h3><br>
 				 						<div class="form-group ">
 				 								<input type="text" name="nome" id="nome"class="form-control" placeholder="Nome Completo" required=""style="border-radius: 8px!important;

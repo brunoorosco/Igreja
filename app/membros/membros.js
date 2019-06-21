@@ -24,7 +24,12 @@ $('#editModal').on('show.bs.modal', function (event) {
     
     });
 
-
+// INICIO FUNÇÃO DE MASCARA MAIUSCULA
+function maiuscula(z){
+    v = z.value.toUpperCase();
+    z.value = v;
+}
+//FIM DA FUNÇÃO MASCARA MAIUSCULA
 
 function tabela(){
     $('#tabela_membros').DataTable( {
