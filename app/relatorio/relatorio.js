@@ -454,7 +454,7 @@ function graficoBatizado()
          //    totls += somarValores(batizado_s);
          //   var batiz = somarValores(batizado_s)+','+somarValores(batizado_n);                 
           
-          batizado = batiz.toString();
+         // batizado = batiz.toString();
           //console.log(batizado);
         
         

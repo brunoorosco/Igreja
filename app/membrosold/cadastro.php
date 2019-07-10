@@ -1,7 +1,7 @@
 <?php
 	include_once("../../_fonts/config/banco.php");
 	include_once("../../_fonts/config/funcoes.php");
-    include_once "../../menu.php";
+  include_once "../../menu.php";
 	if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
 
 
@@ -29,9 +29,8 @@
     html, body{height:100%;}
 
       body{
-        background-image: url(../../_fonts/img/efata.jpg);
+        background-image: url(http://localhost/www/igreja/_fonts/img/efata.jpg);
         background-size: cover;
-        color: white;
         background-repeat: no-repeat;
         background-position: center;
         background-attachment: fixed;
@@ -60,7 +59,7 @@
       	 .formulario{
              width: 400px;
              margin-top: 50px;
-             margin-left: -5%;
+             margin-left: -15%;
       }
      }
 
@@ -88,7 +87,7 @@ color: white;
 	   width: 100%; }
 </style>
 	<body>
-       <div class="container">
+	     <div class="container">										
 
        		<div class="row"></div>
        				<div class="col-md-6 offset-md-3">
@@ -130,7 +129,7 @@ color: white;
 													</select>
 													<input type="text" name="supervisao" id= "cem" class="form-control" placeholder="CEM" value="<?php echo carrega_dados(); ?>" style="border-radius: 8px!important;
 				                  background-color: rgba(23, 3, 3, 0.48)!important;color: white!important; border-radius:1px solid #291212 !important;">
-
+										
 													</div>
 
 										<!--<div class="form-group">
@@ -155,17 +154,19 @@ color: white;
 		<script type="text/javascript" src="../../_fonts/js/jquery.mask.min.js"></script>
 		<script type="text/javascript" src="../../_fonts/js/sweetalert2.all.min.js"></script>
 		<script type="text/javascript" src="./membros.js"></script>
-
+	
 	<script type="text/javascript">
 		  $('#cargo').change(function(){
 			$(this).css('color', 'white');
 		  });
 
-
+			
 		$('#cem').css('color','gray');
 		$('#cem').attr('disabled', true);
 
 		mascara();
+
+		tabela();
 	//	$('#senha').attr('disabled', true);
 	//	$('#senha').hide();
 /*
@@ -174,7 +175,7 @@ color: white;
 				var ref_input = document.getElementById('senha');
 				var valor = ref_select.value;
 					if (ref_select.value != "Bispo"){
-						$('#senha').hide();
+						$('#senha').hide();						
 						ref_input.disabled = true;
 					}
 					else
@@ -184,7 +185,7 @@ color: white;
 					}
 		}*/
 
-
+			
   </script>
 
 	</body>

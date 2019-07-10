@@ -101,11 +101,13 @@ include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/funcoes.php");
                     <ul class="dropdown-menu">
                     <?php  if($_SESSION['nivel'] == '1'){ ?> 
                         <li class="dropdown-submenu">
-                                <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Administração Geral</a>
-                                <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/secretaria/painel_controle.php'?>">Painel de Controle</a></li>
-                                 </ul>
-                            </li>  <?php }?>
+                            <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Administração Geral</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/secretaria/batizado.php'?>">Batizado</a></li>
+                                <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/secretaria/painel_controle.php'?>">Painel de Controle</a></li>
+
+                             </ul>
+                        </li>  <?php }?>
                    
                     <?php  if(($_SESSION['nivel'] == '1') || ($_SESSION['nivel'] == '4')){ ?>        
                             <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/secretaria/encontro.php'?>">Encontro</a></li><?php }?>

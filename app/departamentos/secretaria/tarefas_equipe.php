@@ -20,13 +20,15 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+   
      
-    <h4 class="card-title text-center"> Tarefas Equipe</h4>
-            
+    <div class="container-fluid rounded" id="faixa">
+          <h4 class="text-center text-white">Tarefas Equipe</h4>
+    </div>
+    <div class="container-fluid">         
      <div class="row">
                 
-                <div class="col-3  min-height-600 border" ondrop="drop(event)" ondragover="allowDrop(event)" id="tarefa1">
+                <div class="col-3  min-height-600 border"  id="tarefa1" style="text-transform: uppercase;">
                         <h4 class="text-center" id="move_text"> Equipe</h4>
                 </div>
 

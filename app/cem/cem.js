@@ -64,3 +64,27 @@ function encontrista(){
        return retorno;
    }
    
+//    $( "#ModalEncontro1" ).on('shown.bs.modal', function(){
+//      console.log("teste");
+// });
+
+  $('#ModalEncontro1').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) // Button that triggered the modal
+          var recipient = button.data('whatever') // Extract info from data-* attributes
+          var modal = $(this);
+         // var dataString = 'funcao=' + recipient;
+ 
+            $.ajax({
+                type: "GET",
+                url: "cemDB.php",
+                data: {funcao:'10' , arg1:'0', arg2:'0'},
+                cache: false,
+                success: function (data) {
+                    console.log(data);
+                    modal.find('.dash').html(data);
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });  
+    })

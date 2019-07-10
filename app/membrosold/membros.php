@@ -6,7 +6,7 @@
 
   validarUsuario();
 ?>
-<!DOCTYPE html>
+
 <html lang="pt-br">
 
 <head>
@@ -68,7 +68,7 @@
 
                         while($row = $query->fetch(PDO::FETCH_ASSOC))
                         {
-                            echo '<tr>';
+                            echo '<tr style="height: 39px;">';
 			                      echo '<th class="text-left" scope="row">'. $row['nome'] . '</th>';
                           // echo '<td class="text-left">'. $row['endereco'] . '</td>';
                             echo '<td>'. $row['telefone'] . '</td>';
@@ -93,7 +93,7 @@
                                             <button type="button" class="btn btn-primary fas fa-id-card" style="padding: 0px 15px !important;" data-toggle="modal" data-target="#myModal<?php echo $row['idmembros']; ?>"></button>
                                             <button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever='<?php echo $row["idmembros"];?>'
                                                     data-whatevernome='<?php echo $row['nome'];?>' data-whateverendereco='<?php echo $row['endereco'];?>' data-whateverdata='<?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['nasc'])));?>'
-                                                    data-whatevercargo='<?php echo $row['cargo'];?>' data-whatevertel='<?php echo $row['telefone'];?>'  ></button>
+                                                    data-whatevercargo='<?php echo $row['cargo'];?>' data-whatevertel='<?php echo $row['telefone'];?>' data-whateveremail='<?php echo $row['email'];?>' ></button>
                                             <button type="button" class="btn btn-danger fas fa-trash"></button></div> <?php }
                                             echo '</td></tr><div class="row"></div>';
                                 ?>
@@ -186,26 +186,27 @@
 			  	        	<div class="modal-body">
                         <form method="POST" action="./edit_membros.php">
                             <div class="form-group">
-                                <label for="recipient-name" class="control-label">Nome:</label>
-                                <input name="nome" type="text" class="form-control" id="recipient-name">
+                                <label for="nome" class="control-label">Nome:</label>
+                                <input name="nome" type="text" class="form-control" id="nome_modal">
 				                    </div>
                             <div class="form-group">
-                                <label for="message-text" class="control-label">Endereço:</label>
-                                <input name="endereco" class="form-control" id="endereco">
+                                <label for="endereco" class="control-label">Endereço:</label>
+                                <input name="endereco" class="form-control" id="endereco_modal">
                             </div>
                             <div class="form-group input-group">
                                   <div>
                                       <label for="niver" class="control-label">Aniversário:</label>
-                                      <input name="niver" class="form-control" id="niver" onkeypress="Data(event, this)">
+                                      <input name="niver" class="form-control" id="niver_modal" onkeypress="Data(event, this)">
                                   </div>
                                   <div>
                                       <label for="telefone" class="control-label">Telefone:</label>
-                                      <input name="telefone" class="form-control" id="tel">
+                                      <input name="telefone" class="form-control" id="tel_modal">
                                   </div>
                             </div>
-
-                                <input name="idmembro" class="form-control" id="idmembro">
-
+                            <div class="form-group">   
+                                <label for="email" class="control-label">E-m@il:</label>
+                                <input name="email" class="form-control" id="email_modal">
+                            </div>
                             <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
                                     <button class="btn btn-success">Editar</button>
@@ -221,7 +222,7 @@
       </div>
 
       <script src="membros.js" type="text/javascript"></script>
-       <script> window.onload= function() {
+      <script> window.onload= function() {
       setTimeout(function() {
           $("#message").alert('close');
 

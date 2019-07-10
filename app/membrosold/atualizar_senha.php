@@ -1,27 +1,27 @@
 <?php
-
+  
   include_once("../../_fonts/config/banco.php");
 	include_once("../../_fonts/config/funcoes.php");
   include_once "../../menu.php";
 
-
+    
 
 if(isset($_POST['submit']))
 {
     $senha = geraSenha(6, false, true);
-    $senhaCRIP = sha1($senha);
+    $senhaCRIP= sha1($senha);
     $user = $_POST['txtemail'];
-
+    
 try {
   $pdo = Banco::conectar();
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-  $stmt = $pdo->prepare('UPDATE acessoNEW SET password = :senha WHERE username = :username');
+   
+  $stmt = $pdo->prepare('UPDATE acesso SET password = :senha WHERE username = :username');
   $stmt->execute(array(
     ':username'   => $user,
     ':senha' => $senhaCRIP
   ));
-
+     
   if( $stmt->rowCount() > 0)
   {
         enviarEmail($user,$senha);
@@ -53,8 +53,8 @@ try {
     <link rel="icon" href="<?= $URLBASE.'favicon.ico'?>" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-
- </head>
+   
+ </head>   
     <body>
         <div class="container">
              <form method="post" action="">
@@ -76,3 +76,5 @@ try {
         </div>
     </body>
 </html>-->
+      
+   

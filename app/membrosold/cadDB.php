@@ -16,7 +16,7 @@
 
    ///////  VERIFICA SE USUARIO EMAIL JÁ ESTA CADASTRADO ///////////
 try{
-            $sql = "SELECT * FROM membros where nasc = '$nasc' AND nome = '$nome' ";
+            $sql = "SELECT * FROM membros where nome = '$nome' and telefone = '$telefone' ";
             $pdo = Banco::conectar();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $exec =  $pdo->query($sql);
@@ -24,7 +24,7 @@ try{
             $total = count($rows);
             Banco::desconectar();
 
-                if ($total > 0 && $email != ""){
+                if ($total > 0){
                 //   echo "Este membro já esta Cadastrado!!!";
                     //echo json_encode(array('mens1' => "Este membro já esta cadastrado!","mens2"=>"warning","mens3"=>"2" ));//mens3 = representa que usuario já existe no banco
                     echo json_encode(array('mens1' => "2","mens2"=>"1","mens3"=>"2" ));//mens3 = representa que usuario já existe no banco
@@ -67,10 +67,10 @@ try{
             $stmt->bindParam(':idmembro',$id);
            // $stmt->execute();
             $db = null;
-            //
+            //    
             //  enviarEmail($email,$senha);
             //echo json_encode(array('mens1' => "Cadastrado realizado com sucesso!","mens2"=>"success","mens3"=>"4" ));
-            echo json_encode(array('mens1' => "1",'mens2' =>'1','mens3' => "4")); //mens1 = representa cadastrado realizado com sucesso
+            echo json_encode(array('mens1' => "1",'mens2' =>'1','mens3' => "4")); //mens1 = representa cadastrado realizado com sucesso 
                                                                     //mens4 = representa reset do formulario
 
             }

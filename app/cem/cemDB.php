@@ -89,7 +89,7 @@ function encontrista(){
         $data = array();
 
        // $sql= " SELECT _status FROM config_sistem where funcao='filtro_membros'";
-    //    $filtro = $pdo->query($sql)->fetch();
+       // $filtro = $pdo->query($sql)->fetch();
        // $cem = $_SESSION['cem'];
        // echo $_SESSION['cem'];
                   

@@ -43,11 +43,11 @@ switch ($selec){
          break;
 
        case 8:
-            batizado($mes);
+            quant_equipe();
          break;
 
       case 9:
-            cadastra_equipe($cad_equipe);//função para cadastrar a equipe nos encontros           
+            cadastra_equipe($cad_equipe);//função para cadastrar a equipe nos encontros          
 
       break;
       
@@ -197,11 +197,13 @@ function cem(){
          
          }
    
-      function batizado($funcao){
+      function quant_equipe(){
 
+         $encontro = id_encontro_atual();
+         
          $pdo = Banco::conectar();
          $data = array();
-         $sql_= "SELECT batizado as funcao, COUNT(batizado) as quant, YEAR(cadastro) as ano FROM aceita_jesus where YEAR(cadastro)>'2018' GROUP BY batizado";
+         $sql_= "SELECT COUNT(membro) as quant_equipe FROM equipe where encontro = '$encontro'";
          
          foreach($pdo->query($sql_)as $row)
             {       

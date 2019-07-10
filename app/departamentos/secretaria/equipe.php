@@ -6,6 +6,7 @@
   
   validarUsuario();
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -14,6 +15,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="./style_painel.css">
     <title>Secretaria Encontro</title>
 
    <style> 
@@ -50,34 +52,33 @@
     <div class="container-fluid">
           <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title text-center"> Equipe</h4>
+                    <h4 class="card-title text-center"> Cadastro Equipe - <?php echo encontro();?>  </h4>
                 </div>
           </div>
-           <div class="row" style="margin-top: 10px; ">
-            <div class="col border rounded " >
-               
-                <ul class="nav nav-tabs" id="tabsCem" role="tablist">
+         <!-- <div class="row" style="margin-top: 10px; ">-->
+          <div class="container-box">
+                <div class="box a border rounded " style="text-transform: uppercase; margin: 0px 5px 0px 10px;">
                    
-                </ul>
-                
-               
-                <div class="tab-content" id="myTabContent" style="text-transform: uppercase;">
+                    <ul class="nav nav-tabs" id="tabsCem" role="tablist">
+                       
+                    </ul>
                     
+                   
+                    <div class="tab-content" id="myTabContent" style="margin-left: 10px;">
+                        
+                    </div>
                 </div>
-            </div>
 
-            <div id="equipe_cadastrada" class="col border rounded" ondrop="drop(event)" ondragover="allowDrop(event)" style="text-transform: uppercase;">
-           <p><h4 class="text-center" >Equipe</h4></p>
+            <div id="equipe_cadastrada" class="box b border rounded" ondrop="solta(event)" ondragover="soltasolta(event)" style="text-transform: uppercase; 
+                margin: 0px 10px 0px 5px;">
+               <p id="quant_eq" > </p>
+                    
+                   
                 
-               
-            
-            </div>
-            
-            
-            </div>
-            
-             </div>
-            
+              </div>           
+          </div>
+      </div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.ui.position.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>            
@@ -85,6 +86,7 @@
 <script>
     carregar_membros();
     carregar_equipe();
+    quant_equipe();
 
      
 
