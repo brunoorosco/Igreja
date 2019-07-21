@@ -1,6 +1,6 @@
 <?php
     include_once("../../../_fonts/config/funcoes.php");
-		include_once('../../../_fonts/config/banco.php');
+	include_once('../../../_fonts/config/banco.php');
 		
 		$funcao = $_GET['funcao'];
 		$status = $_GET['status'];
@@ -45,6 +45,8 @@
 							$codigo = 0;
 							return false;
 						}
-   		}
+		   }
+		   
+		
 
     ?>

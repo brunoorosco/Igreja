@@ -63,7 +63,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/funcoes.php");
             <?php  if((isset($_SESSION['nivel'])) && ($_SESSION['nivel'] == '1') || ($_SESSION['nivel'] == '4')){ ?>  
                 <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Cursos</a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="<?= $URLBASE.'app/curso/Cursos.php'?>">Novo Curso</a></li>
+                      <li><a class="dropdown-item" href="<?= $URLBASE.'app/curso/Cursos.php'?>">Cursos</a></li>
                       <li><a class="dropdown-item" href="<?= $URLBASE.'app/membros/'?>">Registrar Falta</a></li>
                       <li><a class="dropdown-item" href="<?= $URLBASE.'app/membros/membros.php'?>">Informações de Curso</a></li>
                     </ul>
@@ -103,7 +103,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/funcoes.php");
                         <li class="dropdown-submenu">
                             <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Administração Geral</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/secretaria/batizado.php'?>">Batizado</a></li>
+                                <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/secretaria/bat.php'?>">Batizado</a></li>
                                 <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/secretaria/painel_controle.php'?>">Painel de Controle</a></li>
 
                              </ul>
