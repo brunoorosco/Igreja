@@ -82,42 +82,44 @@
                         	{
                         		?>
 							    <tr class="row text-center">
-									<td class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><?php //echo $row['idCursos']; ?></td>
+									<td class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><?php echo $row['id']; ?></td>
 									<td class="col-xs-3 col-sm-3  col-md-3 col-lg-3"><?php echo "tema"; ?></td>
 									<td class="col-xs-3 col-sm-3  col-md-3 col-lg-3"><?php echo $row['titulo']; ?></td>
 									<td class="col-xs-2 col-sm-2  col-md-2 col-lg-2"><?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['inicioevento']))); ?></td>
 									<?php	  ?>
 									<td class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 										<div class="btn-group btn-sm">
-												<button type="button" class="btn btn-light fas fa-graduation-cap" data-toggle="modal" data-target="#ModalAlunos" data-whatever="<?php echo $row['idCursos']; ?>"></button>
-												<button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idCursos']; ?>" title="Informações Gerais sobre o curso"></button>
-												<button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idCursos']; ?>"title="Adicionar novo Batizando"
-																data-whatevernome="<?php echo $row['nomeCursos'];?>" data-whateverdetalhes="<?php echo $row['tema'];?>" data-whateverdata="<?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['data_']))); ?>" title="Editar Curso">
+												<!--<button type="button" class="btn btn-light fas fa-print" data-toggle="modal" data-target="#ModalBatizando" data-whatever="<?php echo $row['id']; ?>"></button>-->
+												<a class="btn btn-light float-left fas fa-print" href="print_batismo.php" role="button" aria-pressed="true"  target="_blank" style="margin-left: 15px !important;"></a>
+												<button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['id']; ?>" title="Informações Gerais sobre o curso"></button>
+												<button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['id']; ?>"title="Adicionar novo Batizando"
+																data-whatevernome="<?php echo $row['id'];?>" data-whateverdetalhes="<?php echo $row['titulo'];?>" data-whateverdata="<?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['inicioevento']))); ?>" title="Editar Curso">
 												</button>
 												<button type="button" class="btn btn-danger fas fa-trash disabled"title="Excluir Curso"></button>
 											</div>
 
 									</td>
 								</tr>
+
 								<!-- Inicio Modal -->
 									<div class="modal fade" id="myModal<?php echo $row['idCursos']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 									<div class="modal-dialog" role="document">
 										<div class="modal-content">
 												<div class="modal-header">
 													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-													<h4 class="modal-title text-center" id="myModalLabel"><?php echo $row['nomeCursos']; ?></h4>
+													<h4 class="modal-title text-center" id="myModalLabel"><?php echo $row['titulo']; ?></h4>
 												</div>
 												<div class="modal-body">
 														<div class="container-fluid">
 															  <div class="form-group row">
-																 	<div class="col"><b>Código do Curso:</b> <?php echo $row['idCursos']; ?> </div>
+																 	<div class="col"><b>Código do Curso:</b> <?php echo $row['id']; ?> </div>
 															  </div>
 																 <div class="form-group row">
 																		<div class="col"><b>Tipo de Curso:</b> <?php echo $row['nomeCursos']; ?></div></div>
 																 <div class="form-group row">
 																		<div class="col"><b>Tema de Curso:</b> <?php echo $row['tema']; ?></div></div>
 																 <div class="form-group row">
-																		<div class="col"><b>Data de Início:</b> <?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['data_']))); ?></div>
+																		<div class="col"><b>Data de Início:</b> <?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['inicioevento']))); ?></div>
 																 </div>
 														 </div>
 												 </div>
@@ -128,90 +130,73 @@
 
 								<?php } ?>
 
-		<!-- Inicio Modal -->
-					<div class="modal fade " id="ModalAlunos" tabindex="-1" role="dialog" aria-labelledby="ModalAlunosLabel">
-						<div class="modal-dialog modal-lg" role="document">
-							<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<h4 class="modal-title" id="ModalAlunosLabel"><p class="text-left"><?php echo $row['nomeCursos']; ?></p></h4>						
+	<!-- Inicio Modal -->
+				<div class="modal fade " id="ModalBatizando" tabindex="-1" role="dialog" aria-labelledby="ModalBatizandoLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<h4 class="modal-title" id="ModalBatizandoLabel"><p class="text-left"><?php echo $row['titulo']; ?></p></h4>						
+								</div>
+								<div class="modal-body">
+								<input name="id_batizado" type="hidden" class="form-control" id="id_batizado" value="">
+									<div class="container-fluid">
+											<div class="row">
+												<div class="col"><h4><p class="text-left">Participantes</p></h4>  
+													<div id="part">	</div>
+												</div>
+											</div>									
+										</div>
 									</div>
-									<div class="modal-body">
-									<input name="id_curso" type="hidden" class="form-control" id="id_curso" value="">
-											<div class="container-fluid">
-												<div class="row">
-												<div class="col-5"><h4><p class="text-left">Participantes</p></h4>  
-													  		<div id="part">
-							
-															</div>
-															
-																	
-													 </div>
-													 <div class="col-2"><h5><< >></h5>
-													 </div>
-
-
-													 <div class="col-5"><h4><p class="text-center">Não Participantes</p></h4>    
-													 		<div id="no_part" style="margin-left: 50px;">
-															 
-														
-
-															</div>
-																	
-
-													 </div>
-													 </div>
-												 </div>
-											</div>
-									 </div>
-							</div>
-					</div>
-			</div>
-			<!-- Fim Modal -->
+								</div>
+						</div>
+				</div>
+		</div>
+		<!-- Fim Modal -->
 
 </tbody>
 </table>
 </div>
 </div>
-		<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-		  	<div class="modal-dialog" role="document">
-				<div class="modal-content">
-			  		<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="editModalLabel">Batizando</h4>
-			  		</div>
-			  		<div class="modal-body">
-                        <form method="POST" action="./processa.php" enctype="multipart/form-data">
-                            <div class="form-group col">
-                                <label for="recipient-name" class="control-label">Nome:</label>
-                                <input name="nome" type="text" class="form-control" id="recipient-name" placeholder="Nome Completo">
-				            </div>
-                            
-							<div class="form-group input-group">
-								<div class="form-group col">
-									<label for="message-text" class="control-label">Aniversário:</label>
-									<input name="niver" class="form-control" id="data" onkeypress="DataHora(event, this)" placeholder="Aniversário">
+	<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="editModalLabel">Batizando</h4>
+				</div>
+				<div class="modal-body">
+					<form method="POST" action="./processa.php" enctype="multipart/form-data">
+						<div class="form-group col">
+							<label for="recipient-name" class="control-label">Nome:</label>
+							<input name="nome" type="text" class="form-control" id="recipient-name" placeholder="Nome Completo">
+						</div>
+						
+						<div class="form-group input-group">
+							<div class="form-group col">
+								<label for="message-text" class="control-label">Aniversário:</label>
+								<input name="niver" class="form-control" id="data" onkeypress="DataHora(event, this)" placeholder="Aniversário">
+							</div>
+							<div class="form-group col">
+								<label for="dataCurso" class="control-label">CEM's:</label>
+								<input name="cem" class="form-control" id="cem" >
+							</div>
+						</div>	
+								<input name="idCursos" type="hidden" class="form-control" id="id-batizado" value="">
+									<div class="modal-footer btn-group " role="group">
+							<div class="btn-group" role="group">
+								<button type="button" class="btn btn-success btn-block" data-dismiss="modal" >Cancelar</button>
+							</div>                                
+							<div class="btn-group" role="group">
+								<button type="submit" class="btn btn-danger btn-block"  name="formulario" value="editar">Salvar</button>
+							</div>
+						</div>
+					</form>
 								</div>
-								<div class="form-group col">
-									<label for="dataCurso" class="control-label">CEM's:</label>
-									<input name="cem" class="form-control" id="cem" >
-								</div>
-							</div>	
-									<input name="idCursos" type="hidden" class="form-control" id="id-curso" value="">
-										<div class="modal-footer btn-group " role="group">
-                              <div class="btn-group" role="group">
-                                  <button type="button" class="btn btn-success btn-block" data-dismiss="modal" >Cancelar</button>
-                              </div>                                
-                                <div class="btn-group" role="group">
-                                    <button type="submit" class="btn btn-danger btn-block"  name="formulario" value="editar">Salvar</button>
-                                </div>
-                            </div>
-                        </form>
-									</div>
-			        </div>
-			    </div>
-		    </div>
+				</div>
+			</div>
 		</div>
+	</div>
 
 	<div class="modal fade" id="cad_Modal" tabindex="-1" role="dialog" aria-labelledby="cad_ModalLabel">
 			<div class="modal-dialog" role="document">
@@ -240,11 +225,13 @@
 								 	<button type="submit" class="btn btn-success" name="formulario" value="inserir">Incluir</button>
 								</div>
 							</form>
+
+			
 						</div>
 				</div>
 			</div>
 		</div>
-		<script src="ajax.js" type="text/javascript"></script>
+		<script src="batizado.js" type="text/javascript"></script>
 
 	</body>
 </html>
