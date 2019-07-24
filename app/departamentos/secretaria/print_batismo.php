@@ -62,8 +62,8 @@ function Footer()
 // Define your columns like so:
 $columns = array(array("name" => "COD",   "width" => 10),
                  array("name" => "NOME",  "width" => 80),
-                 array("name" => "TELEFONE" , "width" => 35),
-                 array("name" => "CEM" , "width" => 50));
+                 array("name" => "CEM" , "width" => 55));
+                 
 
 $busca   = array(array("nome" => "nome", "width" => 80),
                  array("nome" => "nome_cem", "width" => 35));
