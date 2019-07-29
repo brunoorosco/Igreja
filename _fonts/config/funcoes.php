@@ -178,6 +178,17 @@ function ultimo_encontro()
       $sql = 'SELECT * from info_encontro where data_inicial <= CUrdate() order by data_inicial desc limit 1';
       foreach($pdo->query($sql)as $row_events) { 
           $data  =  $row_events['n_encontro']; 
+         
+        }
+      return $data;
+    }
+function ultimo_encontro_texto()
+    {
+      $pdo = Banco::conectar();
+      $sql = 'SELECT * from info_encontro where data_inicial <= CUrdate() order by data_inicial desc limit 1';
+      foreach($pdo->query($sql)as $row_events) { 
+        
+          $data  =  $row_events['tipo'].' Nº '.$row_events['n_encontro']; 
         }
       return $data;
     }
