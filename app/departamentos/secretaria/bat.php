@@ -16,12 +16,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
-		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Cursos TMAC</title>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
 	
+		
 
 <style>
 	.lista{		/*border: 1px solid black;*/
@@ -47,6 +49,24 @@
     background: #e0e0e0;
 		width: auto;
   }
+
+  .ui-autocomplete {
+		position: absolute;
+		z-index: 2150000000 !important;
+		cursor: default;
+		border: 2px solid #ccc;
+		padding: 5px 0;
+		border-radius: 2px;
+		font-size:15px;
+		font-family: 'Oswald', sans-serif;
+	}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff;
+  border-color: #7B1FA2;
+  background-color: #7B1FA2;
+}
+
   </style>
 	</head>
 	<body>
@@ -166,29 +186,41 @@
 						<h4 class="modal-title" id="editModalLabel">Batizando</h4>
 				</div>
 				<div class="modal-body">
-					<form method="POST" action="./processa.php" enctype="multipart/form-data">
+					<form id="form2" method="POST" action="./processa.php" enctype="multipart/form-data">
 						<div class="form-group col">
 							<label for="recipient-name" class="control-label">Nome:</label>
-							<input name="nome" type="text" class="form-control" id="recipient-name" placeholder="Nome Completo">
+							<input name="nome" type="text" class="form-control" id="name_bat" placeholder="Nome Completo">
 						</div>
 						
 						<div class="form-group input-group">
 							<div class="form-group col">
 								<label for="message-text" class="control-label">Aniversário:</label>
-								<input name="niver" class="form-control" id="data" onkeypress="DataHora(event, this)" placeholder="Aniversário">
+								<input name="niver" class="form-control col" id="data" onkeypress="DataHora(event, this)" placeholder="Aniversário" maxlength="10">
+							</div>	
+							<div class="form-group col-2">
+								<label for="message-text" class="control-label">Sexo:</label>
+								<div class="custom-control custom-radio custom-control-inline" style="margin-top:0px">
+										<input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+										<label class="custom-control-label" for="customRadioInline1">F</label>
+									</div>
+									<div class="custom-control custom-radio custom-control-inline">
+										<input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+										<label class="custom-control-label" for="customRadioInline2">M</label>
+									</div>
+														
 							</div>
 							<div class="form-group col">
-								<label for="dataCurso" class="control-label">CEM's:</label>
-								<input name="cem" class="form-control" id="cem" >
+								<label for="cem" class="control-label">CEM's:</label>
+								<input name="cem_bat" class="form-control" id="cem_bat" Type="text" placeholder="CEM responsável" >
 							</div>
 						</div>	
 								<input name="idCursos" type="hidden" class="form-control" id="id-batizado" value="">
 									<div class="modal-footer btn-group " role="group">
 							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-success btn-block" data-dismiss="modal" >Cancelar</button>
+								<button type="button" class="btn btn-ligth btn-block" data-dismiss="modal" >Cancelar</button>
 							</div>                                
 							<div class="btn-group" role="group">
-								<button type="submit" class="btn btn-danger btn-block"  name="formulario" value="editar">Salvar</button>
+								<button type="submit" class="btn btn-Primary btn-block"  name="formulario" value="editar">Salvar</button>
 							</div>
 						</div>
 					</form>
@@ -232,6 +264,8 @@
 			</div>
 		</div>
 		<script src="batizado.js" type="text/javascript"></script>
+		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"  integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="  crossorigin="anonymous"></script>
+		
 
 	</body>
 </html>

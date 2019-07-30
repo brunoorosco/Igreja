@@ -66,3 +66,61 @@ window.onload = function() {
 			});
         }
  //////////////////////////////////////////////////////////////////// 
+ $(document).ready(function() {
+                 
+            // Chamo o Auto complete do JQuery ui setando o id do input, array com os dados e o mínimo de caracteres para disparar o AutoComplete
+            $('#cem_bat').autocomplete({ source: 'retornaCEM.php'});
+            
+            $('#name_bat').autocomplete({ source: 'retornaCEM.php'});
+
+            $('#form2').submit(function(){
+                var cargo = $('#cargo').val();
+                var dados = $(this).serialize();
+                event.preventDefault();
+                $.ajax({
+                type:'POST',
+                url: "./.php",
+                dataType: 'json',     // para obter a resposta no formato json e rodar no sweetalert2
+                data: dados,
+                success:function(response){ //retorna o echo do php
+                        if(response.mens1 == '1' && (cargo == 'Bispo') || (cargo == 'Pastor') || (cargo == 'Supervisor')  )senha();
+    
+                            if(response.mens1 == '1' && (cargo == 'Líder') || (cargo == 'Auxiliar') || (cargo == 'Membro') || (cargo == 'Anfitrião') ){
+                            Swal.fire({
+                            title: 'Cadastro realizado com sucesso!!!',
+                            type:  'success',
+                            timer: 5000});
+                        //	window.location.reload(1);
+                        }
+    
+                    // se mens3 igual a 2 - indica que este cadastro já existe, possibilitando a edição do mesmo
+                        if(response.mens3 == '2'){
+                            Swal.fire({
+                                title: 'Este membro já esta cadastrado!!!',
+                                type:  'warning'
+                                });
+                        }
+                    // se mens3 igual a 4 - indica que este cadastro foi realizado, e reseta todos os campos do formulario
+                        if(response.mens3 == '4')resetform_cadastro();
+    
+                },
+                erro: function(response) {
+                    //console.log(response);
+                    alert(response);
+    
+                    Swal.fire({
+                    title: 'Erro ao cadastrar, tente novamente!!!',
+                    type: 'error',
+                    timer: 5000});
+                }
+            });
+    
+            return false;
+            });
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        });
+
+ $('#editModal').on('hidden.bs.modal', function(e){
+      $(this).find('#form2')[0].reset();                        
+        });
