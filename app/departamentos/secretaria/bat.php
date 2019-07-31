@@ -19,37 +19,13 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Cursos TMAC</title>
+		<title>Batismo</title>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
 	
 		
 
 <style>
-	.lista{		/*border: 1px solid black;*/
-	}
-
-  #adic_aluno{
-    color: black;
-    margin: 5px;
-		cursor:pointer;
-    
-  }
-  #adic_aluno:hover {
-    background: #e0e0e0;
-		width: auto;
-  }
-	#remove_aluno{
-    color: blue;
-    margin: 5px;
-		cursor:pointer;
-    
-  }
-  #remove_aluno:hover {
-    background: #e0e0e0;
-		width: auto;
-  }
-
   .ui-autocomplete {
 		position: absolute;
 		z-index: 2150000000 !important;
@@ -186,7 +162,10 @@
 						<h4 class="modal-title" id="editModalLabel">Batizando</h4>
 				</div>
 				<div class="modal-body">
-					<form id="form2" method="POST" action="./processa.php" enctype="multipart/form-data">
+				<div class="container-fluid">              
+									<h5 class="alert alert-success text-center" id="msg_bat"></h5>
+					</div>
+						<form id="form2" method="GET" action="./processa.php" enctype="multipart/form-data">
 						<div class="form-group col">
 							<label for="recipient-name" class="control-label">Nome:</label>
 							<input name="nome" type="text" class="form-control" id="name_bat" placeholder="Nome Completo">
@@ -200,11 +179,11 @@
 							<div class="form-group col-2">
 								<label for="message-text" class="control-label">Sexo:</label>
 								<div class="custom-control custom-radio custom-control-inline" style="margin-top:0px">
-										<input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+										<input type="radio" id="customRadioInline1" name="sexo" value="F" class="custom-control-input">
 										<label class="custom-control-label" for="customRadioInline1">F</label>
 									</div>
 									<div class="custom-control custom-radio custom-control-inline">
-										<input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+										<input type="radio" id="customRadioInline2" name="sexo" value="M" class="custom-control-input">
 										<label class="custom-control-label" for="customRadioInline2">M</label>
 									</div>
 														
@@ -214,7 +193,7 @@
 								<input name="cem_bat" class="form-control" id="cem_bat" Type="text" placeholder="CEM responsável" >
 							</div>
 						</div>	
-								<input name="idCursos" type="hidden" class="form-control" id="id-batizado" value="">
+								<input name="id_bat" type="hidden" class="form-control" id="id-batizado" value="">
 									<div class="modal-footer btn-group " role="group">
 							<div class="btn-group" role="group">
 								<button type="button" class="btn btn-ligth btn-block" data-dismiss="modal" >Cancelar</button>

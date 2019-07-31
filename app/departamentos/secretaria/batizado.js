@@ -67,25 +67,33 @@ window.onload = function() {
         }
  //////////////////////////////////////////////////////////////////// 
  $(document).ready(function() {
-                 
+                document.getElementById("msg_bat").style.display = 'none';    
+            //$('#msg_bat').hide(); 
             // Chamo o Auto complete do JQuery ui setando o id do input, array com os dados e o mínimo de caracteres para disparar o AutoComplete
             $('#cem_bat').autocomplete({ source: 'retornaCEM.php'});
             
-            $('#name_bat').autocomplete({ source: 'retornaCEM.php'});
+            $('#name_bat').autocomplete({ source: 'retornaMembro.php',  minLength: 3});
 
             $('#form2').submit(function(){
-                var cargo = $('#cargo').val();
-                var dados = $(this).serialize();
+              
+                var dados = $(this).serialize()+'&selec=10&funcao=0&fulano=0';
+                console.log( dados);
+               // alert(JSON.stringify({selec: "10" , funcao: "0", fulano:"0", dados}));
                 event.preventDefault();
                 $.ajax({
-                type:'POST',
-                url: "./.php",
+                type:'GET',
+                url: "./equipeDB.php",
                 dataType: 'json',     // para obter a resposta no formato json e rodar no sweetalert2
                 data: dados,
                 success:function(response){ //retorna o echo do php
-                        if(response.mens1 == '1' && (cargo == 'Bispo') || (cargo == 'Pastor') || (cargo == 'Supervisor')  )senha();
-    
-                            if(response.mens1 == '1' && (cargo == 'Líder') || (cargo == 'Auxiliar') || (cargo == 'Membro') || (cargo == 'Anfitrião') ){
+                    document.getElementById("msg_bat").style.display = 'block';
+                    document.getElementById("msg_bat").innerHTML = "Cadastro realizado com Sucesso!!!";
+                    setTimeout(function() {
+                        document.getElementById("msg_bat").style.display = 'none';
+                     //   document.getElementById("msg_bat").remove();
+                      }, 3000); // 3000 = 3 segundos
+                    
+                    if(response == '1' ){
                             Swal.fire({
                             title: 'Cadastro realizado com sucesso!!!',
                             type:  'success',
@@ -94,14 +102,14 @@ window.onload = function() {
                         }
     
                     // se mens3 igual a 2 - indica que este cadastro já existe, possibilitando a edição do mesmo
-                        if(response.mens3 == '2'){
+                        if(response == '2'){
                             Swal.fire({
                                 title: 'Este membro já esta cadastrado!!!',
                                 type:  'warning'
                                 });
                         }
                     // se mens3 igual a 4 - indica que este cadastro foi realizado, e reseta todos os campos do formulario
-                        if(response.mens3 == '4')resetform_cadastro();
+                        if(response == '4')resetform_cadastro();
     
                 },
                 erro: function(response) {

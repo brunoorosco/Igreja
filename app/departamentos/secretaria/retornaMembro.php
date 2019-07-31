@@ -19,14 +19,15 @@ $procura = filter_input(INPUT_GET, 'term', FILTER_SANITIZE_STRING);
     $dados->execute();
     echo json_encode($dados->fetchAll(PDO::FETCH_ASSOC));*/
 
-    $query = $pdo->prepare("SELECT nome_cem FROM cem WHERE nome_cem LIKE '%".$procura."%' ORDER BY nome_cem ASC");
+    $query = $pdo->prepare("SELECT nome FROM membros WHERE nome LIKE '%".$procura."%' ORDER BY nome ASC LIMIT 8");
     $query->execute();  
     // Generate array with skills data
     $data = array();
     if($query->rowCount()>0){
           while($row = $query->fetch(PDO::FETCH_ASSOC)){ 
-                $data[] = $row['nome_cem']; 
-                } }
+                $data[] = $row['nome']; 
+                } 
+            }
                 else 
                 $data[] = "Nenhum Registro";
   

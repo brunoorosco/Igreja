@@ -52,7 +52,7 @@ switch ($selec){
       break;
       
       case 10:
-           
+           cadastro_batizando();
 
       break;
 
@@ -284,6 +284,36 @@ function cem(){
                // print ($data[0]);
             //   print json_encode($data);
                
+            }
+
+            function cadastro_batizando(){
+               $nome = $_GET['nome'];
+               $cem = $_GET['cem_bat'];
+               //$cem = "1";
+               $sexo = $_GET['sexo'];
+               $nasc = $_GET['niver'];
+               $nasc = date("Y-m-d",strtotime(str_replace('/','-',$nasc)));
+               $bat = $_GET['id_bat'];
+               
+               $pdo = Banco::conectar();
+               
+               $sql= "SELECT id FROM cem WHERE nome_cem = '$cem'";
+               $filtro = $pdo->query($sql)->fetch();
+               $fil = $filtro[0];
+                           
+               
+               $sql_= "INSERT INTO batizando(nome,cem , sexo, aniversario, batismo) VALUES (:nome, :cem, :sexo, :niver, :batismo) ";
+               
+               $stmt = $pdo->prepare($sql_);
+               $stmt->bindParam(':nome',$nome);
+               $stmt->bindParam(':cem',$fil);
+               $stmt->bindParam(':sexo',$sexo);
+               $stmt->bindParam(':niver',$nasc);
+               $stmt->bindParam(':batismo',$bat);
+               $stmt->execute();
+               $pdo = null;
+                   
+               echo json_encode(array("mens"=>"1"));
             }
 
          
