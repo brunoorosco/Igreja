@@ -174,7 +174,7 @@
 						<div class="form-group input-group">
 							<div class="form-group col">
 								<label for="message-text" class="control-label">Aniversário:</label>
-								<input name="niver" class="form-control col" id="data" onkeypress="DataHora(event, this)" placeholder="Aniversário" maxlength="10">
+								<input name="niver" type="text" class="form-control col" id="data" onkeypress="DataHora(event, this)" placeholder="Aniversário" maxlength="10">
 							</div>	
 							<div class="form-group col-2">
 								<label for="message-text" class="control-label">Sexo:</label>

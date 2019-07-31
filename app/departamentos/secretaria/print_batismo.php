@@ -60,13 +60,13 @@ function Footer()
 
 
 // Define your columns like so:
-$columns = array(array("name" => "COD",   "width" => 10),
+$columns = array(array("name" => "COD",   "width" => 20),
                  array("name" => "NOME",  "width" => 80),
                  array("name" => "CEM" , "width" => 55));
                  
 
 $busca   = array(array("nome" => "nome", "width" => 80),
-                 array("nome" => "nome_cem", "width" => 35));
+                 array("nome" => "nome_cem", "width" => 55));
                //  array("nome" => "CEM" , "width" => 50));
                  
 
@@ -102,28 +102,30 @@ $name = "";
 
 
 $pdo = Banco::conectar();
-$sql = 'SELECT nomeEnc,telEnc,CEM FROM encontrista where sexoEnc = "feminino" ORDER BY nomeEnc ASC';
-$sql = "SELECT * FROM encontro INNER JOIN encontrista
-    ON encontro.encontrista = encontrista.idEncontrista     
+$sql = 'SELECT nomeEnc,telEnc,CEM FROM encontrista where sexo = "F" ORDER BY nomeEnc ASC';
+$sql = "SELECT * FROM encontro 
+    INNER JOIN encontrista ON encontro.encontrista = encontrista.idEncontrista     
     WHERE encontro.n_encontro = '$encontro_atual' AND encontrista.sexoEnc = 'feminino'
     ORDER BY encontrista.nomeEnc ASC";
+
 $sql = "SELECT batizando.nome, cem.nome_cem, eventos.titulo, eventos.inicioevento FROM batizando 
      INNER JOIN cem ON batizando.cem = cem.id 
      INNER JOIN eventos ON batizando.batismo = eventos.id 
+     WHERE  batizando.sexo = 'F'
      ORDER BY batizando.nome ASC";
 $j =1;
 
 
 foreach($pdo->query($sql)as $row)
           {
-            $pdf->SetX(15);
+            $pdf->SetX(20);
               $code = $j++;
               //$name =  $row['nomeEnc'];
               //$tel = $row['telEnc'];
               // $CEM =  $row['CEM'];
 
             // $pdf->Cell($column['width'], 6, strtoupper($column['name']), 1, 0, 'L', 1);
-            $pdf->Cell(10, 6, $code, 0);
+            $pdf->Cell(20, 6, $code, 0);
               foreach ($busca as $column)
               {
                 
@@ -159,12 +161,12 @@ $pdf->SetFont('Arial', '', 10);
 
 $code = "";
 $name = "";
+$sql = "SELECT batizando.nome, cem.nome_cem, eventos.titulo, eventos.inicioevento FROM batizando 
+     INNER JOIN cem ON batizando.cem = cem.id 
+     INNER JOIN eventos ON batizando.batismo = eventos.id 
+     WHERE  batizando.sexo = 'M'
+     ORDER BY batizando.nome ASC";
 
-$sql = 'SELECT nomeEnc,telEnc,CEM FROM encontrista where sexoEnc = "masculino"  ORDER BY  nomeEnc ASC';
-$sql = "SELECT * FROM encontro INNER JOIN encontrista
-    ON encontro.encontrista = encontrista.idEncontrista     
-    WHERE encontro.n_encontro = '$encontro_atual' AND encontrista.sexoEnc = 'masculino'
-    ORDER BY encontrista.nomeEnc ASC";
 $j =1;
 
 
@@ -177,7 +179,7 @@ foreach($pdo->query($sql)as $row)
               // $CEM =  $row['CEM'];
 
             // $pdf->Cell($column['width'], 6, strtoupper($column['name']), 1, 0, 'L', 1);
-            $pdf->Cell(10, 6, $code, 0);
+            $pdf->Cell(20, 6, $code, 0);
               foreach ($busca as $column)
               {
                 

@@ -90,27 +90,10 @@ window.onload = function() {
                     document.getElementById("msg_bat").innerHTML = "Cadastro realizado com Sucesso!!!";
                     setTimeout(function() {
                         document.getElementById("msg_bat").style.display = 'none';
+                        $('form').find('input[type=text], input[type=password], input[type=number], input[type=email], textarea').val('');
                      //   document.getElementById("msg_bat").remove();
                       }, 3000); // 3000 = 3 segundos
-                    
-                    if(response == '1' ){
-                            Swal.fire({
-                            title: 'Cadastro realizado com sucesso!!!',
-                            type:  'success',
-                            timer: 5000});
-                        //	window.location.reload(1);
-                        }
-    
-                    // se mens3 igual a 2 - indica que este cadastro já existe, possibilitando a edição do mesmo
-                        if(response == '2'){
-                            Swal.fire({
-                                title: 'Este membro já esta cadastrado!!!',
-                                type:  'warning'
-                                });
-                        }
-                    // se mens3 igual a 4 - indica que este cadastro foi realizado, e reseta todos os campos do formulario
-                        if(response == '4')resetform_cadastro();
-    
+                  
                 },
                 erro: function(response) {
                     //console.log(response);
