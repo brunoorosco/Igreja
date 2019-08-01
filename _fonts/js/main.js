@@ -324,3 +324,10 @@ function maiuscula(z){
 	z.value = v;
 }
 //FIM DA FUNÇÃO MASCARA MAIUSCULA
+
+
+//converter data   esta função usava in file encontrista.js
+function converteData(niver){
+	return niver.split('-').reverse().join('/');
+  }
+//fim da conversão de data

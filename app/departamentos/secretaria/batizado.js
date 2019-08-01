@@ -67,17 +67,36 @@ window.onload = function() {
         }
  //////////////////////////////////////////////////////////////////// 
  $(document).ready(function() {
-                document.getElementById("msg_bat").style.display = 'none';    
+            document.getElementById("msg_bat").style.display = 'none';    
             //$('#msg_bat').hide(); 
             // Chamo o Auto complete do JQuery ui setando o id do input, array com os dados e o mínimo de caracteres para disparar o AutoComplete
-            $('#cem_bat').autocomplete({ source: 'retornaCEM.php'});
-            
-            $('#name_bat').autocomplete({ source: 'retornaMembro.php',  minLength: 3});
+          //função preencher campos
+                $("input[name='nome']").blur(function(){
 
+                   // var $cem = $("input[name='cem_bat']");
+                    var $cem = $("#cem_bat");
+                    var $niver = $("input[name='niver']");
+                    $.getJSON('function.php',{
+                        nome: $(this).val()
+                        },function(json){
+                            var items = [];
+                            var items2 = [];
+                            for(var i in json) {            
+                                items.push(json[i].supervisao);
+                                items2.push(json[i].nasc); 
+                                      }
+                            $cem.attr('disabled', true);
+                            $niver.attr('disabled', true);
+                            $cem.val(items);
+                            items2 = items2.reverse();
+                            $niver.val(items2);
+                        });
+                });
+           
             $('#form2').submit(function(){
               
                 var dados = $(this).serialize()+'&selec=10&funcao=0&fulano=0';
-                console.log( dados);
+                //console.log( dados);
                // alert(JSON.stringify({selec: "10" , funcao: "0", fulano:"0", dados}));
                 event.preventDefault();
                 $.ajax({
@@ -115,3 +134,28 @@ window.onload = function() {
  $('#editModal').on('hidden.bs.modal', function(e){
       $(this).find('#form2')[0].reset();                        
         });
+        
+    
+ $("#editModal").on('shown.bs.modal', function() {
+          //  console.log('Abriu a light box');
+                    // funções que deseja
+                    $('#cem_bat').autocomplete({ source: 'retornaCEM.php'});
+            
+                    $('#name_bat').autocomplete({ source: 'retornaMembro.php',  minLength: 3});
+                  
+                    });
+
+                    //converter data
+function convData(dados){
+        return dados.split('-').reverse().join('/');
+  }
+//fim da conversão de data
+            
+function reverseArr(input) {
+    var ret = new Array;
+    for(var i = input.length-1; i >= 0; i--) {
+        ret.push(input[i]);
+        
+    }
+    return ret;
+}

@@ -89,7 +89,7 @@ $('#exampleModal').on('show.bs.modal', function (event) {
      }).get();
     
      nome = $.trim(tableData[1]);
-     console.log(nome);
+     //console.log(nome);
 
      $.ajax({
       timeout: 3000,
@@ -124,9 +124,7 @@ $('.btn-salvar').on('click',function(){
    $('#Modal-info').modal('hide');
 });
 
-function converteData(niver){
-  return niver.split('-').reverse().join('/');
-}
+
 
 
 /////////////////////////////////////////////////////////////////////////////////////////
