@@ -1,36 +1,82 @@
-$('#ModalBatizando').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) // Button that triggered the modal
-    var recipient = button.data('whatever') // Extract info from data-* attributes
-    
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-    var modal = $(this)
-    modal.find('.modal-title').text('Batismo')
-    modal.find('#id_batizado').val(recipient)
-    carrega_dados(recipient);
-    //console.log(recipient);
-    });
-    
-    $('#editModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) // Button that triggered the modal
-    var recipient = button.data('whatever') // Extract info from data-* attributes
-    var recipientnome = button.data('whatevernome')
-    var recipientdetalhes = button.data('whateverdetalhes')
-    var recipientdata = button.data('whateverdata')
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-    var modal = $(this)
-    modal.find('.modal-title').text('Batismo: ' + recipient)
-    modal.find('#id-batizado').val(recipient)
-    modal.find('#recipient-name').val(recipientnome)
-    modal.find('#detalhes').val(recipientdetalhes)
-    modal.find('#dataCurso').val(recipientdata)
-    //console.log(recipientdata);
+//////////////////////////////////////////////////////////////////// 
+$('#editModal').on('show.bs.modal', function (event) {
+                     // funções que deseja
+                    $(this).find('#form2')[0].reset();                        
+                    $('#cem_bat').autocomplete({ source: 'retornaCEM.php'});       
+                    $('#name_bat').autocomplete({ source: 'retornaMembro.php',  minLength: 3});   
+   
+              /*      var button = $(event.relatedTarget) // Button that triggered the modal
+                    var recipient = button.data('whatever') // Extract info from data-* attributes
+                    var recipientnome = button.data('whatevernome')
+                    var recipientdetalhes = button.data('whateverdetalhes')
+                    var recipientdata = button.data('whateverdata')
+                    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                    var modal = $(this)
+                    modal.find('.modal-title').text('Batismo: ' + recipient)
+                    modal.find('#id-batizado').val(recipient)
+                    modal.find('#recipient-name').val(recipientnome)
+                    modal.find('#detalhes').val(recipientdetalhes)
+                    modal.find('#dataCurso').val(recipientdata)
+                    //console.log(recipientdata);*/
     
     });
+//////////////////////////////////////////////////////////////////// 
 
-    //////////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////////// 
+$('#myModal').on('show.bs.modal', function (event) {
+    // funções que deseja
+   
+   var button = $(event.relatedTarget) // Button that triggered the modal
+   var recipient = button.data('whatever') // Extract info from data-* attributes
+  
+   $.ajax({
+    url:    "equipeDB.php",
+    type:   "get",
+    dataType: "json",
+    data:   { selec: "12" , mes: "0", funcao: recipient, fulano:"0"},
+    async: false })
+    .done(function( retorno ) {
+        var j = '0';
+        var ka= '0';
 
+        for(var i=0;retorno.length>i;i++){
+         //Adicionando registros retornados na tabela
+         console.log(retorno[i].cem+" - "+retorno[i].quant_bat);
+         console.log(i);
+         $('<div>', { id: [i]+"_bat_" }).appendTo('#batismo0');
+              document.getElementById([i]+"_bat_").innerHTML = "<p class='count-text'>" + retorno[i].quant_bat +" - "+ retorno[i].cem+"</p>" ;
+             /*
+           $('<div>', { id: [i]+"_bat_"+[ka], class: 'counter col border min-height-100'}).appendTo('#batismo'+[ka]);
+                document.getElementById([i]+"_bat_"+[ka]).innerHTML = "<h2 class='count-title'>" + retorno[i].quant_bat +"</h2>"+ "\n" +"<p class='count-text'>"+ retorno[i].cem+"</p>";
+                if(++j >= '4')
+                {   
+                    j='0';
+                    ka++;
+                    console.log(ka+"ka");
+                    console.log(i+"i");
+                    
+                }             */
+               }              
+    });
+   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    j = '0';
+    ka='0';
+
+   var modal = $(this);
+   modal.find('.modal-title').text('Batismo: ' + recipient);
+   modal.find('#id-batizado').val(recipient);
+  
+   //console.log(recipientdata);
+
+});    
+    
+//////////////////////////////////////////////////////////////////// 
+     
+    
+    
+//////////////////////////////////////////////////////////////////// 
 window.onload = function() {
     //carrega_dados();
     };
@@ -131,21 +177,8 @@ window.onload = function() {
         
         });
 
- $('#editModal').on('hidden.bs.modal', function(e){
-      $(this).find('#form2')[0].reset();                        
-        });
-        
-    
- $("#editModal").on('shown.bs.modal', function() {
-          //  console.log('Abriu a light box');
-                    // funções que deseja
-                    $('#cem_bat').autocomplete({ source: 'retornaCEM.php'});
-            
-                    $('#name_bat').autocomplete({ source: 'retornaMembro.php',  minLength: 3});
-                  
-                    });
-
-                    //converter data
+ 
+    //converter data
 function convData(dados){
         return dados.split('-').reverse().join('/');
   }

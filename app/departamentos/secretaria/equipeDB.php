@@ -60,6 +60,10 @@ switch ($selec){
          encontrista();
       break;
 
+      case 12:
+         consulta_cem_babtizando($func);
+      break;
+
 
 
        default:
@@ -316,6 +320,26 @@ function cem(){
                echo json_encode(array("mens"=>"1"));
             }
 
+            function consulta_cem_babtizando($batismo){
+
+               $pdo = Banco::conectar();
+               $data = array();
+     
+               $sql_ = "SELECT DISTINCT cem.nome_cem as cem, count(batizando.id) as quant_bat FROM batizando 
+                              INNER JOIN  cem ON batizando.cem = cem.id
+                                    WHERE batismo = '$batismo'  group BY cem.nome_cem";
+               
+               foreach($pdo->query($sql_)as $row)
+                  {       
+                     $data[] = $row;
+                  }
+                  $pdo=null;   
+               //echo $row['funcao'];
+               
+               // print ($data[0]);
+               print json_encode($data);
+               
+               }
          
                
         

@@ -38,11 +38,17 @@
 	}
 
 .custom-control-input:checked ~ .custom-control-label::before {
-  color: #fff;
-  border-color: #7B1FA2;
-  background-color: #7B1FA2;
-}
+		color: #fff;
+		border-color: #7B1FA2;
+		background-color: #7B1FA2;
+	}
 
+	.min-height-100 { 
+        min-height: 50px; 
+        margin: 5px 5px 5px 5px;
+        border-radius: 8px;
+        width: 75px;       
+         }
   </style>
 	</head>
 	<body>
@@ -85,75 +91,49 @@
 									<?php	  ?>
 									<td class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 										<div class="btn-group btn-sm">
-												<!--<button type="button" class="btn btn-light fas fa-print" data-toggle="modal" data-target="#ModalBatizando" data-whatever="<?php echo $row['id']; ?>"></button>-->
-												<a class="btn btn-light float-left fas fa-print" href="print_batismo.php" role="button" aria-pressed="true"  target="_blank" style="margin-left: 15px !important;"></a>
-												<button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['id']; ?>" title="Informações Gerais sobre o curso"></button>
+												<a class="btn btn-light float-left fas fa-print" href="print_batismo.php" role="button" aria-pressed="true"  target="_blank" style="margin-left: 15px !important;" title="Imprimir Batizandos"></a>
+												<button type="button" class="btn btn-primary fas fa-user-friends" data-toggle="modal" data-target="#myModal" data-whatever="<?php echo $row['id']; ?>" title="Informações Batizando/CEM"></button>
 												<button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['id']; ?>"title="Adicionar novo Batizando"
 																data-whatevernome="<?php echo $row['id'];?>" data-whateverdetalhes="<?php echo $row['titulo'];?>" data-whateverdata="<?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['inicioevento']))); ?>" title="Editar Curso">
 												</button>
-												<button type="button" class="btn btn-danger fas fa-trash disabled"title="Excluir Curso"></button>
+												<button type="button" class="btn btn-danger fas fa-trash disabled"title="Excluir Batizado"></button>
 											</div>
-
 									</td>
 								</tr>
-
-								<!-- Inicio Modal -->
-									<div class="modal fade" id="myModal<?php echo $row['idCursos']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content">
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-													<h4 class="modal-title text-center" id="myModalLabel"><?php echo $row['titulo']; ?></h4>
-												</div>
-												<div class="modal-body">
-														<div class="container-fluid">
-															  <div class="form-group row">
-																 	<div class="col"><b>Código do Curso:</b> <?php echo $row['id']; ?> </div>
-															  </div>
-																 <div class="form-group row">
-																		<div class="col"><b>Tipo de Curso:</b> <?php echo $row['nomeCursos']; ?></div></div>
-																 <div class="form-group row">
-																		<div class="col"><b>Tema de Curso:</b> <?php echo $row['tema']; ?></div></div>
-																 <div class="form-group row">
-																		<div class="col"><b>Data de Início:</b> <?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['inicioevento']))); ?></div>
-																 </div>
-														 </div>
-												 </div>
-										</div>
-									</div>
-								</div>
-								<!-- Fim Modal -->
-
 								<?php } ?>
+							</tbody>
+					</table>
+				</div>
+			</div>
 
 	<!-- Inicio Modal -->
-				<div class="modal fade " id="ModalBatizando" tabindex="-1" role="dialog" aria-labelledby="ModalBatizandoLabel">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									<h4 class="modal-title" id="ModalBatizandoLabel"><p class="text-left"><?php echo $row['titulo']; ?></p></h4>						
-								</div>
-								<div class="modal-body">
-								<input name="id_batizado" type="hidden" class="form-control" id="id_batizado" value="">
-									<div class="container-fluid">
-											<div class="row">
-												<div class="col"><h4><p class="text-left">Participantes</p></h4>  
-													<div id="part">	</div>
-												</div>
-											</div>									
-										</div>
-									</div>
-								</div>
-						</div>
-				</div>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title text-center" id="myModalLabel"><?php echo $row['titulo']; ?></h4>
+					</div>
+					<div class="modal-body">
+							<div class="container-fluid">
+								<div class =" text-center" id="batismo0" style="margin-left: 10px;margin-right:10px; margin-top:20px;"> </div>
+                                <div class ="row text-center" id="batismo1" style="margin-left: 10px;margin-right:10px;"> </div>
+                                <div class ="row text-center" id="batismo2" style="margin-left: 10px;margin-right:10px;"> </div>
+                                <div class ="row text-center" id="batismo3" style="margin-left: 10px;margin-right:10px;"> </div>
+                                <div class ="row text-center" id="batismo4" style="margin-left: 10px;margin-right:10px;"> </div>
+                                <div class ="row text-center" id="batismo5" style="margin-left: 10px;margin-right:10px;"> </div>
+                                <div class ="row text-center" id="batismo6" style="margin-left: 10px;margin-right:10px;"> </div>
+									
+							</div>
+					</div>
+			</div>
 		</div>
-		<!-- Fim Modal -->
+	</div>
+	<!-- Fim Modal -->
 
-</tbody>
-</table>
-</div>
-</div>
+								
+
+<!-- Inicio Modal de Cadastramento de Batizandos -->
 	<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -208,40 +188,8 @@
 			</div>
 		</div>
 	</div>
+	<!-- Fim Modal de Cadastramento de Batizandos -->
 
-	<div class="modal fade" id="cad_Modal" tabindex="-1" role="dialog" aria-labelledby="cad_ModalLabel">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="cad_ModalLabel">Cadastrar Batismo</h4>
-						</div>
-					<div class="modal-body">
-						<form method="POST" name="formulario" action="./processa.php" enctype="multipart/form-data" VALUE="inserir">
-							<div class="form-group">
-								<select class="form-control selectpicker" name="nome">
-											<option value="" selected disabled>Tipo de Treinamento</option>
-											<option>Escola de Profeta</option>
-											<option>Discipulado</option>
-								</select>
-							</div>
-							<div class="form-group">
-									<input type="text" class="form-control" name="inicio" id="datainicio" placeholder="Data de Início" maxlength="10" onkeypress="DataHora(event, this)">
-							</div>
-							<div class="form-group">
-									<input type="text" class="form-control" name="tema" placeholder="Tema do Curso" maxlength="25">
-							</div>
-								<div class="modal-footer">
-                 	<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-								 	<button type="submit" class="btn btn-success" name="formulario" value="inserir">Incluir</button>
-								</div>
-							</form>
-
-			
-						</div>
-				</div>
-			</div>
-		</div>
 		<script src="batizado.js" type="text/javascript"></script>
 		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"  integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="  crossorigin="anonymous"></script>
 		
