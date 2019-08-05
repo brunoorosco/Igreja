@@ -118,34 +118,34 @@ setTimeout(function() {
 
           }, 3000);
 
-$('#ModalAlunos').on('show.bs.modal', function (event) {
-var button = $(event.relatedTarget) // Button that triggered the modal
-var recipient = button.data('whatever') // Extract info from data-* attributes
+	$('#ModalAlunos').on('show.bs.modal', function (event) {
+	var button = $(event.relatedTarget) // Button that triggered the modal
+	var recipient = button.data('whatever') // Extract info from data-* attributes
 
-// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-var modal = $(this)
-modal.find('.modal-title').text('Cadastro de Alunos')
-modal.find('#id_curso').val(recipient)
-carrega_dados(recipient);
-//console.log(recipient);
-});
+	// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+	// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+	var modal = $(this)
+	modal.find('.modal-title').text('Cadastro de Alunos')
+	modal.find('#id_curso').val(recipient)
+	carrega_dados(recipient);
+	//console.log(recipient);
+	});
 
 $('#editModal').on('show.bs.modal', function (event) {
-var button = $(event.relatedTarget) // Button that triggered the modal
-var recipient = button.data('whatever') // Extract info from data-* attributes
-var recipientnome = button.data('whatevernome')
-var recipientdetalhes = button.data('whateverdetalhes')
-var recipientdata = button.data('whateverdata')
-// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-var modal = $(this)
-modal.find('.modal-title').text('Codigo do Curso: ' + recipient)
-modal.find('#id-curso').val(recipient)
-modal.find('#recipient-name').val(recipientnome)
-modal.find('#detalhes').val(recipientdetalhes)
-modal.find('#dataCurso').val(recipientdata)
-//console.log(recipientdata);
+	var button = $(event.relatedTarget) // Button that triggered the modal
+	var recipient = button.data('whatever') // Extract info from data-* attributes
+	var recipientnome = button.data('whatevernome')
+	var recipientdetalhes = button.data('whateverdetalhes')
+	var recipientdata = button.data('whateverdata')
+	// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+	// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+	var modal = $(this)
+	modal.find('.modal-title').text('Codigo do Curso: ' + recipient)
+	modal.find('#id-curso').val(recipient)
+	modal.find('#recipient-name').val(recipientnome)
+	modal.find('#detalhes').val(recipientdetalhes)
+	modal.find('#dataCurso').val(recipientdata)
+	//console.log(recipientdata);
 
 });
 
@@ -181,3 +181,89 @@ if ((caracteres.search(String.fromCharCode (keypress))!=-1) && campo.value.lengt
   event.returnValue = false;
 }
 }
+
+////////////////////////////////////////////////////////////////
+$('#cadAlunos').on('show.bs.modal', function (event) {
+	// funções que deseja
+   $(this).find('#form_course')[0].reset();                        
+   $('#name_aluno').autocomplete({ source: 'retornoAluno.php',  minLength: 3});   
+
+/* var button = $(event.relatedTarget) // Button that triggered the modal
+   var recipient = button.data('whatever') // Extract info from data-* attributes
+   var recipientnome = button.data('whatevernome')
+   var recipientdetalhes = button.data('whateverdetalhes')
+   var recipientdata = button.data('whateverdata')
+   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+   var modal = $(this)
+   modal.find('.modal-title').text('Batismo: ' + recipient)
+   modal.find('#id-batizado').val(recipient)
+   modal.find('#recipient-name').val(recipientnome)
+   modal.find('#detalhes').val(recipientdetalhes)
+   modal.find('#dataCurso').val(recipientdata)
+   //console.log(recipientdata);*/
+
+});
+//////////////////////////////////////////////////////////////////// 
+
+
+//////////////////////////////////////////////////////////////////// 
+$(document).ready(function() {
+	document.getElementById("msg_course").style.display = 'none';    
+	//$('#msg_bat').hide(); 
+	// Chamo o Auto complete do JQuery ui setando o id do input, array com os dados e o mínimo de caracteres para disparar o AutoComplete
+  //função preencher campos
+		$("input[name='nome_aluno']").blur(function(){
+			$.getJSON('function.php',{
+				nome: $(this).val()
+				},function(json){
+					var items = [];
+					var items2 = [];
+					for(var i in json) {            
+						items.push(json[i].supervisao);
+						items2.push(json[i].nasc); 
+							  }
+					$cem.attr('disabled', true);
+					$niver.attr('disabled', true);
+					$cem.val(items);
+					items2 = items2.reverse();
+					$niver.val(items2);
+				});
+		});
+   
+	$('#form_course').submit(function(){
+	  
+		var dados = $(this).serialize()+'&selec=10&funcao=0&fulano=0';
+		//console.log( dados);
+	   // alert(JSON.stringify({selec: "10" , funcao: "0", fulano:"0", dados}));
+		event.preventDefault();
+		$.ajax({
+		type:'GET',
+		url: "./equipeDB.php",
+		dataType: 'json',     // para obter a resposta no formato json e rodar no sweetalert2
+		data: dados,
+		success:function(response){ //retorna o echo do php
+			document.getElementById("msg_course").style.display = 'block';
+			document.getElementById("msg_course").innerHTML = "Cadastro realizado com Sucesso!!!";
+			setTimeout(function() {
+				document.getElementById("msg_course").style.display = 'none';
+				$('form_course').find('input[type=text], input[type=password], input[type=number], input[type=email], textarea').val('');
+			 //   document.getElementById("msg_bat").remove();
+			  }, 3000); // 3000 = 3 segundos
+		  
+		},
+		erro: function(response) {
+			//console.log(response);
+		//	alert(response);
+
+			Swal.fire({
+			title: 'Erro ao cadastrar, tente novamente!!!',
+			type: 'error',
+			timer: 5000});
+		}
+	});
+
+	return false;
+	});
+});
+/////////////////////////////////////////////////////////////////////////////////////////////////

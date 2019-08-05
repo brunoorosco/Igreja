@@ -47,7 +47,8 @@
         min-height: 50px; 
         margin: 5px 5px 5px 5px;
         border-radius: 8px;
-        width: 75px;       
+        background-color: #0099ff;
+		color:#ffffff;  
          }
   </style>
 	</head>
@@ -115,14 +116,14 @@
 						<h4 class="modal-title text-center" id="myModalLabel"><?php echo $row['titulo']; ?></h4>
 					</div>
 					<div class="modal-body">
-							<div class="container-fluid">
-								<div class =" text-center" id="batismo0" style="margin-left: 10px;margin-right:10px; margin-top:20px;"> </div>
+							<div class="container-fluid" id="principal">
+							<!--	<div class =" text-center"    id="batismo0" style="margin-left: 10px;margin-right:10px; margin-top:20px;"> </div>
                                 <div class ="row text-center" id="batismo1" style="margin-left: 10px;margin-right:10px;"> </div>
                                 <div class ="row text-center" id="batismo2" style="margin-left: 10px;margin-right:10px;"> </div>
                                 <div class ="row text-center" id="batismo3" style="margin-left: 10px;margin-right:10px;"> </div>
                                 <div class ="row text-center" id="batismo4" style="margin-left: 10px;margin-right:10px;"> </div>
                                 <div class ="row text-center" id="batismo5" style="margin-left: 10px;margin-right:10px;"> </div>
-                                <div class ="row text-center" id="batismo6" style="margin-left: 10px;margin-right:10px;"> </div>
+                                <div class ="row text-center" id="batismo6" style="margin-left: 10px;margin-right:10px;"> </div>-->
 									
 							</div>
 					</div>

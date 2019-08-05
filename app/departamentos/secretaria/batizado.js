@@ -23,6 +23,14 @@ $('#editModal').on('show.bs.modal', function (event) {
     });
 //////////////////////////////////////////////////////////////////// 
 
+$('#myModal').on('hidden.bs.modal', function (e) {
+    // do something...
+    var elemento = document.getElementById("principal");
+        while (elemento.firstChild) {
+        elemento.removeChild(elemento.firstChild);
+}
+  })
+
 //////////////////////////////////////////////////////////////////// 
 $('#myModal').on('show.bs.modal', function (event) {
     // funções que deseja
@@ -42,12 +50,12 @@ $('#myModal').on('show.bs.modal', function (event) {
 
         for(var i=0;retorno.length>i;i++){
          //Adicionando registros retornados na tabela
-         console.log(retorno[i].cem+" - "+retorno[i].quant_bat);
-         console.log(i);
-         $('<div>', { id: [i]+"_bat_" }).appendTo('#batismo0');
-              document.getElementById([i]+"_bat_").innerHTML = "<p class='count-text'>" + retorno[i].quant_bat +" - "+ retorno[i].cem+"</p>" ;
-             /*
-           $('<div>', { id: [i]+"_bat_"+[ka], class: 'counter col border min-height-100'}).appendTo('#batismo'+[ka]);
+       //  console.log(retorno[i].cem+" - "+retorno[i].quant_bat);
+      //   console.log(i);
+      //   $('<div>', { id: [i]+"_bat_" }).appendTo('#batismo0');
+       //       document.getElementById([i]+"_bat_").innerHTML = "<p class='count-text'>" + retorno[i].quant_bat +" - "+ retorno[i].cem+"</p>" ;
+           $('<div>', { id: "batismo"+[ka], class: 'row text-center',style:'margin-left: 5px;margin-right:5px'}).appendTo('#principal');
+           $('<div>', { id: [i]+"_bat_"+[ka], class: ' counter col min-height-100 '}).appendTo('#batismo'+[ka]);
                 document.getElementById([i]+"_bat_"+[ka]).innerHTML = "<h2 class='count-title'>" + retorno[i].quant_bat +"</h2>"+ "\n" +"<p class='count-text'>"+ retorno[i].cem+"</p>";
                 if(++j >= '4')
                 {   
@@ -56,7 +64,7 @@ $('#myModal').on('show.bs.modal', function (event) {
                     console.log(ka+"ka");
                     console.log(i+"i");
                     
-                }             */
+                }             
                }              
     });
    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).

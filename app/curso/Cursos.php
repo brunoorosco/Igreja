@@ -46,6 +46,16 @@
     background: #e0e0e0;
 		width: auto;
   }
+  .ui-autocomplete {
+		position: absolute;
+		z-index: 2150000000 !important;
+		cursor: default;
+		border: 2px solid #ccc;
+		padding: 5px 0;
+		border-radius: 2px;
+		font-size:15px;
+		font-family: 'Oswald', sans-serif;
+	}
   </style>
 	</head>
 	<body>
@@ -89,6 +99,7 @@
 									<td class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 										<div class="btn-group btn-sm">
 												<button type="button" class="btn btn-light fas fa-graduation-cap" data-toggle="modal" data-target="#ModalAlunos" data-whatever="<?php echo $row['idCursos']; ?>"></button>
+												<button type="button" class="btn btn-light fas fa-graduation-cap" data-toggle="modal" data-target="#cadAlunos" data-whatever="<?php echo $row['idCursos']; ?>" title="Cadastro de Alunos" ></button>
 												<button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idCursos']; ?>" title="Informações Gerais sobre o curso"></button>
 												<button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idCursos']; ?>"
 																data-whatevernome="<?php echo $row['nomeCursos'];?>" data-whateverdetalhes="<?php echo $row['tema'];?>" data-whateverdata="<?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['data_']))); ?>" title="Editar Curso">
@@ -240,7 +251,45 @@
 				</div>
 			</div>
 		</div>
-		<script src="ajax.js" type="text/javascript"></script>
 
+		<!-- Inicio Modal de Cadastramento de Batizandos -->
+	<div class="modal fade" id="cadAlunos" tabindex="-1" role="dialog" aria-labelledby="cadAlunosLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="cadAlunosLabel"></h4>
+				</div>
+				<div class="modal-body">
+				<div class="container-fluid">              
+						<h5 class="alert alert-success text-center" id="msg_course"></h5>
+					</div>
+						<form id="form_course" method="GET" action="" enctype="multipart/form-data">
+						<div class="form-group col">
+							<label for="recipient-name" class="control-label">Nome:</label>
+							<input name="nome_aluno" type="text" class="form-control" id="name_aluno" placeholder="Nome Completo">
+						</div>
+						
+							<input name="id_aluno" type="hidden" class="form-control" id="id_aluno" value="">
+							<div class="modal-footer btn-group " role="group">
+									<div class="btn-group" role="group">
+										<button type="button" class="btn btn-ligth btn-block" data-dismiss="modal" >Cancelar</button>
+									</div>                                
+									<div class="btn-group" role="group">
+										<button type="submit" class="btn btn-Primary btn-block"  name="formulario" value="editar">Salvar</button>
+									</div>
+						</div>
+					</form>
+				</div>
+		   </div>
+		</div>
+		
+	</div>
+	<!-- Fim Modal de Cadastramento de Batizandos -->
+
+
+		<script src="ajax.js" type="text/javascript"></script>
+		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"  integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="  crossorigin="anonymous"></script>
+		
 	</body>
 </html>
