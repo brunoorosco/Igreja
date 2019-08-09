@@ -331,3 +331,55 @@ function converteData(niver){
 	return niver.split('-').reverse().join('/');
   }
 //fim da conversão de data
+
+function login(){
+	swal.fire({
+		title: '<h1>Login</h1>',
+		type: 'info',
+		html:
+		'<form>' +
+		'<div class="row">' +
+		'<div class="col-md-12">' +
+		'<p>Please login to continue</p>' +
+		'</div>' +
+		'</div>' +
+		'<div class="row">' +
+		'<div class="col-md-12">' +
+		'<div class="form-group has-danger">' +
+		'<label class="sr-only" for="username">E-Mail Address</label>' +
+		'<div class="input-group mb-2 mr-sm-2 mb-sm-0">' +
+		'<input type="text" name="username" class="form-control" id="username" placeholder="Username" required autofocus>' +
+		'</div>' +
+		'</div>' +
+		'</div>' +
+		'</div>' +
+		'<div class="row">' +
+		'<div class="col-md-12">' +
+		'<div class="form-group">' +
+		'<label class="sr-only" for="password">Password</label>' +
+		'<div class="input-group mb-2 mr-sm-2 mb-sm-0">' +
+		'<input type="password" name="password" class="form-control" id="password" placeholder="Password" required>' +
+		'</div>' +
+		'</div>' +
+		'</div>' +
+		'</div>' +
+		'<div class="row">' +
+		'<div class="col-md-12">' +
+		'<button type="submit" class="swal2-styled">Login</button>' +
+		'<!--<a class="btn btn-link" href="reset">Forgot Your Password?</a>-->' +
+		'</div>' +
+		'</div>' +
+		'<div class="row mt-5">' +
+		'<div class="col-md-12">' +
+		'<div class="form-control-feedback" style="display: none;">' +
+		'<span class="text-danger align-middle">' +
+		'<i class="fa fa-close"></i> Incorrect username or password' +
+		'</span>' +
+		'</div>' +
+		'</div>' +
+		'</div>' +
+		'</form>',
+		showCloseButton: true,
+		showConfirmButton: false
+	});
+}

@@ -22,6 +22,7 @@
 		<title>Batismo</title>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+		
 	
 		
 
@@ -62,7 +63,7 @@
 					unset($_SESSION['msg_curso']);
 				}
 				?>
-				<button type="button" class="btn btn-success float-sm-right" data-toggle="modal" data-target="#cad_Modal">Novo Batismo</button>
+				<button type="button" class="btn btn-success float-sm-right" onclick="cadBat()">Novo Batismo</button>
 				<h3>Batizados</h3>
 			</div>
 
@@ -94,10 +95,12 @@
 										<div class="btn-group btn-sm">
 												<a class="btn btn-light float-left fas fa-print" href="print_batismo.php" role="button" aria-pressed="true"  target="_blank" style="margin-left: 15px !important;" title="Imprimir Batizandos"></a>
 												<button type="button" class="btn btn-primary fas fa-user-friends" data-toggle="modal" data-target="#myModal" data-whatever="<?php echo $row['id']; ?>" title="Informações Batizando/CEM"></button>
-												<button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['id']; ?>"title="Adicionar novo Batizando"
-																data-whatevernome="<?php echo $row['id'];?>" data-whateverdetalhes="<?php echo $row['titulo'];?>" data-whateverdata="<?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['inicioevento']))); ?>" title="Editar Curso">
+												<button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['id']; ?>"
+																title="Adicionar novo Batizando" data-backdrop="static" data-keyboard="false"
+																data-whatevernome="<?php echo $row['id'];?>" data-whateverdetalhes="<?php echo $row['titulo'];?>" 
+																data-whateverdata="<?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['inicioevento']))); ?>">
 												</button>
-												<button type="button" class="btn btn-danger fas fa-trash disabled"title="Excluir Batizado"></button>
+												<button type="button" class="btn btn-danger fas fa-trash disabled"   title="Excluir Batizado"></button>
 											</div>
 									</td>
 								</tr>

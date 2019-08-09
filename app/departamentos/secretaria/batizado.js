@@ -1,9 +1,12 @@
 //////////////////////////////////////////////////////////////////// 
 $('#editModal').on('show.bs.modal', function (event) {
+                  
                      // funções que deseja
                     $(this).find('#form2')[0].reset();                        
                     $('#cem_bat').autocomplete({ source: 'retornaCEM.php'});       
-                    $('#name_bat').autocomplete({ source: 'retornaMembro.php',  minLength: 3});   
+                    $('#name_bat').autocomplete({ source: 'retornaMembro.php',  minLength: 3});
+
+                       
    
               /*      var button = $(event.relatedTarget) // Button that triggered the modal
                     var recipient = button.data('whatever') // Extract info from data-* attributes
@@ -23,6 +26,61 @@ $('#editModal').on('show.bs.modal', function (event) {
     });
 //////////////////////////////////////////////////////////////////// 
 
+//////////////////////////////////////////////////////////////////// 
+function cadBat(){
+      
+    swal.fire({
+        title: 'Novo Batismo',
+        html:
+            '<form id="form_batizado" method="GET" action="./processa.php" enctype="multipart/form-data">'+
+              '<div class="form-group input-group">'+
+                '<div class="form-group col">'+
+                    '<label for="message-text" class="control-label">Data Batismo:</label>'+
+                    '<input name="dataBat" type="text" class="form-control col data" id="dataBat" placeholder="00/00/0000" maxlength="10">'+
+                '</div>'+	
+               
+                '<div class="form-group col">'+
+                    '<label for="cem" class="control-label">Horário do Batismo:</label>'+
+                    '<input name="horaBat" class="form-control" id="horaBat" Type="text" placeholder="HH:MM" maxlength="5">'+
+                '</div>'+
+            '</div>'+
+        '</form>',
+        showCancelButton: true,
+        confirmButtonText: 'Salvar',
+        showLoaderOnConfirm: true,
+        buttonsStyling: false,
+        confirmButtonClass: 'btn btn-primary btn-lg',
+        cancelButtonClass: 'btn btn-lg',
+        onOpen: function () {
+            $("#dataBat").mask("99/99/9999"); 
+            $("#horaBat").mask("99:99");
+    },
+        preConfirm: function () {
+            return new Promise((resolve, reject) => {
+        
+                    resolve({
+                       // Password: $('input[placeholder="Password"]').val()
+                    });
+        
+        
+                });
+        },
+        allowOutsideClick: false
+        }).then(function (result) {
+            var dados = $('#form_batizado').serialize();
+              $.ajax({
+                type:'GET',
+                data:{dados},
+                url:'data.php',
+                success:function(data) {
+                    alert(data);
+                }
+            });
+         }).catch(swal.noop)
+    }
+//////////////////////////////////////////////////////////////////// 
+
+//////////////////////////////////////////////////////////////////// 
 $('#myModal').on('hidden.bs.modal', function (e) {
     // do something...
     var elemento = document.getElementById("principal");
@@ -86,7 +144,7 @@ $('#myModal').on('show.bs.modal', function (event) {
     
 //////////////////////////////////////////////////////////////////// 
 window.onload = function() {
-    //carrega_dados();
+   mascara();
     };
     
     function carrega_dados(batismo)
@@ -121,6 +179,7 @@ window.onload = function() {
         }
  //////////////////////////////////////////////////////////////////// 
  $(document).ready(function() {
+           
             document.getElementById("msg_bat").style.display = 'none';    
             //$('#msg_bat').hide(); 
             // Chamo o Auto complete do JQuery ui setando o id do input, array com os dados e o mínimo de caracteres para disparar o AutoComplete

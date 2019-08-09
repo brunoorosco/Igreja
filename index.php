@@ -246,18 +246,39 @@
       } 
     ?>
     <div class="row">
-      <div class="col-lg-3 col-md-12 col-sm-12">
+      
+        <div class="col-lg-3 col-md-12 col-sm-12 border rounded">
+          <br>
+              <div class='rounded bg-ligh h-75'>    
+                  <h4 class="text-center ">Cursos Realizados</h4>
+              </div>   
+              <div class="form-group">
+                  <label for="inputName" class="control-label">Nome</label>
+                  <input type="text" class="rounded form-control" name="nomeProc" id="inputName" maxlength="20"/>
+              </div>  
+              <div class="form-group">
+                  <label for="inputData" class=" control-label">Data de Aniversário</label>
+                  <input type="text" class="col-6 rounded form-control data" name="dataProc" id="inputData"/>
+              </div>  
+              <div class="form-group">
+                  <button class="btn btn-primary" name="dataProc">Procurar</button>
+              </div>  
+              <div id="resultado">
+                
+              </div>
+          </div>
+            
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div id='calendar'></div>
+            </div>
 
-         </div>
-      <div class="col-lg-6 col-md-12 col-sm-12">
-        <div id='calendar'></div>
-      </div>
-      <div class="col-lg-3 col-md-12 col-sm-12">
-        <div id='lista_calendario'></div>
-        <div id='lista_calendario1'></div>
-      </div>
+            <div class="col-lg-3 col-md-12 col-sm-12">
+                <div id='lista_calendario'></div>
+                <div id='lista_calendario1'></div>
+            </div>
 
-    </div>
+        </div>
+    
   </div>
 
   <div class="modal fade" id="visualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
