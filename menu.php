@@ -23,7 +23,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/funcoes.php");
     <link rel="stylesheet" href="<?= $URLBASE.'_fonts/css/menu.css'?>">
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-   
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
 </head>
 <body>
 <?php //echo ($_SESSION['supervisao']); ?>
@@ -105,6 +105,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/funcoes.php");
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/secretaria/bat.php'?>">Batizado</a></li>
                                 <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/secretaria/painel_controle.php'?>">Painel de Controle</a></li>
+                                <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/secretaria/prontuarioCurso.php'?>">Prontuário</a></li>
 
                              </ul>
                         </li>  <?php }?>
