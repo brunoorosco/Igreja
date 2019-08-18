@@ -245,7 +245,6 @@ function fun($funcao){
             
             // print ($data[0]);
             print json_encode($data);
-            
             }
    
          function encontrista(){

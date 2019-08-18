@@ -6,7 +6,7 @@ class Banco
     private static $dbNome = 'DB_Igreja';
     private static $dbHost = 'localhost';
     private static $dbUsuario = 'root';
-    private static $dbSenha = '';
+    private static $dbSenha = '123456';
  ////// banco host      ////// 
     /*private static $dbNome = 'id8520277_secretariacac';
     private static $dbHost = 'localhost';
