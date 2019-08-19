@@ -114,13 +114,14 @@ console.log(clone)
                                             '</div>'+
                                         '</td>';
                                         MostraDados();
+                                    
                            }
 
                
                            $('#historico').submit(function(){
                             tabela = document.body.querySelector("table > tbody ").rows.length;
                             var na = $(this).find('.status'+i).html();
-                            console.log(na)
+                            
                             for(var i=1; i <= tabela ; i++){
                             
                                 var input = $("#people"+i).val();
@@ -131,10 +132,24 @@ console.log(clone)
                                     }else{
                                     marcado = "A";
                                     }
-                               console.log(input,marcado)
+
+                               console.log(i,input,marcado)
+                               var dados = {
+                                                "nome": input,
+                                                "status_" : marcado
+                               };
+                               console.log(dados)
+                               $.ajax({
+                                    type:'GET',
+                                    url: "./historicoDB.php?",
+                                    dataType: 'json',     // para obter a resposta no formato json e rodar no sweetalert2
+                                    data: dados,
+                                    success:function(response){ //retorna o echo do php
+                                        console.log(response)}
+                                    })
                             }
                         
-              var dados = $(this).serialize();
+                           
               // alert(JSON.stringify({selec: "10" , funcao: "0", fulano:"0", dados}));
               event.preventDefault();
               /*
@@ -174,7 +189,11 @@ console.log(clone)
         $('#curso').autocomplete({ source: 'retornaMembro.php',  minLength: 3});
         $('input.autocomplete').autocomplete({ source: 'retornaMembro.php',  minLength: 3});
        
-	}
+    }
+   
+   
+
+   
 
     function MostraDados()
 	{
@@ -183,7 +202,7 @@ console.log(clone)
         var trs = document.body.querySelector("table > tbody ").rows;
       // console.log(trs)
 		var todos = null ;
-		for ( var i = 0 ; i < trs.length ; i++ )
+		for ( var i = 1 ; i < trs.length ; i++ )
 		{
 			todos = trs[i].cells ;
 			for ( var j = 0 ; j < todos.length ; j++ ){}
