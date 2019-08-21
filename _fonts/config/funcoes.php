@@ -113,7 +113,7 @@ $start_sem_barra = $data_sem_barra . " " . $hora;
  function carrega_id_usuario(){
   if(isset($_SESSION['usuario'])){
       $email = $_SESSION['usuario'] ;
-      $sql = "SELECT idmembros FROM membros where email = '$email'";
+      $sql = "SELECT idmembros FROM membros where email = '$email' OR nome = '$email'";
       $pdo = Banco::conectar();
       $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $exec =  $pdo->query($sql);
@@ -121,11 +121,10 @@ $start_sem_barra = $data_sem_barra . " " . $hora;
       $total = count($rows);
       Banco::desconectar();
 
-  if($total > 0 ){
-
-      return $rows[0]['idmembros'];
-
-}}}
+      if($total > 0 ){
+          return $rows[0]['idmembros'];
+        }else return '0';
+}}
 
 function carrega_conf($conf)
 {
@@ -197,6 +196,19 @@ function ultimo_encontro_texto()
 function enc_reenc()
 {
   $sql = 'SELECT * from info_encontro having data_inicial BETWEEN curdate() AND date_add(curdate(),INTERVAL 30 day)';
+}
+
+function idCurso($course, $date)
+{
+      $sql = "SELECT idCurso FROM infocursos where tema = '$course' AND data_ = '$date'";
+      $pdo = Banco::conectar();
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $exec =  $pdo->query($sql);
+      $rows = $exec->fetchAll(PDO::FETCH_ASSOC);
+      $total = count($rows);
+      Banco::desconectar();
+     if($total > 0 )  return $rows[0]['idCurso']; //[0] representa o numero da coloca que estou procurando no caso como só tem uma é 0
+
 }
 
 ?>

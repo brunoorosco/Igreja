@@ -21,7 +21,32 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Batismo</title>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-		
+		<style>
+  .ui-autocomplete {
+		position: absolute;
+		z-index: 2150000000 !important;
+		cursor: default;
+		border: 2px solid #ccc;
+		padding: 5px 0;
+		border-radius: 2px;
+		font-size:15px;
+		font-family: 'Oswald', sans-serif;
+	}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+		color: #fff;
+		border-color: #7B1FA2;
+		background-color: #7B1FA2;
+	}
+
+	.min-height-100 { 
+        min-height: 50px; 
+        margin: 5px 5px 5px 5px;
+        border-radius: 8px;
+        background-color: #0099ff;
+		color:#ffffff;  
+         }
+  </style>
 
 </head>
 <body>
@@ -31,11 +56,19 @@
         </div><br>
         <form method="POST" id="historico">
             <div class="row">
+            <div class="form-check form-check-inline col-2">
+                    <input class="form-check-input" id="dis"type="radio" name="tmac" value="Discipulado">
+                    <label class="form-check-label" for="dis"><h6> Discipulado</h6></label>
+            </div>
+           <div class="form-check form-check-inline col-2">        
+                    <input class="form-check-input" id="esc"type="radio" name="tmac" checked value="Escola de Profeta">
+                    <label class="form-check-label" for="esc"> <h6>Escola de Profeta</h6> </label>
+                </div>
                 <div class="form-group col">
                     <input class="form-control" id="curso"type="text" name="curso" placeholder="Nome do Curso">
                 </div>
-                <div class="form-group col-3">
-                    <input class="form-control" id="data" type="text" name="data" placeholder="Data inicial do curso">
+                <div class="form-group col-2">
+                    <input class="form-control" id="data" type="text" name="data" placeholder="Início do curso">
                 </div>
             </div>
             <table id="tabela" class="table">
@@ -119,65 +152,47 @@ console.log(clone)
 
                
                            $('#historico').submit(function(){
+                            event.preventDefault();
                             tabela = document.body.querySelector("table > tbody ").rows.length;
                             var na = $(this).find('.status'+i).html();
-                            
-                            for(var i=1; i <= tabela ; i++){
-                            
-                                var input = $("#people"+i).val();
-                                var name = document.getElementsByName('status'+i);
-                                var marcado = $("#reprovado"+i).is(":checked");
-                                    if(marcado){
-                                    marcado = "R";
-                                    }else{
-                                    marcado = "A";
-                                    }
+                           //Salvar Nome do Curso e sua respectiva data
+                            var inputCurso = $("#curso").val();
+                            var inputData = $("#data").val();
+                            var curso = $("#esc").is(":checked");
+                                if(curso)curso="Escola de Profeta";
+                                    else curso="Discipulado";
+                             $.ajax({
+                                                type:'POST',
+                                                url: "./salvaCurso.php?",
+                                                dataType: 'html',     // para obter a resposta no formato json e rodar no sweetalert2
+                                                data: {"curso": curso, "data":inputData, "tema":inputCurso}s,
+                                                success:function(response){ //retorna o echo do php
+                                                    console.log(response)}
+                                                })
 
-                               console.log(i,input,marcado)
-                               var dados = {
-                                                "nome": input,
-                                                "status_" : marcado
-                               };
-                               console.log(dados)
-                               $.ajax({
-                                    type:'GET',
-                                    url: "./historicoDB.php?",
-                                    dataType: 'json',     // para obter a resposta no formato json e rodar no sweetalert2
-                                    data: dados,
-                                    success:function(response){ //retorna o echo do php
-                                        console.log(response)}
-                                    })
-                            }
-                        
                            
-              // alert(JSON.stringify({selec: "10" , funcao: "0", fulano:"0", dados}));
-              event.preventDefault();
-              /*
-              $.ajax({
-              type:'GET',
-              url: "./equipeDB.php",
-              dataType: 'json',     // para obter a resposta no formato json e rodar no sweetalert2
-              data: dados,
-              success:function(response){ //retorna o echo do php
-                  document.getElementById("msg_bat").style.display = 'block';
-                  document.getElementById("msg_bat").innerHTML = "Cadastro realizado com Sucesso!!!";
-                  setTimeout(function() {
-                      document.getElementById("msg_bat").style.display = 'none';
-                      $('form').find('input[type=text], input[type=password], input[type=number], input[type=email], textarea').val('');
-                   //   document.getElementById("msg_bat").remove();
-                    }, 3000); // 3000 = 3 segundos
-                
-              },
-              erro: function(response) {
-                  //console.log(response);
-                  alert(response);
-  
-                  Swal.fire({
-                  title: 'Erro ao cadastrar, tente novamente!!!',
-                  type: 'error',
-                  timer: 5000});
-              }
-          });*/
+                                for(var i=1; i <= tabela ; i++){
+                                
+                                    var input = $("#people"+i).val();
+                                    var name = document.getElementsByName('status'+i);
+                                    var marcado = $("#reprovado"+i).is(":checked");
+                                        if(marcado) marcado = "R";
+                                        else  marcado = "A";
+                                        var dados = 
+                                        {
+                                            "nome": input,
+                                            "status_" : marcado,
+                                        };
+                                    
+                                        $.ajax({
+                                                type:'POST',
+                                                url: "./historicoDB.php?",
+                                                dataType: 'html',     // para obter a resposta no formato json e rodar no sweetalert2
+                                                data: dados,
+                                                success:function(response){ //retorna o echo do php
+                                                    console.log(response)}
+                                                })
+                                        }
   
           return false;
           });
@@ -186,15 +201,12 @@ console.log(clone)
   window.onload = function(){
 		MostraDados();
         $("#data").mask("99/99/9999"); 
-        $('#curso').autocomplete({ source: 'retornaMembro.php',  minLength: 3});
+        $('#curso').autocomplete({ source: 'retornaCurso.php'});
         $('input.autocomplete').autocomplete({ source: 'retornaMembro.php',  minLength: 3});
        
     }
    
    
-
-   
-
     function MostraDados()
 	{
         $('input.autocomplete').autocomplete({ source: 'retornaMembro.php',  minLength: 3});
