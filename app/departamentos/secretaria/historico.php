@@ -165,7 +165,7 @@ console.log(clone)
                                                 type:'POST',
                                                 url: "./salvaCurso.php?",
                                                 dataType: 'html',     // para obter a resposta no formato json e rodar no sweetalert2
-                                                data: {"curso": curso, "data":inputData, "tema":inputCurso}s,
+                                                data: {"curso": curso, "data":inputData, "tema":inputCurso},
                                                 success:function(response){ //retorna o echo do php
                                                     console.log(response)}
                                                 })
