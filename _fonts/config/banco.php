@@ -45,7 +45,7 @@ class Banco
 class db{
         private $dbhost = '127.0.0.1';
         private $dbuser = 'root';
-        private $dbpass = "";
+        private $dbpass = "123456";
         private $dbname = 'DB_Igreja';
 ///////// hospedagem////////////////////////
      /*   private $dbhost = 'localhost';

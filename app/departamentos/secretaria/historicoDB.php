@@ -12,7 +12,7 @@ if (isset($_POST["nome"]))       $nome = $_POST["nome"];
 $status_ = ( isset($_POST['status_']) ) ? $_POST['status_'] : null;
 try{
         
-   //     $idCourse = idCurso($tema,data);   
+        $idCourse = idCurso();   
 
        
         $_SESSION['usuario'] = $nome;
@@ -28,7 +28,7 @@ try{
         $stmt->bindParam(':nome',$nome);
         $stmt->bindParam(':status_',$status_);
         $stmt->bindParam(':membroCad',$id_user);
-        $stmt->bindParam(':curso',$curso);
+        $stmt->bindParam(':curso',$idCourse);
         $stmt->execute();
         $pdo = null;
 

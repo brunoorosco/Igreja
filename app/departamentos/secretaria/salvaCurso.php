@@ -11,7 +11,7 @@ if (isset($_POST["tema"]))     $tema = $_POST["tema"];
 $date = ( isset($_POST['data']) ) ? $_POST['data'] : null;
 $date = date("Y-m-d",strtotime(str_replace('/','-',$date)));
 try{
-         $pdo = Banco::conectar();
+        $pdo = Banco::conectar();
         $sql_= "INSERT INTO infocursos( nomeCursos, tema,data_) VALUES (:curso,:tema, :data_) ";
 
         $stmt = $pdo->prepare($sql_);
