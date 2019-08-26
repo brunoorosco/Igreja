@@ -8,7 +8,7 @@
 	    //if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
 		if(($_SESSION['nivel'] != '1') && ($_SESSION['nivel'] != '4'))
 		{
-			$_SESSION['msg_log'] = "<div id='message' class='alert alert-danger' role='alert'>Você não permissão para acessar esta página!!!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
+		//	$_SESSION['msg_log'] = "<div id='message' class='alert alert-danger' role='alert'>Você não permissão para acessar esta página!!!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
 					header("Location: http://localhost/www/igreja/");	
 		}
 ?>
@@ -46,6 +46,37 @@
         background-color: #0099ff;
 		color:#ffffff;  
          }
+
+         p {
+  color: black;
+  font: 100 4em/150% Impact;
+  text-align: center;}
+         /* loading dots */
+
+.loading:after {
+  content: ' .';
+  animation: dots 1s steps(5, end) infinite;}
+
+@keyframes dots {
+  0%, 20% {
+    color: rgba(0,0,0,0);
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  40% {
+    color: white;
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  60% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 rgba(0,0,0,0);}
+  80%, 100% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 white;}}
+
   </style>
 
 </head>
@@ -56,19 +87,27 @@
         </div><br>
         <form method="POST" id="historico">
             <div class="row">
-            <div class="form-check form-check-inline col-2">
+            <div class="form-check form-check-inline col">
                     <input class="form-check-input" id="dis"type="radio" name="tmac" value="Discipulado">
                     <label class="form-check-label" for="dis"><h6> Discipulado</h6></label>
             </div>
-           <div class="form-check form-check-inline col-2">        
+           <div class="form-check form-check-inline col">        
                     <input class="form-check-input" id="esc"type="radio" name="tmac" checked value="Escola de Profeta">
                     <label class="form-check-label" for="esc"> <h6>Escola de Profeta</h6> </label>
                 </div>
-                <div class="form-group col">
+                <div class="form-group col-4">
                     <input class="form-control" id="curso"type="text" name="curso" placeholder="Nome do Curso">
                 </div>
-                <div class="form-group col-2">
+                <div class="form-group col">
                     <input class="form-control" id="data" type="text" name="data" placeholder="Início do curso">
+                </div>
+                <div class="form-check form-check-inline col">
+                    <input class="form-check-input" id="dis"type="radio" name="tmac" value="Discipulado">
+                    <label class="form-check-label" for="dis"><h6> Editar</h6></label>
+            </div>
+           <div class="form-check form-check-inline col">        
+                    <input class="form-check-input" id="esc"type="radio" name="tmac" checked value="Escola de Profeta">
+                    <label class="form-check-label" for="esc"> <h6>Novo</h6> </label>
                 </div>
             </div>
             <table id="tabela" class="table">
@@ -106,6 +145,7 @@
 
             <button type="button" id="adicionar" onclick="adicionaLinha('tabela')" class="btn btn-primary">Adicionar</button>
             <button type="submit" class="btn btn-success">Cadastrar</button>
+            <p class="loading">Loading dots</p>
             </form>
   </div>
   <script>
@@ -166,9 +206,16 @@ console.log(clone)
                                                 url: "./salvaCurso.php?",
                                                 dataType: 'html',     // para obter a resposta no formato json e rodar no sweetalert2
                                                 data: {"curso": curso, "data":inputData, "tema":inputCurso},
+                                                beforeSend:     
+                                                    function() {    
+                                                    isProcessing = true;
+                                                       alert('salvando dados');},
+            },
                                                 success:function(response){ //retorna o echo do php
                                                     console.log(response)}
                                                 })
+                                                async: false})
+                                                .done(function( data ) {
 
                            
                                 for(var i=1; i <= tabela ; i++){
