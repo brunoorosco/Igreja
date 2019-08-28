@@ -23,6 +23,10 @@ try{
            
         $pdo = Banco::conectar();
         $sql_= "INSERT INTO historico(nome, status_, membroCad, curso) VALUES (:nome, :status_, :membroCad, :curso) ";
+        
+        $valores = range( 1 , 10 );
+            $sql = sprintf( 'INSERT INTO tabela(numero) VALUES (%s)', implode( '), (' , $valores ) );
+                $DB->query( $sql );
 
         $stmt = $pdo->prepare($sql_);
         $stmt->bindParam(':nome',$nome);

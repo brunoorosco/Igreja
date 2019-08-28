@@ -105,7 +105,7 @@ function carrega_dados(turma)
 			e.preventDefault();
 	//pegarPreco = parseFloat(this.innerHTML);
 			var curso = document.getElementById('id_curso').value;
-			console.log(curso);
+		//	console.log(curso);
 			pegarAluno = (this.innerHTML);
 			pegarAluno = pegarAluno.substr(10, 20).replace(/[^\d]+/g,''); 
 			enviar_dados(pegarAluno, curso);

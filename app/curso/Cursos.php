@@ -10,6 +10,9 @@
 			$_SESSION['msg_log'] = "<div id='message' class='alert alert-danger' role='alert'>Você não permissão para acessar esta página!!!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
 					header("Location: http://localhost/www/igreja/");	
 		}
+		$server = $_SERVER['SERVER_NAME'];
+        $endereco = $_SERVER ['REQUEST_URI'];
+        $_SESSION['URL'] ="//". $server . $endereco;
 ?>
 
 <!DOCTYPE html>

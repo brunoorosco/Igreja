@@ -10,7 +10,10 @@
 		{
 		//	$_SESSION['msg_log'] = "<div id='message' class='alert alert-danger' role='alert'>Você não permissão para acessar esta página!!!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
 					header("Location: http://localhost/www/igreja/");	
-		}
+        }
+        $server = $_SERVER['SERVER_NAME'];
+        $endereco = $_SERVER ['REQUEST_URI'];
+        $_SESSION['URL'] ="//". $server . $endereco;
 ?>
 
 <!DOCTYPE html>
@@ -82,12 +85,18 @@
 </head>
 <body>
     <div class="container"><br>
+    <?php
+				if(isset($_SESSION['msg_curso'])){
+					echo $_SESSION['msg_curso'];
+					unset($_SESSION['msg_curso']);
+				}
+				?>
         <div class="row">
             <h4 class="text-center text-info">Histórico de Cursos</h4>
-        </div><br>
+        </div>
         <form method="POST" id="historico">
             <div class="row">
-            <div class="form-check form-check-inline col">
+         <!--   <div class="form-check form-check-inline col">
                     <input class="form-check-input" id="dis"type="radio" name="tmac" value="Discipulado">
                     <label class="form-check-label" for="dis"><h6> Discipulado</h6></label>
             </div>
@@ -99,21 +108,15 @@
                     <input class="form-control" id="curso"type="text" name="curso" placeholder="Nome do Curso">
                 </div>
                 <div class="form-group col">
-                    <input class="form-control" id="data" type="text" name="data" placeholder="Início do curso">
+                    <button class="form-control btn btn-primary" type="button"  name="data"   >Adicionar Curso</button>
                 </div>
-                <div class="form-check form-check-inline col">
-                    <input class="form-check-input" id="dis"type="radio" name="tmac" value="Discipulado">
-                    <label class="form-check-label" for="dis"><h6> Editar</h6></label>
-            </div>
-           <div class="form-check form-check-inline col">        
-                    <input class="form-check-input" id="esc"type="radio" name="tmac" checked value="Escola de Profeta">
-                    <label class="form-check-label" for="esc"> <h6>Novo</h6> </label>
-                </div>
-            </div>
+               
+            </div>-->
+            <p id="log"></p>
             <table id="tabela" class="table">
                 <thead>
                     <tr>
-                        <th colspan="12" style="text-align: center"><label>Membros</label></th>
+                        <th colspan="12" style="text-align: center"><label></label></th>
                     </tr>
                 <tr>
                     <th scope="col">Id</th>
@@ -127,14 +130,14 @@
                     <td><input type="text" class="form-control autocomplete" name="people1" placeholder="Nome Completo" id="people1"></td>
                     <td >
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="status1" id="aprovado2" value="A" >
-                            <label class="form-check-label" for="aprovado1">
+                            <input disabled class="form-check-input" type="radio" name="status1" id="aprovado2" value="A" >
+                            <label diasbled class="form-check-label" for="aprovado1">
                                 Aprovado
                             </label>
                         </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="status1" id="reprovado1"  value="R" checked>
-                                <label class="form-check-label" for="reprovado1">
+                                <input disabled class="form-check-input" type="radio" name="status1" id="reprovado1"  value="R" >
+                                <label disabled class="form-check-label" for="reprovado1">
                                     Reprovado
                                 </label>
                             </div>
@@ -143,11 +146,46 @@
                 </tbody>
             </table><br>
 
-            <button type="button" id="adicionar" onclick="adicionaLinha('tabela')" class="btn btn-primary">Adicionar</button>
-            <button type="submit" class="btn btn-success">Cadastrar</button>
-            <p class="loading">Loading dots</p>
+            <button type="button" id="novoCurso" onclick="//adicionaLinha('tabela')"data-toggle="modal" data-target="#newCourse" class="btn btn-primary" data-toggle="modal" data-target="#cadAlunos">Adicionar Curso</button>
+            <button type="submit" class="btn btn-success">Salvar Alunos</button>
+           <!-- <p class="loading">Loading dots</p>-->
             </form>
   </div>
+
+  
+	<div class="modal fade" id="newCourse" tabindex="-1" role="dialog" aria-labelledby="newCourseLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="cad_ModalLabel">Cadastrar Curso</h4>
+						</div>
+					<div class="modal-body">
+						<form method="POST" name="formulario" action="../../curso/processa.php" enctype="multipart/form-data" VALUE="inserir">
+							<div class="form-group">
+								<select class="form-control selectpicker" name="nome">
+											<option value="" selected disabled>Tipo de Treinamento</option>
+											<option>Escola de Profeta</option>
+											<option>Discipulado</option>
+								</select>
+							</div>
+							<div class="form-group">
+									<input type="text" class="form-control" name="inicio" id="datainicio" placeholder="Data de Início" maxlength="10" onkeypress="DataHora(event, this)">
+							</div>
+							<div class="form-group">
+									<input type="text" class="form-control" name="tema" placeholder="Tema do Curso" maxlength="25">
+							</div>
+								<div class="modal-footer">
+                            	<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+								 	<button type="submit" class="btn btn-success" name="formulario" value="inserir">Incluir</button>
+								</div>
+							</form>
+						</div>
+				</div>
+			</div>
+            
+		</div>
+
   <script>
 
   /*var tabela = document.body.querySelector("table tbody"); // seleciona o corpo da tabela
@@ -176,23 +214,42 @@ console.log(clone)
                 
                 celula3.innerHTML =   '<td>'+
                                             '<div class="form-check form-check-inline">'+
-                                                '<input class="form-check-input" type="radio" name="status'+numeroLinhas+'" id="aprovado'+numeroLinhas+'" value="A" checked/>'+
-                                                '<label class="form-check-label" for="aprovado'+numeroLinhas+'"> Aprovado </label>'+
+                                                '<input disabled class="form-check-input" type="radio" name="status'+numeroLinhas+'" id="aprovado'+numeroLinhas+'" value="A" />'+
+                                                '<label disabled class="form-check-label" for="aprovado'+numeroLinhas+'"> Aprovado </label>'+
                                             '</div>'+
                                         '</td>'+
                                         '<td>'+
                                             '<div class="form-check form-check-inline">'+
-                                                '<input class="form-check-input" type="radio" name="status'+numeroLinhas+'" id="reprovado'+numeroLinhas+'" value="R"/>'+
-                                                '<label class="form-check-label" for="reprovado'+numeroLinhas+'">   Reprovado </label>'+
+                                                '<input disabled class="form-check-input" type="radio" name="status'+numeroLinhas+'" id="reprovado'+numeroLinhas+'" value="R"/>'+
+                                                '<label disabled class="form-check-label" for="reprovado'+numeroLinhas+'">   Reprovado </label>'+
                                             '</div>'+
                                         '</td>';
                                         MostraDados();
                                     
                            }
 
+                           $(document).on('input', 'input[type=text]', function(){
+                            var teste = $(this).val();
+                            if(teste.length >= 3 ){
+
+                                console.log('chegou');
+                            }
+                            
+                           
+                        });
+
                
                            $('#historico').submit(function(){
                             event.preventDefault();
+                            var dado = $(this).serialize()
+                            var dados = $("#historico :input[value!='']").serialize() // does the job!
+                            var formData = $("#historico :input")
+                                            .filter(function(index, element) {
+                                                return $(element).val() != '';
+                                            })
+                                            .serialize();
+                            console.log(formData);
+                            return true;
                             tabela = document.body.querySelector("table > tbody ").rows.length;
                             var na = $(this).find('.status'+i).html();
                            //Salvar Nome do Curso e sua respectiva data
@@ -206,16 +263,9 @@ console.log(clone)
                                                 url: "./salvaCurso.php?",
                                                 dataType: 'html',     // para obter a resposta no formato json e rodar no sweetalert2
                                                 data: {"curso": curso, "data":inputData, "tema":inputCurso},
-                                                beforeSend:     
-                                                    function() {    
-                                                    isProcessing = true;
-                                                       alert('salvando dados');},
-            },
                                                 success:function(response){ //retorna o echo do php
                                                     console.log(response)}
                                                 })
-                                                async: false})
-                                                .done(function( data ) {
 
                            
                                 for(var i=1; i <= tabela ; i++){
@@ -246,12 +296,25 @@ console.log(clone)
   /////////////////////////////////////////////////////////////////////////////////////////////////
 
   window.onload = function(){
+          
 		MostraDados();
         $("#data").mask("99/99/9999"); 
         $('#curso').autocomplete({ source: 'retornaCurso.php'});
         $('input.autocomplete').autocomplete({ source: 'retornaMembro.php',  minLength: 3});
+        for(var j=1; j<=9;j++)adicionaLinha('tabela');
+
+        setTimeout(function() {
+				//document.getElementById("msg_curso").style.display = 'none';
+				$('historico').find('input[type=text], input[type=password], input[type=number], input[type=email], textarea').val('');
+			 //   document.getElementById("msg_bat").remove();
+			  }, 3000); // 3000 = 3 segundos
        
     }
+
+    setTimeout(function() {
+    $(".alert").alert('close');
+
+          }, 3000);
    
    
     function MostraDados()
