@@ -230,9 +230,15 @@ console.log(clone)
 
                            $(document).on('input', 'input[type=text]', function(){
                             var teste = $(this).val();
-                            if(teste.length >= 3 ){
 
-                                console.log('chegou');
+                            if(teste.length == 3 ){
+                                var ID_input_selecionada = $(this).attr("id"); //pega no id  do input seleciona
+                                var filtro = ID_input_selecionada.length; //
+                                var str = ID_input_selecionada.substr(-1);//pega o ultima caracter do ID
+                                
+                                
+                                
+                                    
                             }
                             
                            
@@ -295,7 +301,7 @@ console.log(clone)
           });
   /////////////////////////////////////////////////////////////////////////////////////////////////
 
-  window.onload = function(){
+  $(document).ready(function() {
           
 		MostraDados();
         $("#data").mask("99/99/9999"); 
@@ -309,7 +315,7 @@ console.log(clone)
 			 //   document.getElementById("msg_bat").remove();
 			  }, 3000); // 3000 = 3 segundos
        
-    }
+    })
 
     setTimeout(function() {
     $(".alert").alert('close');
