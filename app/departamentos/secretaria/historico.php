@@ -130,7 +130,7 @@
                     <td><input type="text" class="form-control autocomplete" name="people1" placeholder="Nome Completo" id="people1"></td>
                     <td >
                         <div class="form-check form-check-inline">
-                            <input disabled class="form-check-input" type="radio" name="status1" id="aprovado2" value="A" >
+                            <input disabled class="form-check-input" type="radio" name="status1" id="aprovado1" value="A" >
                             <label diasbled class="form-check-label" for="aprovado1">
                                 Aprovado
                             </label>
@@ -233,8 +233,12 @@ console.log(clone)
 
                             if(teste.length == 3 ){
                                 var ID_input_selecionada = $(this).attr("id"); //pega no id  do input seleciona
-                                var filtro = ID_input_selecionada.length; //
+                                console.log(ID_input_selecionada);
                                 var str = ID_input_selecionada.substr(-1);//pega o ultima caracter do ID
+                                 document.getElementById('aprovado'+str).disabled = false;
+                                 document.getElementById('reprovado'+str).disabled = false;
+                                var filtro = ID_input_selecionada.length; //
+                              
                                 
                                 
                                 
