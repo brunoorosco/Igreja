@@ -14,12 +14,24 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
     <title>Membros</title>
     <style type="text/css">
     .table tbody tr:hover td, .table tbody tr:hover th {
         background-color: #9ACD32 !important;
     }
 
+    .switchLine
+    {
+        clear: both;
+        width: 100%;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        
+    }
+    .sui-switch-checked .sui-switch-inner {
+     background-color: #283747;
+}
      </style>
 </head>
 
@@ -46,14 +58,16 @@
                 <table class="table table-striped table-sm text-center" id="tabela_membros">
                     <thead >
                         <tr>
-                            <th scope="col-lg-6">Nome</th>
+                            <th scope="col-3">Nome</th>
                             <!--<th scope="col">Endereço</th>-->
-                            <th scope="col">Telefone</th>
+                            <th scope="col-2">Telefone</th>
                             <!--<th scope="col">Email</th-->
                             <th scope="col">Aniversário</th>
                             <th scope="col">Função</th>
                             <th scope="col">CEM</th>
                             <th scope="col">Ação</th>
+                            <th scope="col">Ativo</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -95,9 +109,18 @@
                                                     data-whatevernome='<?php echo $row['nome'];?>' data-whateverendereco='<?php echo $row['endereco'];?>' data-whateverdata='<?php echo date("d/m/Y",strtotime(str_replace('/','-',$row['nasc'])));?>'
                                                     data-whatevercargo='<?php echo $row['cargo'];?>' data-whatevertel='<?php echo $row['telefone'];?>'  ></button>
                                             <button type="button" class="btn btn-danger fas fa-trash"></button></div> <?php }
-                                            echo '</td></tr><div class="row"></div>';
+                                            
                                 ?>
-
+                                </td>
+                                <td> 
+                                    <div class="switchLine">
+                                           <div class="right">
+                                              <input id="switch" class="switch" type="checkbox" checked="checked" onclick="myFunction()" >
+                                          </div>
+                                      </div>
+                                </td>
+                              </tr><div class="row"></div>
+          
           <div class="modal fade" id="myModal<?php echo $row['idmembros']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -219,15 +242,29 @@
 
 
       </div>
+      <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+
 
       <script src="membros.js" type="text/javascript"></script>
-       <script> window.onload= function() {
-      setTimeout(function() {
-          $("#message").alert('close');
+          <script> 
+          function myFunction(){
+            console.log("tres");
 
-          }, 3000);
-        };</script>
+          }
+            window.onload= function() {
+                setTimeout(function() {
+                $("#message").alert('close');
 
+              }, 3000);
+            };
+            $(".switch").shieldSwitch({
+                onText: "Sim",
+                offText: "Não",
+                cls: "rounded",
+            });
+
+        </script>
+         
 </body>
 
 </html>

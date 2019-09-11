@@ -3,15 +3,15 @@
 class Banco
 {   
 
-    private static $dbNome = 'DB_Igreja';
-    private static $dbHost = 'localhost';
-    private static $dbUsuario = 'root';
-    private static $dbSenha = '123456';
+    private static $dbname = 'DB_Igreja';
+    private static $dbhost = 'localhost';
+    private static $dbuser = 'root';
+    private static $dbpass = '123456';
  ////// banco host      ////// 
-    /*private static $dbNome = 'id8520277_secretariacac';
-    private static $dbHost = 'localhost';
-    private static $dbUsuario = 'id8520277_secretariacac';
-    private static $dbSenha = 'orosco0329';
+    /*private static $dbname = 'id8520277_secretariacac';
+    private static $dbhost = 'localhost';
+    private static $dbuser = 'id8520277_secretariacac';
+    private static $dbpass = 'orosco0329';
     */
     private static $cont = null;
     
@@ -26,7 +26,7 @@ class Banco
         {
             try
             {
-                self::$cont =  new PDO( "mysql:host=".self::$dbHost.";"."dbname=".self::$dbNome, self::$dbUsuario, self::$dbSenha,array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'')); 
+                self::$cont =  new PDO( "mysql:host=".self::$dbhost.";"."dbname=".self::$dbname, self::$dbuser, self::$dbpass,array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'')); 
             }
             catch(PDOException $exception)
             {
