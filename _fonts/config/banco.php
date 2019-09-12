@@ -3,7 +3,7 @@
 class Banco
 {   
 
-    private static $dbname = 'DB_Igreja';
+    private static $dbname = 'db_Igreja';
     private static $dbhost = 'localhost';
     private static $dbuser = 'root';
     private static $dbpass = '123456';

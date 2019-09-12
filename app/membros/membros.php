@@ -79,9 +79,10 @@
 
                         include_once("./seleciona_usuario.php");
 
-
+                          $i = 0;
                         while($row = $query->fetch(PDO::FETCH_ASSOC))
                         {
+                           $i += 1;
                             echo '<tr>';
 			                      echo '<th class="text-left" scope="row">'. $row['nome'] . '</th>';
                           // echo '<td class="text-left">'. $row['endereco'] . '</td>';
@@ -113,9 +114,10 @@
                                 ?>
                                 </td>
                                 <td> 
+
                                     <div class="switchLine">
                                            <div class="right">
-                                              <input id="switch" class="switch" type="checkbox" checked="checked" onclick="myFunction()" >
+                                              <input <?php echo 'id=switch'.$i; ?> class="switch" type="checkbox" checked="checked" onclick='alert("teste")' >
                                           </div>
                                       </div>
                                 </td>
