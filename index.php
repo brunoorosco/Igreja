@@ -3,6 +3,7 @@
   include_once '_fonts/config/banco.php';
   include_once "_fonts/config/funcoes.php";
 //  calendario();
+ 
  ?>
 
 <html lang="pt-br">
@@ -13,8 +14,6 @@
     <meta name="author" content="Comunidade Avivamento em Cristo">
 
     <title>Portal Comunidade</title>
-
-    <link rel="stylesheet" href="_fonts/css/bootstrap.min.css">
     <link href='_fonts/css/fullcalendar.min.css' rel='stylesheet' />
     <link href='_fonts/css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
 

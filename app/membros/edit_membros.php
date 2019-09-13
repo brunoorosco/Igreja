@@ -30,7 +30,7 @@
 	     //	echo $stmt->rowCount();
 		   //	echo json_encode(array('mens1' => "Cadastrado realizado com sucesso!","mens2"=>"success","mens3"=>"1" ));
 		$_SESSION['msg_cad'] = "<div id='message' class='alert alert-success' role='alert'>Cadastro alterado com sucesso!!!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
-		header("Location: http://localhost/www/igreja/app/membros/membros.php");
+		header("Location:".$URLBASE."/app/membros/membros.php");
 
 		}catch(PDOException $e){
 

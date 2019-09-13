@@ -12,25 +12,73 @@
 <head>
     <meta charset="utf-8">
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="//www.shieldui.com/shared/components/latest/css/light/all.min.css" />
     <title>Membros</title>
     <style type="text/css">
     .table tbody tr:hover td, .table tbody tr:hover th {
         background-color: #9ACD32 !important;
     }
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  top: 8px;
+}
 
-    .switchLine
-    {
-        clear: both;
-        width: 100%;
-        margin-bottom: 5px;
-        margin-top: 5px;
-        
-    }
-    .sui-switch-checked .sui-switch-inner {
-     background-color: #283747;
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
      </style>
 </head>
@@ -65,9 +113,7 @@
                             <th scope="col">Aniversário</th>
                             <th scope="col">Função</th>
                             <th scope="col">CEM</th>
-                            <th scope="col">Ação</th>
-                            <th scope="col">Ativo</th>
-                            
+                            <th scope="col">Ação</th>                          
                         </tr>
                     </thead>
                     <tbody>
@@ -112,14 +158,6 @@
                                             <button type="button" class="btn btn-danger fas fa-trash"></button></div> <?php }
                                             
                                 ?>
-                                </td>
-                                <td> 
-
-                                    <div class="switchLine">
-                                           <div class="right">
-                                              <input <?php echo 'id=switch'.$i; ?> class="switch" type="checkbox" checked="checked" onclick='alert("teste")' >
-                                          </div>
-                                      </div>
                                 </td>
                               </tr><div class="row"></div>
           
@@ -236,6 +274,16 @@
                                     <button class="btn btn-success">Editar</button>
                             </div>
                         </form>
+                        <form>
+
+                          <div class="">
+                               <div class="right">
+                                   <label for="switch" class="control-label"><h4>Desativar Membro</h4></label>
+                                   <input type="checkbox" id="switch" class="switch"  onclick=confirmar(this); />                                         
+                              </div>
+                          </div>  
+                      </form>
+
                       </div>
                   </div>
                 </div>
@@ -244,14 +292,44 @@
 
 
       </div>
-      <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
-
-
+     
       <script src="membros.js" type="text/javascript"></script>
           <script> 
-          function myFunction(){
-            console.log("tres");
-
+          function confirmar(objeto){
+            if ($(objeto).is(':checked')) { //verifica se foi desativado o membro
+              Swal.fire({
+                  title: 'Você tem certeza que vai desativar este membro?',
+                  type: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Desativar',
+                  cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                  if (result.value) {
+                    $.ajax({
+                        method: "POST",
+                        url: "some.php", //criar arquivo de atualização 
+                        data: { status: "desativado"}
+                      })
+                        .done(function( msg ) {
+                          Swal.fire(
+                              'Membro Desativado!',
+                              '',
+                              'success'
+                            )
+                        })                   
+                        .fail(function(msg) {
+                          Swal.fire(
+                              'Erro na desativação!',
+                              'Tente Novamente',
+                              'error'
+                            )
+                          })
+                  }
+                })
+           
+              }
           }
             window.onload= function() {
                 setTimeout(function() {
@@ -259,12 +337,7 @@
 
               }, 3000);
             };
-            $(".switch").shieldSwitch({
-                onText: "Sim",
-                offText: "Não",
-                cls: "rounded",
-            });
-
+           
         </script>
          
 </body>
