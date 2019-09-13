@@ -250,7 +250,7 @@
           <br>
               <div class='rounded bg-ligh h-75'>    
                   <h4 class="text-center ">Cursos Realizados</h4>
-              </div>   
+               
               <div class="form-group">
                   <label for="inputName" class="control-label">Nome</label>
                   <input type="text" class="rounded form-control" name="nomeProc" id="inputName" maxlength="20"/>
@@ -265,6 +265,7 @@
               <div id="resultado">
                 
               </div>
+            </div> 
           </div>
             
             <div class="col-lg-6 col-md-12 col-sm-12">
