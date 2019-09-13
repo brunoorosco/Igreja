@@ -255,6 +255,26 @@
                   cancelButtonText: 'Cancelar'
                 }).then((result) => {
                   if (result.value) {
+                    let url = "teste.php";
+                    let xhr = new XMLHttpRequest();
+                    xhr.open('POST', url, true);
+                    xhr.onreadystatechange = function() {
+                      if (xhr.readyState == 4) {
+                        if (xhr.status = 200)
+                          console.log(xhr.responseText);
+                        }
+                        else if(xhr.status = 400){
+                          Swal.fire(
+                              'Erro na desativação!',
+                              'Tente Novamente',
+                              'error'
+                            )
+                        }
+                      }
+                      xhr.send();
+                    }
+
+/*
                     $.ajax({
                         method: "POST",
                         url: "some.php", //criar arquivo de atualização 
@@ -274,7 +294,7 @@
                               'error'
                             )
                           })
-                  }
+                  }*/
                 })
            
               }
