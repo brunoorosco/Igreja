@@ -79,7 +79,7 @@ $('#busca').submit(function(){
 	dataType: 'json',     // para obter a resposta no formato json e rodar no sweetalert2
 	data: dados,
 	success:function(response){ //retorna o echo do php
-		if(response.length > 0){
+		if((response.length != 0)){
 		for(var i=0;response.length>i;i++){
 			//Adicionando registros retornados na tabela
 				$('#resultado').append('<span>'+response[i].curso+' - '+response[i].status+'</span><br>');

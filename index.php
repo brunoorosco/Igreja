@@ -253,11 +253,11 @@
                   <form method="POST" action="./_fonts/config/buscaCursos.php" id="busca">
                       <div class="form-group">
                           <label for="inputName" class="control-label">Nome</label>
-                          <input type="text" class="rounded form-control" name="nomeProc" id="inputName" maxlength="20"/>
+                          <input type="text" class="rounded form-control" name="nomeProc" id="inputName" maxlength="20" required/>
                       </div>  
                       <div class="form-group">
                           <label for="inputData" class=" control-label">Data de Aniversário</label>
-                          <input type="text" class="col-6 rounded form-control data" name="dataProc" id="inputData" require/>
+                          <input type="text" class="col-6 rounded form-control data" name="dataProc" id="inputData" required/>
                       </div>  
                       <div class="form-group">
                           <button type="submit" class="btn btn-primary" name="dataProc">Procurar</button>

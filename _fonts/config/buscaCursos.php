@@ -8,14 +8,15 @@ header('Content-Type: text/html; charset=utf-8');
 if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
 
   // Verifica se a variável $_POST['nome'] existe
-  if (isset($_POST['nomeProc'])) {
+  if (isset($_POST['nomeProc']) AND isset($_POST['dataProc'])) {
     // Verifica se o usuário digitou o seu nome
     if (!empty($_POST['nomeProc'])) {
       $nome = $_POST['nomeProc'];
       $niver = date("Y-m-d",strtotime(str_replace('/','-',$_POST['dataProc'])));
      // echo 'Seja bem-vindo(a) ' . $nome . '!';
     } else {
-      echo "Por favor, preencha o seu nome";
+      echo json_encode(array('nome' => "Preencha todos os campos" ));//mens3 = representa que usuario já existe no banco
+  
     }
   } else {
       echo json_encode(array('nome' => "Preencha todos os campos" ));//mens3 = representa que usuario já existe no banco
