@@ -250,18 +250,19 @@
           <br>
               <div class='rounded bg-ligh h-75'>    
                   <h4 class="text-center ">Cursos Realizados</h4>
-               
-              <div class="form-group">
-                  <label for="inputName" class="control-label">Nome</label>
-                  <input type="text" class="rounded form-control" name="nomeProc" id="inputName" maxlength="20"/>
-              </div>  
-              <div class="form-group">
-                  <label for="inputData" class=" control-label">Data de Aniversário</label>
-                  <input type="text" class="col-6 rounded form-control data" name="dataProc" id="inputData"/>
-              </div>  
-              <div class="form-group">
-                  <button class="btn btn-primary" name="dataProc">Procurar</button>
-              </div>  
+                  <form method="POST" action="./_fonts/config/buscaCursos.php" id="busca">
+                      <div class="form-group">
+                          <label for="inputName" class="control-label">Nome</label>
+                          <input type="text" class="rounded form-control" name="nomeProc" id="inputName" maxlength="20"/>
+                      </div>  
+                      <div class="form-group">
+                          <label for="inputData" class=" control-label">Data de Aniversário</label>
+                          <input type="text" class="col-6 rounded form-control data" name="dataProc" id="inputData" require/>
+                      </div>  
+                      <div class="form-group">
+                          <button type="submit" class="btn btn-primary" name="dataProc">Procurar</button>
+                      </div>
+                    </form>    
               <div id="resultado">
                 
               </div>

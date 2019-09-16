@@ -68,6 +68,42 @@ $(document).ready(function(){
 		});
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
+$('#busca').submit(function(){
+	var dados = $(this).serialize();
+	event.preventDefault();
+	console.log(dados);
+	$('#resultado').empty();
+	$.ajax({
+	type:'POST',
+	url: "./_fonts/config/buscaCursos.php",
+	dataType: 'json',     // para obter a resposta no formato json e rodar no sweetalert2
+	data: dados,
+	success:function(response){ //retorna o echo do php
+		if(response.length > 0){
+		for(var i=0;response.length>i;i++){
+			//Adicionando registros retornados na tabela
+				$('#resultado').append('<span>'+response[i].curso+' - '+response[i].status+'</span><br>');
+			}}
+			else{
+				$('#resultado').append('<span>Nenhum registro encontrado!!!</span><br>');
+			}
+			
+	},
+	erro: function(response) {
+		//console.log(response);
+		alert(response);
+
+		Swal.fire({
+		title: 'Erro ao buscar Informação, tente novamente!!!',
+		type: 'error',
+		timer: 5000});
+	}
+});
+
+return false;
+});
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 ////////////////////////////////////////////////////////////////////////////////////////////////
 	});
 
