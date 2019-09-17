@@ -35,7 +35,7 @@
     html, body{height:100%;}
 
       body{
-        background-image: url(http://localhost/www/igreja/_fonts/img/efata.jpg);
+        background-image: url(../../_fonts/img/efata.jpg);
         background-size: cover;
        
         background-repeat: no-repeat;
