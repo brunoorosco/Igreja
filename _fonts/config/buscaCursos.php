@@ -29,7 +29,7 @@ if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
     $data = array();
  //   $sql_= "SELECT * FROM historico WHERE nome LIKE '$nome%' ";
   //  $sql = "SELECT curso, COUNT(alunos) AS 'alunos'  FROM turma GROUP BY curso";//funcionando
-    $sql_= "SELECT infocursos.tema as curso, status, infocursos.data_, historico.nome, membros.nasc FROM historico 
+    $sql_= "SELECT infocursos.tema as curso, status_, infocursos.data_, historico.nome, membros.nasc FROM historico 
     INNER JOIN infocursos  ON infocursos.idCursos = historico.curso
     INNER JOIN  membros ON membros.nome = historico.nome
     where historico.nome LIKE '$nome%' AND membros.nasc = '$niver'

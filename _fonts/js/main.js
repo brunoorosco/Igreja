@@ -82,7 +82,7 @@ $('#busca').submit(function(){
 		if((response.length != 0)){
 		for(var i=0;response.length>i;i++){
 			//Adicionando registros retornados na tabela
-				$('#resultado').append('<span>'+response[i].curso+' - <b>'+response[i].status+'</b></span><br>');
+				$('#resultado').append('<span>'+response[i].curso+' - <b>'+response[i].status_+'</b></span><br>');
 			}}
 			else{
 				$('#resultado').append('<span>Nenhum registro encontrado!!!</span><br>');
