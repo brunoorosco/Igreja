@@ -107,7 +107,6 @@
                    title:  '<?php echo $row_events['titulo']; ?>',
                    start:  '<?php echo $row_events['inicioevento']; ?>',
                    end:    '<?php echo $row_events['terminoevento']; ?>',
-                   rendering: 'background',
                    color:  '<?php echo $row_events['color']; ?>'
                   
         
