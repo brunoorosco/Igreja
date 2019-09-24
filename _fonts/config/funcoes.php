@@ -59,15 +59,34 @@ function geraSenha($tamanho = 6, $maiusculas = true, $numeros = true, $simbolos 
 
 function enviarEmail($destino,$senha)
 {
-    ini_set('display_errors', 1);
-    error_reporting(E_ALL);
-    $from = "SecretariaCAC";
-    $to = $destino;
-    $subject = "Senha de acesso a secretariacac";
-    $message = "Usuário: ".$destino. "</br>Senha de acesso: ".$senha;
-    $headers = "De:". $from;
-    mail($to, $subject, $message, $headers);
-    echo "A mensagem de e-mail foi enviada.";
+  // Este sempre deverá existir para garantir a exibição correta dos caracteres
+  $headers = "MIME-Version: 1.1\n";
+  // Para enviar o e-mail em formato texto com codificação de caracteres Europeu Ocidental (usado no Brasil)
+  $headers .= "Content-type: text/plain; charset=iso-8859-1\n";
+  // Para enviar o e-mail em formato HTML com codificação de caracteres Europeu Ocidental (usado no Brasil)
+  $headers .= "Content-type: text/html; charset=iso-8859-1\n";
+  // Para enviar o e-mail em formato HTML com codificação de caracteres Unicode (Usado em todos os países)
+  $headers .= "Content-type: text/html; charset=utf-8\n";
+  // E-mail que receberá a resposta quando se clicar no 'Responder' de seu leitor de e-mails
+  $headers .= "From: Comunidade Avivamento em Cristo <secretaria@secretariacac.com>\n";
+  // para enviar a mensagem em prioridade máxima
+  $headers .= "X-Priority: 1\n";
+  // para enviar a mensagem em prioridade mínima
+  $headers .= "X-Priority: 5\n";
+  // para enviar a mensagem em prioridade normal (valor padrão caso não seja especificada)
+  $headers .= "X-Priority: 3\n";
+      
+      ini_set('display_errors', 1);
+      error_reporting(E_ALL);
+      $from = "secretaria@secretariacac.com";
+      $to = $destino;
+      $subject = "Senha de acesso a secretariacac";
+      $message = "Usuário: ".$destino. "\nSenha de acesso: ".$senha;
+     // $headers = "De:". $from;
+     // $headers .= "From: Comunidade Avivamento em Cristo <secretaria@secretariacac.com>\n";
+      mail($to, $subject, $message, $headers);
+      echo "A mensagem de e-mail foi enviada.";
+    
   }
 
 function calendario()
