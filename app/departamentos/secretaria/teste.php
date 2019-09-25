@@ -19,7 +19,16 @@
   <!--<link rel="apple-touch-icon" href="../../../app-assets/images/ico/apple-icon-120.png">-->
   <!--<link rel="shortcut icon" type="image/x-icon" href="../../../app-assets/images/ico/favicon.ico">-->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
-  <link rel="stylesheet" media="all" href="./style.css" data-turbolinks-track="reload" />
+  <style>
+    .grade-disciplinas .table th,.grade-disciplinas .table td{border-top:0 solid transparent}
+    .grade-disciplinas .table th:last-child, .grade-disciplinas .table td:last-child{white-space:nowrap}
+    .grade-disciplinas .table th .fa-clock-o, .grade-disciplinas .table td .fa-clock-o{color:#e4e4e4;margin-right:2px;margin-left:2px}
+    .grade-disciplinas .table tr:last-child td{border-bottom:2px solid #BF4631}
+    .grade-disciplinas .table tr:first-child td {border-top:2px solid #BF4631}
+    .grade-disciplinas .table thead th{border-top:0 solid transparent}
+
+
+  </style>
   </head>
 <body data-open="click" data-menu="vertical-menu"
         data-col="2-columns"
@@ -34,7 +43,7 @@
       <div class="">
         <div class="">
           <div class="">
-            <table class="table table-striped grade-configuration">
+            <table class="table table-striped">
               <thead>
                 <tr>
                   <th>Data</th>
