@@ -41,9 +41,8 @@ function ler_banco(nome_funcao){
 $(document).ready(function() {
 
        var  funcao =  ler_banco("filtro_membros");
-
         var slider = $("#slider_filtro");
-       
+     
         slider.on("input change", function(e) {
           var total =  $(this).val();
           $("#priceValue").html(total);
@@ -52,9 +51,22 @@ $(document).ready(function() {
     
         })
      
-        /* var updater = setTimeout (function () {
-           $('#tabela_encontrista').load ('encontrista.php', 'update=true');
-           }, 3000);*/
+          $('#tabela_disciplina').DataTable( {
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ itens por página",
+                "zeroRecords": "Nenhum Item Encontrado",
+                "info": "",
+                "infoEmpty": "",
+                "infoFiltered": "",
+                "search": "Procurar:",
+                "paginate": {
+                          "previous": "Anterior",
+                          "next": "Próximo"
+                        }
+        
+                }
+            }
+            )
      
      
     });
@@ -73,3 +85,4 @@ var labels = [];
                 $("#priceValue").html(labels);
 
             }
+

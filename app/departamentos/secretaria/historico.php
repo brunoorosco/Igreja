@@ -24,62 +24,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Histórico de Cursos</title>
 		<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-		<style>
-  .ui-autocomplete {
-		position: absolute;
-		z-index: 2150000000 !important;
-		cursor: default;
-		border: 2px solid #ccc;
-		padding: 5px 0;
-		border-radius: 2px;
-		font-size:15px;
-		font-family: 'Oswald', sans-serif;
-	}
-
-.custom-control-input:checked ~ .custom-control-label::before {
-		color: #fff;
-		border-color: #7B1FA2;
-		background-color: #7B1FA2;
-	}
-
-	.min-height-100 { 
-        min-height: 50px; 
-        margin: 5px 5px 5px 5px;
-        border-radius: 8px;
-        background-color: #0099ff;
-		color:#ffffff;  
-         }
-
-         p {
-  color: black;
-  font: 100 4em/150% Impact;
-  text-align: center;}
-         /* loading dots */
-
-.loading:after {
-  content: ' .';
-  animation: dots 1s steps(5, end) infinite;}
-
-@keyframes dots {
-  0%, 20% {
-    color: rgba(0,0,0,0);
-    text-shadow:
-      .25em 0 0 rgba(0,0,0,0),
-      .5em 0 0 rgba(0,0,0,0);}
-  40% {
-    color: white;
-    text-shadow:
-      .25em 0 0 rgba(0,0,0,0),
-      .5em 0 0 rgba(0,0,0,0);}
-  60% {
-    text-shadow:
-      .25em 0 0 white,
-      .5em 0 0 rgba(0,0,0,0);}
-  80%, 100% {
-    text-shadow:
-      .25em 0 0 white,
-      .5em 0 0 white;}}
-
+		<link rel="stylesheet" href="./style.css">
+        
+        <style>
+  
   </style>
 
 </head>

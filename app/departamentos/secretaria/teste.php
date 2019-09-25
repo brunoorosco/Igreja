@@ -16,107 +16,96 @@
   <meta name="keywords" content="">
   <meta name="author" content="Bruno Orosco">
   <title>teste</title>
-  <!--<link rel="apple-touch-icon" href="../../../app-assets/images/ico/apple-icon-120.png">-->
-  <!--<link rel="shortcut icon" type="image/x-icon" href="../../../app-assets/images/ico/favicon.ico">-->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
-  <style>
-    .grade-disciplinas .table th,.grade-disciplinas .table td{border-top:0 solid transparent}
-    .grade-disciplinas .table th:last-child, .grade-disciplinas .table td:last-child{white-space:nowrap}
-    .grade-disciplinas .table th .fa-clock-o, .grade-disciplinas .table td .fa-clock-o{color:#e4e4e4;margin-right:2px;margin-left:2px}
-    .grade-disciplinas .table tr:last-child td{border-bottom:2px solid #BF4631}
-    .grade-disciplinas .table tr:first-child td {border-top:2px solid #BF4631}
-    .grade-disciplinas .table thead th{border-top:0 solid transparent}
+  <link href="//fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="./style.css">
 
+ </head>
+<body>
+<div class="container"> 
+<br>
+       
+            <div class="row">
+                  <h4 class="text-info text-center">Cursos Realizado - Escola de Profeta</h4>              
+              </div>
+           
+            <div class="row">
+                <div class="col-6">
+                    <input type="text" id="user" class="form-control" placeholder="Nome">
+                </div>
+              
+            </div>
+            <br>
+            <section id="configuration" class="grade-disciplinas">
+            <div class="table-responsive">
+                 <table class="table table-striped table-sm" id="tabela_disciplina">
+                        <thead>
+                          <tr>
+                            <th>Data</th>
+                            <th>Código</th>
+                            <th>Disciplina</th>
+                            <th>Situação</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                      
+                        <?php
 
-  </style>
-  </head>
-<body data-open="click" data-menu="vertical-menu"
-        data-col="2-columns"
-        class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar">
+                      $pdo = Banco::conectar();
+                   //   $config = carrega_conf("todos_membros"); //função painel de controle para mostrar todos os membros
+                      include_once("./selecionaDisciplina.php");
 
-    <div class="app-content content container">
-       <div class="content-body">
-          
-<section id="configuration" class="grade-disciplinas">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="">
-        <div class="">
-          <div class="">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Data</th>
-                  <th>Código</th>
-                  <th>Disciplina</th>
-                  <th>Situação</th>
-                </tr>
-              </thead>
-              <tbody>
-             
-              <?php
+                          $i = 0;
+                          while($row = $query->fetch(PDO::FETCH_ASSOC))
+                          {
+                          $i += 1;
+                              echo '<tr>';
+                              echo '<td>'.date("d/m/Y",strtotime(str_replace('/','-',$row['data_']))).'</td>';
+                              echo '<td class="text-left" >'. $row['ID'] . '</td>';
+                              echo '<td>'. $row['curso'] . '</td>';
+                                                 
+                          if($row['status_'] == "APROVADO")
+                              echo '<td class="text-success"> <i class="fa fa-thumbs-up " aria-hidden="true"></i>  '. $row['status_'] . '</td>';
+                              
+                              else echo '<td class="text-danger"> <i class="fa fa-thumbs-down red" aria-hidden="true"></i>  '. $row['status_'] . '</td>';
+                              ?>
+                          
+                          <?php }
+                                              
+                                  ?>
+                                 
+                              </tr>
 
-            $pdo = Banco::conectar();
-            $config = carrega_conf("todos_membros");
-            include_once("./selecionaDisciplina.php");
-
-                $i = 0;
-                while($row = $query->fetch(PDO::FETCH_ASSOC))
-                {
-                $i += 1;
-                    echo '<tr>';
-                    echo '<td>'.date("d/m/Y",strtotime(str_replace('/','-',$row['data_']))).'</td>';
-                    echo '<td>'. $row['ID'] . '</td>';
-                    echo '<td>'. $row['curso'] . '</td>';
-                // echo '<td>'. $row['email'] . '</td>';
-                    
-                if($row['status_'] == "APROVADO")
-                    echo '<td> <i class="fa fa-thumbs-up" aria-hidden="true"></i>  '. $row['status_'] . '</td>';
-                    //echo '<td>'. $row['supervisao'] . '</td>';
-                    else echo '<td> <i class="fa fa-thumbs-down" aria-hidden="true"></i>  '. $row['status_'] . '</td>';
-                    ?>
-                <td>
-                <?php }
-                                    
-                        ?>
-                        </td>
-                    </tr>
-
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td colspan="8">
-                    <i class="fa fa-info-circle"></i>
-                    <small>
-                      Informações para simples conferência.
-                       As notas são atualizadas somente após o término dos processos de avaliação e revisão.
-                    </small>
-                  </td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-        </div>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td colspan="12">
+                              <i class="fa fa-info-circle"></i>
+                              <small>
+                                Informações para simples conferência.
+                                Os cursos são atualizados somente após o término dos processos de verificação.
+                              </small>
+                            </td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                      <div class="row"></div>
+                          <nav>
+                              <ul class="pagination"></ul>
+                          </nav>
+                      </div>
+                   </section>
+           
       </div>
-    </div>
-  </div>
-</section>
-<div class="waiting-modal modal fade text-xs-left" data-keyboard="false" data-backdrop="static">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body">
-        <dl class="dl-horizontal">
-          
-        </dl>
-      </div>
-    </div>
-  </div>
-</div>
-        </div>
-      </div>
-    </div>
+    
 
-  <script src="./main.js" data-turbolinks-track="reload"></script>
+  <script src="./painel.js"></script>
+  <script type="text/javascript" src="../../../_fonts/js/jquery.mask.min.js"></script>
+		<script type="text/javascript" src="../../../_fonts/js/sweetalert2.all.min.js"></script>
+		<script type="text/javascript" src="./prontuario.js"></script>
+    <script src="//code.jquery.com/ui/1.12.0/jquery-ui.min.js"  integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="  crossorigin="anonymous"></script>
+        
   <footer class="footer footer-static footer-light navbar-border">
   <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
     <span class="float-md-right d-xs-block d-md-inline-block">
