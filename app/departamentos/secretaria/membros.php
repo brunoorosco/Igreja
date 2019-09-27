@@ -1,27 +1,37 @@
 <?php
-  
+
   include_once("../../../_fonts/config/funcoes.php");
   include_once('../../../_fonts/config/banco.php');
   include_once("../../../menu.php");
-  
-//  validarUsuario();
+
+  validarUsuario();
 ?>
 <!DOCTYPE html>
-<html lang="pt-br" data-textdirection="ltr" class="loading">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-  <meta name="author" content="Bruno Orosco">
-  <title>teste</title>
-  <link href="//fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
-  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-  <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="./style.css">
+<html lang="pt-br">
 
- </head>
+<head>
+    <meta charset="utf-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="//www.shieldui.com/shared/components/latest/css/light/all.min.css" />
+    <title>Membros</title>
+    <style type="text/css">
+    .table tbody tr:hover td, .table tbody tr:hover th {
+        background-color: #9ACD32 !important;
+    }
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  top: 8px;
+}
+
+     </style>
+</head>
+
+<body>
 <body>
 <div class="container"> 
 <br>
@@ -90,14 +100,13 @@
                           </tr>
                         </tfoot>
                       </table>
-                      </div>
                       <div class="row"></div>
-                          <nav>
-                              <ul class="pagination"></ul>
-                          </nav>
+                         
                       </div>
                    </section>
-           
+                   <nav>
+                              <ul class="pagination"></ul>
+                          </nav>
       </div>
     
 
@@ -117,4 +126,7 @@
   </p>
 </footer>
 </body>
+         
+</body>
+
 </html>

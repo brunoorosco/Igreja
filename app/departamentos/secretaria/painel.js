@@ -65,10 +65,7 @@ $(document).ready(function() {
                         }
         
                 }
-            }
-            )
-     
-     
+            })
     });
 
 
