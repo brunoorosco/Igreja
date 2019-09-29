@@ -1,8 +1,13 @@
+var edit = 0;
+
 $(document).ready(function() {
+
+   listar_usuario(0); //Chamar a função para listar os registros
+   $('#offer-edit-button').click(EditMode);
 
     $("#userUncao").mask("99/99/9999"); 
     $('#user').autocomplete({ source: 'retornaMembro.php',  minLength: 3});
-
+/*
     var ka=0, j=0;   
     for(var i=1; 21>i ;i++){
           $('<div>', { id: "course_"+[ka], class: 'form-row'}).appendTo('#fichas');    
@@ -17,8 +22,34 @@ $(document).ready(function() {
                    j='0';
                    ka++;                   
                }             
-              }
-        
+              }*/
+         
+             $("#btn_consulta").click(function(){
+                usuario = $("#user").val();
+                if(usuario == null || usuario == "" ){
+                  document.getElementById("user").focus();
+                  //alert("necessario preencher");
+                  $("#tabela_disciplina td").remove();                                
+                  return false;
+                }else    listar_usuario(usuario);
+             });
+             
+            /*  $("input[name='user']").blur(function(){
+                 
+               // var $cem = $("input[name='cem_bat']");
+                $.getJSON('function.php',{
+                    nome: $(this).val()
+                    },function(json){
+                        var items = [];
+                        var items2 = [];
+                        for(var i in json) {            
+                            items.push(json[i].supervisao);
+                            items2.push(json[i].nasc); 
+                                  }
+                       
+                    });
+            });*/
+         
               
 
 
@@ -31,8 +62,9 @@ $(document).ready(function() {
                   <input type="text" class="form-control">
               </div> 
           </div>   */
-      
-                  
+         
+          
+         
 
 
    
@@ -76,6 +108,77 @@ $(document).ready(function() {
 
 });
 
+
+//////////////////////////////////////////////////////////////////
+/////-----FUNÇÃO PARA EDIÇÃO EM TABELA--------//////
+function EditMode()
+{
+  if (!edit) {
+   //TableEdit(); 
+   $('.editable').attr('contenteditable', 'true');
+   HtmlEdit(); edit=1;
+   $('.mybutton').css({"background": "#007acc", "color": "#FFF"});
+   $('.mybutton').html('Save');
+   $('.mybutton').css("border", "1px solid #007acc");
+   $('.tabela_disciplina').css("border", "2px solid #007acc");
+   
+  }
+  else {
+   $('.editable').unbind('click'); edit = 0 ;
+   $('.mybutton').css({"background": "#fff", "color": "#000"});
+   $('.tabela_disciplina').css("border", "1px solid #d1d1d1");
+   $('.mybutton').html('Edit');
+   $('.mybutton').css("border", "1px solid #d1d1d1");
+   $('.editable').attr('contenteditable', 'false');
+  }
+}
+
+function HtmlEdit()
+{
+  $('.editable').click(function ()
+  {
+    
+    $(this).keydown(function(){
+          if(event.keyCode==13)
+             {
+             return false;
+              
+             }
+    })	
+
+    $(this).keyup(function(){
+          if(event.keyCode==13)
+             {
+             $('.editable').blur();
+              
+             }
+    })	
+              
+    $(this).off('blur');
+    $(this).blur(function() { alert('it works here'); 
+     
+        var data = [];
+        $.ajax({
+        type: "POST",
+        data: {"data": data},        
+        url: "inc/save-offer.php",
+        success: function (anwser)
+        {
+           $('#aw-wrapper').html(anwser);
+              
+        }
+   
+    });
+
+
+    })
+
+    
+  })
+}
+        
+
+
 $("#ch1").on('change', function() {
    checkar("#ch1");  
 })
@@ -115,3 +218,33 @@ function checkar(radio){
 
     return
 }
+
+function listar_usuario(user){
+   var dados = {
+      user: user
+         }
+   $.post('./consulta.php', dados , function(retorna){
+      //Subtitui o valor no seletor id="conteudo"
+      $("#tabela").html(retorna);
+      paginas();
+   });
+}
+
+function paginas(){
+   $('#tabela_disciplina').DataTable( {
+     "language": {
+         "lengthMenu": "Mostrar _MENU_ itens por página",
+         "zeroRecords": "Nenhum Item Encontrado",
+         "info": "",
+         "infoEmpty": "",
+         "infoFiltered": "",
+         "search": "Procurar:",
+         "paginate": {
+                   "previous": "Anterior",
+                   "next": "Próximo"
+                 }
+ 
+         }
+       })
+     }
+     

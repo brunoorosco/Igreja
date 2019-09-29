@@ -51,23 +51,7 @@ $(document).ready(function() {
     
         })
      
-          $('#tabela_disciplina').DataTable( {
-            "language": {
-                "lengthMenu": "Mostrar _MENU_ itens por página",
-                "zeroRecords": "Nenhum Item Encontrado",
-                "info": "",
-                "infoEmpty": "",
-                "infoFiltered": "",
-                "search": "Procurar:",
-                "paginate": {
-                          "previous": "Anterior",
-                          "next": "Próximo"
-                        }
-        
-                }
-            })
-    });
-
+      });
 
 function atualiza(funcao){       
 var labels = [];

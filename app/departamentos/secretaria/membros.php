@@ -4,7 +4,7 @@
   include_once('../../../_fonts/config/banco.php');
   include_once("../../../menu.php");
 
-  validarUsuario();
+  //validarUsuario();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -20,14 +20,6 @@
     .table tbody tr:hover td, .table tbody tr:hover th {
         background-color: #9ACD32 !important;
     }
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-  top: 8px;
-}
-
      </style>
 </head>
 
@@ -47,7 +39,7 @@
               
             </div>
             <br>
-            <section id="configuration" class="grade-disciplinas">
+            <div id="configuration" class="grade-disciplinas">
             <div class="table-responsive">
                  <table class="table table-striped table-sm" id="tabela_disciplina">
                         <thead>
@@ -88,7 +80,13 @@
                               </tr>
 
                         </tbody>
-                        <tfoot>
+                     
+                      </table>
+                   </div>
+                   <nav>
+                              <ul class="pagination"></ul>
+                          </nav>
+                          <tfoot>
                           <tr>
                             <td colspan="12">
                               <i class="fa fa-info-circle"></i>
@@ -99,19 +97,11 @@
                             </td>
                           </tr>
                         </tfoot>
-                      </table>
-                      <div class="row"></div>
-                         
-                      </div>
-                   </section>
-                   <nav>
-                              <ul class="pagination"></ul>
-                          </nav>
       </div>
     
 
   <script src="./painel.js"></script>
-  <script type="text/javascript" src="../../../_fonts/js/jquery.mask.min."></script>
+  <script type="text/javascript" src="../../../_fonts/js/jquery.mask.min.js"></script>
 	<script type="text/javascript" src="../../../_fonts/js/sweetalert2.all.min.js"></script>
 	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.min.js"  integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="  crossorigin="anonymous"></script>
      <script>

@@ -29,13 +29,18 @@
             <div class="row">
                   <h4 class="text-info text-center">Cursos Realizado - Escola de Profeta</h4>              
               </div>
-           
+              <form id="form2" method="POST" action="" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-6">
-                    <input type="text" id="user" class="form-control" placeholder="Nome">
+                    <input type="text" id="user" name="user" class="form-control user-input" placeholder="Nome">
+                </div>
+              
+                <div class="col-1">
+                    <button id="btn_consulta" class="btn btn-primary">Consultar</button>
                 </div>
               
             </div>
+            </form>
             <br>
             <section id="configuration" class="grade-disciplinas">
             <div class="table-responsive">
@@ -61,7 +66,7 @@
                           {
                           $i += 1;
                               echo '<tr>';
-                              echo '<td>'.date("d/m/Y",strtotime(str_replace('/','-',$row['data_']))).'</td>';
+                              echo '<td class="editable">'.date("d/m/Y",strtotime(str_replace('/','-',$row['data_']))).'</td>';
                               echo '<td class="text-left" >'. $row['ID'] . '</td>';
                               echo '<td>'. $row['curso'] . '</td>';
                                                  
@@ -78,7 +83,14 @@
                               </tr>
 
                         </tbody>
-                        <tfoot>
+                       
+                      </table>
+                      </div>
+                          <nav>
+                              <button id="offer-edit-button" class="mybutton btn btn-primary right">Edit mode</button>
+                              <ul class="pagination"></ul>
+                          </nav>
+                          <div class="border-top border-bottom border-danger">
                           <tr>
                             <td colspan="12">
                               <i class="fa fa-info-circle"></i>
@@ -88,13 +100,7 @@
                               </small>
                             </td>
                           </tr>
-                        </tfoot>
-                      </table>
-                      </div>
-                      <div class="row"></div>
-                          <nav>
-                              <ul class="pagination"></ul>
-                          </nav>
+                        </div>
                       </div>
                    </section>
            
@@ -102,7 +108,8 @@
     
 
   <script src="./painel.js"></script>
-  <script type="text/javascript" src="../../../_fonts/js/jquery.mask.min."></script>
+  <script src="./prontuario.js"></script>
+  <script type="text/javascript" src="../../../_fonts/js/jquery.mask.min.js"></script>
 	<script type="text/javascript" src="../../../_fonts/js/sweetalert2.all.min.js"></script>
 	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.min.js"  integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="  crossorigin="anonymous"></script>
      <script>

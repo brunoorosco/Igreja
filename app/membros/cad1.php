@@ -23,7 +23,7 @@ $rows = $resultado_usuario->fetchAll(PDO::FETCH_COLUMN);
 if(($rows != 0)){
 
 	?>
-<div class="container-fluid">
+<div class="container">
       <div class="panel panel-primary">
             <div class="col-lg-12 table-responsive"> <!--     <p>
                 <a href="create.php" class="btn btn-success">Adicionar</a>
