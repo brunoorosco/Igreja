@@ -63,10 +63,10 @@ if(($rows != 0)){
                        
                       </table>
                       </div>
-                          <nav>
+                         <!-- <nav>
                               <button id="offer-edit-button" class="mybutton btn btn-primary right">Edit mode</button>
                               <ul class="pagination"></ul>
-                          </nav>
+                          </nav>-->
                           <div class="border-top border-bottom border-danger">
                           <tr>
                             <td colspan="12">

@@ -4,16 +4,16 @@
     $i = 1;
 //Paginação - Somar a quantidade de usuários
 	//$query = $pdo->query( "SELECT * FROM membros ORDER BY nome ASC LIMIT 15 ");
-	$query = $pdo->query( "SELECT infocursos.tema as curso, status_, infocursos.data_, historico.nome, membros.nasc, infocursos.idCursos as ID FROM historico 
+	$query = $pdo->query( "SELECT infocursos.tema as curso, status_, infocursos.data_, historico.nome, infocursos.idCursos as ID FROM historico 
     INNER JOIN infocursos  ON infocursos.idCursos = historico.curso
-    INNER JOIN  membros ON membros.nome = historico.nome
-    where historico.nome = '$nome'
+    
+    where historico.nome = '%$nome%'
     GROUP BY infocursos.tema");
 
-	$sql = "SELECT infocursos.tema as curso, status_, infocursos.data_, historico.nome, membros.nasc, infocursos.idCursos as ID FROM historico 
+	$sql = "SELECT infocursos.tema as curso, status_, infocursos.data_, historico.nome, infocursos.idCursos as ID FROM historico 
     INNER JOIN infocursos  ON infocursos.idCursos = historico.curso
-    INNER JOIN  membros ON membros.nome = historico.nome
-    where historico.nome = '$nome'
+    
+    where historico.nome LIKE '%$nome%'
     GROUP BY infocursos.tema";
 	$result = $pdo->query( $sql );
     $rows = $result->rowCount();
@@ -28,10 +28,10 @@
         $url = $_GET['page'];
         $mody = $url * $itens_pg - $itens_pg;
         //$query = $pdo->query("SELECT * FROM membros ORDER BY nome ASC LIMIT 15 OFFSET $mody");
-        $query = $pdo->query("SELECT infocursos.tema as curso, status_, infocursos.data_, historico.nome, membros.nasc, infocursos.idCursos as ID FROM historico 
+        $query = $pdo->query("SELECT infocursos.tema as curso, status_, infocursos.data_, historico.nome, infocursos.idCursos as ID FROM historico 
         INNER JOIN infocursos  ON infocursos.idCursos = historico.curso
-        INNER JOIN  membros ON membros.nome = historico.nome
-        where historico.nome = '$nome'
+        
+        where historico.nome = '%$nome'
         GROUP BY infocursos.tema");
     }
 
