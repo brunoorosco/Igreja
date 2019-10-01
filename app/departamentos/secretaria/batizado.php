@@ -14,7 +14,7 @@
 		<meta charset="utf-8">
 		<meta name="description" content="Secretária Virtual da Comunidade Avivamento em Cristo">
 		<meta name="keywords" content="Secretária Virtual">
-		<meta name="author" content="Comunidade Avivamento em Cristo">
+		<meta name="author" content="Bruno Orosco">
 
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">

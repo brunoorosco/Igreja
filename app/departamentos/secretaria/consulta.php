@@ -29,6 +29,7 @@ if(($rows != 0)){
                  <table class="table table-striped table-sm" id="tabela_disciplina">
                         <thead>
                           <tr>
+                            <th>Curso</th>
                             <th>Data</th>
                             <th>Código</th>
                             <th>Disciplina</th>
@@ -42,7 +43,9 @@ if(($rows != 0)){
                           $i = 0;
 						  foreach($pdo->query($sql)as $row)
                           {
+                            $i++;
                               echo '<tr>';
+                              echo '<td class="text-left">'.$i.'</td>';
                               echo '<td class="editable">'.date("d/m/Y",strtotime(str_replace('/','-',$row['data_']))).'</td>';
                               echo '<td class="text-left" >'. $row['ID'] . '</td>';
                               echo '<td>'. $row['curso'] . '</td>';

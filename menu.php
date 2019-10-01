@@ -106,7 +106,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/funcoes.php");
                                 <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/secretaria/bat.php'?>">Batizado</a></li>
                                 <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/secretaria/historico.php'?>">Histórico de Cursos</a></li>
                                 <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/secretaria/painel_controle.php'?>">Painel de Controle</a></li>
-                                <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/secretaria/prontuarioCurso.php'?>">Prontuário</a></li>
+                                <li><a class="dropdown-item" href="<?= $URLBASE.'app/departamentos/secretaria/consultaCursos.php'?>">Consulta de Cursos</a></li>
 
                              </ul>
                         </li>  <?php }?>

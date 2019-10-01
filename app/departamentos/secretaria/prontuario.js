@@ -26,6 +26,8 @@ $(document).ready(function() {
          
              $("#btn_consulta").click(function(){
                 usuario = $("#user").val();
+                usuario = usuario.trim();
+                console.log(usuario);
                 if(usuario == null || usuario == "" ){
                   document.getElementById("user").focus();
                   //alert("necessario preencher");
