@@ -4,7 +4,7 @@
   include_once('../../../_fonts/config/banco.php');
   include_once("../../../menu.php");
   
-//  validarUsuario();
+  validarUsuario();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br" data-textdirection="ltr" class="loading">

@@ -19,7 +19,7 @@ $procura = filter_input(INPUT_GET, 'term', FILTER_SANITIZE_STRING);
     $dados->execute();
     echo json_encode($dados->fetchAll(PDO::FETCH_ASSOC));*/
 
-    $query = $pdo->prepare("SELECT nome FROM membros WHERE nome LIKE '%".$procura."%' ORDER BY nome ASC LIMIT 8");
+    $query = $pdo->prepare("SELECT DISTINCT nome FROM historico WHERE nome LIKE '%".$procura."%' ORDER BY nome ASC LIMIT 8");
     $query->execute();  
     // Generate array with skills data
     $data = array();
