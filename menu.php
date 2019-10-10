@@ -155,7 +155,7 @@ include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/funcoes.php");
                 if(isset($_SESSION['usuario'])){
                     echo "<a  class='perfil_modal' href='#' data-toggle='modal' data-target='#perfilModal'><i class='text-secondary fa fa-user'> ".($_SESSION['usuario'])."</i></a>";?>
 
-                    <input type="button" class="btn btn-outline-secondary" onclick="location.href='http://localhost/www/igreja/app/login/logout.php'" value="Sair"/>
+                    <input type="button" class="btn btn-outline-secondary" onclick="location.href='<?= $URLBASE.'app/login/logout.php'?>'" value="Sair"/>
 
                 <?php
                          }

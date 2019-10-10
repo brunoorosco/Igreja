@@ -65,7 +65,7 @@
   <footer class="footer footer-static footer-light navbar-border">
   <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
     <span class="float-md-right d-xs-block d-md-inline-block">
-      <img src="#" style="width:60px">
+      <img src="../../../_fonts/img/visao.png" style="width:150px">
     </span>
   </p>
 </footer>
