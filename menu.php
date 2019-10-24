@@ -3,8 +3,8 @@ include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/banco.php");
 include_once($_SERVER['DOCUMENT_ROOT']."/www/igreja/_fonts/config/funcoes.php");
    
     if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
-    global $URLBASE = "http://localhost/www/igreja/";
-    //$URLBASE = "http://secretariacac.ga/";
+    global $URLBASE;  
+    $URLBASE = "http://localhost/www/igreja/";
 
     $url1 = $_SERVER['SERVER_ADDR'];
 
