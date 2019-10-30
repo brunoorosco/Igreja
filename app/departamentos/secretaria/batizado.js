@@ -81,6 +81,65 @@ function cadBat(){
 //////////////////////////////////////////////////////////////////// 
 
 //////////////////////////////////////////////////////////////////// 
+function certificado() {
+
+    swal.fire({
+        title: 'Impressão de Certificados',
+        html:
+            '<form id="form_certificado" method="GET" action="" enctype="multipart/form-data">' +
+                '<div class="form-group input-group">' +
+                    '<div class="form-group col-4 text-left">' +
+                        '<label for="message-text" class="control-label ">Data:</label>' +
+                        '<input name="data1" type="text" class="form-control col data" id="dataBat" placeholder="00/00/0000" maxlength="10">' +
+                    '</div>' +
+                    '<div class="form-group col text-left">' +
+                        '<label for="cem" class="control-label text-left">Nome do Batizando:</label>' +
+                        '<input name="nome1" class="form-control" id="horaBat" Type="text">' +
+                    '</div>' +
+                '</div>' +
+                '<div class="form-group input-group">' +
+                    '<div class="form-group col-4">' +
+                        '<input name="data2" type="text" class="form-control col data" id="dataBat" placeholder="00/00/0000" maxlength="10">' +
+                    '</div>' +
+                    '<div class="form-group col">' +
+                        '<input name="nome2" class="form-control" id="horaBat" Type="text">' +
+                    '</div>' +
+                '</div>' +
+            '</form>',
+        showCancelButton: true,
+        showCloseButton: true,
+        confirmButtonText: 'Imprimir',
+        showLoaderOnConfirm: true,
+        buttonsStyling: false,
+        confirmButtonClass: 'btn btn-primary btn-lg',
+        cancelButtonClass: 'btn btn-lg',
+        onOpen: function () {
+            $("#dataBat").mask("99/99/9999");
+       },
+        preConfirm: function () {
+            return new Promise((resolve, reject) => {
+
+                resolve({
+                    // Password: $('input[placeholder="Password"]').val()
+                });
+
+
+            });
+        },
+        allowOutsideClick: false
+    }).then((result) => {
+            if (result.value) {
+               // alert(result.value);
+                var dados = $('#form_certificado').serialize();
+                window.location.replace('./printBatismo.php?' + dados);
+                $("#alert_template button").after('<span>Impressão realizada com <strong>Sucesso!!!</strong></span>');
+                $('#alert_template').fadeIn('slow');
+               }
+    }).catch(swal.noop)
+}
+////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////// 
 $('#myModal').on('hidden.bs.modal', function (e) {
     // do something...
     var elemento = document.getElementById("principal");

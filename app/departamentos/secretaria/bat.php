@@ -3,7 +3,7 @@
 		include_once("../../../_fonts/config/banco.php");
 		include_once("../../../_fonts/config/funcoes.php");
 		include_once("../../../menu.php");
-         include_once("./func_sec.php");
+        include_once("./func_sec.php");
         validarUsuario();
 	//	if(!isset($_SESSION))session_start(); //verifica se a sessão aberta
 		if(($_SESSION['nivel'] != '1') && ($_SESSION['nivel'] != '4'))
@@ -54,12 +54,16 @@
 		<div class="container">
 			<br>
 			<div class="page-header">
+				<div class="alert alert-success" id="alert_template" style="display: none;">
+					<button type="button" class="close">×</button>
+				</div>
 				<?php
 				if(isset($_SESSION['msg_curso'])){
 					echo $_SESSION['msg_curso'];
 					unset($_SESSION['msg_curso']);
 				}
 				?>
+				<button type="button" class="btn btn-primary float-sm-right" onclick="certificado()">Imprimir Certificado</button>
 				<button type="button" class="btn btn-success float-sm-right" onclick="cadBat()">Novo Batismo</button>
 				<h3>Batizados</h3>
 			</div>
@@ -193,7 +197,19 @@
 
 		<script src="batizado.js" type="text/javascript"></script>
 		<script src="//code.jquery.com/ui/1.12.0/jquery-ui.min.js"  integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="  crossorigin="anonymous"></script>
-		
+		<script>
+			$('#alert_template .close').click(function(e) {
+				$("#alert_template").remove();
+			});
+
+	window.onload= function() {
+      setTimeout(function() {
+          $(".alert").alert('close');
+
+          }, 5000);
+          
+        };
+		</script>
 
 	</body>
 </html>
