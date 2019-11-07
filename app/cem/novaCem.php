@@ -35,8 +35,26 @@
         .my-div {
                 margin: 40px 40px 40px 40px;
                 min-height: 140px;
-                border-radius: 5px;
-                background-color: lightgrey; 
+                border-radius: 2px;
+                background-color: #FFF; 
+                font-family: 'Oswald', sans-serif;
+                font-size: 30px; 
+                font-weight: normal;
+                text-align: center;
+                           
+          }
+          .my-div p{
+            position: relative;top: 50%;transform: translateY(-50%); 
+            background-color: transparent !important;
+            padding: 0px 0px 0px 0px !important;
+            margin: 0px 0px 0px 0px !important;
+          }
+
+          .my-div:hover{
+            cursor: pointer;
+            transform: scale(1.1);
+            background-color: rgba(240,40,50,0.05);
+
           }
 
           a.fill-div {
@@ -51,26 +69,26 @@
 
 </head>
 
-<body>
+<body style="background:#F7F7F7">
     <div class="container">
           <div class="card">
                 <div class="card-header">
                     <h4 class="card-title text-center"> Encontro com Deus</h4>
                 </div>
           </div>
-          <div class="container ">
-           <div class="row" style="margin-top: 10px; ">
-                  <div class="col bg-light my-div" data-toggle="tooltip" data-placement="top" title="Cadastro da Equipe" style=" background-image: url('../../../_fonts/img/equipe.png');background-size: cover"><a href="./equipe.php" class="fill-div" ></a></div>
-                  <div class="col bg-light my-div" data-toggle="tooltip" data-placement="top" title="Tarefas da Equipe" style=" background-image: url('../../../_fonts/img/tarefa.png');background-size: cover"><a href="./tarefas_equipe.php" class="fill-div"></a></div>
-                  <div class="col bg-light my-div" data-toggle="tooltip" data-placement="top" title="Reencontrista/Encontrista" style=" background-image: url('../../../_fonts/img/encontro_com_Deus.png');background-size: cover"><a href="../../encontro/cad_Encontrista.php" class="fill-div"></a></div>
-                  <div class="col bg-light my-div" data-toggle="tooltip" data-placement="top" title="Entrada de $$$">col</div>
+          <div class="container" >
+           <div class="row mt-10">
+                  <div class="col my-div" data-toggle="tooltip"  style=" background-image: url('../../../_fonts/img/equipe.png');background-size: cover"><a href="./equipe.php" class="fill-div" ></a><p>Membros</p></div>
+                  <div class="col my-div" data-toggle="tooltip"  style=" background-image: url('../../../_fonts/img/tarefa.png');background-size: cover"><a href="./tarefas_equipe.php" class="fill-div"></a><p>Encontrista nº</p></div>
+                  <div class="col my-div" data-toggle="tooltip"  style=" background-image: url('../../../_fonts/img/encontro_com_Deus.png');background-size: cover"><a href="../../encontro/cad_Encontrista.php" class="fill-div"></a><p>Encontrista nº</p></div>
+                  <div class="col my-div" data-toggle="tooltip" ><p>Reencontrista</p></div>
                 
              </div>
            <div class="row" style="margin-top: 10px; ">
-                  <div class="col bg-light my-div">Membros da CEM</div>
-                  <div class="col bg-light my-div">Discipulado</div>
-                  <div class="col bg-light my-div">Escola de Profeta</div>
-                  <div class="col bg-light my-div"></div>
+                  <div class="col my-div"><p>Batizandos</p></div>
+                  <div class="col my-div"><p>Discipulado</p></div>
+                  <div class="col my-div"><p>Escola de Profeta</p></div>
+                  <div class="col my-div"></div>
              </div>
              </div>
              </div>
