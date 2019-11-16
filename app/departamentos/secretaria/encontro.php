@@ -27,7 +27,7 @@
     .min-height-200 { 
         min-height: 200px; 
         margin: 10px 10px 10px 10px;
-        border-radius: 8px; 
+        border-radius: 2px; 
         background-color: lightgrey;
           width: 200px;
           height: 200px; } 
@@ -43,6 +43,11 @@
           width: 100%;
           text-decoration: none;
           }
+          .efeito{
+              -webkit-box-shadow: 0 1px 3px 0px #777;
+              -moz-box-shadow: 0 1px 3px 0px #777;
+              box-shadow: 0 1px 3px 0px #777;
+          }
    
   </style>
 
@@ -55,19 +60,19 @@
                     <h4 class="card-title text-center"> Encontro com Deus</h4>
                 </div>
           </div>
-          <div class="container bg-secondary " style="border-radius: 8px !important; padding-left: 20px;padding-rigth: 20px; " >
+          <div class="container  " style="border-radius: 8px !important; padding-left: 20px;padding-rigth: 20px; " >
            <div class="row" style="margin-top: 10px; ">
-                  <div class="col border bg-light min-height-200" data-toggle="tooltip" data-placement="top" title="Cadastro da Equipe" style=" background-image: url('../../../_fonts/img/equipe.png');background-size: cover"><a href="./equipe.php" class="fill-div" ></a></div>
-                  <div class="col border bg-light min-height-200" data-toggle="tooltip" data-placement="top" title="Tarefas da Equipe" style=" background-image: url('../../../_fonts/img/tarefa.png');background-size: cover"><a href="./tarefas_equipe.php" class="fill-div"></a></div>
-                  <div class="col border bg-light min-height-200" data-toggle="tooltip" data-placement="top" title="Reencontrista/Encontrista" style=" background-image: url('../../../_fonts/img/encontro_com_Deus.png');background-size: cover"><a href="../../encontro/cad_Encontrista.php" class="fill-div"></a></div>
-                  <div class="col border bg-light min-height-200" data-toggle="tooltip" data-placement="top" title="Entrada de $$$">col</div>
+                  <div class="col bg-light min-height-200 efeito" data-toggle="tooltip" data-placement="top" title="Cadastro da Equipe" style=" background-image: url('../../../_fonts/img/equipe.png');background-size: cover"><a href="./equipe.php" class="fill-div" ></a></div>
+                  <div class="col  bg-light min-height-200 efeito" data-toggle="tooltip" data-placement="top" title="Tarefas da Equipe" style=" background-image: url('../../../_fonts/img/tarefa.png');background-size: cover"><a href="./tarefas_equipe.php" class="fill-div"></a></div>
+                  <div class="col bg-light min-height-200 efeito" data-toggle="tooltip" data-placement="top" title="Reencontrista/Encontrista" style=" background-image: url('../../../_fonts/img/encontro_com_Deus.png');background-size: cover"><a href="../../encontro/cad_Encontrista.php" class="fill-div"></a></div>
+                  <div class="col bg-light min-height-200 efeito" data-toggle="tooltip" data-placement="top" title="Entrada de $$$">col</div>
                 
              </div>
            <div class="row" style="margin-top: 10px; ">
-                  <div class="col border bg-light min-height-200"></div>
-                  <div class="col border bg-light min-height-200">col</div>
-                  <div class="col border bg-light min-height-200">col</div>
-                  <div class="col border bg-light min-height-200">col</div>
+                  <div class="col bg-light min-height-200 efeito"></div>
+                  <div class="col bg-light min-height-200 efeito">col</div>
+                  <div class="col bg-light min-height-200 efeito">col</div>
+                  <div class="col bg-light min-height-200 efeito">col</div>
              </div>
              </div>
              </div>
