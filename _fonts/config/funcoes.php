@@ -230,5 +230,16 @@ function idCurso()
 
 }
 
+function curso($idCurso){ //devolve o numero do encontro ou reencontro atual
+  $data  =  "Nenhum Curso encontrado com este código!";
+  $pdo = Banco::conectar();
+  $sql = "SELECT * from infoCursos where '$idCurso' = idCursos";
+  foreach($pdo->query($sql) as $row_events) { 
+     $data = $row_events; 
+    
+  }
+  return json_encode($data);
+  }
+
 ?>
 
