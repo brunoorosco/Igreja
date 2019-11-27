@@ -10,4 +10,5 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Mpdf\\' => array($vendorDir . '/mpdf/mpdf/src'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
+    'CoffeeCode\\Router\\' => array($vendorDir . '/coffeecode/router/src'),
 );

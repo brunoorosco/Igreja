@@ -4,20 +4,65 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4eb8b6908db5ba53816b92c15345ed52",
+    "content-hash": "a37475c19580d7e0efe877c6495c6920",
     "packages": [
         {
-            "name": "mpdf/mpdf",
-            "version": "v8.0.1",
+            "name": "coffeecode/router",
+            "version": "1.0.7",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mpdf/mpdf.git",
-                "reference": "2b6fab3d2a539a475d6e765bb06d8d2185955e55"
+                "url": "https://github.com/robsonvleite/router.git",
+                "reference": "e3b94f72bc389e8b97d82a0fd0e5bff743e51667"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mpdf/mpdf/zipball/2b6fab3d2a539a475d6e765bb06d8d2185955e55",
-                "reference": "2b6fab3d2a539a475d6e765bb06d8d2185955e55",
+                "url": "https://api.github.com/repos/robsonvleite/router/zipball/e3b94f72bc389e8b97d82a0fd0e5bff743e51667",
+                "reference": "e3b94f72bc389e8b97d82a0fd0e5bff743e51667",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CoffeeCode\\Router\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Robson V. Leite",
+                    "email": "cursos@upinside.com.br",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A classic CoffeeCode Router is easy, fast and extremely uncomplicated. Create and manage your routes in minutes!",
+            "homepage": "http://www.upinside.com.br",
+            "keywords": [
+                "Coffeecode",
+                "route",
+                "router",
+                "routes",
+                "upinside"
+            ],
+            "time": "2019-09-30T16:29:47+00:00"
+        },
+        {
+            "name": "mpdf/mpdf",
+            "version": "v8.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mpdf/mpdf.git",
+                "reference": "6dd4285aff21f013554ff752046bb44ab1240f5f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mpdf/mpdf/zipball/6dd4285aff21f013554ff752046bb44ab1240f5f",
+                "reference": "6dd4285aff21f013554ff752046bb44ab1240f5f",
                 "shasum": ""
             },
             "require": {
@@ -33,7 +78,7 @@
                 "mockery/mockery": "^0.9.5",
                 "mpdf/qrcode": "^1.0.0",
                 "phpunit/phpunit": "^5.0",
-                "squizlabs/php_codesniffer": "^2.7.0",
+                "squizlabs/php_codesniffer": "^3.5.0",
                 "tracy/tracy": "^2.4"
             },
             "suggest": {
@@ -73,20 +118,20 @@
                 "php",
                 "utf-8"
             ],
-            "time": "2019-05-07T14:10:43+00:00"
+            "time": "2019-10-25T17:54:07+00:00"
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.9.1",
+            "version": "1.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "e6828efaba2c9b79f4499dae1d66ef8bfa7b2b72"
+                "reference": "007c053ae6f31bba39dfa19a7726f56e9763bbea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/e6828efaba2c9b79f4499dae1d66ef8bfa7b2b72",
-                "reference": "e6828efaba2c9b79f4499dae1d66ef8bfa7b2b72",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/007c053ae6f31bba39dfa19a7726f56e9763bbea",
+                "reference": "007c053ae6f31bba39dfa19a7726f56e9763bbea",
                 "shasum": ""
             },
             "require": {
@@ -121,7 +166,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2019-04-07T13:18:21+00:00"
+            "time": "2019-08-09T12:45:53+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -170,16 +215,16 @@
         },
         {
             "name": "psr/log",
-            "version": "1.1.0",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd"
+                "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
-                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/446d54b4cb6bf489fc9d75f55843658e6f25d801",
+                "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801",
                 "shasum": ""
             },
             "require": {
@@ -188,7 +233,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -213,7 +258,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2018-11-20T15:27:04+00:00"
+            "time": "2019-11-01T11:05:21+00:00"
         },
         {
             "name": "setasign/fpdi",
