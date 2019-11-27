@@ -101,7 +101,7 @@ $_SESSION['URL'] = "//" . $server . $endereco;
 					<?php
 					$pdo = Banco::conectar();
 					$sql = "SELECT * FROM infoCursos ORDER BY idcursos asc";
-					ECHO "TESTE";
+					echo "TESTE";
 					foreach ($pdo->query($sql) as $row) {
 						?>
 						<tr class="row text-center">
@@ -113,7 +113,7 @@ $_SESSION['URL'] = "//" . $server . $endereco;
 							<td class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 								<div class="btn-group btn-sm">
 									<button type="button" class="btn btn-light fas fa-graduation-cap" data-toggle="modal" data-target="#ModalAlunos" data-whatever="<?php echo $row['idCursos']; ?>" title="Alunos que Participaram"></button>
-									<!-- <button type="button" class="btn btn-light fas fa-graduation-cap" data-toggle="modal" data-target="#cadAlunos" data-whatever="<?php echo $row['idCursos']; ?>" title="Cadastro de Alunos"></button> -->
+									<button type="button" class="btn btn-dark fas fa-user-graduate" data-toggle="modal" data-target="#cadAlunos" data-whatever="<?php echo $row['idCursos']; ?>" title="Cadastro de Alunos"></button>
 									<!-- <button type="button" class="btn btn-primary fas fa-id-card" data-toggle="modal" data-target="#myModal<?php echo $row['idCursos']; ?>" title="Informações Gerais sobre o curso"></button> -->
 									<a href="./printCurso.php?c=<?= $row['idCursos']; ?>" type="button" class="btn btn-primary fas fa-id-card" data-target="#myModal<?= $row['idCursos']; ?>" title="Histórico do Curso"></a>
 									<button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idCursos']; ?>" data-whatevernome="<?php echo $row['nomeCursos']; ?>" data-whateverdetalhes="<?php echo $row['tema']; ?>" data-whateverdata="<?php echo date("d/m/Y", strtotime(str_replace('/', '-', $row['data_']))); ?>" title="Editar Curso">
@@ -288,16 +288,23 @@ $_SESSION['URL'] = "//" . $server . $endereco;
 					<h4 class="modal-title" id="cadAlunosLabel"></h4>
 				</div>
 				<div class="modal-body">
-					<div class="container-fluid">
-						<h5 class="alert alert-success text-center" id="msg_course"></h5>
-					</div>
-					<form id="form_course" method="GET" action="" enctype="multipart/form-data">
+					
+				<h5 class="alert alert-success text-center" id="msg_course">yesnkll</h5>
+				
+					<form id="form_course" method="POST" action="" enctype="multipart/form-data">
 						<div class="form-group col">
 							<label for="recipient-name" class="control-label">Nome:</label>
 							<input name="nome_aluno" type="text" class="form-control" id="name_aluno" placeholder="Nome Completo">
 						</div>
+						<div class="form-group col">
+							<select class="form-control selectpicker" name="situacao">
+								<option value="" selected disabled>Situação</option>
+								<option>APROVADO</option>
+								<option>REPROVADO</option>
+							</select>
+						</div>
 
-						<input name="id_aluno" type="hidden" class="form-control" id="id_aluno" value="">
+						<input name="id_curso" type="hidden" class="form-control" id="curso" value="">
 						<div class="modal-footer btn-group " role="group">
 							<div class="btn-group" role="group">
 								<button type="button" class="btn btn-ligth btn-block" data-dismiss="modal">Cancelar</button>

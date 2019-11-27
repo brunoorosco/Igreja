@@ -112,10 +112,10 @@ $(document).on('click', '#adic_aluno', function (e) {
 
 });
 //////////////////////////////////////////////////////////////////// 
-setTimeout(function () {
-	$(".alert").alert('close');
+// setTimeout(function () {
+// 	$(".alert").alert('close');
 
-}, 3000);
+// }, 3000);
 
 $('#ModalAlunos').on('show.bs.modal', function (event) {
 	var button = $(event.relatedTarget) // Button that triggered the modal
@@ -146,6 +146,19 @@ $('#editModal').on('show.bs.modal', function (event) {
 	modal.find('#dataCurso').val(recipientdata)
 	//console.log(recipientdata);
 
+});
+
+$('#cadAlunos').on('show.bs.modal', function (event) {
+	var button = $(event.relatedTarget) // Button that triggered the modal
+	var recipient = button.data('whatever') // Extract info from data-* attributes
+
+	// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+	// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+	var modal = $(this)
+	modal.find('.modal-title').text('Inserir e Ajustar Situação')
+	modal.find('#curso').val(recipient)
+	carrega_dados(recipient);
+	//console.log(recipient);
 });
 
 //Mascara para o campo data e hora
@@ -232,21 +245,23 @@ $(document).ready(function () {
 
 	$('#form_course').submit(function () {
 
-		var dados = $(this).serialize() + '&selec=10&funcao=0&fulano=0';
+		var dados = $(this).serialize();
 		//console.log( dados);
 		// alert(JSON.stringify({selec: "10" , funcao: "0", fulano:"0", dados}));
 		event.preventDefault();
 		$.ajax({
-			type: 'GET',
-			url: "./equipeDB.php",
+			type: 'post',
+			url: "./addAlunos.php",
 			dataType: 'json',     // para obter a resposta no formato json e rodar no sweetalert2
 			data: dados,
 			success: function (response) { //retorna o echo do php
+			
 				document.getElementById("msg_course").style.display = 'block';
-				document.getElementById("msg_course").innerHTML = "Cadastro realizado com Sucesso!!!";
+				document.getElementById('msg_course').innerHTML = "Cadastro realizado com Sucesso!!!";
+
 				setTimeout(function () {
-					document.getElementById("msg_course").style.display = 'none';
-					$('form_course').find('input[type=text], input[type=password], input[type=number], input[type=email], textarea').val('');
+					document.getElementById('msg_course').style.display = 'none';
+					$('#form_course').trigger("reset");
 					//   document.getElementById("msg_bat").remove();
 				}, 3000); // 3000 = 3 segundos
 
