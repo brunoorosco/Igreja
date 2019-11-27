@@ -118,7 +118,7 @@ $_SESSION['URL'] = "//" . $server . $endereco;
 									<a href="./printCurso.php?c=<?= $row['idCursos']; ?>" type="button" class="btn btn-primary fas fa-id-card" data-target="#myModal<?= $row['idCursos']; ?>" title="Histórico do Curso"></a>
 									<button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idCursos']; ?>" data-whatevernome="<?php echo $row['nomeCursos']; ?>" data-whateverdetalhes="<?php echo $row['tema']; ?>" data-whateverdata="<?php echo date("d/m/Y", strtotime(str_replace('/', '-', $row['data_']))); ?>" title="Editar Curso">
 									</button>
-									<!-- <button type="button" class="btn btn-danger fas fa-trash disabled" title="Excluir Curso"></button> -->
+									<button type="button" class="btn btn-light fas fa-trash" data-toggle="modal" data-target="#slassModal" title="Excluir Curso"></button>
 								</div>
 
 							</td>
@@ -288,9 +288,9 @@ $_SESSION['URL'] = "//" . $server . $endereco;
 					<h4 class="modal-title" id="cadAlunosLabel"></h4>
 				</div>
 				<div class="modal-body">
-					
-				<h5 class="alert alert-success text-center" id="msg_course">yesnkll</h5>
-				
+
+					<h5 class="alert alert-success text-center" id="msg_course">yesnkll</h5>
+
 					<form id="form_course" method="POST" action="" enctype="multipart/form-data">
 						<div class="form-group col">
 							<label for="recipient-name" class="control-label">Nome:</label>
@@ -318,6 +318,44 @@ $_SESSION['URL'] = "//" . $server . $endereco;
 			</div>
 		</div>
 
+	</div>
+	<div id="classModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="classInfo" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						×
+					</button>
+					<h4 class="modal-title" id="classModalLabel">
+						Class Info
+					</h4>
+				</div>
+				<div class="modal-body">
+					<table id="classTable" class="table table-bordered">
+						<thead>
+						</thead>
+						<tbody>
+							<tr>
+								<td>CLN</td>
+								<td>Last Updated Date</td>
+								<td>Class Name</td>
+								<td># Tests</td>
+								<td>Test Coverage (Instruction)</td>
+								<td>Test Coverage (Complexity)</td>
+								<td>Complex Covered</td>
+								<td>Complex Total</td>
+								<td>Category</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">
+						Close
+					</button>
+				</div>
+			</div>
+		</div>
 	</div>
 	<!-- Fim Modal de Cadastramento de Batizandos -->
 
