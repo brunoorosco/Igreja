@@ -118,7 +118,7 @@ $_SESSION['URL'] = "//" . $server . $endereco;
 									<a href="./printCurso.php?c=<?= $row['idCursos']; ?>" type="button" class="btn btn-primary fas fa-id-card" data-target="#myModal<?= $row['idCursos']; ?>" title="Histórico do Curso"></a>
 									<button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idCursos']; ?>" data-whatevernome="<?php echo $row['nomeCursos']; ?>" data-whateverdetalhes="<?php echo $row['tema']; ?>" data-whateverdata="<?php echo date("d/m/Y", strtotime(str_replace('/', '-', $row['data_']))); ?>" title="Editar Curso">
 									</button>
-									<button type="button" class="btn btn-light fas fa-trash" data-toggle="modal" data-target="#slassModal" title="Excluir Curso"></button>
+									<button type="button" class="btn btn-light fas fa-trash" data-toggle="modal" data-whatever="<?php echo $row['idCursos']; ?>" data-target="#classModal" title="Excluir Curso"></button>
 								</div>
 
 							</td>
@@ -327,26 +327,18 @@ $_SESSION['URL'] = "//" . $server . $endereco;
 						×
 					</button>
 					<h4 class="modal-title" id="classModalLabel">
-						Class Info
+
 					</h4>
 				</div>
 				<div class="modal-body">
-					<table id="classTable" class="table table-bordered">
+					<table id="tabelaCurso" class="table table-bordered table-sm" data-click-to-select="true">
 						<thead>
-						</thead>
-						<tbody>
 							<tr>
-								<td>CLN</td>
-								<td>Last Updated Date</td>
-								<td>Class Name</td>
-								<td># Tests</td>
-								<td>Test Coverage (Instruction)</td>
-								<td>Test Coverage (Complexity)</td>
-								<td>Complex Covered</td>
-								<td>Complex Total</td>
-								<td>Category</td>
+								<th>Nome</th>
+								<th>Situação</th>
+								<th class="text-center">Ação</th>
 							</tr>
-						</tbody>
+						</thead>
 					</table>
 				</div>
 				<div class="modal-footer">

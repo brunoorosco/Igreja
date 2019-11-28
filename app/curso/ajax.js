@@ -161,6 +161,65 @@ $('#cadAlunos').on('show.bs.modal', function (event) {
 	//console.log(recipient);
 });
 
+$('#classModal').on('show.bs.modal', function (event) {
+	var button = $(event.relatedTarget) // Button that triggered the modal
+	var turma = button.data('whatever') // //PEGA O VALOR DO ID DO CURSO PARA PUXAR INFORMAÇÕA DE ALUNOS
+
+	var modal = $(this)
+	modal.find('.modal-title').text('teste Situação')
+
+	$(document).ready(function () {
+
+
+		$.ajax({
+			timeout: 3000,
+			type: 'post',		//Definimos o método HTTP usado
+			dataType: 'json',	//Definimos o tipo de retorno
+			url: 'ler_turma.php',//Definindo o arquivo onde serão buscados os dados
+			data: { curso: turma },//variaveis post e seus valores
+			success: function (dados) {
+				console.log(dados)
+				var tabelaCurso = '';
+				$.each(dados, function (i, item) {
+					tabelaCurso += '<tr><td>' + item.nome + '</td><td id="id_' + item.idHist + '"> ' + item.status_ +
+						'</td><td><button type="button" class="btn btn-light fas fa-trash" onClick=excluir(' + item.idHist + ');>' +
+						'</button><button type="button"  id="id_'+ item.idHist +'" class="btn btn-warning fas fa-edit" onClick=troca(' + item.idHist + ');></button></td></tr>';
+				});
+				$('#tabelaCurso').append(tabelaCurso);
+			}
+		});
+	
+	});
+
+	
+	//console.log(recipient);
+});
+////////////////////////////////////////////////////////////////////////////////////////////////////
+function troca(idCurso) {
+
+	var texto_atual = document.getElementById('id_' + idCurso).innerText;
+	console.log(texto_atual);
+	if (texto_atual === "APROVADO"){
+		var element = document.getElementById('id_' + idCurso);
+		element.innerHTML = "REPROVADO";
+	}
+	else {
+		var element = document.getElementById('id_' + idCurso);
+		element.innerHTML = "APROVADO";
+	}
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+function excluir() {
+alert("teste");
+};
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 //Mascara para o campo data e hora
 function DataHora(evento, objeto) {
 	var keypress = (window.event) ? event.keyCode : evento.which;
@@ -255,7 +314,7 @@ $(document).ready(function () {
 			dataType: 'json',     // para obter a resposta no formato json e rodar no sweetalert2
 			data: dados,
 			success: function (response) { //retorna o echo do php
-			
+
 				document.getElementById("msg_course").style.display = 'block';
 				document.getElementById('msg_course').innerHTML = "Cadastro realizado com Sucesso!!!";
 
