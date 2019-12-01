@@ -86,7 +86,7 @@ function certificado() {
     swal.fire({
         title: 'Impressão de Certificados',
         html:
-            '<form id="form_certificado" method="GET" action="" enctype="multipart/form-data">' +
+            '<form id="form_certificado" method="POST" action="" enctype="multipart/form-data">' +
                 '<div class="form-group input-group">' +
                     '<div class="form-group col-4 text-left">' +
                         '<label for="message-text" class="control-label ">Data:</label>' +
@@ -131,7 +131,7 @@ function certificado() {
             if (result.value) {
                // alert(result.value);
                 var dados = $('#form_certificado').serialize();
-                window.location.replace('./printBatismo.php?' + dados);
+                window.location.replace('./printCertificadoBatismo.php?' + dados);
                 $("#alert_template button").after('<span>Impressão realizada com <strong>Sucesso!!!</strong></span>');
                 $('#alert_template').fadeIn('slow');
                }

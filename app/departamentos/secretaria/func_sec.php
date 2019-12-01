@@ -37,6 +37,23 @@ function achar_data($valor)
             }
 }
 
+function certificadoBatismo($valor){
+    $pdo = Banco::conectar();
+    $sql = "SELECT * FROM batizando where batismo = '$valor' ";
+    $exec =  $pdo->query($sql);
+    $rows = $exec->fetchAll(PDO::FETCH_ASSOC);
+    $total = count($rows);
+    if ($total > 0) {
+        $codigo = $rows[0]['nome'];
+        echo $codigo;
+        return $codigo;
+    } else {
+        $codigo = 0;
+        return false;
+    }
+
+}
+
 
 ?>
 
