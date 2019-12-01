@@ -100,8 +100,8 @@ $_SESSION['URL'] = "//" . $server . $endereco;
 				<tbody>
 					<?php
 					$pdo = Banco::conectar();
-					$sql = "SELECT * FROM infoCursos ORDER BY idcursos asc";
-					echo "TESTE";
+					$sql = "SELECT * FROM infocursos ORDER BY idcursos asc";
+				
 					foreach ($pdo->query($sql) as $row) {
 						?>
 						<tr class="row text-center">
@@ -118,7 +118,7 @@ $_SESSION['URL'] = "//" . $server . $endereco;
 									<a href="./printCurso.php?c=<?= $row['idCursos']; ?>" type="button" class="btn btn-primary fas fa-id-card" data-target="#myModal<?= $row['idCursos']; ?>" title="Histórico do Curso"></a>
 									<button type="button" class="btn btn-warning fas fa-edit" data-toggle="modal" data-target="#editModal" data-whatever="<?php echo $row['idCursos']; ?>" data-whatevernome="<?php echo $row['nomeCursos']; ?>" data-whateverdetalhes="<?php echo $row['tema']; ?>" data-whateverdata="<?php echo date("d/m/Y", strtotime(str_replace('/', '-', $row['data_']))); ?>" title="Editar Curso">
 									</button>
-									<button type="button" class="btn btn-light fas fa-trash" data-toggle="modal" data-whatever="<?php echo $row['idCursos']; ?>" data-target="#classModal" title="Excluir Curso"></button>
+									<button type="button" class="btn btn-light fas fa-trash" data-toggle="modal" data-turma="<?php echo $row['idCursos']; ?>" data-tema="<?php echo $row['tema']; ?>" data-target="#classModal" title="Excluir Curso"></button>
 								</div>
 
 							</td>

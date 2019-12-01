@@ -160,17 +160,19 @@ $('#cadAlunos').on('show.bs.modal', function (event) {
 	carrega_dados(recipient);
 	//console.log(recipient);
 });
+$('#classModal').on('hidden.bs.modal', function (e) {
+	$("#tabelaCurso tr").remove();
+})
 
 $('#classModal').on('show.bs.modal', function (event) {
 	var button = $(event.relatedTarget) // Button that triggered the modal
-	var turma = button.data('whatever') // //PEGA O VALOR DO ID DO CURSO PARA PUXAR INFORMAÇÕA DE ALUNOS
+	var turma = button.data('turma') // //PEGA O VALOR DO ID DO CURSO PARA PUXAR INFORMAÇÕA DE ALUNOS
+	var temaCurso = button.data('tema')
 
 	var modal = $(this)
-	modal.find('.modal-title').text('teste Situação')
-
+	modal.find('.modal-title').text('Curso - ' + temaCurso);
+	
 	$(document).ready(function () {
-
-
 		$.ajax({
 			timeout: 3000,
 			type: 'post',		//Definimos o método HTTP usado
@@ -181,43 +183,83 @@ $('#classModal').on('show.bs.modal', function (event) {
 				console.log(dados)
 				var tabelaCurso = '';
 				$.each(dados, function (i, item) {
-					tabelaCurso += '<tr><td>' + item.nome + '</td><td id="id_' + item.idHist + '"> ' + item.status_ +
-						'</td><td><button type="button" class="btn btn-light fas fa-trash" onClick=excluir(' + item.idHist + ');>' +
+					tabelaCurso += '<tr id="idLinha' + item.idHist +'"><td>' + item.nome + '</td><td id="id_' + item.idHist + '"> ' + item.status_ +
+						'</td><td><button type="button" class="btn btn-light fas fa-trash excluir" onClick=excluir(' + item.idHist +');>' +
 						'</button><button type="button"  id="id_'+ item.idHist +'" class="btn btn-warning fas fa-edit" onClick=troca(' + item.idHist + ');></button></td></tr>';
 				});
 				$('#tabelaCurso').append(tabelaCurso);
 			}
 		});
-	
+		
+		
 	});
-
+	
 	
 	//console.log(recipient);
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 function troca(idCurso) {
-
+	$('#idLinha' + idCurso).css('background-color', ' #b3e6b3');
 	var texto_atual = document.getElementById('id_' + idCurso).innerText;
-	console.log(texto_atual);
+	
 	if (texto_atual === "APROVADO"){
 		var element = document.getElementById('id_' + idCurso);
 		element.innerHTML = "REPROVADO";
+		atualiza("REPROVADO", idCurso);
 	}
 	else {
 		var element = document.getElementById('id_' + idCurso);
 		element.innerHTML = "APROVADO";
+		atualiza("APROVADO", idCurso);
 	}
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-function excluir() {
-alert("teste");
+function excluir(delet) {
+	//$this.parent().parent().remove();
+	//console.log($(this));
+	$('#idLinha' + delet).css('background-color', ' #ffb3b3');
+	banco(delet);
 };
 
 
-
+$("button.excluir").click(function(){
+	$this.parent().parent().remove();
+});
 /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+function banco(id, rest) {
+	$.ajax({
+	
+		type: 'post',		//Definimos o método HTTP usado
+		dataType: 'json',	//Definimos o tipo de retorno
+		url: 'movBanco.php',//Definindo o arquivo onde serão buscados os dados
+		data: { id: id, },//variaveis post e seus valores
+		success: function (dados) {
+		//	console.log(dados)
+		//	$('#idLinha' + id).css('background-color', ' #ffb3b3');
+		
+		}
+	});
+}
+
+
+function atualiza(id, curso) {
+	$.ajax({
+		type: 'post',		//Definimos o método HTTP usado
+		dataType: 'json',	//Definimos o tipo de retorno
+		url: 'updateHistorico.php',//Definindo o arquivo onde serão buscados os dados
+		data: { status_: id, curso:curso},//variaveis post e seus valores
+		success: function (dados) {
+			//console.log(dados)
+			//$('#idLinha' + id).css('background-color', ' #b3e6b3');
+
+		}
+	});
+}
+
 
 
 //Mascara para o campo data e hora
