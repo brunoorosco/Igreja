@@ -42,20 +42,17 @@ function certificadoBatismo($valor){
     $sql = "SELECT * FROM batizando where batismo = '$valor' ";
     $exec =  $pdo->query($sql);
     $rows = $exec->fetchAll(PDO::FETCH_ASSOC);
-    $total = count($rows);
-    if ($total > 0) {
-        $codigo = $rows[0]['nome'];
-        echo $codigo;
-        return $codigo;
-    } else {
-        $codigo = 0;
-        return false;
+    foreach ($pdo->query($sql) as $row) {
+        $data[] = $row;
     }
-
+    $pdo = null;
+    return json_encode($data);
 }
 
 
-?>
+
+
+
 
 
 
